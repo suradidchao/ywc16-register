@@ -1,5 +1,5 @@
 /* eslint-disable */
-export function loadFbSdk() {
+export async function loadFbSdk() {
   return new Promise(resolve => {
     window.fbAsyncInit = function () { // eslint-disable-line func-names
       FB.init({
@@ -20,7 +20,6 @@ export function loadFbSdk() {
     }(document, 'script', 'facebook-jssdk'));
   });
 }
-
 export function getFbLoginStatus() {
   return new Promise(resolve => {
     window.FB.getLoginStatus(responseStatus => {

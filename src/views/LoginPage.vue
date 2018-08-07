@@ -2,7 +2,7 @@
 <div>
   <div class="facebook-login">
     <button @click="buttonClicked">
-      <i class="spinner" v-if="isWorking"></i>
+       <i class="spinner" v-if="isWorking"></i>
       {{getButtonText}}
     </button>
   </div>
@@ -11,12 +11,6 @@
 
 <script>
 /* eslint-disable */
-import {
-  loadFbSdk,
-  getFbLoginStatus,
-  fbLogout,
-  fbLogin
-} from '../core/facebook.js'
 
 export default {
   name: 'facebook-login',
@@ -33,7 +27,7 @@ export default {
       type: Object,
       default: function() {
         return {
-          scope: 'email'
+          scope: 'public_profile,email,id'
         }
       }
     }
@@ -44,22 +38,24 @@ export default {
       isConnected: false,
     }
   },
+ created(){
+   console.log('created')
+    let tokenExists = window.localStorage.getItem('ywc16_access_token')
+    if (tokenExists) {
+      console.log('token exists')
+          // request jwt backend get data
+          // redirect route
+    } else {
+      console.log('token not exists')
+      // this.login()
+    }
+
+  },
   mounted() {
+    console.log('mounted')
     this.isWorking = true
-    loadFbSdk()
-      .then(getFbLoginStatus)
-      .then(response => {
-        if (response.status === 'connected') {
-          this.isConnected = true
-        }
-        this.isWorking = false
-        /** Event `get-initial-status` to be deprecated in next major version! */
-        this.$emit('get-initial-status', response)
-        this.$emit('sdk-loaded', {
-          isConnected: this.isConnected,
-          FB: window.FB
-        })
-      })
+    this.$store.dispatch('loadFb')
+    console.log(this.$store.getters.isAuth);
   },
   computed: {
     getButtonText() {
@@ -75,7 +71,6 @@ export default {
   },
   methods: {
     buttonClicked() {
-      this.$emit('click')
       if (this.isConnected) {
         this.logout()
       } else {
@@ -83,30 +78,13 @@ export default {
       }
     },
     login() {
+      console.log('login')
       this.isWorking = true
-      fbLogin(this.loginOptions)
-        .then(response => {
-          if (response.status === 'connected') {
-            this.isConnected = true
-          } else {
-            this.isConnected = false
-          }
-          this.isWorking = false
-          this.$emit('login', {
-            response,
-            FB: window.FB
-          })
-        })
+      this.$store.dispatch('signUserIn', {loginOptions: this.loginOptions})
     },
     logout() {
       this.isWorking = true
-      fbLogout()
-        .then(response => {
-          this.isWorking = false
-          this.isConnected = false
-          this.$emit('logout', response)
-        }
-        )
+      this.$store.dispatch('logout')
     }
   }
 }
