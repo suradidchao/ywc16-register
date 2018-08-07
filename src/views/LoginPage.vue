@@ -22,14 +22,6 @@ export default {
     loginLabel: {
       type: String,
       default: 'Log in to Facebook'
-    },
-    loginOptions: {
-      type: Object,
-      default: function() {
-        return {
-          scope: 'public_profile,email,id'
-        }
-      }
     }
   },
   data() {
@@ -39,7 +31,6 @@ export default {
     }
   },
  created(){
-   console.log('created')
     let tokenExists = window.localStorage.getItem('ywc16_access_token')
     if (tokenExists) {
       console.log('token exists')
@@ -52,12 +43,16 @@ export default {
 
   },
   mounted() {
-    console.log('mounted')
     this.isWorking = true
     this.$store.dispatch('loadFb')
-    console.log(this.$store.getters.isAuth);
   },
   computed: {
+    user () {
+      return this.$store.getters.user
+    },
+    auth () {
+      return this.$store.getters.isAuth
+    },
     getButtonText() {
       switch (this.isConnected) {
         case true:
@@ -68,6 +63,20 @@ export default {
           return 'this is default'
       }
     }
+  },
+  watch: {
+      auth (value) {
+        if (value !== null && value !== undefined) {
+          this.isConnected = value
+          this.$store.dispatch('autoSignIn', value)
+          // this.$router.push('/select_major')
+        }
+      },
+      user (value) {
+        if (value !== null && value !== undefined) {
+          console.log(value);
+        }
+      }
   },
   methods: {
     buttonClicked() {
@@ -80,7 +89,7 @@ export default {
     login() {
       console.log('login')
       this.isWorking = true
-      this.$store.dispatch('signUserIn', {loginOptions: this.loginOptions})
+      this.$store.dispatch('signUserIn')
     },
     logout() {
       this.isWorking = true

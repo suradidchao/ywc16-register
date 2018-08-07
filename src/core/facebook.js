@@ -1,23 +1,41 @@
 /* eslint-disable */
 export async function loadFbSdk() {
   return new Promise(resolve => {
-    window.fbAsyncInit = function () { // eslint-disable-line func-names
+    window.fbAsyncInit = function() {
       FB.init({
-        appId: '134784707110171',
-        xfbml: false,
-        version: 'v2.9',
-        cookie: true
+        appId            : '134784707110171',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v3.0'
       });
-      FB.AppEvents.logPageView();
       resolve('SDK Loaded!');
     };
-    (function (d, s, id) { // eslint-disable-line func-names
-      const fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { return; }
-      const js = d.createElement(s); js.id = id;
-      js.src = '//connect.facebook.net/en_US/sdk.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+    // window.fbAsyncInit = function () { // eslint-disable-line func-names
+    //   FB.init({
+    //     appId: '134784707110171',
+    //     xfbml: false,
+    //     version: 'v3.0',
+    //     cookie: true
+    //   });
+    //   FB.AppEvents.logPageView();
+    //   resolve('SDK Loaded!');
+    // };
+    // (function (d, s, id) { // eslint-disable-line func-names
+    //   const fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) { return; }
+    //   const js = d.createElement(s); js.id = id;
+    //   js.src = '//connect.facebook.net/en_US/sdk.js';
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
   });
 }
 export function getFbLoginStatus() {
@@ -28,9 +46,9 @@ export function getFbLoginStatus() {
   });
 }
 
-export function fbLogin(options) {
+export function fbLogin() {
   return new Promise(resolve => {
-    window.FB.login(response => resolve(response), options);
+    window.FB.login(response => resolve(response), {scope: 'email'});
   });
 }
 export function fbLogout() {

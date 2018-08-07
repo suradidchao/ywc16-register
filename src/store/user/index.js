@@ -8,7 +8,7 @@ import {
 export default {
   state: {
     user: null,
-    auth: null
+    auth: false
   },
   mutations: {
     setUser (state, payload) {
@@ -19,10 +19,7 @@ export default {
     }
   },
   actions: {
-
-    loadFb ({
-      commit
-    }, payload) {
+    loadFb ({commit}) {
       // commit('setLoading', true)
       // commit('clearError')
       loadFbSdk()
@@ -42,30 +39,22 @@ export default {
     },
     signUserIn ({
       commit
-    }, payload) {
+    }) {
       // commit('setLoading', true)
       // commit('clearError')
-
-      fbLogin(payload.loginOptions)
+      fbLogin()
         .then(response => {
           if (response.status === 'connected') {
             commit('setAuth', true)
-            console.log(response)
-            // const newUser = {
-            //   id: response.authResponse.userID,
-            //   name: user.displayName,
-            //   email: user.email,
-            //   photoUrl: user.photoURL,
-            //   token: response.authResponse.accessToken
-            // }
-            // commit('setUser', newUser)
+            window.localStorage.setItem('ywc16_access_token', response.authResponse.accessToken)
+            const newUser = {
+              id: response.authResponse.userID,
+              token: response.authResponse.accessToken
+            }
+            commit('setUser', newUser)
           } else {
             commit('setAuth', false)
           }
-          // this.$emit('login', {
-          //   response,
-          //   FB: window.FB
-          // })
         }).catch(
           error => {
             // commit('setLoading', false)
@@ -74,22 +63,14 @@ export default {
           }
         )
     },
-    // autoSignIn ({
-    //   commit
-    // }, payload) {
-    //   commit('setUser', {
-    //     id: payload.uid,
-    //     name: payload.displayName,
-    //     email: payload.email,
-    //     photoUrl: payload.photoURL
-    //   })
-    // },
-    logout ({
+    autoSignIn ({
       commit
-    }) {
-      fbLogout().then(() => {
-        commit('setAuth', false)
-      })
+    }, payload) {
+      commit('setAuth', payload)
+    },
+    logout ({commit}) {
+      fbLogout()
+      commit('setAuth', false)
       commit('setUser', null)
     }
   },
