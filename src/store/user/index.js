@@ -1,13 +1,15 @@
-import {
-  loadFbSdk,
-  getFbLoginStatus,
-  fbLogout,
-  fbLogin
-} from '../../core/facebook.js'
+// import {
+//   loadFbSdk,
+//   getFbLoginStatus,
+//   fbLogout,
+//   fbLogin
+// } from '../../core/facebook.js'
 
 export default {
   state: {
-    user: null,
+    user: {
+      major: ''
+    },
     auth: false
   },
   mutations: {
@@ -16,52 +18,24 @@ export default {
     },
     setAuth (state, payload) {
       state.auth = payload
+    },
+    setMajor (state, payload) {
+      state.user.major = payload
     }
   },
   actions: {
+    saveMajor ({
+      commit
+    }, payload) {
+      commit('setMajor', payload)
+    },
     loadFb ({commit}) {
       // commit('setLoading', true)
       // commit('clearError')
-      loadFbSdk()
-        .then(getFbLoginStatus)
-        .then(response => {
-          if (response.status === 'connected') {
-            commit('setAuth', true)
-          }
-        })
-        .catch(
-          error => {
-            // commit('setLoading', false)
-            // commit('setError', error)
-            console.log(error)
-          }
-        )
     },
-    signUserIn ({
-      commit
-    }) {
+    signUserIn ({commit}) {
       // commit('setLoading', true)
       // commit('clearError')
-      fbLogin()
-        .then(response => {
-          if (response.status === 'connected') {
-            commit('setAuth', true)
-            window.localStorage.setItem('ywc16_access_token', response.authResponse.accessToken)
-            const newUser = {
-              id: response.authResponse.userID,
-              token: response.authResponse.accessToken
-            }
-            commit('setUser', newUser)
-          } else {
-            commit('setAuth', false)
-          }
-        }).catch(
-          error => {
-            // commit('setLoading', false)
-            // commit('setError', error)
-            console.log(error)
-          }
-        )
     },
     autoSignIn ({
       commit
@@ -69,7 +43,7 @@ export default {
       commit('setAuth', payload)
     },
     logout ({commit}) {
-      fbLogout()
+      // fbLogout()
       commit('setAuth', false)
       commit('setUser', null)
     }
@@ -80,6 +54,9 @@ export default {
     },
     isAuth (state) {
       return state.auth
+    },
+    major (state) {
+      return state.user.major
     }
   }
 }
