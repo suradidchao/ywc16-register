@@ -15,6 +15,6 @@ new Vue({
   components: { App },
   template: '<App/>',
   created () {
-    alert('first time')
+    this.$store.dispatch('loadFb')
   }
 })

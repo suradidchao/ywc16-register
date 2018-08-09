@@ -1,14 +1,16 @@
-import {
-  loadFbSdk,
-  getFbLoginStatus,
-  fbLogout,
-  fbLogin
-} from '../../core/facebook.js'
+// import {
+//   loadFbSdk,
+//   getFbLoginStatus,
+//   fbLogout,
+//   fbLogin
+// } from '../../core/facebook.js'
 
 export default {
   state: {
-    user: null,
-    auth: null
+    user: {
+      major: ''
+    },
+    auth: false
   },
   mutations: {
     setUser (state, payload) {
@@ -16,80 +18,34 @@ export default {
     },
     setAuth (state, payload) {
       state.auth = payload
+    },
+    setMajor (state, payload) {
+      state.user.major = payload
+      window.localStorage.setItem('ywc16_major', payload)
     }
   },
   actions: {
-
-    loadFb ({
+    saveMajor ({
       commit
     }, payload) {
+      commit('setMajor', payload)
+    },
+    loadFb ({commit}) {
       // commit('setLoading', true)
       // commit('clearError')
-      loadFbSdk()
-        .then(getFbLoginStatus)
-        .then(response => {
-          if (response.status === 'connected') {
-            commit('setAuth', true)
-          }
-        })
-        .catch(
-          error => {
-            // commit('setLoading', false)
-            // commit('setError', error)
-            console.log(error)
-          }
-        )
     },
-    signUserIn ({
+    signUserIn ({commit}) {
+      // commit('setLoading', true)
+      // commit('clearError')
+    },
+    autoSignIn ({
       commit
     }, payload) {
-      // commit('setLoading', true)
-      // commit('clearError')
-
-      fbLogin(payload.loginOptions)
-        .then(response => {
-          if (response.status === 'connected') {
-            commit('setAuth', true)
-            console.log(response)
-            // const newUser = {
-            //   id: response.authResponse.userID,
-            //   name: user.displayName,
-            //   email: user.email,
-            //   photoUrl: user.photoURL,
-            //   token: response.authResponse.accessToken
-            // }
-            // commit('setUser', newUser)
-          } else {
-            commit('setAuth', false)
-          }
-          // this.$emit('login', {
-          //   response,
-          //   FB: window.FB
-          // })
-        }).catch(
-          error => {
-            // commit('setLoading', false)
-            // commit('setError', error)
-            console.log(error)
-          }
-        )
+      commit('setAuth', payload)
     },
-    // autoSignIn ({
-    //   commit
-    // }, payload) {
-    //   commit('setUser', {
-    //     id: payload.uid,
-    //     name: payload.displayName,
-    //     email: payload.email,
-    //     photoUrl: payload.photoURL
-    //   })
-    // },
-    logout ({
-      commit
-    }) {
-      fbLogout().then(() => {
-        commit('setAuth', false)
-      })
+    logout ({commit}) {
+      // fbLogout()
+      commit('setAuth', false)
       commit('setUser', null)
     }
   },
@@ -99,6 +55,9 @@ export default {
     },
     isAuth (state) {
       return state.auth
+    },
+    major (state) {
+      return state.user.major
     }
   }
 }
