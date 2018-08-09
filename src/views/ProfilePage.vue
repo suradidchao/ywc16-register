@@ -16,15 +16,9 @@
                 {{ option }}
             </option>
           </select>
-      <!-- <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1" v-model="academicYear">
-          <option>ปี 1</option>
-          <option>ปี 2</option>
-          <option>ปี 3</option>
-          <option>ปี 4</option>
-        </select> -->
+          <app-input-text :question="'Question 1'" :errorMsg="'There is error'"></app-input-text>
+           <app-input-text :question="'Question 2'" :errorMsg="'There is test'"></app-input-text>
 
-        <!-- {{  blood  }} -->
 
     <button type="submit">Next</button>
   </form>
@@ -33,6 +27,7 @@
 
 <script>
 import dropdownData from './dropdown-data.json';
+import InputText from '@/components/form/InputText'
 export default {
   data () {
     return {
@@ -45,6 +40,9 @@ export default {
     major () {
       return this.$store.getters.major
     }
+  },
+  components: {
+    appInputText: InputText
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
