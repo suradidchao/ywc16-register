@@ -6,6 +6,9 @@ import user from './user'
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
+  state: {
+    completed: true
+  },
   modules: {
     user: user
     // shared: shared

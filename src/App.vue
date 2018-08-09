@@ -8,7 +8,8 @@
 
 export default {
   name: 'App',
-  components: {
+  created () {
+    this.$router.push({name: 'authen'})
   }
 }
 </script>

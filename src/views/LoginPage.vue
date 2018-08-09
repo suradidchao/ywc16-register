@@ -24,12 +24,8 @@ export default {
     if (!tokenExists){
       this.authen()
     } else {
-      //ying endpoint backend to get jwt
-      // save to vuex
       this.$router.push('/steps/selection')
     }
-
-
   },
   methods: {
     async authen() {

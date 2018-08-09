@@ -8,6 +8,8 @@ import ProfilePage from '../views/ProfilePage'
 import GeneralQuestionPage from '../views/GeneralQuestionPage'
 import MajorQuestionPage from '../views/MajorQuestionPage'
 import SummaryPage from '../views/SummaryPage'
+
+import { store } from '../store'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +30,7 @@ export default new Router({
       children: [
         {
           path: '',
+          name: 'authen',
           redirect: '/authen'
         },
         {
@@ -53,7 +56,14 @@ export default new Router({
         {
           path: 'summary',
           named: 'summary',
-          component: SummaryPage
+          component: SummaryPage,
+          beforeEnter (to, from, next) {
+            if (store.state.completed) {
+              next()
+            } else {
+              next(false)
+            }
+          }
         }
       ]
     }
