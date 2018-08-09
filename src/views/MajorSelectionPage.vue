@@ -11,24 +11,36 @@
           <option>Programming</option>
         </select>
       </div>
-      {{ major}}
       <router-link to="profile">Next</router-link>
       </div>
   </div>
 </template>
 <script>
 export default {
-  data () {
-    return {
-      'major': ''
+   created(){
+    let tokenExists = window.localStorage.getItem('ywc16_user_fb')
+    let majorUser = window.localStorage.getItem('ywc16_major')
+    if (tokenExists) {
+      if (majorUser) {
+           this.$router.push('/profile')
+      }
+      console.log('token exists')
+          // request jwt backend get data
+          // redirect route
+    } else {
+      console.log('token not exists')
+      this.$router.push('/authen')
     }
   },
-  watch: {
-    major(value) {
-      if (value !== ''){
-        this.$store.dispatch('saveMajor', value)
+  computed: {
+    major: {
+      get() {
+        return this.$store.state.user.major;
+      },
+      set(value) {
+        this.$store.commit('setMajor', value)
       }
-    }
+  }
   }
 }
 </script>

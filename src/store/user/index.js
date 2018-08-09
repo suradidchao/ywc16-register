@@ -21,6 +21,7 @@ export default {
     },
     setMajor (state, payload) {
       state.user.major = payload
+      window.localStorage.setItem('ywc16_major', payload)
     }
   },
   actions: {
