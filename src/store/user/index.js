@@ -9,19 +9,15 @@ export default {
   state: {
     user: {
       major: ''
-    },
-    auth: false
+    }
   },
   mutations: {
     setUser (state, payload) {
       state.user = payload
     },
-    setAuth (state, payload) {
-      state.auth = payload
-    },
     setMajor (state, payload) {
       state.user.major = payload
-      window.localStorage.setItem('ywc16_major', payload)
+      // window.localStorage.setItem('ywc16_major', payload)
     }
   },
   actions: {
@@ -52,9 +48,6 @@ export default {
   getters: {
     user (state) {
       return state.user
-    },
-    isAuth (state) {
-      return state.auth
     },
     major (state) {
       return state.user.major

@@ -17,13 +17,25 @@
 </template>
 <script>
 export default {
+  data () {
+    return {
+      major: this.$store.getters.major
+    }
+  },
+  watch:{
+      major (value) {
+        this.$store.commit('setMajor', value)
+      }
+  },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let majorUser = window.localStorage.getItem('ywc16_major')
+
+    // alert('major: ' + this.$store.getters.major)
+    // let majorUser = window.localStorage.getItem('ywc16_major')
     if (tokenExists) {
-      if (majorUser) {
-        this.$router.push('/profile')
-      }
+      // if (this.$store.getters.major) {
+      //   this.$router.push('/steps/profile')
+      // }
       console.log('token exists')
       // request jwt backend get data
       // redirect route
@@ -33,14 +45,20 @@ export default {
     }
   },
   computed: {
-    major: {
-      get () {
-        return this.$store.state.user.major
-      },
-      set (value) {
-        this.$store.commit('setMajor', value)
-      }
+    major() {
+      return this.$store.getters.major
     }
   }
-}
+  // computed: {
+  //   major: {
+  //     get () {
+  //       return this.$store.state.user.major
+  //     },
+  //     set (value) {
+  //       this.$store.commit('setMajor', value)
+  //     }
+  //   }
+  // }
+  }
+
 </script>

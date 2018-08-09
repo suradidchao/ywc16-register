@@ -14,9 +14,9 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let majorUser = window.localStorage.getItem('ywc16_major')
+    // let majorUser = window.localStorage.getItem('ywc16_major')
     if (tokenExists) {
-      if (majorUser) {
+      if (this.$store.getters.major) {
         this.$store.commit('setMajor', majorUser)
       }
       console.log('token exists')
