@@ -13,5 +13,8 @@ new Vue({
   store,
   el: '#app',
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    alert('first time')
+  }
 })

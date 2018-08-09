@@ -42,12 +42,12 @@ export default new Router({
         },
         {
           path: 'general',
-          named: 'generalQuestion',
+          named: 'generalQuestion/:page_no',
           component: GeneralQuestionPage
         },
         {
           path: 'major',
-          named: 'majorQuestion',
+          named: 'majorQuestion/:page_no',
           component: MajorQuestionPage
         },
         {
