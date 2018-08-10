@@ -3,12 +3,12 @@
     <h1>This is profile page!!!</h1>
     <h2>{{ major }}</h2>
       <form>
-      <app-input-text :question="'ชื่อ'" @value="firstName"  :errorMsg="'There is error'"></app-input-text>
-      <app-input-text :question="'นามสกุล'" @value="lastName" :errorMsg="'There is test'"></app-input-text>
-      <app-input-text :question="'ชื่อ (ภาษาอังกฤษ)'" @value="firstNameEN"  :errorMsg="'There is error'"></app-input-text>
-      <app-input-text :question="'นามสกุล (ภาษาอังกฤษ)'" @value="lastNameEN" :errorMsg="'There is test'"></app-input-text>
-      <app-input-text :question="'ชื่อเล่น'" @value="lastNameEN" :errorMsg="'There is test'"></app-input-text>
-      <app-input-datepicker :question="'วันเกิด'" @value="birthdate" :errorMsg="'There is test'"></app-input-datepicker>
+      <app-input-text :question="'ชื่อ'" @value="firstName"  :errorMsg="'There is error'"  :required="true"></app-input-text>
+      <app-input-text :question="'นามสกุล'" @value="lastName" :errorMsg="'There is test'"  :required="true"></app-input-text>
+      <app-input-text :regularExpression="'[a-zA-Z0-9 ]+'" :question="'ชื่อ (ภาษาอังกฤษ)'" @value="firstNameEN"  :errorMsg="'There is error'"  :required="true"></app-input-text>
+      <app-input-text :question="'นามสกุล (ภาษาอังกฤษ)'" @value="lastNameEN" :errorMsg="'There is test'"  :required="true"></app-input-text>
+      <app-input-text :question="'ชื่อเล่น'" @value="lastNameEN" :errorMsg="'There is test'"  :required="true"></app-input-text>
+      <app-input-datepicker :question="'วันเกิด'" @value="birthdate" :errorMsg="'There is test'" :required="true" ></app-input-datepicker>
       <app-input-dropdown :question="'เพศ'" @value="sex" :errorMsg="'There is test'" :dropdownData="dropdownData['sex']"></app-input-dropdown>
       <app-input-dropdown :question="'กรุ๊ปเลือด'" @value="blood" :errorMsg="'There is test'" :dropdownData="dropdownData['blood']"></app-input-dropdown>
       <app-input-dropdown :question="'ศาสนา'" @value="religion" :errorMsg="'There is test'" :dropdownData="dropdownData['religion']"></app-input-dropdown>
@@ -46,12 +46,12 @@ export default {
       console.log(value)
     },
    firstNameEN(value) {
-     const regex = /^[a-zA-Z]*$/;
-      if (regex.exec(value) !== null) {
-        console.log(value)
-      } else {
-          // not en
-      }
+    //  const regex = /^[a-zA-Z]*$/;
+    //   if (regex.exec(value) !== null) {
+    //     console.log(value)
+    //   } else {
+    //       // not en
+    //   }
    },
    lastNameEN(value) {
       const regex = /^[a-zA-Z]*$/;
