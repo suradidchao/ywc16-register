@@ -5,6 +5,7 @@ import LoginPage from '../views/LoginPage'
 import IndexPage from '../views/IndexPage'
 import MajorSelectionPage from '../views/MajorSelectionPage'
 import ProfilePage from '../views/ProfilePage'
+import ProfilePage2 from '../views/ProfilePage2'
 import GeneralQuestionPage from '../views/GeneralQuestionPage'
 import MajorQuestionPage from '../views/MajorQuestionPage'
 import SummaryPage from '../views/SummaryPage'
@@ -44,6 +45,11 @@ export default new Router({
           component: ProfilePage
         },
         {
+          path: 'profile2',
+          named: 'profile2',
+          component: ProfilePage2
+        },
+        {
           path: 'general',
           named: 'generalQuestion/:page_no',
           component: GeneralQuestionPage
@@ -56,14 +62,14 @@ export default new Router({
         {
           path: 'summary',
           named: 'summary',
-          component: SummaryPage,
-          beforeEnter (to, from, next) {
-            if (store.state.completed) {
-              next()
-            } else {
-              next(false)
-            }
-          }
+          component: SummaryPage
+          // beforeEnter (to, from, next) {
+          //   if (store.state.completed) {
+          //     next()
+          //   } else {
+          //     next(false)
+          //   }
+          // }
         }
       ]
     }

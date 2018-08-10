@@ -17,38 +17,33 @@
 </template>
 <script>
 export default {
-data () {
-  return {
-    major: this.$store.getters.major
-  }
-},
-watch: {
+  data () {
+    return {
+      major: this.$store.getters.major
+    }
+  },
+  watch: {
     major (value) {
       this.$store.commit('setMajor', value)
     }
-},
-created () {
-  let tokenExists = window.localStorage.getItem('ywc16_user_fb')
+  },
+  created () {
+    let tokenExists = window.localStorage.getItem('ywc16_user_fb')
 
-  // alert('major: ' + this.$store.getters.major)
-  // let majorUser = window.localStorage.getItem('ywc16_major')
-  if (tokenExists) {
-    // if (this.$store.getters.major) {
-    //   this.$router.push('/steps/profile')
-    // }
-    console.log('token exists')
-    // request jwt backend get data
-    // redirect route
-  } else {
-    console.log('token not exists')
-    this.$router.push('/authen')
+    // alert('major: ' + this.$store.getters.major)
+    // let majorUser = window.localStorage.getItem('ywc16_major')
+    if (tokenExists) {
+      // if (this.$store.getters.major) {
+      //   this.$router.push('/steps/profile')
+      // }
+      console.log('token exists')
+      // request jwt backend get data
+      // redirect route
+    } else {
+      console.log('token not exists')
+      this.$router.push('/authen')
+    }
   }
-},
-computed: {
-  major() {
-    return this.$store.getters.major
-  }
-}
 // computed: {
 //   major: {
 //     get () {
