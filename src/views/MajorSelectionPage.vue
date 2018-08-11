@@ -33,8 +33,6 @@ export default {
     if (tokenExists) {
       if (this.$store.getters.major) {
         this.$store.commit('setMajor', majorUser)
-        // this.$store.commit('clearProfile')
-        // this.$router.push('/steps/profile')
       }
       console.log('token exists')
       // request jwt backend get data
