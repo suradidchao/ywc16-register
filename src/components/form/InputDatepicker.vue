@@ -1,7 +1,7 @@
 <template>
   <div>
      <label>{{ question }}</label>
-      <datepicker :format="format" v-model="birthdate"></datepicker>
+      <datepicker v-model="birthdate"></datepicker>
   </div>
 </template>
 
@@ -10,12 +10,13 @@ import Datepicker from 'vuejs-datepicker';
 export default {
   props: {
     question: String,
-    errorMsg: String
+    errorMsg: String,
+    data: String
   },
   data() {
     return {
       hasError: false,
-      birthdate: null
+      birthdate: this.data
     };
   },
   components: {

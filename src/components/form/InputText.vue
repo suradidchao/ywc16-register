@@ -11,7 +11,8 @@
       placeholder=""
       @blur='validateInputAndSaveState()'
       :pattern="regularExpression"
-      :required='required'>
+      :required='required'
+      >
     </div>
   </div>
 </template>
@@ -22,12 +23,13 @@ export default {
     question: String,
     errorMsg: String,
     regularExpression: String,
-    required: Boolean
+    required: Boolean,
+    data: String
   },
   data () {
     return {
       isError: false,
-      text: ''
+      text: this.data
     }
   },
   computed: {

@@ -1,10 +1,3 @@
-// import {
-//   loadFbSdk,
-//   getFbLoginStatus,
-//   fbLogout,
-//   fbLogin
-// } from '../../core/facebook.js'
-
 export default {
   state: {
     user: {
@@ -17,7 +10,6 @@ export default {
     },
     setMajor (state, payload) {
       state.user.major = payload
-      // window.localStorage.setItem('ywc16_major', payload)
     }
   },
   actions: {
@@ -25,25 +17,10 @@ export default {
       commit
     }, payload) {
       commit('setMajor', payload)
-    },
-    loadFb ({commit}) {
-      // commit('setLoading', true)
-      // commit('clearError')
-    },
-    signUserIn ({commit}) {
-      // commit('setLoading', true)
-      // commit('clearError')
-    },
-    autoSignIn ({
-      commit
-    }, payload) {
-      commit('setAuth', payload)
-    },
-    logout ({commit}) {
-      // fbLogout()
-      commit('setAuth', false)
-      commit('setUser', null)
     }
+    // logout ({commit}) {
+    //   commit('setUser', null)
+    // }
   },
   getters: {
     user (state) {

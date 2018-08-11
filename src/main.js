@@ -13,8 +13,5 @@ new Vue({
   store,
   el: '#app',
   components: { App },
-  template: '<App/>',
-  created () {
-    this.$store.dispatch('loadFb')
-  }
+  template: '<App/>'
 })
