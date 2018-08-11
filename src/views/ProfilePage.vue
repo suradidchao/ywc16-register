@@ -3,6 +3,23 @@
     <h1>This is profile page!!!</h1>
     <h2>{{ major }}</h2>
       <form>
+      <app-form-input-upload-file
+          :question="'อัพโหลดรูป'"
+          :errorMsg = "'กรุณาใส่ไฟล์'"
+          :maxLength = "150"
+          :textAreaRow = "3"
+          :required="true"
+          :data="formData.picture"
+          @value="picture"
+        >
+      </app-form-input-upload-file>
+      <app-input-text
+        :question="'คำนำหน้าชื่อ'"
+        :data="formData.title"
+        @value="title"
+        :errorMsg="'There is error'"
+        :required="true">
+      </app-input-text>
       <app-input-text
         :question="'ชื่อ'"
         :data="formData.firstName"
@@ -103,11 +120,15 @@ import dropdownData from './dropdown-data.json';
 import InputText from '@/components/form/InputText'
 import InputDropdown from '@/components/form/InputDropdown'
 import InputDatepicker from '@/components/form/InputDatepicker'
+import appFormInputUploadFile from '@/components/form/InputUploadFile'
+
 export default {
   data () {
     return {
       dropdownData,
       formData: {
+        picture: '',
+        title: '',
         firstName: '',
         lastName: '',
         firstNameEN: '',
@@ -181,6 +202,12 @@ export default {
     department(value) {
       this.formData.department = value
     },
+    picture(value) {
+      this.formData.picture = value
+    },
+    title(value) {
+      this.formData.title = value
+    },
     async nextSteps () {
       await this.$store.commit('setProfileOne', this.formData)
       await this.$router.push('/steps/profile2')
@@ -189,7 +216,8 @@ export default {
   components: {
     appInputText: InputText,
     appInputDropdown: InputDropdown,
-    appInputDatepicker: InputDatepicker
+    appInputDatepicker: InputDatepicker,
+    appFormInputUploadFile
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')

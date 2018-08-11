@@ -2,6 +2,8 @@ export default {
   state: {
     profileOne: {
       data: {
+        picture: '',
+        title: '',
         firstName: '',
         lastName: '',
         firstNameEN: '',

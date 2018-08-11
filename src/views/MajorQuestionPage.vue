@@ -33,10 +33,16 @@
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
-          <div class="form-control">
-            {{ questionsData['specialQuestions']['design'][3] }}
-            อัพโหลดไฟล์
-          </div>
+          <app-form-input-upload-file
+            :question="questionsData['specialQuestions']['design'][3]"
+            :errorMsg = "'กรุณาใส่ไฟล์'"
+            :maxLength = "150"
+            :textAreaRow = "3"
+            :required="true"
+            :data="formData.majorQuestionsFour"
+            @value="majorQuestionFour"
+          >
+          </app-form-input-upload-file>
     </div>
 
     <div v-if="majorUser == 'marketing'">
@@ -154,6 +160,7 @@
 <script>
 import {isEmpty} from '../utils/helper.js'
 import questionsData from './questions.json'
+import appFormInputUploadFile from '@/components/form/InputUploadFile'
 import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
@@ -190,7 +197,8 @@ export default {
     }
   },
   components: {
-    appFormInputTextArea
+    appFormInputTextArea,
+    appFormInputUploadFile
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
