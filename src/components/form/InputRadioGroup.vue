@@ -3,28 +3,10 @@
     <label>{{ question }}</label>
     <div class="radio" v-for="radioValue in radioData" :key='radioValue' :required="required">
       <label>
-        <input type="radio" name="radioGroup" :value="radioValue">
+        <input type="radio" v-model="radioGroup" v-bind:value="radioValue">
         {{ radioValue }}
       </label>
     </div>
-    <!-- <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-        Option one is this and that&mdash;be sure to include why it's great
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-        Option two can be something else and selecting it will deselect option one
-      </label>
-    </div>
-    <div class="radio disabled">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-        Option three is disabled
-      </label>
-    </div> -->
   </div>
 </template>
 <script>
@@ -32,11 +14,18 @@ export default {
   props: {
     question: String,
     radioData: Array,
-    required: Boolean
+    required: Boolean,
+    data: String
   },
   data () {
     return {
+      radioGroup: this.data
     }
-  }
+  },
+  watch: {
+    radioGroup(value) {
+    	this.$emit('value', this.radioGroup)
+      },
+    }
 }
 </script>

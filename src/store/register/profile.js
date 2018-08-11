@@ -31,7 +31,7 @@ export default {
     }
   },
   actions: {
-    completeProfileOne ({commit, payload}) {
+    completeProfileOne ({commit}, payload) {
       commit('setCompleteProfileOne', payload)
     }
   },
