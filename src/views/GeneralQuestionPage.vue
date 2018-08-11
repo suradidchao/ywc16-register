@@ -1,5 +1,96 @@
 <template>
-  <div>
-    <h1>This is General Question Page</h1>
+  <div class="container">
+    <h1>This is General Question Page!!!</h1>
+  <app-form-input-text-area
+        :question="questionsData['generalQuestions'][0]"
+        :errorMsg = "'กรุณาใส่'"
+        :maxLength = "150"
+        :textAreaRow = "3"
+        :required="true"
+        :data="formData.generalQuestions"
+        @value="generalQuestion"
+      >
+      </app-form-input-text-area>
+        <app-form-input-text-area
+        :question="questionsData['generalQuestions'][1]"
+        :errorMsg = "'กรุณาใส่'"
+        :maxLength = "150"
+        :textAreaRow = "3"
+        :required="true"
+        :data="formData.generalQuestionsTwo"
+        @value="generalQuestionTwo"
+      >
+      </app-form-input-text-area>
+        <app-form-input-text-area
+        :question="questionsData['generalQuestions'][2]"
+        :errorMsg = "'กรุณาใส่'"
+        :maxLength = "150"
+        :textAreaRow = "3"
+        :required="true"
+        :data="formData.generalQuestionsThree"
+        @value="generalQuestionThree"
+      >
+      </app-form-input-text-area>
+    <button type="submit" class="btn btn-lg btn-primary" @click="nextSteps">Next</button>
   </div>
 </template>
+
+<script>
+import {isEmpty} from '../utils/helper.js'
+import questionsData from './questions.json';
+import appFormInputTextArea from '@/components/form/FormInputTextArea'
+export default {
+  data () {
+    return {
+      questionsData,
+      formData: {
+        generalQuestions: '',
+        generalQuestionsTwo: '',
+        generalQuestionsThree: '',
+      }
+    }
+  },
+  computed: {
+
+  },
+  methods:{
+    generalQuestion(value) {
+      this.formData.generalQuestions = value
+    },
+    generalQuestionTwo(value) {
+      this.formData.generalQuestionsTwo = value
+    },
+    generalQuestionThree(value){
+      this.formData.generalQuestionsThree = value
+    },
+    async nextSteps () {
+      await this.$store.dispatch('addGeneralQuestions', this.formData)
+      await this.$router.push('/steps/major')
+    }
+  },
+  components: {
+    appFormInputTextArea
+  },
+  created () {
+    let tokenExists = window.localStorage.getItem('ywc16_user_fb')
+    let generalQuestions = this.$store.getters.generalQuestions
+    let generalQuestionsData = generalQuestions.data
+    if (tokenExists) {
+      if(isEmpty(generalQuestionsData)) {
+        console.log('Object is empty');
+        this.$store.dispatch('completeGeneralQuestions', false)
+      } else {
+        console.log('Object is NOT empty');
+        this.$store.dispatch('completeGeneralQuestions', true)
+      }
+      this.formData = generalQuestionsData
+      console.log('token exists')
+      // request jwt backend get data
+      // redirect route
+    } else {
+      console.log('token not exists')
+      this.$router.push('/authen')
+    }
+  }
+}
+</script>

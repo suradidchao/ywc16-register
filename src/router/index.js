@@ -10,7 +10,6 @@ import GeneralQuestionPage from '../views/GeneralQuestionPage'
 import MajorQuestionPage from '../views/MajorQuestionPage'
 import SummaryPage from '../views/SummaryPage'
 
-import { store } from '../store'
 Vue.use(Router)
 
 export default new Router({
@@ -51,7 +50,7 @@ export default new Router({
         },
         {
           path: 'general',
-          named: 'generalQuestion/:page_no',
+          named: 'generalQuestion',
           component: GeneralQuestionPage
         },
         {

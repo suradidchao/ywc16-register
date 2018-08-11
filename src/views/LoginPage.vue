@@ -37,7 +37,6 @@ export default {
         this.loginStatus = fbResponse.status
         let userFbData = JSON.stringify(fbResponse.authResponse)
         window.localStorage.setItem('ywc16_user_fb', userFbData)
-        console.log('Save to local storage successful!!')
         this.$router.push('/steps/selection')
       }
     }

@@ -18,24 +18,6 @@ export async function loadFbSdk() {
        js.src = "https://connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
-
-    // window.fbAsyncInit = function () { // eslint-disable-line func-names
-    //   FB.init({
-    //     appId: '134784707110171',
-    //     xfbml: false,
-    //     version: 'v3.0',
-    //     cookie: true
-    //   });
-    //   FB.AppEvents.logPageView();
-    //   resolve('SDK Loaded!');
-    // };
-    // (function (d, s, id) { // eslint-disable-line func-names
-    //   const fjs = d.getElementsByTagName(s)[0];
-    //   if (d.getElementById(id)) { return; }
-    //   const js = d.createElement(s); js.id = id;
-    //   js.src = '//connect.facebook.net/en_US/sdk.js';
-    //   fjs.parentNode.insertBefore(js, fjs);
-    // }(document, 'script', 'facebook-jssdk'));
   });
 }
 export function getFbLoginStatus() {

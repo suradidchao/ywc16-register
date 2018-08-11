@@ -29,13 +29,13 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-
-    // alert('major: ' + this.$store.getters.major)
-    // let majorUser = window.localStorage.getItem('ywc16_major')
+    let majorUser = this.$store.getters.major
     if (tokenExists) {
-      // if (this.$store.getters.major) {
-      //   this.$router.push('/steps/profile')
-      // }
+      if (this.$store.getters.major) {
+        this.$store.commit('setMajor', majorUser)
+        // this.$store.commit('clearProfile')
+        this.$router.push('/steps/profile')
+      }
       console.log('token exists')
       // request jwt backend get data
       // redirect route
@@ -44,16 +44,6 @@ export default {
       this.$router.push('/authen')
     }
   }
-// computed: {
-//   major: {
-//     get () {
-//       return this.$store.state.user.major
-//     },
-//     set (value) {
-//       this.$store.commit('setMajor', value)
-//     }
-//   }
-// }
 }
 
 </script>

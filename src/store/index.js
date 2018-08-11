@@ -2,17 +2,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import user from './user'
-// import shared from './shared'
+import profile from './register/profile.js'
+import generalQuestions from './register/generalQuestions.js'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
-  state: {
-    completed: true
-  },
   plugins: [createPersistedState()],
   modules: {
-    user: user
-    // shared: shared
+    user: user,
+    profile: profile,
+    generalQuestions: generalQuestions
   }
 })

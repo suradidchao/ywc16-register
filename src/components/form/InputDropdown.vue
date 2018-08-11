@@ -16,12 +16,13 @@ export default {
   props: {
     question: String,
     errorMsg: String,
-    dropdownData: Array
+    dropdownData: Array,
+    data: String
   },
   data() {
     return {
       hasError: false,
-      selectItem: ""
+      selectItem: this.data
     };
   },
   methods: {
