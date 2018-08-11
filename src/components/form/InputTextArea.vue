@@ -7,7 +7,7 @@
         :rows="textAreaRow"
         :pattern="regularExpression"
         :maxLength="maxLength"
-        :required='isRequired'
+        :required='required'
         v-model='answer'
         @blur='validateInputAndSaveState()'
       >
