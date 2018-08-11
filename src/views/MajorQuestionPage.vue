@@ -155,7 +155,7 @@
 <script>
 import {isEmpty} from '../utils/helper.js'
 import questionsData from './questions.json';
-import appFormInputTextArea from '@/components/form/FormInputTextArea'
+import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
     return {
