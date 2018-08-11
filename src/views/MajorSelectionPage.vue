@@ -5,10 +5,10 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Example select</label>
         <select class="form-control" id="exampleFormControlSelect1" v-model="major">
-          <option>Marketing</option>
-          <option>Design</option>
-          <option>Content</option>
-          <option>Programming</option>
+          <option value="marketing">Marketing</option>
+          <option value="design">Design</option>
+          <option value="content">Content</option>
+          <option value="programming">Programming</option>
         </select>
       </div>
       <router-link to="profile">Next</router-link>
@@ -34,7 +34,7 @@ export default {
       if (this.$store.getters.major) {
         this.$store.commit('setMajor', majorUser)
         // this.$store.commit('clearProfile')
-        this.$router.push('/steps/profile')
+        // this.$router.push('/steps/profile')
       }
       console.log('token exists')
       // request jwt backend get data

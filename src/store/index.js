@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate'
 import user from './user'
 import profile from './register/profile.js'
 import generalQuestions from './register/generalQuestions.js'
+import majorQuestions from './register/majorQuestions.js'
 
 Vue.use(Vuex)
 
@@ -12,6 +13,7 @@ export const store = new Vuex.Store({
   modules: {
     user: user,
     profile: profile,
-    generalQuestions: generalQuestions
+    generalQuestions: generalQuestions,
+    majorQuestions: majorQuestions
   }
 })

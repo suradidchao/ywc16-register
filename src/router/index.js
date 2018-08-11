@@ -55,7 +55,7 @@ export default new Router({
         },
         {
           path: 'major',
-          named: 'majorQuestion/:page_no',
+          named: 'majorQuestion',
           component: MajorQuestionPage
         },
         {
