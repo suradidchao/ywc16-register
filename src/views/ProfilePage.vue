@@ -193,13 +193,9 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let majorUser = this.$store.getters.major
     let profileOne = this.$store.getters.profileOne
     let profileOneData = profileOne.data
     if (tokenExists) {
-      if (majorUser) {
-        this.$store.commit('setMajor', majorUser)
-      }
       if(isEmpty(profileOneData)) {
         console.log('Object is empty');
         this.$store.dispatch('completeProfileOne', false)

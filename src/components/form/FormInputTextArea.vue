@@ -7,9 +7,10 @@
         :rows="textAreaRow"
         :pattern="regularExpression"
         :maxLength="maxLength"
-        :required='isRequired'
+        :required='required'
         v-model='answer'
         @blur='validateInputAndSaveState()'
+        @change="onInput"
       >
       </textarea>
     </div>
@@ -23,12 +24,13 @@ export default {
     regularExpression: String,
     maxLength: Number,
     textAreaRow: Number,
-    required: Boolean
+    required: Boolean,
+    data: String
   },
   data () {
     return {
       isError: false,
-      answer: ''
+      answer: this.data
     }
   },
   computed: {
@@ -47,6 +49,9 @@ export default {
     }
   },
   methods: {
+    onInput() {
+    	this.$emit('value', this.answer)
+    },
     validateInputAndSaveState () {
       this.validateInput()
     },
