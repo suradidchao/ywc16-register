@@ -56,7 +56,9 @@ export default {
     }
   },
   watch: {
-    checkboxValues
+    checkboxValues () {
+      this.$emit('value', this.checkboxValues)
+    }
   }
 }
 </script>
