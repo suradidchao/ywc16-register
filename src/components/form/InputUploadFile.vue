@@ -14,7 +14,7 @@ export default {
   props: {
     question: String,
     errorMsg: String,
-    data: String
+    data: Object
   },
   data () {
     return {
