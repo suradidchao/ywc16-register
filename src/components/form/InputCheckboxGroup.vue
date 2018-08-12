@@ -4,7 +4,7 @@
     <div class="checkbox" v-for="checkbox in checkboxData" :key="checkbox">
       <label v-if="checkbox === 'อื่นๆ'">
         <input type="checkbox" :value="checkbox" @click="addRemoveCheckboxValue">
-        {{ checkbox }}
+        <label>{{ checkbox }}</label>
         <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
       </label>
       <label v-else>
