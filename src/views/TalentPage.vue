@@ -4,8 +4,22 @@
       <app-input-checkbox-group
       :question="'รู้จักค่ายทางไหน'"
       :checkboxData="dropdownData['channel']"
+      :errorMsg="'Please select channel'"
+      :required="true"
+      @value="channel"
       >
       </app-input-checkbox-group>
+
+      <app-input-text-area
+        :question = "'ความสามารถหรือกิจกรรมที่เคยทำ '"
+        :errorMsg = "'ความสามารถหรือกิจกรรม'"
+        :maxLength = "500"
+        :textAreaRow = "10"
+        :required="true"
+        :data="'tempData'"
+        @value="talent"
+      >
+      </app-input-text-area>
       <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
       <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
     </div>
@@ -14,6 +28,7 @@
 <script>
 import dropdownData from './dropdown-data.json'
 import appInputCheckboxGroup from '@/components/form/InputCheckboxGroup'
+import appInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
     return {
@@ -21,7 +36,8 @@ export default {
     }
   },
   components: {
-    appInputCheckboxGroup
+    appInputCheckboxGroup,
+    appInputTextArea
   },
   methods: {
     async nextStep () {
@@ -30,6 +46,12 @@ export default {
     },
     previousStep () {
       this.$router.go(-1)
+    },
+    channel (value) {
+      console.log('channels are: ' + value)
+    },
+    talent (value) {
+      console.log('talent is: ' + value)
     }
   }
 }

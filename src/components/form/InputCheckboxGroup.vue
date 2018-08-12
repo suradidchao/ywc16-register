@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p> {{ question }} </p>
+    <label> {{ question }} </label> <label style="color:#a94442" :class="errorMsgClass"> {{ errorMsg }} </label>
     <div class="checkbox" v-for="checkbox in checkboxData" :key="checkbox">
       <label v-if="checkbox === 'อื่นๆ'">
         <input type="checkbox" :value="checkbox" @click="addRemoveCheckboxValue">
@@ -19,6 +19,7 @@ export default {
   props: {
     question: String,
     checkboxData: Array,
+    errorMsg: String,
     required: Boolean
   },
   data () {
@@ -26,7 +27,19 @@ export default {
       checkboxValues: [],
       checkboxOther: '',
       checkboxOtherPrevious: '',
-      isOtherCheckboxSelected: false
+      isOtherCheckboxSelected: false,
+      isError: false
+    }
+  },
+  computed: {
+    errorMsgClass () {
+      return {
+        'has-error': true,
+        'hidden': this.showErrorMsg
+      }
+    },
+    showErrorMsg () {
+      return !this.isError
     }
   },
   methods: {
@@ -53,10 +66,21 @@ export default {
       let checkboxOtherIndex = this.checkboxValues.indexOf(this.checkboxOtherPrevious)
       this.checkboxValues.splice(checkboxOtherIndex, 1, this.checkboxOther)
       this.checkboxOtherPrevious = this.checkboxOther
+    },
+    validateInput () {
+      if (this.required) {
+        if (this.checkboxValues.length === 0) {
+          this.isError = true
+        } else {
+          this.isError = false
+        }
+      }
+      // validate if not pass also set isError to true
     }
   },
   watch: {
     checkboxValues () {
+      this.validateInput()
       this.$emit('value', this.checkboxValues)
     }
   }
