@@ -4,7 +4,7 @@
     <div class="radio" v-for="radioValue in radioData" :key='radioValue' :required="required">
       <label>
         <input type="radio" v-model="radioGroup" v-bind:value="radioValue">
-        {{ radioValue }}
+        <label>{{ radioValue }}</label>
       </label>
     </div>
   </div>

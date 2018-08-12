@@ -9,7 +9,7 @@
       </label>
       <label v-else>
         <input type="checkbox" :value="checkbox" @input="selectCheckbox(checkbox)">
-        {{ checkbox }}
+        <label>{{ checkbox }}</label>
       </label>
     </div>
   </div>
