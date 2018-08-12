@@ -10,6 +10,7 @@ import TalentPage from '../views/TalentPage'
 import GeneralQuestionPage from '../views/GeneralQuestionPage'
 import MajorQuestionPage from '../views/MajorQuestionPage'
 import SummaryPage from '../views/SummaryPage'
+import AuthGuard from './auth-guard'
 
 Vue.use(Router)
 
@@ -68,14 +69,8 @@ export default new Router({
         {
           path: 'summary',
           named: 'summary',
-          component: SummaryPage
-          // beforeEnter (to, from, next) {
-          //   if (store.state.completed) {
-          //     next()
-          //   } else {
-          //     next(false)
-          //   }
-          // }
+          component: SummaryPage,
+          beforeEnter: AuthGuard
         }
       ]
     }
