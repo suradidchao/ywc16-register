@@ -48,10 +48,10 @@ export default {
       this.$router.go(-1)
     },
     channel (value) {
-      console.log('channels are: ' + value)
+      this.$store.commit('setKnowCamp', value)
     },
     talent (value) {
-      console.log('talent is: ' + value)
+      this.$store.commit('setActivities', value)
     }
   }
 }
