@@ -8,7 +8,7 @@
         <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
       </label>
       <label v-else>
-        <input type="checkbox" :value="checkbox" @input="selectCheckbox(checkbox)">
+        <input type="checkbox" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
         <label>{{ checkbox }}</label>
       </label>
     </div>
@@ -19,6 +19,7 @@ export default {
   props: {
     question: String,
     checkboxData: Array,
+    checkboxAnswers: Array,
     errorMsg: String,
     required: Boolean
   },
@@ -76,6 +77,11 @@ export default {
         }
       }
       // validate if not pass also set isError to true
+    },
+    isChecked (checkboxValue) {
+      let checked = this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
+      console.log('checked: ' + checked)
+      return this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
     }
   },
   watch: {

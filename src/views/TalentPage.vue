@@ -4,6 +4,7 @@
       <app-input-checkbox-group
       :question="'รู้จักค่ายทางไหน'"
       :checkboxData="dropdownData['channel']"
+      :checkboxAnswers="formData.knowCamp"
       :errorMsg="'Please select channel'"
       :required="true"
       @value="channel"
@@ -16,7 +17,7 @@
         :maxLength = "500"
         :textAreaRow = "10"
         :required="true"
-        :data="'tempData'"
+        :data="formData.activities"
         @value="talent"
       >
       </app-input-text-area>
@@ -32,7 +33,8 @@ import appInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
     return {
-      dropdownData
+      dropdownData,
+      formData: this.$store.getters.talent
     }
   },
   components: {

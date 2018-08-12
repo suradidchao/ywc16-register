@@ -2,9 +2,9 @@ export default {
   state: {
     talent: {
       knowCamp: [],
-      activities: '',
-      completed: false
-    }
+      activities: ''
+    },
+    completed: false
   },
   mutations: {
     setKnowCamp (state, payload) {
@@ -20,7 +20,7 @@ export default {
       state.talent.activities = null
     },
     setCompleteTalent (state, payload) {
-      state.profileTwo.completed = payload
+      state.completed = payload
     }
   },
   actions: {
@@ -30,7 +30,9 @@ export default {
   },
   getters: {
     talent (state) {
-      return state.profileTwo
+      let talentState = { ...state }
+      delete talentState.talent['completed']
+      return talentState.talent
     }
   }
 }
