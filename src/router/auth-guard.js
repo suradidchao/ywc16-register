@@ -19,6 +19,6 @@ export default (to, from, next) => {
   if (profileOne.complete === true && profileTwo.complete === true && generalQuestions.complete === true && majorQuestions.complete === true) {
     next()
   } else {
-    next('/profile')
+    next('/steps/profile')
   }
 }

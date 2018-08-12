@@ -43,8 +43,8 @@ export default {
   },
   methods: {
     async nextStep () {
-      await this.$store.commit('setProfileTwo', this.formData)
-      await this.$router.push('/steps/talent')
+      // await this.$store.commit('setProfileTwo', this.formData)
+      await this.$router.push('/steps/general')
     },
     previousStep () {
       this.$router.go(-1)
@@ -54,6 +54,25 @@ export default {
     },
     talent (value) {
       this.$store.commit('setActivities', value)
+    }
+  },
+  created () {
+    let tokenExists = window.localStorage.getItem('ywc16_user_fb')
+    let talent = this.$store.getters.talent
+    if (tokenExists) {
+      if (isEmpty(talent)) {
+        console.log('Object is empty')
+        this.$store.dispatch('completeTalent', false)
+      } else {
+        console.log('Object is NOT empty')
+        this.$store.dispatch('completeTalent', true)
+      }
+      console.log('token exists')
+      // request jwt backend get data
+      // redirect route
+    } else {
+      console.log('token not exists')
+      this.$router.push('/authen')
     }
   }
 }
