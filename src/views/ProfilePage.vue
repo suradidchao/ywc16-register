@@ -13,13 +13,13 @@
           @value="picture"
         >
       </app-form-input-upload-file>
-      <app-input-text
+        <app-input-dropdown
         :question="'คำนำหน้าชื่อ'"
         :data="formData.title"
         @value="title"
-        :errorMsg="'There is error'"
-        :required="true">
-      </app-input-text>
+        :errorMsg="'There is test'"
+        :dropdownData="dropdownData['title']"
+      ></app-input-dropdown>
       <app-input-text
         :question="'ชื่อ'"
         :data="formData.firstName"
@@ -128,7 +128,7 @@ export default {
     return {
       dropdownData,
       formData: {
-        picture: '',
+        picture: {},
         title: '',
         firstName: '',
         lastName: '',
