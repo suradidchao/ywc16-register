@@ -145,5 +145,13 @@
     "disease": [
       "มี",
       "ไม่มี"
+    ],
+    "channel": [
+      "Facebook",
+      "Roadshow",
+      "Email",
+      "Twitter",
+      "คนรู้จัก",
+      "อื่นๆ"
     ]
   }

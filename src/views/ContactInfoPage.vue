@@ -189,7 +189,7 @@ export default {
     },
     async nextStep () {
       await this.$store.commit('setProfileTwo', this.formData)
-      await this.$router.push('/steps/general')
+      await this.$router.push('/steps/talent')
     },
     previousStep () {
       this.$router.go(-1)
