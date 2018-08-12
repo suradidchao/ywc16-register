@@ -108,8 +108,8 @@
       :required="false"
       >
       </app-form-input-text>
-      <router-link to="profile1" class='btn btn-default'>Back</router-link>
-      <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
+      <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+      <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
     </div>
   </div>
 </template>
@@ -187,21 +187,24 @@ export default {
     allergicFood (value) {
       this.formData.allergicFood = value
     },
-     async nextSteps () {
+    async nextStep () {
       await this.$store.commit('setProfileTwo', this.formData)
       await this.$router.push('/steps/general')
+    },
+    previousStep () {
+      this.$router.go(-1)
     }
   },
-   created () {
+  created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
     let profileTwo = this.$store.getters.profileTwo
     let profileTwoData = profileTwo.data
     if (tokenExists) {
-      if(isEmpty(profileTwoData)) {
-        console.log('Object is empty');
+      if (isEmpty(profileTwoData)) {
+        console.log('Object is empty')
         this.$store.dispatch('completeProfileTwo', false)
       } else {
-        console.log('Object is NOT empty');
+        console.log('Object is NOT empty')
         this.$store.dispatch('completeProfileTwo', true)
       }
       this.formData = profileTwoData

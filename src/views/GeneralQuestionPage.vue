@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>This is General Question Page!!!</h1>
-  <app-form-input-text-area
+    <app-form-input-text-area
         :question="questionsData['generalQuestions'][0]"
         :errorMsg = "'กรุณาใส่'"
         :maxLength = "150"
@@ -31,13 +31,14 @@
         @value="generalQuestionThree"
       >
       </app-form-input-text-area>
-    <button type="submit" class="btn btn-lg btn-primary" @click="nextSteps">Next</button>
+      <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+      <button type="submit" class="btn btn-lg btn-primary" @click="nextStep">Next</button>
   </div>
 </template>
 
 <script>
 import {isEmpty} from '../utils/helper.js'
-import questionsData from './questions.json';
+import questionsData from './questions.json'
 import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
@@ -46,26 +47,29 @@ export default {
       formData: {
         generalQuestions: '',
         generalQuestionsTwo: '',
-        generalQuestionsThree: '',
+        generalQuestionsThree: ''
       }
     }
   },
   computed: {
 
   },
-  methods:{
-    generalQuestion(value) {
+  methods: {
+    generalQuestion (value) {
       this.formData.generalQuestions = value
     },
-    generalQuestionTwo(value) {
+    generalQuestionTwo (value) {
       this.formData.generalQuestionsTwo = value
     },
-    generalQuestionThree(value){
+    generalQuestionThree (value) {
       this.formData.generalQuestionsThree = value
     },
-    async nextSteps () {
+    async nextStep () {
       await this.$store.dispatch('addGeneralQuestions', this.formData)
       await this.$router.push('/steps/major')
+    },
+    previousStep () {
+      this.$router.go(-1)
     }
   },
   components: {
@@ -76,11 +80,11 @@ export default {
     let generalQuestions = this.$store.getters.generalQuestions
     let generalQuestionsData = generalQuestions.data
     if (tokenExists) {
-      if(isEmpty(generalQuestionsData)) {
-        console.log('Object is empty');
+      if (isEmpty(generalQuestionsData)) {
+        console.log('Object is empty')
         this.$store.dispatch('completeGeneralQuestions', false)
       } else {
-        console.log('Object is NOT empty');
+        console.log('Object is NOT empty')
         this.$store.dispatch('completeGeneralQuestions', true)
       }
       this.formData = generalQuestionsData

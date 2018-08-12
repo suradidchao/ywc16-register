@@ -5,7 +5,7 @@ import LoginPage from '../views/LoginPage'
 import IndexPage from '../views/IndexPage'
 import MajorSelectionPage from '../views/MajorSelectionPage'
 import ProfilePage from '../views/ProfilePage'
-import ProfilePage2 from '../views/ProfilePage2'
+import ContactInfoPage from '../views/ContactInfoPage'
 import GeneralQuestionPage from '../views/GeneralQuestionPage'
 import MajorQuestionPage from '../views/MajorQuestionPage'
 import SummaryPage from '../views/SummaryPage'
@@ -14,10 +14,6 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      redirect: '/authen'
-    },
     {
       path: '/authen',
       name: 'authen',
@@ -41,22 +37,32 @@ export default new Router({
         {
           path: 'profile',
           named: 'profile',
-          component: ProfilePage
+          component: ProfilePage,
+          alias: '1'
         },
         {
-          path: 'profile2',
-          named: 'profile2',
-          component: ProfilePage2
+          path: 'contact',
+          named: 'contactInfo',
+          component: ContactInfoPage,
+          alias: '2'
+        },
+        {
+          path: 'talent',
+          named: 'talent',
+          component: GeneralQuestionPage,
+          alias: '3'
         },
         {
           path: 'general',
           named: 'generalQuestion',
-          component: GeneralQuestionPage
+          component: GeneralQuestionPage,
+          alias: '4'
         },
         {
           path: 'major',
           named: 'majorQuestion',
-          component: MajorQuestionPage
+          component: MajorQuestionPage,
+          alias: '5'
         },
         {
           path: 'summary',

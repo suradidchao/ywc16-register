@@ -23,9 +23,9 @@ export default {
     }
   },
   watch: {
-    radioGroup(value) {
-    	this.$emit('value', this.radioGroup)
-      },
+    radioGroup (value) {
+      this.$emit('value', this.radioGroup)
     }
+  }
 }
 </script>

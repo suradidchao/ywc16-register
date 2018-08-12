@@ -153,7 +153,8 @@
           >
           </app-form-input-text-area>
     </div>
-    <button type="submit" class="btn btn-lg btn-primary" @click="nextSteps">Next</button>
+    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+    <button type="submit" class="btn btn-lg btn-primary" @click="nextStep">Next</button>
   </div>
 </template>
 
@@ -191,9 +192,12 @@ export default {
     majorQuestionFour (value) {
       this.formData.majorQuestionsFour = value
     },
-    async nextSteps () {
+    async nextStep () {
       await this.$store.dispatch('addMajorQuestions', { major: this.majorUser, formData: this.formData })
       await this.$router.push('/steps/summary')
+    },
+    previousStep () {
+      this.$router.go(-1)
     }
   },
   components: {

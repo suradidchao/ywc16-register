@@ -110,6 +110,7 @@
       </app-input-dropdown>
 
     <button type="submit" class="btn btn-lg btn-primary" @click="nextSteps">Next</button>
+
   </form>
   </div>
 </template>
@@ -150,67 +151,67 @@ export default {
       return this.$store.getters.major
     }
   },
-  methods:{
-    firstName(value) {
+  methods: {
+    firstName (value) {
       this.formData.firstName = value
     },
-    lastName(value) {
+    lastName (value) {
       this.formData.lastName = value
     },
-    firstNameEN(value) {
+    firstNameEN (value) {
       const regex = /^[a-zA-Z]*$/;
       if (regex.exec(value) !== null) {
-      this.formData.firstNameEN = value
+        this.formData.firstNameEN = value
         // console.log(value)
       } else {
-          // not en
+        // not en
       }
     },
-    lastNameEN(value) {
+    lastNameEN (value) {
       const regex = /^[a-zA-Z]*$/;
       if (regex.exec(value) !== null) {
         this.formData.lastNameEN = value
         // console.log(value)
       } else {
-          // not en
+        // not en
       }
     },
-    nickName(value) {
+    nickName (value) {
       this.formData.nickName = value
     },
-    birthdate(value) {
+    birthdate (value) {
       this.formData.birthdate = value
     },
-    sex(value){
+    sex (value) {
       this.formData.sex = value
     },
-    blood(value) {
+    blood (value) {
       this.formData.blood = value
     },
-    religion(value) {
+    religion (value) {
       this.formData.religion = value
     },
-    academicYear(value) {
+    academicYear (value) {
       this.formData.academicYear = value
     },
-    university(value){
+    university (value) {
       this.formData.university = value
     },
-    faculty(value) {
+    faculty (value) {
       this.formData.faculty = value
     },
-    department(value) {
+    department (value) {
       this.formData.department = value
     },
-    picture(value) {
+    picture (value) {
       this.formData.picture = value
     },
-    title(value) {
+    title (value) {
       this.formData.title = value
     },
     async nextSteps () {
       await this.$store.commit('setProfileOne', this.formData)
-      await this.$router.push('/steps/profile2')
+      await this.$router.push('contact')
     }
   },
   components: {
@@ -224,11 +225,11 @@ export default {
     let profileOne = this.$store.getters.profileOne
     let profileOneData = profileOne.data
     if (tokenExists) {
-      if(isEmpty(profileOneData)) {
-        console.log('Object is empty');
+      if (isEmpty(profileOneData)) {
+        console.log('Object is empty')
         this.$store.dispatch('completeProfileOne', false)
       } else {
-        console.log('Object is NOT empty');
+        console.log('Object is NOT empty')
         this.$store.dispatch('completeProfileOne', true)
       }
       this.formData = profileOneData
