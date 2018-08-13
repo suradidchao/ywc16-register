@@ -5,6 +5,7 @@ export default (to, from, next) => {
   const profileOne = store.getters.profileOne
   const profileTwo = store.getters.profileTwo
   const generalQuestions = store.getters.generalQuestions
+  const talent = store.getters.talentCompleted
   let majorQuestions = null
   if (majorUser === 'design') {
     majorQuestions = store.getters.designQuestions
@@ -15,8 +16,8 @@ export default (to, from, next) => {
   } else if (majorUser === 'programming') {
     majorQuestions = store.getters.programmingQuestions
   }
-
-  if (profileOne.complete === true && profileTwo.complete === true && generalQuestions.complete === true && majorQuestions.complete === true) {
+  console.log(talent)
+  if (profileOne.complete === true && profileTwo.complete === true && talent === true && generalQuestions.complete === true && majorQuestions.complete === true) {
     next()
   } else {
     next('/steps/profile')

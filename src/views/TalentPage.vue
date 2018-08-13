@@ -27,6 +27,7 @@
   </div>
 </template>
 <script>
+import {isEmpty} from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appInputCheckboxGroup from '@/components/form/InputCheckboxGroup'
 import appInputTextArea from '@/components/form/InputTextArea'
@@ -43,7 +44,6 @@ export default {
   },
   methods: {
     async nextStep () {
-      // await this.$store.commit('setProfileTwo', this.formData)
       await this.$router.push('/steps/general')
     },
     previousStep () {
