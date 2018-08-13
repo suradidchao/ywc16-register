@@ -46,7 +46,8 @@ export default {
       'major',
       'profileOne',
       'profileTwo',
-      'generalQuestions'
+      'generalQuestions',
+      'talent'
     ]),
     majorQuestions() {
       let majorQuestions = null

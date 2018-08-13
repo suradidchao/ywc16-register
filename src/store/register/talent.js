@@ -33,6 +33,9 @@ export default {
       let talentState = { ...state }
       delete talentState.talent['completed']
       return talentState.talent
+    },
+    talentCompleted (state) {
+      return state.completed
     }
   }
 }
