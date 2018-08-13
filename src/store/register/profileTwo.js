@@ -31,7 +31,7 @@ export default {
     }
   },
   actions: {
-    completeProfileTwo ({commit}, payload) {
+    completeProfileTwo ({ commit }, payload) {
       commit('setCompleteProfileTwo', payload)
     }
   },
