@@ -4,14 +4,14 @@
     <div class="container">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1" v-model="major">
+        <select class="form-control" id="exampleFormControlSelect1" v-model="major" required>
           <option value="marketing">Marketing</option>
           <option value="design">Design</option>
           <option value="content">Content</option>
           <option value="programming">Programming</option>
         </select>
       </div>
-      <router-link to="profile">Next</router-link>
+      <button class="btn btn-danger" @click="selectMajor">Next</button>
       </div>
   </div>
 </template>
@@ -40,6 +40,13 @@ export default {
     } else {
       console.log('token not exists')
       this.$router.push('/authen')
+    }
+  },
+  methods:{
+    selectMajor() {
+      if (this.major) {
+          this.$router.push('profile')
+      }
     }
   }
 }
