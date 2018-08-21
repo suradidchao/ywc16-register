@@ -42,10 +42,10 @@ export default {
       this.$router.push('/authen')
     }
   },
-  methods:{
-    selectMajor() {
+  methods: {
+    selectMajor () {
       if (this.major) {
-          this.$router.push('profile')
+        this.$router.push('profile')
       }
     }
   }
