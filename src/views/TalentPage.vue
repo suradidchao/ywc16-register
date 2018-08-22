@@ -1,29 +1,29 @@
 <template>
   <div>
-    <div class="container">
-      <app-input-checkbox-group
-      :question="'รู้จักค่ายทางไหน'"
-      :checkboxData="dropdownData['channel']"
-      :checkboxAnswers="formData.knowCamp"
-      :errorMsg="'Please select channel'"
-      :required="true"
-      @value="channel"
-      >
-      </app-input-checkbox-group>
+    <h1>Talent</h1>
+    <hr>
+    <app-input-checkbox-group
+    :question="'รู้จักค่ายทางไหน'"
+    :checkboxData="dropdownData['channel']"
+    :checkboxAnswers="formData.knowCamp"
+    :errorMsg="'Please select channel'"
+    :required="true"
+    @value="channel"
+    >
+    </app-input-checkbox-group>
 
-      <app-input-text-area
-        :question = "'ความสามารถหรือกิจกรรมที่เคยทำ '"
-        :errorMsg = "'ความสามารถหรือกิจกรรม'"
-        :maxLength = "500"
-        :textAreaRow = "10"
-        :required="true"
-        :data="formData.activities"
-        @value="talent"
-      >
-      </app-input-text-area>
-      <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-      <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
-    </div>
+    <app-input-text-area
+      :question = "'ความสามารถหรือกิจกรรมที่เคยทำ '"
+      :errorMsg = "'ความสามารถหรือกิจกรรม'"
+      :maxLength = "500"
+      :textAreaRow = "10"
+      :required="true"
+      :data="formData.activities"
+      @value="talent"
+    >
+    </app-input-text-area>
+    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+    <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
   </div>
 </template>
 <script>
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     async nextStep () {
-      await this.$router.push('/steps/general')
+      await this.$router.push('/steps/4')
     },
     previousStep () {
       this.$router.go(-1)

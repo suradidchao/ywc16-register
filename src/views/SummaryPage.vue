@@ -1,25 +1,24 @@
 <template>
   <div>
-    <div class="container">
-      <h2>This is summary page!!!</h2>
-      <div class="panel panel-default">
-        <div class="panel-heading">ข้อมูลส่วนตัว</div>
-        <div class="panel-body">
+    <h2>Summary</h2>
+    <hr>
+    <div class="panel panel-default">
+      <div class="panel-heading">ข้อมูลส่วนตัว</div>
+      <div class="panel-body">
 
-        </div>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">คำถามส่วนกลาง</div>
-        <div class="panel-body">
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">คำถามส่วนกลาง</div>
+      <div class="panel-body">
 
-        </div>
       </div>
+    </div>
 
-        <div class="panel panel-default">
-        <div class="panel-heading">คำถามสาขา</div>
-        <div class="panel-body">
+      <div class="panel panel-default">
+      <div class="panel-heading">คำถามสาขา</div>
+      <div class="panel-body">
 
-        </div>
       </div>
 
 

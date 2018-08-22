@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <h1>This is Major Question Page!!!</h1>
-    {{ majorUser }}
+  <div>
+    <h1>Major Questions</h1>
+    <hr>
     <div v-if="majorUser == 'design'">
       <app-form-input-text-area
             :question="questionsData['specialQuestions']['design'][0]"
@@ -154,7 +154,7 @@
           </app-form-input-text-area>
     </div>
     <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-    <button type="submit" class="btn btn-lg btn-primary" @click="nextStep">Next</button>
+    <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
   </div>
 </template>
 

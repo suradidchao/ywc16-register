@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
-    <h1>This is profile page!!!</h1>
-    <h2>{{ major }}</h2>
-      <form>
+  <div>
+    <h1>Profile</h1>
+    <hr>
+    <form>
       <app-form-input-upload-file
           :question="'อัพโหลดรูป'"
           :errorMsg = "'กรุณาใส่ไฟล์'"
@@ -109,7 +109,7 @@
         :dropdownData="dropdownData['academicYear']">
       </app-input-dropdown>
 
-    <button type="submit" class="btn btn-lg btn-primary" @click="nextSteps">Next</button>
+    <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
 
   </form>
   </div>
@@ -211,7 +211,7 @@ export default {
     },
     async nextSteps () {
       await this.$store.commit('setProfileOne', this.formData)
-      await this.$router.push('contact')
+      await this.$router.push('2')
     }
   },
   components: {

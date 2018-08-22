@@ -15,5 +15,6 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 @import './assets/styles/main.css'
 </style>

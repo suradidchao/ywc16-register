@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <h1>This is General Question Page!!!</h1>
+  <div>
+    <h1>General Question</h1>
+    <hr>
     <app-form-input-text-area
         :question="questionsData['generalQuestions'][0]"
         :errorMsg = "'กรุณาใส่'"
@@ -32,7 +33,7 @@
       >
       </app-form-input-text-area>
       <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-      <button type="submit" class="btn btn-lg btn-primary" @click="nextStep">Next</button>
+      <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
   </div>
 </template>
 
@@ -66,7 +67,7 @@ export default {
     },
     async nextStep () {
       await this.$store.dispatch('addGeneralQuestions', this.formData)
-      await this.$router.push('/steps/major')
+      await this.$router.push('/steps/5')
     },
     previousStep () {
       this.$router.go(-1)
