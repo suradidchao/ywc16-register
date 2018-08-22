@@ -116,6 +116,7 @@
 </template>
 
 <script>
+import {HTTP} from '../core/http-common.js'
 import {isEmpty} from '../utils/helper.js'
 import dropdownData from './dropdown-data.json';
 import InputText from '@/components/form/InputText'
@@ -211,7 +212,9 @@ export default {
     },
     async nextSteps () {
       await this.$store.commit('setProfileOne', this.formData)
-      await this.$router.push('contact')
+      const response = await HTTP.put('/registration/step1', this.formData)
+      console.log(response)
+      // await this.$router.push('contact')
     }
   },
   components: {

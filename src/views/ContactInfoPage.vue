@@ -114,6 +114,7 @@
   </div>
 </template>
 <script>
+import {HTTP} from '../core/http-common.js'
 import {isEmpty} from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appFormInputText from '@/components/form/InputText'
@@ -189,6 +190,8 @@ export default {
     },
     async nextStep () {
       await this.$store.commit('setProfileTwo', this.formData)
+      const response = await HTTP.put('/registration/step1', this.formData)
+      console.log(response)
       await this.$router.push('/steps/talent')
     },
     previousStep () {
