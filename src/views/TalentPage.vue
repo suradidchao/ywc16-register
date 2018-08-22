@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     async nextStep () {
-      await this.$router.push('/steps/4')
+      await this.$router.push('4')
     },
     previousStep () {
       this.$router.go(-1)

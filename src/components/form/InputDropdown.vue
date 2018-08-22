@@ -19,17 +19,16 @@ export default {
     dropdownData: Array,
     data: String
   },
-  data() {
+  data () {
     return {
       hasError: false,
       selectItem: this.data
-    };
+    }
   },
   methods: {
-    onSelect() {
-      this.$emit("value", this.selectItem);
+    onSelect () {
+      this.$emit('value', this.selectItem)
     }
   }
-};
+}
 </script>
-

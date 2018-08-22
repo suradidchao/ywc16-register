@@ -20,15 +20,13 @@
       <div class="panel-body">
 
       </div>
-
-
     </div>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
 export default {
-    created () {
+  created () {
     const tokenExists = window.localStorage.getItem('ywc16_user_fb')
 
     if (tokenExists) {
@@ -48,7 +46,7 @@ export default {
       'generalQuestions',
       'talent'
     ]),
-    majorQuestions() {
+    majorQuestions () {
       let majorQuestions = null
       if (this.major === 'design') {
         majorQuestions = this.$store.getters.designQuestions
@@ -64,4 +62,3 @@ export default {
   }
 }
 </script>
-

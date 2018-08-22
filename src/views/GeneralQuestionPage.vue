@@ -67,7 +67,7 @@ export default {
     },
     async nextStep () {
       await this.$store.dispatch('addGeneralQuestions', this.formData)
-      await this.$router.push('/steps/5')
+      await this.$router.push('5')
     },
     previousStep () {
       this.$router.go(-1)
