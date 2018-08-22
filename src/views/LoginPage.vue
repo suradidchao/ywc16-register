@@ -58,7 +58,9 @@ export default {
     },
     initialiseUserData() {
       return new Promise( async (resolve, reject) => {
-        let result = await HTTP.post('http://localhost:3000/user_info', { facebook: '1726752237356897'})
+        // fetch api
+        // let result = await HTTP.post('http://localhost:3000/user_info', { facebook: '1726752237356897'})
+        let result = { status: 'success', data: 'Suradid Chao'}
         if (result.status === 'no user data'){
           reject(false)
         } else {
