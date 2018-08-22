@@ -117,7 +117,7 @@
 
 <script>
 import {isEmpty} from '../utils/helper.js'
-import dropdownData from './dropdown-data.json';
+import dropdownData from './dropdown-data.json'
 import InputText from '@/components/form/InputText'
 import InputDropdown from '@/components/form/InputDropdown'
 import InputDatepicker from '@/components/form/InputDatepicker'
@@ -159,7 +159,7 @@ export default {
       this.formData.lastName = value
     },
     firstNameEN (value) {
-      const regex = /^[a-zA-Z]*$/;
+      const regex = /^[a-zA-Z]*$/
       if (regex.exec(value) !== null) {
         this.formData.firstNameEN = value
         // console.log(value)
@@ -168,7 +168,7 @@ export default {
       }
     },
     lastNameEN (value) {
-      const regex = /^[a-zA-Z]*$/;
+      const regex = /^[a-zA-Z]*$/
       if (regex.exec(value) !== null) {
         this.formData.lastNameEN = value
         // console.log(value)
