@@ -37,9 +37,9 @@ export default {
       return !this.isError
     }
   },
-  methods:{
-    handleFileUpload(){
-      this.file = this.$refs.file.files[0];
+  methods: {
+    handleFileUpload () {
+      this.file = this.$refs.file.files[0]
       this.$emit('value', this.file)
     }
   }

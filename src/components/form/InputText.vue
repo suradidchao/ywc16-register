@@ -47,9 +47,9 @@ export default {
       return !this.isError
     }
   },
-  methods:{
-  	onInput() {
-    	this.$emit('value', this.text)
+  methods: {
+    onInput () {
+      this.$emit('value', this.text)
     },
     validateInputAndSaveState () {
       this.validateInput()
