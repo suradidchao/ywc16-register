@@ -2,7 +2,23 @@
   <div>
     <div class="container">
       <h1>Step bar</h1>
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
+<style scoped>
+  .fade-enter{
+    opacity: 0;
+  }
+
+  .fade-enter-active{
+    transition: opacity 1s;
+  }
+
+  .fade-leave-active{
+    transition: opacity 1s;
+    opacity: 0;
+  }
+</style>

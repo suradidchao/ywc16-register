@@ -24,7 +24,7 @@ export default {
     if (!tokenExists){
       this.authen()
     } else {
-      this.$router.push('/steps/selection')
+      this.$router.push('/steps/1')
     }
   },
   methods: {
