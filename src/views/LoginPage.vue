@@ -18,8 +18,7 @@ import { HTTP } from '../core/http-common.js'
 export default {
   data () {
     return {
-      loginStatus: 'Not logged in',
-      isUserLogin: true
+      loginStatus: 'Not login'
     }
   },
   created () {
@@ -27,50 +26,71 @@ export default {
   },
   methods: {
     async init () {
-      let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-      if (!tokenExists){
-        let authenStatus = await this.authen()
-        this.isUserLogin = authenStatus
-      }
-      if (this.isUserLogin){
-        let initialiseUserStatus = await this.initialiseUserData()
-        if (initialiseUserStatus){
-          this.$router.push('/steps/1')
-        } else {
-          alert('fail to initialise user data!!!')
-        }
+      try {
+        let {token} = await this.getYWC16AccessToken()
+        this.initialiseUserData(token)
+
+        this.$router.push('/steps/1')
+      } catch (error) {
+        alert(error.statusMessage)
       }
     },
-    authen() {
+
+    getYWC16AccessToken() {
+      // get FB access token
+      return new Promise(async (resolve, reject) => {
+        try {
+          let fbAccessToken = await this.getFBAccessToken()
+          try {
+            let ywc16AccessToken = await this.fetchYWC16AccessToken(fbAccessToken)
+            return resolve({token: ywc16AccessToken, status: "success", statusMessage: 'Successfully retrieved ywc16 access token'})
+          } catch (error) {
+            return reject({token:'', status: "fail", statusMessage: `${error.message}: Cannot get YWC16 access token`})
+          }
+        } catch (error) {
+          return reject({token:'', status: "fail", statusMessage: error})
+        }
+      })
+    },
+    getFBAccessToken() {
       return new Promise(async (resolve, reject) => {
         let sdkStatus = await loadFbSdk()
         let fbResponse = await fbLogin()
         if (fbResponse.status !== 'connected'){
-          reject(false)
+          reject('Cannot get FB Access token')
         } else {
           this.loginStatus = fbResponse.status
-          let userFbData = JSON.stringify(fbResponse.authResponse)
-          window.localStorage.setItem('ywc16_user_fb', userFbData)
-          resolve(true)
+          let userFbData = fbResponse.authResponse
+          window.localStorage.setItem('ywc16_user_fb', JSON.stringify(userFbData))
+          resolve(userFbData.accessToken)
+        }
+      })
+    },
+    fetchYWC16AccessToken(fbAccessToken) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          let result = await HTTP.post('/auth/login', { accessToken: fbAccessToken })
+          HTTP.defaults.headers.common['x-access-token'] = result.data.payload.token
+          return resolve(result.data.payload.token)
+        } catch (error) {
+          return reject(error)
         }
       })
 
     },
-    initialiseUserData() {
+    initialiseUserData(ywc16AccessToken) {
       return new Promise( async (resolve, reject) => {
-        // fetch api
-        // let result = await HTTP.post('http://localhost:3000/user_info', { facebook: '1726752237356897'})
-        let result = { status: 'success', data: 'Suradid Chao'}
-        if (result.status === 'no user data'){
-          reject(false)
-        } else {
-          let userInfo = result.data
-          resolve(true)
+        try {
+          HTTP.defaults.headers.common['x-access-token'] = ywc16AccessToken
+          let userData = await HTTP.get('/users/me')
+          return resolve(userData)
+        } catch (error) {
+          return reject({statusMessage: `${error} could not initialise user data`})
         }
       })
-    }
-  }
+    },
 
+  }
 }
 </script>
 
