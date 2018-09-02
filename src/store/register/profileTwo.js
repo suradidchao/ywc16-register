@@ -1,27 +1,44 @@
+import { getSubsetObject } from '../../utils/helper'
 export default {
   state: {
     profileTwo: {
       data: {
         address: '',
         province: '',
-        postNumber: '',
+        postalCode: '',
         email: '',
-        contactNumber: '',
-        parentName: '',
-        parentContactNumber: '',
-        parentRelationship: '',
-        skypeId: '',
+        phone: '',
+        emergencyName: '',
+        emergencyPhone: '',
+        emergencyPhoneRelated: '',
+        skype: '',
         shirtSize: '',
         disease: '',
         food: '',
-        allergicFood: ''
+        foodAllergy: ''
       },
       complete: false
     }
   },
   mutations: {
     setProfileTwo (state, payload) {
-      state.profileTwo.data = payload
+      const profileTwoSchema = {
+        address: '',
+        province: '',
+        postalCode: '',
+        email: '',
+        phone: '',
+        emergencyName: '',
+        emergencyPhone: '',
+        emergencyPhoneRelated: '',
+        skype: '',
+        shirtSize: '',
+        disease: '',
+        food: '',
+        foodAllergy: ''
+      }
+      let profileTwoState = getSubsetObject(payload, profileTwoSchema)
+      state.profileTwo.data = profileTwoState
     },
     clearProfileTwo (state) {
       state.profileOne.data = null
