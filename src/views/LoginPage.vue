@@ -83,12 +83,23 @@ export default {
         try {
           HTTP.defaults.headers.common['x-access-token'] = ywc16AccessToken
           let userData = await HTTP.get('/users/me')
+
+
+
+          this.$store.commit('setProfileOne', userData.data.payload)
+          this.$store.commit('setProfileTwo', userData.data.payload)
+          this.$store.commit('setTalent', userData.data.payload)
+          this.$store.commit('setGeneralQuestions', userData.data.payload)
+          this.$store.dispatch('addMajorQuestions', userData.data.payload)
           return resolve(userData)
         } catch (error) {
           return reject({statusMessage: `${error} could not initialise user data`})
         }
       })
     },
+    getInitialState(schema, data) {
+      return (({...schema}) => ({...schema}))(data)
+    }
 
   }
 }

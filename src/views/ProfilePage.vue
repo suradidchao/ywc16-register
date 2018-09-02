@@ -50,8 +50,8 @@
       </app-input-text>
       <app-input-text
         :question="'ชื่อเล่น'"
-        :data="formData.nickName"
-        @value="nickName"
+        :data="formData.nickname"
+        @value="nickname"
         :errorMsg="'There is test'"
         :required="true">
       </app-input-text>
@@ -109,7 +109,7 @@
         :dropdownData="dropdownData['academicYear']">
       </app-input-dropdown>
 
-    <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
+    <button type="submit" class="btn btn-lg btn-success"  @click.stop.prevent="nextSteps">Save&Next</button>
 
   </form>
   </div>
@@ -135,7 +135,7 @@ export default {
         lastName: '',
         firstNameEN: '',
         lastNameEN: '',
-        nickName: '',
+        nickname: '',
         birthdate: '',
         sex: '',
         blood: '',
@@ -177,8 +177,8 @@ export default {
         // not en
       }
     },
-    nickName (value) {
-      this.formData.nickName = value
+    nickname (value) {
+      this.formData.nickname = value
     },
     birthdate (value) {
       this.formData.birthdate = value

@@ -36,8 +36,8 @@ export default {
           majorQuestionsFour: ''
         },
         complete: false
-      }
-
+      },
+      major: ''
     }
   },
   mutations: {
@@ -64,10 +64,14 @@ export default {
     },
     setCompleteProgrammingQuestions (state, payload) {
       state.majorQuestions.programming.complete = payload
+    },
+    setMajor (state, payload) {
+      state.major = payload.major
     }
   },
   actions: {
-    addMajorQuestions ({commit}, payload) {
+    addMajorQuestions ({ commit }, payload) {
+      commit('setMajor', payload.major)
       if (payload.major === 'design') {
         commit('setDesignQuestions', payload.formData)
       } else if (payload.major === 'marketing') {
@@ -78,7 +82,7 @@ export default {
         commit('setProgrammingQuestions', payload.formData)
       }
     },
-    completeMajorQuestions ({commit}, payload) {
+    completeMajorQuestions ({ commit }, payload) {
       if (payload.major === 'design') {
         commit('setCompleteDesignQuestions', payload.complete)
       } else if (payload.major === 'marketing') {
@@ -102,6 +106,9 @@ export default {
     },
     programmingQuestions (state) {
       return state.majorQuestions.programming
+    },
+    major (state) {
+      return state.major
     }
   }
 }

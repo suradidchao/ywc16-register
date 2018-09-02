@@ -7,6 +7,9 @@ export default {
     completed: false
   },
   mutations: {
+    setTalent (state, payload) {
+      state.talent = payload
+    },
     setKnowCamp (state, payload) {
       state.talent.knowCamp = payload
     },

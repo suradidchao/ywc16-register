@@ -8,7 +8,7 @@ export default {
         lastName: '',
         firstNameEN: '',
         lastNameEN: '',
-        nickName: '',
+        nickname: '',
         birthdate: '',
         sex: '',
         blood: '',
