@@ -212,10 +212,8 @@ export default {
     },
     async nextSteps () {
       await this.$store.commit('setProfileOne', this.formData)
-      const response = await HTTP.put('/registration/step1', this.formData)
-      console.log(response)
+      await HTTP.put('/registration/info', this.formData)
       this.$router.push('2')
-      // await this.$router.push('contact')
     }
   },
   components: {
