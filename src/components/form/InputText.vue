@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class='form-group' :class="formGroupClass">
-      <label class="control-label" >{{ question }}</label>
-      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
+      <!-- <label class="control-label" >{{ question }}</label>
+      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label> -->
       <!-- <p>{{ errorMsg }}</p> -->
       <input type="text"
       v-model="text"
       class="form-control"
       @change="onInput"
-      placeholder=""
+      :placeholder="question"
       @blur='validateInputAndSaveState()'
       :pattern="regularExpression"
       :required='required'
@@ -75,7 +75,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style>
+/* .input-large { width: 210px !important;} */
 </style>

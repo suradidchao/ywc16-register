@@ -83,6 +83,7 @@ export default {
         try {
           HTTP.defaults.headers.common['x-access-token'] = ywc16AccessToken
           let userData = await HTTP.get('/users/me')
+          console.log(userData)
 
           this.$store.commit('setProfileOne', userData.data.payload)
           this.$store.commit('setProfileTwo', userData.data.payload)
