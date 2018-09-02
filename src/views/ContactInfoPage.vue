@@ -21,9 +21,9 @@
     >
     </app-form-input-dropdown>
     <app-form-input-text
-    :data="formData.postNumber"
+    :data="formData.postalCode"
     :question="'รหัสไปรษณีย์'"
-    @value="postNumber"
+    @value="postalCode"
     :errorMsg="'Invalid post number'"
     :required="false"
     >
@@ -37,41 +37,41 @@
     >
     </app-form-input-text>
     <app-form-input-text
-    :data="formData.contactNumber"
+    :data="formData.phone"
     :question="'เบอร์ติดต่อฉุกเฉิน'"
-    @value="contactNumber"
+    @value="phone"
     :errorMsg="'Invalid contact number'"
     :required="false"
     >
     </app-form-input-text>
     <app-form-input-text
-    :data="formData.parentName"
+    :data="formData.emergencyName"
     :question="'ชื่อผู้ปกครอง/ชื่อผู้ติดต่อฉุกเฉิน'"
-    @value="parentName"
+    @value="emergencyName"
     :errorMsg="'Invalid parent name'"
     :required="false"
     >
     </app-form-input-text>
     <app-form-input-text
-    :data="formData.parentContactNumber"
+    :data="formData.emergencyPhone"
     :question="'เบอร์ติดต่อฉุกเฉิน'"
-    @value="parentContactNumber"
+    @value="emergencyPhone"
     :errorMsg="'Invalid parent contact number'"
     :required="false"
     >
     </app-form-input-text>
     <app-form-input-text
-    :data="formData.parentRelationship"
+    :data="formData.emergencyPhoneRelated"
     :question="'เกี่ยวข้องเป็น'"
-    @value="parentRelationship"
+    @value="emergencyPhoneRelated"
     :errorMsg="'Invalid parent contact number'"
     :required="false"
     >
     </app-form-input-text>
     <app-form-input-text
-    :data="formData.skypeId"
+    :data="formData.skype"
     :question="'ID Skype'"
-    @value="skypeId"
+    @value="skype"
     :errorMsg="'Invalid skype id'"
     :required="false"
     >
@@ -81,7 +81,7 @@
     :question="'ขนาดเสื้อ (รอบอก, ความยาว)'"
     @value="shirtSize"
     :errorMsg="'shirt size missing!!'"
-    :dropdownData="dropdownData['shirtSize']"
+    :dropdownData="dropdownData['shirtSize'].map((item) => item.value )"
     >
     </app-form-input-dropdown>
     <app-form-input-radio-group
@@ -101,9 +101,9 @@
     >
     </app-form-input-dropdown>
     <app-form-input-text
-    :data="formData.allergicFood"
+    :data="formData.foodAllergy"
     :question="'อาหารที่แพ้'"
-    @value="allergicFood"
+    @value="foodAllergy"
     :errorMsg="'Invalid allergic food'"
     :required="false"
     >
@@ -127,17 +127,17 @@ export default {
       formData: {
         address: '',
         province: '',
-        postNumber: '',
+        postalCode: '',
         email: '',
-        contactNumber: '',
-        parentName: '',
-        parentContactNumber: '',
-        parentRelationship: '',
-        skypeId: '',
+        phone: '',
+        emergencyName: '',
+        emergencyPhone: '',
+        emergencyPhoneRelated: '',
+        skype: '',
         shirtSize: '',
         disease: '',
         food: '',
-        allergicFood: ''
+        foodAllergy: ''
       }
     }
   },
@@ -154,26 +154,26 @@ export default {
     province (value) {
       this.formData.province = value
     },
-    postNumber (value) {
-      this.formData.postNumber = value
+    postalCode (value) {
+      this.formData.postalCode = value
     },
     email (value) {
       this.formData.email = value
     },
-    contactNumber (value) {
-      this.formData.contactNumber = value
+    phone (value) {
+      this.formData.phone = value
     },
-    parentName (value) {
-      this.formData.parentName = value
+    emergencyName (value) {
+      this.formData.emergencyName = value
     },
-    parentContactNumber (value) {
-      this.formData.parentContactNumber = value
+    emergencyPhone (value) {
+      this.formData.emergencyPhone = value
     },
-    parentRelationship (value) {
-      this.formData.parentRelationship = value
+    emergencyPhoneRelated (value) {
+      this.formData.emergencyPhoneRelated = value
     },
-    skypeId (value) {
-      this.formData.skypeId = value
+    skype (value) {
+      this.formData.skype = value
     },
     shirtSize (value) {
       this.formData.shirtSize = value
@@ -184,13 +184,13 @@ export default {
     food (value) {
       this.formData.food = value
     },
-    allergicFood (value) {
-      this.formData.allergicFood = value
+    foodAllergy (value) {
+      this.formData.foodAllergy = value
     },
     async nextStep () {
       await this.$store.commit('setProfileTwo', this.formData)
-      // const response = await HTTP.put('/registration/step1', this.formData)
-      // console.log(response)
+      const response = await HTTP.put('/registration/contact', this.formData)
+      console.log(response)
       await this.$router.push('3')
     },
     previousStep () {
