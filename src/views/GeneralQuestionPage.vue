@@ -8,7 +8,7 @@
         :maxLength = "150"
         :textAreaRow = "3"
         :required="true"
-        :data="formData.generalQuestions"
+        :data="formData.generalQuestions[0].answer"
         @value="generalQuestion"
       >
       </app-form-input-text-area>
@@ -18,7 +18,7 @@
         :maxLength = "150"
         :textAreaRow = "3"
         :required="true"
-        :data="formData.generalQuestionsTwo"
+        :data="formData.generalQuestions[1].answer"
         @value="generalQuestionTwo"
       >
       </app-form-input-text-area>
@@ -28,7 +28,7 @@
         :maxLength = "150"
         :textAreaRow = "3"
         :required="true"
-        :data="formData.generalQuestionsThree"
+        :data="formData.generalQuestions[2].answer"
         @value="generalQuestionThree"
       >
       </app-form-input-text-area>
@@ -46,9 +46,7 @@ export default {
     return {
       questionsData,
       formData: {
-        generalQuestions: '',
-        generalQuestionsTwo: '',
-        generalQuestionsThree: ''
+        generalQuestions: []
       }
     }
   },
@@ -57,13 +55,13 @@ export default {
   },
   methods: {
     generalQuestion (value) {
-      this.formData.generalQuestions = value
+      this.formData.generalQuestions[0].answer = value
     },
     generalQuestionTwo (value) {
-      this.formData.generalQuestionsTwo = value
+      this.formData.generalQuestions[1].answer = value
     },
     generalQuestionThree (value) {
-      this.formData.generalQuestionsThree = value
+      this.formData.generalQuestions[2].answer = value
     },
     async nextStep () {
       await this.$store.dispatch('addGeneralQuestions', this.formData)
