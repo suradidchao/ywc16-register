@@ -1,3 +1,4 @@
+import { getSubsetObject } from '../../utils/helper'
 export default {
   state: {
     talent: {
@@ -8,7 +9,12 @@ export default {
   },
   mutations: {
     setTalent (state, payload) {
-      state.talent = payload
+      const talentSchema = {
+        knowCamp: [],
+        activities: ''
+      }
+      const talentState = getSubsetObject(payload, talentSchema)
+      state.talent = talentState
     },
     setKnowCamp (state, payload) {
       state.talent.knowCamp = payload
