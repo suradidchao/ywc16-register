@@ -23,10 +23,11 @@
     >
     </app-input-text-area>
     <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-    <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
+    <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
   </div>
 </template>
 <script>
+import {HTTP} from '../core/http-common.js'
 import {isEmpty} from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appInputCheckboxGroup from '@/components/form/InputCheckboxGroup'
@@ -43,8 +44,10 @@ export default {
     appInputTextArea
   },
   methods: {
-    async nextStep () {
-      await this.$router.push('4')
+    async nextSteps () {
+      await this.$store.commit('setTalent', this.formData)
+      await HTTP.put('/registration/insight', this.formData)
+      this.$router.push('4')
     },
     previousStep () {
       this.$router.go(-1)
