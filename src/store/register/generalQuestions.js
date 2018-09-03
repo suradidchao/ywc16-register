@@ -10,14 +10,10 @@ export default {
   },
   mutations: {
     setGeneralQuestions (state, payload) {
-      console.log('payload...')
-      console.log(payload)
       const generalQuestionsSchema = {
         generalQuestions: []
       }
-      const generalQuestionsState = getSubsetObject(payload.questions, generalQuestionsSchema)
-      console.log('generalQuestionsState...')
-      console.log(generalQuestionsState)
+      let generalQuestionsState = getSubsetObject(payload, generalQuestionsSchema)
       state.generalQuestions.data = generalQuestionsState
     },
     clearGeneralQuestions (state) {

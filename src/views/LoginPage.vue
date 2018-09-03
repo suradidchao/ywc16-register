@@ -87,7 +87,8 @@ export default {
           this.$store.commit('setProfileOne', userData.data.payload)
           this.$store.commit('setProfileTwo', userData.data.payload)
           this.$store.commit('setTalent', userData.data.payload)
-          this.$store.commit('setGeneralQuestions', userData.data.payload)
+          userData.data.payload.questions.generalQuestions = userData.data.payload.questions.generalQuestions.map(item => item.answer)
+          this.$store.commit('setGeneralQuestions', userData.data.payload.questions)
           this.$store.dispatch('addMajorQuestions', userData.data.payload)
           return resolve(userData)
         } catch (error) {

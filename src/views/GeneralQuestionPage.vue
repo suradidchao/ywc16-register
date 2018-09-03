@@ -5,30 +5,30 @@
     <app-form-input-text-area
         :question="questionsData['generalQuestions'][0]"
         :errorMsg = "'กรุณาใส่'"
-        :maxLength = "150"
-        :textAreaRow = "3"
+        :maxLength = "1000"
+        :textAreaRow = "8"
         :required="true"
-        :data="formData.generalQuestions[0].answer"
+        :data="formData.generalQuestions[0]"
         @value="generalQuestion"
       >
       </app-form-input-text-area>
         <app-form-input-text-area
         :question="questionsData['generalQuestions'][1]"
         :errorMsg = "'กรุณาใส่'"
-        :maxLength = "150"
-        :textAreaRow = "3"
+        :maxLength = "1000"
+        :textAreaRow = "8"
         :required="true"
-        :data="formData.generalQuestions[1].answer"
+        :data="formData.generalQuestions[1]"
         @value="generalQuestionTwo"
       >
       </app-form-input-text-area>
         <app-form-input-text-area
         :question="questionsData['generalQuestions'][2]"
         :errorMsg = "'กรุณาใส่'"
-        :maxLength = "150"
-        :textAreaRow = "3"
+        :maxLength = "1000"
+        :textAreaRow = "8"
         :required="true"
-        :data="formData.generalQuestions[2].answer"
+        :data="formData.generalQuestions[2]"
         @value="generalQuestionThree"
       >
       </app-form-input-text-area>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import {HTTP} from '../core/http-common.js'
 import {isEmpty} from '../utils/helper.js'
 import questionsData from './questions.json'
 import appFormInputTextArea from '@/components/form/InputTextArea'
@@ -55,16 +56,18 @@ export default {
   },
   methods: {
     generalQuestion (value) {
-      this.formData.generalQuestions[0].answer = value
+      this.formData.generalQuestions[0] = value
     },
     generalQuestionTwo (value) {
-      this.formData.generalQuestions[1].answer = value
+      this.formData.generalQuestions[1] = value
     },
     generalQuestionThree (value) {
-      this.formData.generalQuestions[2].answer = value
+      this.formData.generalQuestions[2] = value
     },
     async nextStep () {
       await this.$store.dispatch('addGeneralQuestions', this.formData)
+      const response = await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
+      console.log(response)
       await this.$router.push('5')
     },
     previousStep () {
