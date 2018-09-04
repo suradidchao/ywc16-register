@@ -2,9 +2,7 @@ export default {
   state: {
     generalQuestions: {
       data: {
-        generalQuestions: '',
-        generalQuestionsTwo: '',
-        generalQuestionsThree: ''
+        generalQuestions: []
       },
       complete: false
     }
@@ -21,15 +19,17 @@ export default {
     }
   },
   actions: {
-    addGeneralQuestions ({commit}, payload) {
+    addGeneralQuestions ({ commit }, payload) {
       commit('setGeneralQuestions', payload)
     },
-    completeGeneralQuestions ({commit}, payload) {
+    completeGeneralQuestions ({ commit }, payload) {
       commit('setCompleteGeneralQuestions', payload)
     }
   },
   getters: {
     generalQuestions (state) {
+      console.log('generalQuestions state')
+      console.log(state.generalQuestions)
       return state.generalQuestions
     }
   }
