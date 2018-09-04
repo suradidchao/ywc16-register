@@ -1,4 +1,3 @@
-import { getSubsetObject } from '../../utils/helper'
 export default {
   state: {
     generalQuestions: {
@@ -10,11 +9,7 @@ export default {
   },
   mutations: {
     setGeneralQuestions (state, payload) {
-      const generalQuestionsSchema = {
-        generalQuestions: []
-      }
-      let generalQuestionsState = getSubsetObject(payload, generalQuestionsSchema)
-      state.generalQuestions.data = generalQuestionsState
+      state.generalQuestions.data = payload
     },
     clearGeneralQuestions (state) {
       state.generalQuestions.data = null

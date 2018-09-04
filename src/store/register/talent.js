@@ -1,35 +1,31 @@
-import { getSubsetObject } from '../../utils/helper'
 export default {
   state: {
     talent: {
-      knowCamp: [],
-      activities: ''
-    },
-    completed: false
+      data: {
+        knowCamp: [],
+        activities: ''
+      },
+      completed: false
+    }
   },
   mutations: {
     setTalent (state, payload) {
-      const talentSchema = {
-        knowCamp: [],
-        activities: ''
-      }
-      const talentState = getSubsetObject(payload, talentSchema)
-      state.talent = talentState
+      state.talent.data = payload
     },
     setKnowCamp (state, payload) {
-      state.talent.knowCamp = payload
+      state.talent.data.knowCamp = payload
     },
     setActivities (state, payload) {
-      state.talent.activities = payload
+      state.talent.data.activities = payload
     },
     clearKnowCamp (state) {
-      state.talent.knowCamp = null
+      state.talent.data.knowCamp = null
     },
     clearActivities (state) {
-      state.talent.activities = null
+      state.talent.data.activities = null
     },
     setCompleteTalent (state, payload) {
-      state.completed = payload
+      state.talent.completed = payload
     }
   },
   actions: {
@@ -39,12 +35,12 @@ export default {
   },
   getters: {
     talent (state) {
-      let talentState = { ...state }
-      delete talentState.talent['completed']
-      return talentState.talent
+      // let talentState = { ...state }
+      // delete talentState.talent['completed']
+      return state.talent.data
     },
     talentCompleted (state) {
-      return state.completed
+      return state.talent.completed
     }
   }
 }

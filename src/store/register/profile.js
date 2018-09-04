@@ -1,4 +1,3 @@
-import { getSubsetObject } from '../../utils/helper'
 export default {
   state: {
     profileOne: {
@@ -24,25 +23,7 @@ export default {
   },
   mutations: {
     setProfileOne (state, payload) {
-      const profileSchema = {
-        picture: '',
-        title: '',
-        firstName: '',
-        lastName: '',
-        firstNameEN: '',
-        lastNameEN: '',
-        nickname: '',
-        birthdate: '',
-        sex: '',
-        blood: '',
-        religion: '',
-        academicYear: '',
-        university: '',
-        faculty: '',
-        department: ''
-      }
-      let profileState = getSubsetObject(payload, profileSchema)
-      state.profileOne.data = profileState
+      state.profileOne.data = payload
     },
     clearProfileOne (state) {
       state.profileOne.data = null

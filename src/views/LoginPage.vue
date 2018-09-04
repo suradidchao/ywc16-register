@@ -13,7 +13,7 @@ import {
   fbLogout,
   fbLogin
 } from '../core/facebook.js'
-
+import { getSubsetObject } from '../utils/helper'
 import { HTTP } from '../core/http-common.js'
 export default {
   data () {
@@ -83,21 +83,35 @@ export default {
         try {
           HTTP.defaults.headers.common['x-access-token'] = ywc16AccessToken
           let userData = await HTTP.get('/users/me')
+          let userDataPayload = userData.data.payload
 
-          this.$store.commit('setProfileOne', userData.data.payload)
-          this.$store.commit('setProfileTwo', userData.data.payload)
-          this.$store.commit('setTalent', userData.data.payload)
-          userData.data.payload.questions.generalQuestions = userData.data.payload.questions.generalQuestions.map(item => item.answer)
-          this.$store.commit('setGeneralQuestions', userData.data.payload.questions)
-          this.$store.dispatch('addMajorQuestions', userData.data.payload)
+          this.mapPayloadToStore(userDataPayload)
           return resolve(userData)
         } catch (error) {
           return reject({statusMessage: `${error} could not initialise user data`})
         }
       })
     },
-    getInitialState(schema, data) {
-      return (({...schema}) => ({...schema}))(data)
+    mapPayloadToStore(payload) {
+
+          const profileSchema = this.$store.state.profile.profileOne.data
+          const contactInfoSchema = this.$store.state.profileTwo.profileTwo.data
+          const talentSchema = this.$store.state.talent.talent.data
+          const generalQuestionsSchema = this.$store.state.generalQuestions.generalQuestions.data
+
+          const generalQuestionsPayload = {generalQuestions: payload.questions.generalQuestions.map(item => item.answer)}
+
+          const profileState = getSubsetObject(payload, profileSchema)
+          const contactInfoState = getSubsetObject(payload, contactInfoSchema)
+          const talentState = getSubsetObject(payload, talentSchema)
+          const generalQuestionsState = getSubsetObject(generalQuestionsPayload, generalQuestionsSchema)
+
+
+          this.$store.commit('setProfileOne', profileState)
+          this.$store.commit('setProfileTwo', contactInfoState)
+          this.$store.commit('setTalent', talentState)
+          this.$store.commit('setGeneralQuestions', generalQuestionsState)
+          // this.$store.commit('setMajorQuestions', userData.data.payload)
     }
 
   }

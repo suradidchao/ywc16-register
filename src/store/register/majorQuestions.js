@@ -1,46 +1,20 @@
 export default {
   state: {
     majorQuestions: {
-      design: {
-        data: {
-          majorQuestions: '',
-          majorQuestionsTwo: '',
-          majorQuestionsThree: '',
-          majorQuestionsFour: ''
-        },
-        complete: false
+      data: {
+        design: [],
+        content: [],
+        marketing: [],
+        programming: []
       },
-      marketing: {
-        data: {
-          majorQuestions: '',
-          majorQuestionsTwo: '',
-          majorQuestionsThree: '',
-          majorQuestionsFour: ''
-        },
-        complete: false
-      },
-      content: {
-        data: {
-          majorQuestions: '',
-          majorQuestionsTwo: '',
-          majorQuestionsThree: '',
-          majorQuestionsFour: ''
-        },
-        complete: false
-      },
-      programming: {
-        data: {
-          majorQuestions: '',
-          majorQuestionsTwo: '',
-          majorQuestionsThree: '',
-          majorQuestionsFour: ''
-        },
-        complete: false
-      },
-      major: ''
+      major: '',
+      completed: false
     }
   },
   mutations: {
+    setMajorQuestions (state, payload) {
+      state.majorQuestions.data[state.major] = payload
+    },
     setDesignQuestions (state, payload) {
       state.majorQuestions.design.data = payload
     },
@@ -66,21 +40,12 @@ export default {
       state.majorQuestions.programming.complete = payload
     },
     setMajor (state, payload) {
-      state.major = payload.major
+      state.majorQuestions.major = payload.major
     }
   },
   actions: {
     addMajorQuestions ({ commit }, payload) {
-      commit('setMajor', payload.major)
-      if (payload.major === 'design') {
-        commit('setDesignQuestions', payload.formData)
-      } else if (payload.major === 'marketing') {
-        commit('setMarketingQuestions', payload.formData)
-      } else if (payload.major === 'content') {
-        commit('setContentQuestions', payload.formData)
-      } else if (payload.major === 'programming') {
-        commit('setProgrammingQuestions', payload.formData)
-      }
+      commit('setMajorQuestions', payload)
     },
     completeMajorQuestions ({ commit }, payload) {
       if (payload.major === 'design') {
