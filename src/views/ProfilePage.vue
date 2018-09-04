@@ -212,7 +212,12 @@ export default {
     },
     async nextSteps () {
       await this.$store.commit('setProfileOne', this.formData)
-      await HTTP.put('/registration/info', this.formData)
+      try {
+        await HTTP.put('/registration/info', this.formData)
+      } catch (error) {
+        alert(error)
+      }
+
       this.$router.push('2')
     }
   },

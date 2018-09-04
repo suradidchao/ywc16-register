@@ -66,8 +66,11 @@ export default {
     },
     async nextStep () {
       await this.$store.dispatch('addGeneralQuestions', this.formData)
-      const response = await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
-      console.log(response)
+      try {
+        await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
+      } catch (error) {
+        alert(error)
+      }
       await this.$router.push('5')
     },
     previousStep () {
