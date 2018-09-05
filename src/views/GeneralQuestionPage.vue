@@ -11,8 +11,8 @@
               <app-form-input-text-area
                       :question="questionsData['generalQuestions'][0]"
                       :errorMsg = "'กรุณาใส่'"
-                      :maxLength = "150"
-                      :textAreaRow = "3"
+                      :maxLength = "3000"
+                      :textAreaRow = "10"
                       :required="true"
                       :data="formData.generalQuestions[0]"
                       @value="generalQuestion"
@@ -23,8 +23,8 @@
                 <app-form-input-text-area
                   :question="questionsData['generalQuestions'][1]"
                   :errorMsg = "'กรุณาใส่'"
-                  :maxLength = "150"
-                  :textAreaRow = "3"
+                  :maxLength = "3000"
+                  :textAreaRow = "10"
                   :required="true"
                   :data="formData.generalQuestions[1]"
                   @value="generalQuestionTwo"
@@ -35,8 +35,8 @@
                 <app-form-input-text-area
                     :question="questionsData['generalQuestions'][2]"
                     :errorMsg = "'กรุณาใส่'"
-                    :maxLength = "150"
-                    :textAreaRow = "3"
+                    :maxLength = "3000"
+                    :textAreaRow = "10"
                     :required="true"
                     :data="formData.generalQuestions[2]"
                     @value="generalQuestionThree"
@@ -46,8 +46,10 @@
 
             <div class="col-md-4"></div>
             <div class="col-md-4">
+               <center>
                 <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
+                <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
+              </center>
             </div>
             <div class="col-md-4"></div>
           </div>
@@ -88,7 +90,7 @@ export default {
     generalQuestionThree (value) {
       this.formData.generalQuestions[2] = value
     },
-    async nextStep () {
+    async nextSteps () {
       await this.$store.dispatch('addGeneralQuestions', this.formData)
       try {
         await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})

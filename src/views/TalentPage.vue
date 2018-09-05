@@ -30,11 +30,12 @@
                   </app-input-text-area>
             </div>
 
-
             <div class="col-md-4"></div>
             <div class="col-md-4">
+              <center>
                 <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
+                <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
+              </center>
             </div>
             <div class="col-md-4"></div>
 
@@ -42,9 +43,6 @@
         </div>
       </div>
      </div>
-
-
-
 
   </div>
 </template>
