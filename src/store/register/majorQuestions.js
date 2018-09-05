@@ -4,6 +4,7 @@ export default {
       data: {
         majorQuestions: []
       },
+      major: '',
       completed: false
     }
   },
@@ -12,7 +13,7 @@ export default {
       state.majorQuestions.data = payload
     },
     setMajor (state, payload) {
-      state.majorQuestions.major = payload.major
+      state.majorQuestions.major = payload
     }
   },
   actions: {
@@ -26,6 +27,9 @@ export default {
   getters: {
     majorQuestions (state) {
       return state.majorQuestions
+    },
+    major (state) {
+      return state.majorQuestions.major
     }
   }
 }
