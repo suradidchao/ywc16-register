@@ -29,40 +29,40 @@
       <app-form-input-text-area
             :question="questionsData['specialQuestions']['design'][0]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestions"
+            :data="formData.answers[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['design'][1]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsTwo"
+            :data="formData.answers[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['design'][2]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsThree"
+            :data="formData.answers[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
           <app-form-input-upload-file
             :question="questionsData['specialQuestions']['design'][3]"
             :errorMsg = "'กรุณาใส่ไฟล์'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsFour"
+            :data="formData.answers[3]"
             @value="majorQuestionFour"
           >
           </app-form-input-upload-file>
@@ -72,30 +72,30 @@
       <app-form-input-text-area
             :question="questionsData['specialQuestions']['marketing'][0]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestions"
+            :data="formData.answers[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['marketing'][1]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsTwo"
+            :data="formData.answers[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['marketing'][2]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsThree"
+            :data="formData.answers[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
@@ -105,30 +105,30 @@
       <app-form-input-text-area
             :question="questionsData['specialQuestions']['content'][0]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestions"
+            :data="formData.answers[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['content'][1]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsTwo"
+            :data="formData.answers[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['content'][2]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsThree"
+            :data="formData.answers[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
@@ -138,40 +138,40 @@
       <app-form-input-text-area
             :question="questionsData['specialQuestions']['programming'][0]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestions"
+            :data="formData.answers[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['programming'][1]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsTwo"
+            :data="formData.answers[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
             <app-form-input-text-area
             :question="questionsData['specialQuestions']['programming'][2]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsThree"
+            :data="formData.answers[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
           <app-form-input-text-area
             :question="questionsData['specialQuestions']['programming'][3]"
             :errorMsg = "'กรุณาใส่'"
-            :maxLength = "150"
-            :textAreaRow = "3"
+            :maxLength = "3000"
+            :textAreaRow = "10"
             :required="true"
-            :data="formData.majorQuestionsFour"
+            :data="formData.answers[3]"
             @value="majorQuestionFour"
           >
           </app-form-input-text-area>
@@ -192,10 +192,7 @@ export default {
       majorUser: this.$store.getters.major,
       questionsData,
       formData: {
-        majorQuestions: '',
-        majorQuestionsTwo: '',
-        majorQuestionsThree: '',
-        majorQuestionsFour: ''
+        answers: []
       }
     }
   },
@@ -204,20 +201,20 @@ export default {
   },
   methods: {
     majorQuestion (value) {
-      this.formData.majorQuestions = value
+      this.formData.answers[0] = value
     },
     majorQuestionTwo (value) {
-      this.formData.majorQuestionsTwo = value
+      this.formData.answers[1] = value
     },
     majorQuestionThree (value) {
-      this.formData.majorQuestionsThree = value
+      this.formData.answers[2] = value
     },
     majorQuestionFour (value) {
-      this.formData.majorQuestionsFour = value
+      this.formData.answers[3] = value
     },
     async nextStep () {
-      await this.$store.dispatch('addMajorQuestions', { major: this.majorUser, formData: this.formData })
-      await this.$router.push('/steps/summary')
+      await this.$store.commit('setMajorQuestions', {majorQuestions: this.formData.answers})
+      // await this.$router.push('/steps/summary')
     },
     previousStep () {
       this.$router.go(-1)
@@ -229,18 +226,7 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let majorQuestions = null
-    console.log('major user: ' + this.majorUser)
-    if (this.majorUser === 'design') {
-      majorQuestions = this.$store.getters.designQuestions
-    } else if (this.majorUser === 'marketing') {
-      majorQuestions = this.$store.getters.marketingQuestions
-    } else if (this.majorUser === 'content') {
-      majorQuestions = this.$store.getters.contentQuestions
-    } else if (this.majorUser === 'programming') {
-      majorQuestions = this.$store.getters.programmingQuestions
-    }
-    console.log('major question: ' + majorQuestions)
+    let majorQuestions = this.$store.getters.majorQuestions
     let majorQuestionsData = majorQuestions.data
     if (tokenExists) {
       if (isEmpty(majorQuestionsData)) {
@@ -250,10 +236,7 @@ export default {
         console.log('Object is NOT empty')
         this.$store.dispatch('completeMajorQuestions', { major: this.majorUser, complete: true })
       }
-      this.formData = majorQuestionsData
-      console.log('token exists')
-      // request jwt backend get data
-      // redirect route
+      this.formData.answers = majorQuestionsData.majorQuestions
     } else {
       console.log('token not exists')
       this.$router.push('/authen')
