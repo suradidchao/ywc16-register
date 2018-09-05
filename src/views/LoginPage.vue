@@ -93,25 +93,31 @@ export default {
       })
     },
     mapPayloadToStore(payload) {
+          console.log('DATA BACKEND')
+          console.log(payload)
 
           const profileSchema = this.$store.state.profile.profileOne.data
           const contactInfoSchema = this.$store.state.profileTwo.profileTwo.data
           const talentSchema = this.$store.state.talent.talent.data
           const generalQuestionsSchema = this.$store.state.generalQuestions.generalQuestions.data
+          const majorQuestionsSchema = this.$store.state.majorQuestions.majorQuestions.data
 
           const generalQuestionsPayload = {generalQuestions: payload.questions.generalQuestions.map(item => item.answer)}
+          const majorQuestionsPayload = {majorQuestions: payload.questions.majorQuestions.map(item => item.answer)}
+          const majorPayload = payload.major
 
           const profileState = getSubsetObject(payload, profileSchema)
           const contactInfoState = getSubsetObject(payload, contactInfoSchema)
           const talentState = getSubsetObject(payload, talentSchema)
           const generalQuestionsState = getSubsetObject(generalQuestionsPayload, generalQuestionsSchema)
+          const majorQuestionsState = getSubsetObject(majorQuestionsPayload, majorQuestionsSchema)
 
-
+          this.$store.commit('setMajor', majorPayload)
           this.$store.commit('setProfileOne', profileState)
           this.$store.commit('setProfileTwo', contactInfoState)
           this.$store.commit('setTalent', talentState)
           this.$store.commit('setGeneralQuestions', generalQuestionsState)
-          // this.$store.commit('setMajorQuestions', userData.data.payload)
+          this.$store.commit('setMajorQuestions', majorQuestionsState)
     }
 
   }
