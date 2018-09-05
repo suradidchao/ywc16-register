@@ -1,8 +1,8 @@
 <template>
   <div>
+    <div class="container-fluid">
     <h1>General Question</h1>
     <hr>
-    <div class="container-fluid">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
@@ -48,7 +48,7 @@
             <div class="col-md-4">
                <center>
                 <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
+                <button type="submit" class="btn btn-lg btn-default" @click="nextSteps">Save & Next</button>
               </center>
             </div>
             <div class="col-md-4"></div>

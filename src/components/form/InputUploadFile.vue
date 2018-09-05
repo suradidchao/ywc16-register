@@ -1,16 +1,16 @@
 <template>
   <div>
-      <img src="../../assets/no-pic.png" id="output" class="img-responsive img-rounded img-thumbnail">
+      <center>
+      <img src="../../assets/no-pic.png" id="output" class="img-responsive img-rounded img-thumbnail" style="border:2px solid #E3E0F1;">
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
        <div class='form-group' :class="formGroupClass">
           <br>
-         <center>
           <label class="control-label btn btn-default btn-file">
             Upload Profile
             <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" style="display: none;"/>
           </label>
-          </center>
        </div>
+         </center>
   </div>
 </template>
 

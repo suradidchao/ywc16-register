@@ -6,13 +6,14 @@
       <!-- <p>{{ errorMsg }}</p> -->
       <input type="text"
       v-model="text"
-      class="form-control"
+      class="form-control input-lg input-css"
       @change="onInput"
       :placeholder="question"
       @blur='validateInputAndSaveState()'
       :pattern="regularExpression"
       :required='required'
       >
+      <br>
     </div>
   </div>
 </template>
@@ -74,7 +75,3 @@ export default {
   }
 }
 </script>
-
-<style>
-/* .input-large { width: 210px !important;} */
-</style>

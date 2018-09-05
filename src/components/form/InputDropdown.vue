@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group">
-    <select v-model="selectItem" class="form-control" @change="onSelect">
+    <select v-model="selectItem" class="form-control input-lg input-css" @change="onSelect">
       <option value="" selected disabled>{{ question }}</option>
       <option v-for="option in dropdownData" v-bind:value="option" v-bind:key="option">
           {{ option }}
