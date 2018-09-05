@@ -32,7 +32,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[0]"
+            :data="formData.majorQuestions[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
@@ -42,7 +42,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[1]"
+            :data="formData.majorQuestions[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
@@ -52,7 +52,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[2]"
+            :data="formData.majorQuestions[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
@@ -62,7 +62,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[3]"
+            :data="formData.majorQuestions[3]"
             @value="majorQuestionFour"
           >
           </app-form-input-upload-file>
@@ -75,7 +75,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[0]"
+            :data="formData.majorQuestions[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
@@ -85,7 +85,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[1]"
+            :data="formData.majorQuestions[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
@@ -95,7 +95,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[2]"
+            :data="formData.majorQuestions[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
@@ -108,7 +108,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[0]"
+            :data="formData.majorQuestions[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
@@ -118,7 +118,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[1]"
+            :data="formData.majorQuestions[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
@@ -128,7 +128,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[2]"
+            :data="formData.majorQuestions[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
@@ -141,7 +141,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[0]"
+            :data="formData.majorQuestions[0]"
             @value="majorQuestion"
           >
           </app-form-input-text-area>
@@ -151,7 +151,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[1]"
+            :data="formData.majorQuestions[1]"
             @value="majorQuestionTwo"
           >
           </app-form-input-text-area>
@@ -161,7 +161,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[2]"
+            :data="formData.majorQuestions[2]"
             @value="majorQuestionThree"
           >
           </app-form-input-text-area>
@@ -171,7 +171,7 @@
             :maxLength = "3000"
             :textAreaRow = "10"
             :required="true"
-            :data="formData.answers[3]"
+            :data="formData.majorQuestions[3]"
             @value="majorQuestionFour"
           >
           </app-form-input-text-area>
@@ -182,6 +182,7 @@
 </template>
 
 <script>
+import {HTTP} from '../core/http-common.js'
 import {isEmpty} from '../utils/helper.js'
 import questionsData from './questions.json'
 import appFormInputUploadFile from '@/components/form/InputUploadFile'
@@ -192,7 +193,7 @@ export default {
       majorUser: this.$store.getters.major,
       questionsData,
       formData: {
-        answers: []
+        majorQuestions: []
       }
     }
   },
@@ -201,20 +202,25 @@ export default {
   },
   methods: {
     majorQuestion (value) {
-      this.formData.answers[0] = value
+      this.formData.majorQuestions[0] = value
     },
     majorQuestionTwo (value) {
-      this.formData.answers[1] = value
+      this.formData.majorQuestions[1] = value
     },
     majorQuestionThree (value) {
-      this.formData.answers[2] = value
+      this.formData.majorQuestions[2] = value
     },
     majorQuestionFour (value) {
-      this.formData.answers[3] = value
+      this.formData.majorQuestions[3] = value
     },
     async nextStep () {
-      await this.$store.commit('setMajorQuestions', {majorQuestions: this.formData.answers})
-      // await this.$router.push('/steps/summary')
+      await this.$store.commit('setMajorQuestions', this.formData)
+      try {
+        await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
+      } catch (error) {
+        alert(error)
+      }
+      await this.$router.push('/steps/summary')
     },
     previousStep () {
       this.$router.go(-1)
@@ -236,7 +242,7 @@ export default {
         console.log('Object is NOT empty')
         this.$store.dispatch('completeMajorQuestions', { major: this.majorUser, complete: true })
       }
-      this.formData.answers = majorQuestionsData.majorQuestions
+      this.formData = majorQuestionsData
     } else {
       console.log('token not exists')
       this.$router.push('/authen')
