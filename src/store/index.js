@@ -19,5 +19,14 @@ export const store = new Vuex.Store({
     talent: talent,
     generalQuestions: generalQuestions,
     majorQuestions: majorQuestions
+  },
+  getters: {
+    summary (state) {
+      return {
+        profile: { ...state.profile.profileOne.data, ...state.profileTwo.profileTwo.data, ...state.talent.talent.data },
+        generalQuestions: { ...state.generalQuestions.generalQuestions.data },
+        majorQuestions: { ...state.majorQuestions.majorQuestions.data }
+      }
+    }
   }
 })

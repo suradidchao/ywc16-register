@@ -21,14 +21,23 @@
 
       </div>
     </div>
+    <button type="submit" class="btn btn-lg btn-default" @click="cancel">Cancel</button>
+    <button type="submit" class="btn btn-lg btn-success" @click="save">Save</button>
   </div>
 </template>
 <script>
+import {HTTP} from '../core/http-common.js'
 import { mapGetters } from 'vuex'
 export default {
+  data () {
+    return {
+      summary: {}
+    }
+  },
   created () {
     const tokenExists = window.localStorage.getItem('ywc16_user_fb')
-
+    let summary = this.$store.getters.summary
+    this.summary = summary
     if (tokenExists) {
       console.log('token exists')
       // request jwt backend get data
@@ -58,6 +67,22 @@ export default {
         majorQuestions = this.$store.getters.programmingQuestions
       }
       return majorQuestions
+    }
+  },
+  methods: {
+    async save () {
+      try {
+        let res = await HTTP.post('/registration/confirm')
+        if (res.data.status === 'success') {
+          alert('You have completed your registration!!!(มันเปลี่ยน in progress เป็น completed ต้องไปแก้ใน db field status ให้เป็น in progress เหมือนเดิม)')
+        }
+        this.$router.push('/steps/1')
+      } catch (error) {
+        alert(error)
+      }
+    },
+    cancel () {
+      this.$router.push('/steps/1')
     }
   }
 }
