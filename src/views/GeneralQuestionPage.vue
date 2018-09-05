@@ -2,38 +2,62 @@
   <div>
     <h1>General Question</h1>
     <hr>
-    <app-form-input-text-area
-        :question="questionsData['generalQuestions'][0]"
-        :errorMsg = "'กรุณาใส่'"
-        :maxLength = "1000"
-        :textAreaRow = "8"
-        :required="true"
-        :data="formData.generalQuestions[0]"
-        @value="generalQuestion"
-      >
-      </app-form-input-text-area>
-        <app-form-input-text-area
-        :question="questionsData['generalQuestions'][1]"
-        :errorMsg = "'กรุณาใส่'"
-        :maxLength = "1000"
-        :textAreaRow = "8"
-        :required="true"
-        :data="formData.generalQuestions[1]"
-        @value="generalQuestionTwo"
-      >
-      </app-form-input-text-area>
-        <app-form-input-text-area
-        :question="questionsData['generalQuestions'][2]"
-        :errorMsg = "'กรุณาใส่'"
-        :maxLength = "1000"
-        :textAreaRow = "8"
-        :required="true"
-        :data="formData.generalQuestions[2]"
-        @value="generalQuestionThree"
-      >
-      </app-form-input-text-area>
-      <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-      <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+
+            <div class="col-md-12">
+              <app-form-input-text-area
+                      :question="questionsData['generalQuestions'][0]"
+                      :errorMsg = "'กรุณาใส่'"
+                      :maxLength = "150"
+                      :textAreaRow = "3"
+                      :required="true"
+                      :data="formData.generalQuestions[0]"
+                      @value="generalQuestion"
+                    >
+                    </app-form-input-text-area>
+            </div>
+            <div class="col-md-12">
+                <app-form-input-text-area
+                  :question="questionsData['generalQuestions'][1]"
+                  :errorMsg = "'กรุณาใส่'"
+                  :maxLength = "150"
+                  :textAreaRow = "3"
+                  :required="true"
+                  :data="formData.generalQuestions[1]"
+                  @value="generalQuestionTwo"
+                >
+                </app-form-input-text-area>
+            </div>
+            <div class="col-md-12">
+                <app-form-input-text-area
+                    :question="questionsData['generalQuestions'][2]"
+                    :errorMsg = "'กรุณาใส่'"
+                    :maxLength = "150"
+                    :textAreaRow = "3"
+                    :required="true"
+                    :data="formData.generalQuestions[2]"
+                    @value="generalQuestionThree"
+                  >
+                  </app-form-input-text-area>
+            </div>
+
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+                <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </div>
 </template>
 

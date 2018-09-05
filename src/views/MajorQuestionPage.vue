@@ -2,6 +2,29 @@
   <div>
     <h1>Major Questions</h1>
     <hr>
+       <div class="container-fluid">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12">
+
+              </div>
+              <div class="col-md-12">
+
+              </div>
+              <div class="col-md-12">
+
+              </div>
+
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+          </div>
+        </div>
+       </div>
     <div v-if="majorUser == 'design'">
       <app-form-input-text-area
             :question="questionsData['specialQuestions']['design'][0]"

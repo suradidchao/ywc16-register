@@ -2,114 +2,196 @@
   <div>
     <h1>Contact Information</h1>
     <hr>
-    <app-form-input-text-area
-      :question = "'ที่อยู่'"
-      :errorMsg = "'กรุณาใส่ที่อยู่'"
-      :maxLength = "150"
-      :textAreaRow = "3"
-      :required="true"
-      @value="address"
-      :data="formData.address"
-    >
-    </app-form-input-text-area>
-    <app-form-input-dropdown
-    :data="formData.province"
-    :question="'จังหวัด'"
-    @value="province"
-    :errorMsg="'Invalid province!!'"
-    :dropdownData="dropdownData['province']"
-    >
-    </app-form-input-dropdown>
-    <app-form-input-text
-    :data="formData.postalCode"
-    :question="'รหัสไปรษณีย์'"
-    @value="postalCode"
-    :errorMsg="'Invalid post number'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <app-form-input-text
-    :data="formData.email"
-    :question="'Email'"
-    @value="email"
-    :errorMsg="'Invalid email'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <app-form-input-text
-    :data="formData.phone"
-    :question="'เบอร์ติดต่อฉุกเฉิน'"
-    @value="phone"
-    :errorMsg="'Invalid contact number'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <app-form-input-text
-    :data="formData.emergencyName"
-    :question="'ชื่อผู้ปกครอง/ชื่อผู้ติดต่อฉุกเฉิน'"
-    @value="emergencyName"
-    :errorMsg="'Invalid parent name'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <app-form-input-text
-    :data="formData.emergencyPhone"
-    :question="'เบอร์ติดต่อฉุกเฉิน'"
-    @value="emergencyPhone"
-    :errorMsg="'Invalid parent contact number'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <app-form-input-text
-    :data="formData.emergencyPhoneRelated"
-    :question="'เกี่ยวข้องเป็น'"
-    @value="emergencyPhoneRelated"
-    :errorMsg="'Invalid parent contact number'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <app-form-input-text
-    :data="formData.skype"
-    :question="'ID Skype'"
-    @value="skype"
-    :errorMsg="'Invalid skype id'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <app-form-input-dropdown
-    :data="formData.shirtSize"
-    :question="'ขนาดเสื้อ (รอบอก, ความยาว)'"
-    @value="shirtSize"
-    :errorMsg="'shirt size missing!!'"
-    :dropdownData="dropdownData['shirtSize'].map((item) => item.value )"
-    >
-    </app-form-input-dropdown>
-    <app-form-input-radio-group
-    :data="formData.disease"
-    :question="'โรคประจำตัว'"
-    @value="disease"
-    :radioData="dropdownData['disease']"
-    :required="false"
-    >
-    </app-form-input-radio-group>
-    <app-form-input-dropdown
-    :data="formData.food"
-    :question="'อาหารที่รับประทาน'"
-    @value="food"
-    :errorMsg="'Invalid food!!'"
-    :dropdownData="dropdownData['food']"
-    >
-    </app-form-input-dropdown>
-    <app-form-input-text
-    :data="formData.foodAllergy"
-    :question="'อาหารที่แพ้'"
-    @value="foodAllergy"
-    :errorMsg="'Invalid allergic food'"
-    :required="false"
-    >
-    </app-form-input-text>
-    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-    <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12">
+                    <app-form-input-text-area
+                    :question = "'ที่อยู่'"
+                    :errorMsg = "'กรุณาใส่ที่อยู่'"
+                    :maxLength = "150"
+                    :textAreaRow = "3"
+                    :required="true"
+                    @value="address"
+                    :data="formData.address"
+                  >
+                  </app-form-input-text-area>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <app-form-input-dropdown
+                    :data="formData.province"
+                    :question="'จังหวัด'"
+                    @value="province"
+                    :errorMsg="'Invalid province!!'"
+                    :dropdownData="dropdownData['province']"
+                    >
+                  </app-form-input-dropdown>
+                </div>
+                <div class="col-md-6">
+                  <app-form-input-text
+                    :data="formData.postalCode"
+                    :question="'รหัสไปรษณีย์'"
+                    @value="postalCode"
+                    :errorMsg="'Invalid post number'"
+                    :required="false"
+                    >
+                  </app-form-input-text>
+                </div>
+              </div>
+
+               <div class="row">
+                <div class="col-md-12">
+                  <app-form-input-text
+                      :data="formData.email"
+                      :question="'Email'"
+                      @value="email"
+                      :errorMsg="'Invalid email'"
+                      :required="false"
+                      >
+                  </app-form-input-text>
+                </div>
+              </div>
+
+               <div class="row">
+                <div class="col-md-12">
+                    <app-form-input-text
+                        :data="formData.phone"
+                        :question="'เบอร์ติดต่อฉุกเฉิน'"
+                        @value="phone"
+                        :errorMsg="'Invalid contact number'"
+                        :required="false"
+                        >
+                    </app-form-input-text>
+                </div>
+              </div>
+
+
+               <div class="row">
+                <div class="col-md-12">
+                    <app-form-input-text
+                        :data="formData.emergencyName"
+                        :question="'ชื่อผู้ปกครอง/ชื่อผู้ติดต่อฉุกเฉิน'"
+                        @value="emergencyName"
+                        :errorMsg="'Invalid parent name'"
+                        :required="false"
+                        >
+                    </app-form-input-text>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <app-form-input-text
+                        :data="formData.emergencyPhone"
+                        :question="'เบอร์ติดต่อฉุกเฉิน'"
+                        @value="emergencyPhone"
+                        :errorMsg="'Invalid parent contact number'"
+                        :required="false"
+                        >
+                        </app-form-input-text>
+                </div>
+                <div class="col-md-6">
+                    <app-form-input-text
+                        :data="formData.emergencyPhoneRelated"
+                        :question="'เกี่ยวข้องเป็น'"
+                        @value="emergencyPhoneRelated"
+                        :errorMsg="'Invalid parent contact number'"
+                        :required="false"
+                        >
+                        </app-form-input-text>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                    <app-form-input-text
+                      :data="formData.skype"
+                      :question="'ID Skype'"
+                      @value="skype"
+                      :errorMsg="'Invalid skype id'"
+                      :required="false"
+                      >
+                    </app-form-input-text>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-md-6">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <app-form-input-dropdown
+                      :data="formData.shirtSize"
+                      :question="'ขนาดเสื้อ (รอบอก, ความยาว)'"
+                      @value="shirtSize"
+                      :errorMsg="'shirt size missing!!'"
+                      :dropdownData="dropdownData['shirtSize'].map((item) => item.value )"
+                      >
+                      </app-form-input-dropdown>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-12">
+                    <app-form-input-radio-group
+                        :data="formData.disease"
+                        :question="'โรคประจำตัว'"
+                        @value="disease"
+                        :radioData="dropdownData['disease']"
+                        :required="false"
+                        >
+                        </app-form-input-radio-group>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <app-form-input-dropdown
+                      :data="formData.food"
+                      :question="'อาหารที่รับประทาน'"
+                      @value="food"
+                      :errorMsg="'Invalid food!!'"
+                      :dropdownData="dropdownData['food']"
+                      >
+                      </app-form-input-dropdown>
+                </div>
+
+                 <div class="col-md-6">
+                      <app-form-input-text
+                          :data="formData.foodAllergy"
+                          :question="'อาหารที่แพ้'"
+                          @value="foodAllergy"
+                          :errorMsg="'Invalid allergic food'"
+                          :required="false"
+                          >
+                          </app-form-input-text>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                  <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+                  <button type="submit" class="btn btn-lg btn-default" @click="nextStep">Save & Next</button>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>

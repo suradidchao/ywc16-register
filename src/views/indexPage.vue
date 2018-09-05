@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container-fluid">
       <h1>Step bar</h1>
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
     </div>
-  </div>
+</div>
 </template>
-<style scoped>
+<style>
   .fade-enter{
     opacity: 0;
   }
