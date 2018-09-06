@@ -19,6 +19,8 @@ export default {
 body {
   background: url('./assets/Asset-1.svg'), url('./assets/bg-register.svg') center bottom no-repeat;
   color: #625EA2;
+  min-height: 100vh;
+  height: 100%;
 }
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import './assets/styles/main.css'
