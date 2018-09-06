@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Profile</h1>
-    <hr>
 <div class="container-fluid">
+  <h1>Profile</h1>
+  <hr>
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -166,7 +166,7 @@
             <div class="row">
               <div class="col-md-4"></div>
               <div class="col-md-4" style="margin-top:50px; margin-bottom:50px;">
-                    <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps">Save & Next</button>
+                    <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps">Save & Next  ></button>
               </div>
               <div class="col-md-4"></div>
             </div>
@@ -320,5 +320,6 @@ export default {
 .row {
   margin-top: 20px
 }
+
 </style>
 

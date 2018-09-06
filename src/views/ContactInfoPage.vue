@@ -1,8 +1,8 @@
 <template>
   <div>
+    <div class="container-fluid">
     <h1>Contact Information</h1>
     <hr>
-    <div class="container-fluid">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
@@ -126,6 +126,7 @@
             <div class="col-md-6">
 
               <div class="row">
+                <br>
                 <div class="col-md-12">
                   <app-form-input-dropdown
                       :data="formData.shirtSize"
@@ -178,16 +179,17 @@
 
               </div>
 
-              <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                  <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                  <button type="submit" class="btn btn-lg btn-default" @click="nextStep">Save & Next</button>
-                </div>
-                <div class="col-md-4"></div>
-              </div>
-
             </div>
+
+          </div>
+          <div class="row">
+            <br>
+                <div class="col-md-12">
+                  <center>
+                    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+                    <button type="submit" class="btn btn-lg btn-default" @click="nextStep">Save & Next</button>
+                  </center>
+                </div>
           </div>
         </div>
       </div>

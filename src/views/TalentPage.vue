@@ -1,8 +1,8 @@
 <template>
   <div>
+     <div class="container-fluid">
     <h1>Talent</h1>
     <hr>
-     <div class="container-fluid">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
@@ -21,8 +21,8 @@
               <app-input-text-area
                     :question = "'ความสามารถหรือกิจกรรมที่เคยทำ '"
                     :errorMsg = "'ความสามารถหรือกิจกรรม'"
-                    :maxLength = "500"
-                    :textAreaRow = "10"
+                    :maxLength = "3000"
+                    :textAreaRow = "15"
                     :required="true"
                     :data="formData.activities"
                     @value="talent"
@@ -33,8 +33,9 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
               <center>
+                <br>
                 <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                <button type="submit" class="btn btn-lg btn-success" @click="nextSteps">Save&Next</button>
+                <button type="submit" class="btn btn-lg btn-default" @click="nextSteps">Save & Next</button>
               </center>
             </div>
             <div class="col-md-4"></div>

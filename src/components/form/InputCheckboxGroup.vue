@@ -3,7 +3,7 @@
     <label> {{ question }} </label> <label style="color:#a94442" :class="errorMsgClass"> {{ errorMsg }} </label>
     <div class="checkbox" v-for="checkbox in checkboxData" :key="checkbox">
       <label v-if="checkbox === 'อื่นๆ'">
-        <input type="checkbox" :value="checkbox" @click="addRemoveCheckboxValue">
+        <input type="checkbox"  :value="checkbox" @click="addRemoveCheckboxValue">
         <label>{{ checkbox }}</label>
         <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
       </label>
