@@ -3,7 +3,7 @@
     <div class="form-group" :class="formGroupClass">
       <label for="textArea">{{ question }}</label>
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
-      <textarea class="form-control"
+      <textarea class="form-control input-lg input-css"
         :rows="textAreaRow"
         :pattern="regularExpression"
         :maxLength="maxLength"
@@ -13,6 +13,7 @@
         @change="onInput"
       >
       </textarea>
+      <br>
     </div>
   </div>
 </template>

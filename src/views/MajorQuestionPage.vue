@@ -1,183 +1,211 @@
 <template>
   <div>
-    <h1>Major Questions</h1>
-    <hr>
        <div class="container-fluid">
+             <h1>Major Questions</h1>
+    <hr>
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="row">
+            <div v-if="majorUser == 'design'">
               <div class="col-md-12">
-
+                <app-form-input-text-area
+                    :question="questionsData['specialQuestions']['design'][0]"
+                    :errorMsg = "'กรุณาใส่'"
+                    :maxLength = "3000"
+                    :textAreaRow = "10"
+                    :required="true"
+                    :data="formData.majorQuestions[0]"
+                    @value="majorQuestion"
+                    >
+                </app-form-input-text-area>
+              </div>
+              <div class="col-md-12">
+                <app-form-input-text-area
+                  :question="questionsData['specialQuestions']['design'][1]"
+                  :errorMsg = "'กรุณาใส่'"
+                  :maxLength = "3000"
+                  :textAreaRow = "10"
+                  :required="true"
+                  :data="formData.majorQuestions[1]"
+                  @value="majorQuestionTwo"
+                >
+                </app-form-input-text-area>
               </div>
               <div class="col-md-12">
 
+
+                  <app-form-input-text-area
+                  :question="questionsData['specialQuestions']['design'][2]"
+                  :errorMsg = "'กรุณาใส่'"
+                  :maxLength = "3000"
+                  :textAreaRow = "10"
+                  :required="true"
+                  :data="formData.majorQuestions[2]"
+                  @value="majorQuestionThree"
+                >
+                </app-form-input-text-area>
+              </div>
+              <div class="col-md-12">
+                  <app-form-input-upload-file
+                      :question="questionsData['specialQuestions']['design'][3]"
+                      :errorMsg = "'กรุณาใส่ไฟล์'"
+                      :maxLength = "3000"
+                      :textAreaRow = "10"
+                      :required="true"
+                      :data="formData.majorQuestions[3]"
+                      @value="majorQuestionFour"
+                    >
+                    </app-form-input-upload-file>
+              </div>
+            </div>
+
+          <div v-if="majorUser == 'marketing'">
+            <div class="col-md-12">
+              <app-form-input-text-area
+                          :question="questionsData['specialQuestions']['marketing'][0]"
+                          :errorMsg = "'กรุณาใส่'"
+                          :maxLength = "3000"
+                          :textAreaRow = "10"
+                          :required="true"
+                          :data="formData.majorQuestions[0]"
+                          @value="majorQuestion"
+                        >
+                        </app-form-input-text-area>
+            </div>
+            <div class="col-md-12">
+                <app-form-input-text-area
+                        :question="questionsData['specialQuestions']['marketing'][1]"
+                        :errorMsg = "'กรุณาใส่'"
+                        :maxLength = "3000"
+                        :textAreaRow = "10"
+                        :required="true"
+                        :data="formData.majorQuestions[1]"
+                        @value="majorQuestionTwo"
+                      >
+                      </app-form-input-text-area>
+            </div>
+            <div class="col-md-12">
+                <app-form-input-text-area
+                          :question="questionsData['specialQuestions']['marketing'][2]"
+                          :errorMsg = "'กรุณาใส่'"
+                          :maxLength = "3000"
+                          :textAreaRow = "10"
+                          :required="true"
+                          :data="formData.majorQuestions[2]"
+                          @value="majorQuestionThree"
+                        >
+                        </app-form-input-text-area>
+            </div>
+          </div>
+
+          <div v-if="majorUser == 'content'">
+                <div class="col-md-12">
+
+                    <app-form-input-text-area
+                      :question="questionsData['specialQuestions']['content'][0]"
+                      :errorMsg = "'กรุณาใส่'"
+                      :maxLength = "3000"
+                      :textAreaRow = "10"
+                      :required="true"
+                      :data="formData.majorQuestions[0]"
+                      @value="majorQuestion"
+                    >
+                    </app-form-input-text-area>
+                </div>
+                <div class="col-md-12">
+                  <app-form-input-text-area
+                          :question="questionsData['specialQuestions']['content'][1]"
+                          :errorMsg = "'กรุณาใส่'"
+                          :maxLength = "3000"
+                          :textAreaRow = "10"
+                          :required="true"
+                          :data="formData.majorQuestions[1]"
+                          @value="majorQuestionTwo"
+                        >
+                        </app-form-input-text-area>
+                </div>
+                <div class="col-md-12">
+                  <app-form-input-text-area
+                        :question="questionsData['specialQuestions']['content'][2]"
+                        :errorMsg = "'กรุณาใส่'"
+                        :maxLength = "3000"
+                        :textAreaRow = "10"
+                        :required="true"
+                        :data="formData.majorQuestions[2]"
+                        @value="majorQuestionThree"
+                      >
+                      </app-form-input-text-area>
+                </div>
+          </div>
+
+           <div v-if="majorUser == 'programming'">
+              <div class="col-md-12">
+                <app-form-input-text-area
+                          :question="questionsData['specialQuestions']['programming'][0]"
+                          :errorMsg = "'กรุณาใส่'"
+                          :maxLength = "3000"
+                          :textAreaRow = "10"
+                          :required="true"
+                          :data="formData.majorQuestions[0]"
+                          @value="majorQuestion"
+                        >
+                </app-form-input-text-area>
               </div>
               <div class="col-md-12">
 
+              <app-form-input-text-area
+                          :question="questionsData['specialQuestions']['programming'][1]"
+                          :errorMsg = "'กรุณาใส่'"
+                          :maxLength = "3000"
+                          :textAreaRow = "10"
+                          :required="true"
+                          :data="formData.majorQuestions[1]"
+                          @value="majorQuestionTwo"
+                        >
+                </app-form-input-text-area>
               </div>
+              <div class="col-md-12">
+                <app-form-input-text-area
+                          :question="questionsData['specialQuestions']['programming'][2]"
+                          :errorMsg = "'กรุณาใส่'"
+                          :maxLength = "3000"
+                          :textAreaRow = "10"
+                          :required="true"
+                          :data="formData.majorQuestions[2]"
+                          @value="majorQuestionThree"
+                        >
+                        </app-form-input-text-area>
+              </div>
+              <div class="col-md-12">
+                <app-form-input-text-area
+                          :question="questionsData['specialQuestions']['programming'][3]"
+                          :errorMsg = "'กรุณาใส่'"
+                          :maxLength = "3000"
+                          :textAreaRow = "10"
+                          :required="true"
+                          :data="formData.majorQuestions[3]"
+                          @value="majorQuestionFour"
+                        >
+                        </app-form-input-text-area>
+              </div>
+          </div>
+
 
               <div class="col-md-4"></div>
               <div class="col-md-4">
-
+                  <center>
+                    <br>
+                    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+                    <button type="submit" class="btn btn-lg btn-default" @click="nextStep">Save & Next</button>
+                  </center>
+                  <br>
               </div>
               <div class="col-md-4"></div>
             </div>
           </div>
         </div>
        </div>
-    <div v-if="majorUser == 'design'">
-      <app-form-input-text-area
-            :question="questionsData['specialQuestions']['design'][0]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[0]"
-            @value="majorQuestion"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['design'][1]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[1]"
-            @value="majorQuestionTwo"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['design'][2]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[2]"
-            @value="majorQuestionThree"
-          >
-          </app-form-input-text-area>
-          <app-form-input-upload-file
-            :question="questionsData['specialQuestions']['design'][3]"
-            :errorMsg = "'กรุณาใส่ไฟล์'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[3]"
-            @value="majorQuestionFour"
-          >
-          </app-form-input-upload-file>
-    </div>
 
-    <div v-if="majorUser == 'marketing'">
-      <app-form-input-text-area
-            :question="questionsData['specialQuestions']['marketing'][0]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[0]"
-            @value="majorQuestion"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['marketing'][1]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[1]"
-            @value="majorQuestionTwo"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['marketing'][2]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[2]"
-            @value="majorQuestionThree"
-          >
-          </app-form-input-text-area>
-    </div>
-
-    <div v-if="majorUser == 'content'">
-      <app-form-input-text-area
-            :question="questionsData['specialQuestions']['content'][0]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[0]"
-            @value="majorQuestion"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['content'][1]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[1]"
-            @value="majorQuestionTwo"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['content'][2]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[2]"
-            @value="majorQuestionThree"
-          >
-          </app-form-input-text-area>
-    </div>
-
-    <div v-if="majorUser == 'programming'">
-      <app-form-input-text-area
-            :question="questionsData['specialQuestions']['programming'][0]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[0]"
-            @value="majorQuestion"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['programming'][1]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[1]"
-            @value="majorQuestionTwo"
-          >
-          </app-form-input-text-area>
-            <app-form-input-text-area
-            :question="questionsData['specialQuestions']['programming'][2]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[2]"
-            @value="majorQuestionThree"
-          >
-          </app-form-input-text-area>
-          <app-form-input-text-area
-            :question="questionsData['specialQuestions']['programming'][3]"
-            :errorMsg = "'กรุณาใส่'"
-            :maxLength = "3000"
-            :textAreaRow = "10"
-            :required="true"
-            :data="formData.majorQuestions[3]"
-            @value="majorQuestionFour"
-          >
-          </app-form-input-text-area>
-    </div>
-    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-    <button type="submit" class="btn btn-lg btn-success" @click="nextStep">Save&Next</button>
   </div>
 </template>
 

@@ -1,7 +1,8 @@
 <template>
   <div>
+
     <div class="container-fluid">
-      <h1>Step bar</h1>
+      <stepBar></stepBar>
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
@@ -22,3 +23,12 @@
     opacity: 0;
   }
 </style>
+<script>
+import stepBar from '@/components/stepBar'
+export default {
+  components:{
+      stepBar
+  }
+}
+</script>
+
