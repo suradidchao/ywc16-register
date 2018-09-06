@@ -76,7 +76,7 @@ export default {
         if (res.data.status === 'success') {
           alert('You have completed your registration!!!(มันเปลี่ยน in progress เป็น completed ต้องไปแก้ใน db field status ให้เป็น in progress เหมือนเดิม)')
         }
-        this.$router.push('/steps/1')
+        this.$router.push('/complete')
       } catch (error) {
         alert(error)
       }

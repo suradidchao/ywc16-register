@@ -29,8 +29,12 @@ export default {
       try {
         let {token} = await this.getYWC16AccessToken()
         this.initialiseUserData(token)
+        if (!this.isUserCompleteRegistration()){
+          this.$router.push('/steps/1')
+        } else {
+          this.$router.push('complete')
+        }
 
-        this.$router.push('/steps/1')
       } catch (error) {
         alert(error.statusMessage)
       }
@@ -96,6 +100,7 @@ export default {
           console.log('DATA BACKEND')
           console.log(payload)
 
+          const userSchema = this.$store.state.user.user.data
           const profileSchema = this.$store.state.profile.profileOne.data
           const contactInfoSchema = this.$store.state.profileTwo.profileTwo.data
           const talentSchema = this.$store.state.talent.talent.data
@@ -106,18 +111,23 @@ export default {
           const majorQuestionsPayload = {majorQuestions: payload.questions.majorQuestions.map(item => item.answer)}
           const majorPayload = payload.major
 
+          const userState = getSubsetObject(payload, userSchema)
           const profileState = getSubsetObject(payload, profileSchema)
           const contactInfoState = getSubsetObject(payload, contactInfoSchema)
           const talentState = getSubsetObject(payload, talentSchema)
           const generalQuestionsState = getSubsetObject(generalQuestionsPayload, generalQuestionsSchema)
           const majorQuestionsState = getSubsetObject(majorQuestionsPayload, majorQuestionsSchema)
 
+          this.$store.commit('setUser', userState)
           this.$store.commit('setMajor', majorPayload)
           this.$store.commit('setProfileOne', profileState)
           this.$store.commit('setProfileTwo', contactInfoState)
           this.$store.commit('setTalent', talentState)
           this.$store.commit('setGeneralQuestions', generalQuestionsState)
           this.$store.commit('setMajorQuestions', majorQuestionsState)
+    },
+    isUserCompleteRegistration () {
+      return this.$store.getters.user.status === 'completed' ? true : false
     }
 
   }
