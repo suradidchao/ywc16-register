@@ -24,7 +24,7 @@ export default {
       state.profileTwo.data = payload
     },
     clearProfileTwo (state) {
-      state.profileOne.data = null
+      state.profileTwo.data = null
     },
     setCompleteProfileTwo (state, payload) {
       state.profileTwo.complete = payload
