@@ -3,8 +3,7 @@ export default {
     majorQuestions: {
       data: {
         majorQuestions: []
-      },
-      completed: false
+      }
     }
   },
   mutations: {
@@ -13,6 +12,9 @@ export default {
     },
     setMajor (state, payload) {
       state.majorQuestions.major = payload.major
+    },
+    setCompleteMajorQuestions (state, payload) {
+      state.majorQuestions.complete.complete = payload
     }
   },
   actions: {
@@ -20,7 +22,7 @@ export default {
       commit('setMajorQuestions', payload)
     },
     completeMajorQuestions ({ commit }, payload) {
-      console.log('completeing major Questions')
+      commit('setCompleteMajorQuestions', payload)
     }
   },
   getters: {

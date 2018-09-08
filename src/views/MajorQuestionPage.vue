@@ -265,10 +265,10 @@ export default {
     if (tokenExists) {
       if (isEmpty(majorQuestionsData)) {
         console.log('Object is empty')
-        this.$store.dispatch('completeMajorQuestions', { major: this.majorUser, complete: false })
+        this.$store.dispatch('completeMajorQuestions', false )
       } else {
         console.log('Object is NOT empty')
-        this.$store.dispatch('completeMajorQuestions', { major: this.majorUser, complete: true })
+        this.$store.dispatch('completeMajorQuestions', true )
       }
       this.formData = majorQuestionsData
     } else {
