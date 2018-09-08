@@ -1,33 +1,25 @@
 export default {
   state: {
     user: {
-      major: ''
+      data: {
+        firstName: '',
+        lastName: '',
+        firstNameEN: '',
+        lastNameEN: '',
+        completed_at: '',
+        major: '',
+        status: ''
+      }
     }
   },
   mutations: {
-    setUser (state, payload) {
-      state.user = payload
-    },
-    setMajor (state, payload) {
-      state.user.major = payload
+    setUser(state, payload) {
+      state.user.data = payload
     }
-  },
-  actions: {
-    saveMajor ({
-      commit
-    }, payload) {
-      commit('setMajor', payload)
-    }
-    // logout ({commit}) {
-    //   commit('setUser', null)
-    // }
   },
   getters: {
-    user (state) {
-      return state.user
-    },
-    major (state) {
-      return state.user.major
+    user(state) {
+      return state.user.data
     }
   }
 }

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import LoginPage from '../views/LoginPage'
+import CompleteRegistrationPage from '../views/CompleteRegistrationPage'
 import IndexPage from '../views/IndexPage'
 import MajorSelectionPage from '../views/MajorSelectionPage'
 import ProfilePage from '../views/ProfilePage'
@@ -20,6 +21,11 @@ export default new Router({
       path: '/authen',
       name: 'authen',
       component: LoginPage
+    },
+    {
+      path: '/complete',
+      name: 'complete',
+      component: CompleteRegistrationPage
     },
     {
       path: '/steps',
