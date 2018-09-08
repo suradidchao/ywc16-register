@@ -69,8 +69,8 @@ export default new Router({
         {
           path: 'summary',
           named: 'summary',
-          component: SummaryPage
-          // beforeEnter: AuthGuard
+          component: SummaryPage,
+          beforeEnter: AuthGuard
         }
       ]
     }

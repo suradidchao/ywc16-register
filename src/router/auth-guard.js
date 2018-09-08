@@ -17,7 +17,7 @@ export default (to, from, next) => {
     majorQuestions = store.getters.programmingQuestions
   }
   console.log(talent)
-  if (profileOne.complete === true && profileTwo.complete === true && talent === true && generalQuestions.complete === true && majorQuestions.complete === true) {
+  if (profileOne.complete === true && profileTwo.complete === true && talent === true && generalQuestions.complete === true && majorQuestions.complete.complete === true) {
     next()
   } else {
     next('/steps/profile')
