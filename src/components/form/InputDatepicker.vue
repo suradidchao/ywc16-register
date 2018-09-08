@@ -10,13 +10,17 @@ export default {
   props: {
     question: String,
     errorMsg: String,
-    data: String
+    data: Date
   },
   data () {
     return {
       hasError: false,
       birthdate: this.data
     }
+  },
+  mounted() {
+    let element = document.querySelector("div.vdp-datepicker input")
+    element.classList.add("form-control", "input-lg", "input-css")
   },
   components: {
     Datepicker
@@ -28,5 +32,10 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
+
 
 

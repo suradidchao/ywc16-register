@@ -17,11 +17,16 @@ export default {
 
 <style>
 body {
-  background: url('./assets/Asset-1.svg'), url('./assets/bg-register.svg') center bottom no-repeat;
+  background: url('./assets/Asset-1.svg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   min-height: 100vh;
   height: 100%;
   color: #716AB1;
 }
+
 .input-css {
   border:2px solid #E3E0F1;
   color: #716AB1;

@@ -163,15 +163,18 @@
             </div>
           </div>
 
-            <div class="row">
+
+
+        </div>
+        <div class="row">
               <div class="col-md-4"></div>
               <div class="col-md-4" style="margin-top:50px; margin-bottom:50px;">
+                <center>
                     <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps">Save & Next  ></button>
+                    </center>
               </div>
               <div class="col-md-4"></div>
             </div>
-
-        </div>
     </div>
   </div>
 
