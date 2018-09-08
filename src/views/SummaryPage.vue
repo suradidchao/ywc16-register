@@ -1,28 +1,55 @@
 <template>
   <div>
-    <h2>Summary</h2>
-    <hr>
-    <div class="panel panel-default">
-      <div class="panel-heading">ข้อมูลส่วนตัว</div>
-      <div class="panel-body">
+     <div class="container-fluid">
+        <h2>Summary</h2>
+        <hr>
+        <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-12">
+                    <center>
+                      <h2>{{ summary.profile.title }} {{ summary.profile.firstName }} {{ summary.profile.lastName }}</h2>
+                      <h2> {{ major }}</h2>
+                    </center>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="container">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">ข้อมูลส่วนตัว</div>
+                          <div class="panel-body">
 
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">คำถามส่วนกลาง</div>
-      <div class="panel-body">
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">คำถามส่วนกลาง</div>
+                          <div class="panel-body">
+                              <ul v-for="(item, index) in summary.generalQuestions.generalQuestions" :key="index">
+                                <li>{{ item }}</li>
+                              </ul>
+                          </div>
+                        </div>
 
-      </div>
-    </div>
+                          <div class="panel panel-default">
+                          <div class="panel-heading">คำถามสาขา</div>
+                          <div class="panel-body">
+                              <ul v-for="(item, index) in summary.majorQuestions.majorQuestions" :key="index">
+                                <li>{{ item }}</li>
+                              </ul>
+                          </div>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-lg btn-default" @click="confirm">confirm</button>
+                            <button type="submit" class="btn btn-lg btn-default" @click="save">Edit</button>
+                        </center>
+                  </div>
+              </div>
+            </div>
+        </div>
+     </div>
 
-      <div class="panel panel-default">
-      <div class="panel-heading">คำถามสาขา</div>
-      <div class="panel-body">
 
-      </div>
-    </div>
-    <button type="submit" class="btn btn-lg btn-default" @click="cancel">Cancel</button>
-    <button type="submit" class="btn btn-lg btn-success" @click="save">Save</button>
   </div>
 </template>
 <script>
@@ -38,6 +65,7 @@ export default {
     const tokenExists = window.localStorage.getItem('ywc16_user_fb')
     let summary = this.$store.getters.summary
     this.summary = summary
+    console.log(summary);
     if (tokenExists) {
       console.log('token exists')
       // request jwt backend get data
@@ -87,3 +115,5 @@ export default {
   }
 }
 </script>
+
+
