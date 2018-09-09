@@ -13,12 +13,12 @@ export default {
     }
   },
   mutations: {
-    setUser(state, payload) {
+    setUser (state, payload) {
       state.user.data = payload
     }
   },
   getters: {
-    user(state) {
+    user (state) {
       return state.user.data
     }
   }

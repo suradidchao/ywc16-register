@@ -18,9 +18,9 @@ export default {
       birthdate: this.data
     }
   },
-  mounted() {
-    let element = document.querySelector("div.vdp-datepicker input")
-    element.classList.add("form-control", "input-lg", "input-css")
+  mounted () {
+    let element = document.querySelector('div.vdp-datepicker input')
+    element.classList.add('form-control', 'input-lg', 'input-css')
   },
   components: {
     Datepicker
@@ -32,10 +32,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
-
-
-

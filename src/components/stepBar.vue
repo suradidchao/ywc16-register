@@ -37,30 +37,30 @@
 </template>
 <script>
 export default {
- data () {
-   return {
-    //  step:
-   }
- },
- watch: {
-    '$route' (to, from) {
-      console.log(to.path);
-      if (to.path.includes('1')) {
-        // document.getElementById("step-1").classList.add('active');
-        // document.getElementById("step-1").classList.remove('disabled');
-        // document.getElementById("step-1").classList.remove('');
-      } else if (to.path.includes('2')) {
+  data () {
+    return {
+      //  step:
+    }
+  },
+  watch: {
+      '$route' (to, from) {
+        console.log(to.path)
+        if (to.path.includes('1')) {
+          // document.getElementById("step-1").classList.add('active');
+          // document.getElementById("step-1").classList.remove('disabled');
+          // document.getElementById("step-1").classList.remove('');
+        } else if (to.path.includes('2')) {
 
-      } else if (to.path.includes('3')) {
+        } else if (to.path.includes('3')) {
 
-      } else if (to.path.includes('4')) {
+        } else if (to.path.includes('4')) {
 
-      } else if (to.path.includes('5')) {
+        } else if (to.path.includes('5')) {
 
 
+        }
       }
     }
-  }
 }
 </script>
 <style>
