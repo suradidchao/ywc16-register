@@ -30,6 +30,12 @@
       <div class="progress"><div class="progress-bar"></div></div>
       <router-link to="/steps/5" class="bs-wizard-dot"></router-link>
     </div>
+
+      <div id="step-6" class="col-xs-2 bs-wizard-step">
+        <div class="text-center bs-wizard-stepnum">Step End</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+      <router-link to="/steps/6" class="bs-wizard-dot"></router-link>
+    </div>
 </div>
 
   </div>
@@ -38,7 +44,7 @@
 export default {
   data () {
     return {
-      stepEnd: 5
+      stepEnd: 6
     }
   },
   watch: {
@@ -46,7 +52,7 @@ export default {
         let id = to.path.split('/')
         let path = id[id.length - 1]
         const num = parseInt(path)
-        this.removeClassStep(1, 5)
+        this.removeClassStep(1, this.stepEnd)
         this.isStepActive(num)
       }
     },

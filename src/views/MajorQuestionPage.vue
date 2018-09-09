@@ -248,7 +248,7 @@ export default {
       } catch (error) {
         alert(error)
       }
-      await this.$router.push('/steps/summary')
+      await this.$router.push('/steps/6')
     },
     previousStep () {
        this.$router.push('4')

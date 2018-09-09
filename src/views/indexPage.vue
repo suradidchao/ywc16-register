@@ -70,7 +70,7 @@ import stepBar from '@/components/stepBar'
 export default {
   data () {
     return {
-      stepEnd: 5
+      stepEnd: 6
     }
   },
   mounted() {
@@ -78,7 +78,7 @@ export default {
       console.log(id)
       let path = id[id.length - 1]
       const num = parseInt(path)
-      this.removeClassStep(1, 5)
+      this.removeClassStep(1, this.stepEnd)
       this.isStepActive(num)
     },
     methods: {

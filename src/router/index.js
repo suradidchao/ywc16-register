@@ -81,6 +81,7 @@ export default new Router({
           path: 'summary',
           named: 'summary',
           component: SummaryPage,
+          alias: '6',
           beforeEnter: AuthGuard
         }
       ]

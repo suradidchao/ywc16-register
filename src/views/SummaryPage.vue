@@ -15,7 +15,7 @@
                   <br>
                   <br>
                   <br>
-                  <div class="container">
+                  <div class="">
                       <div class="panel panel-default">
                           <div class="panel-heading">ข้อมูลส่วนตัว</div>
                           <div class="panel-body">
@@ -40,8 +40,8 @@
                           </div>
                         </div>
                         <center>
+                            <button type="submit" class="btn btn-lg btn-default" @click="edit">Edit</button>
                             <button type="submit" class="btn btn-lg btn-default" @click="confirm">confirm</button>
-                            <button type="submit" class="btn btn-lg btn-default" @click="save">Edit</button>
                         </center>
                   </div>
               </div>
@@ -98,7 +98,7 @@ export default {
     }
   },
   methods: {
-    async save () {
+    async confirm () {
       try {
         let res = await HTTP.post('/registration/confirm')
         if (res.data.status === 'success') {
@@ -109,7 +109,7 @@ export default {
         alert(error)
       }
     },
-    cancel () {
+    edit () {
       this.$router.push('/steps/1')
     }
   }

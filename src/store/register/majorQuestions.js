@@ -3,7 +3,8 @@ export default {
     majorQuestions: {
       data: {
         majorQuestions: []
-      }
+      },
+      complete: false
     }
   },
   mutations: {
@@ -11,7 +12,7 @@ export default {
       state.majorQuestions.data = payload
     },
     setCompleteMajorQuestions (state, payload) {
-      state.majorQuestions.complete.complete = payload
+      state.majorQuestions.complete = payload
     }
   },
   actions: {
@@ -25,6 +26,9 @@ export default {
   getters: {
     majorQuestions (state) {
       return state.majorQuestions
+    },
+    completeMajorQuestions (state) {
+      return state.majorQuestions.complete
     }
   }
 }
