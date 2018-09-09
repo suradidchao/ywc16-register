@@ -251,7 +251,7 @@ export default {
       await this.$router.push('/steps/summary')
     },
     previousStep () {
-      this.$router.go(-1)
+       this.$router.push('4')
     }
   },
   components: {
