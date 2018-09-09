@@ -1,10 +1,8 @@
 <template>
   <div>
     <div class='form-group' :class="formGroupClass">
-      <!-- <label class="control-label" >{{ question }}</label>
-      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label> -->
-      <!-- <p>{{ errorMsg }}</p> -->
-      <input type="text"
+      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
+      <input :type="type"
       v-model="text"
       class="form-control input-lg input-css"
       @change="onInput"
@@ -23,6 +21,10 @@ export default {
   props: {
     question: String,
     errorMsg: String,
+    type: {
+      default: 'text',
+      type: String
+    },
     regularExpression: String,
     required: Boolean,
     data: String

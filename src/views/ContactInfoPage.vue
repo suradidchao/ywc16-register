@@ -5,6 +5,7 @@
     <hr>
       <div class="panel panel-default">
         <div class="panel-body">
+          <form>
           <div class="row">
             <div class="col-md-6">
               <div class="row">
@@ -35,40 +36,57 @@
                   </app-form-input-dropdown>
                 </div>
                 <div class="col-md-6">
-                  <app-form-input-text
+                  <div :class="{'form-group': true, 'has-error': errors.has('postalCode') }">
+                    <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('postalCode') }" minlength="5" maxlength="5" name="postalCode" v-model="formData.postalCode"  type="text" placeholder="รหัสไปรษณีย์">
+                    <label class="text-danger" v-show="errors.has('postalCode')">กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง</label>
+                    <br>
+                </div>
+                  <!-- <app-form-input-text
                     :data="formData.postalCode"
                     :question="'รหัสไปรษณีย์'"
                     @value="postalCode"
                     :errorMsg="'Invalid post number'"
-                    :required="false"
+                    :required="true"
                     >
-                  </app-form-input-text>
+                  </app-form-input-text> -->
                 </div>
               </div>
 
                <div class="row">
                 <div class="col-md-12">
-                  <app-form-input-text
+                <div :class="{'form-group': true, 'has-error': errors.has('email') }">
+                  <input v-validate="'required|email'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('email') }" name="email" v-model="formData.email"  type="text" placeholder="Email">
+                  <label class="text-danger" v-show="errors.has('email')">กรุณากรอกอีเมล์ให้ถูกต้อง</label>
+                  <br>
+                </div>
+                  <!-- <app-form-input-text
                       :data="formData.email"
                       :question="'Email'"
                       @value="email"
                       :errorMsg="'Invalid email'"
-                      :required="false"
+                      :required="true"
+                      :typeIuput="'email'"
                       >
-                  </app-form-input-text>
+                  </app-form-input-text> -->
                 </div>
               </div>
 
                <div class="row">
                 <div class="col-md-12">
-                    <app-form-input-text
+                <div :class="{'form-group': true, 'has-error': errors.has('phone') }">
+                    <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('phone') }" minlength="10" maxlength="10" name="phone" v-model="formData.phone"  type="text" placeholder="เบอร์ติดต่อ">
+                    <label class="text-danger" v-show="errors.has('phone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
+                    <br>
+                </div>
+                    <!-- <app-form-input-text
                         :data="formData.phone"
-                        :question="'เบอร์ติดต่อฉุกเฉิน'"
+                        :question="'เบอร์ติดต่อ'"
                         @value="phone"
                         :errorMsg="'Invalid contact number'"
-                        :required="false"
+                        :typeIuput="'tel'"
+                        :required="true"
                         >
-                    </app-form-input-text>
+                    </app-form-input-text> -->
                 </div>
               </div>
 
@@ -80,7 +98,7 @@
                         :question="'ชื่อผู้ปกครอง/ชื่อผู้ติดต่อฉุกเฉิน'"
                         @value="emergencyName"
                         :errorMsg="'Invalid parent name'"
-                        :required="false"
+                        :required="true"
                         >
                     </app-form-input-text>
                 </div>
@@ -88,14 +106,19 @@
 
               <div class="row">
                 <div class="col-md-6">
-                    <app-form-input-text
+                  <div :class="{'form-group': true, 'has-error': errors.has('emergencyPhone') }">
+                    <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('emergencyPhone') }" minlength="10" maxlength="10" name="emergencyPhone" v-model="formData.emergencyPhone"  type="text" placeholder="เบอร์ติดต่อฉุกเฉิน">
+                    <label class="text-danger" v-show="errors.has('emergencyPhone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
+                    <br>
+                </div>
+                    <!-- <app-form-input-text
                         :data="formData.emergencyPhone"
                         :question="'เบอร์ติดต่อฉุกเฉิน'"
                         @value="emergencyPhone"
                         :errorMsg="'Invalid parent contact number'"
-                        :required="false"
+                        :required="true"
                         >
-                        </app-form-input-text>
+                        </app-form-input-text> -->
                 </div>
                 <div class="col-md-6">
                     <app-form-input-text
@@ -103,7 +126,7 @@
                         :question="'เกี่ยวข้องเป็น'"
                         @value="emergencyPhoneRelated"
                         :errorMsg="'Invalid parent contact number'"
-                        :required="false"
+                        :required="true"
                         >
                         </app-form-input-text>
                 </div>
@@ -116,7 +139,7 @@
                       :question="'ID Skype'"
                       @value="skype"
                       :errorMsg="'Invalid skype id'"
-                      :required="false"
+                      :required="true"
                       >
                     </app-form-input-text>
                 </div>
@@ -189,11 +212,12 @@
             <br>
                 <div class="col-md-12">
                   <center>
-                    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+                    <button type="button" class="btn btn-lg btn-default" @click="previousStep">Back</button>
                     <button type="submit" class="btn btn-lg btn-default" @click="nextStep">Save & Next</button>
                   </center>
                 </div>
           </div>
+          </form>
         </div>
       </div>
     </div>
@@ -241,21 +265,21 @@ export default {
     province (value) {
       this.formData.province = value
     },
-    postalCode (value) {
-      this.formData.postalCode = value
-    },
-    email (value) {
-      this.formData.email = value
-    },
-    phone (value) {
-      this.formData.phone = value
-    },
+    // postalCode (value) {
+    //   this.formData.postalCode = value
+    // },
+    // email (value) {
+    //   this.formData.email = value
+    // },
+    // phone (value) {
+    //   this.formData.phone = value
+    // },
     emergencyName (value) {
       this.formData.emergencyName = value
     },
-    emergencyPhone (value) {
-      this.formData.emergencyPhone = value
-    },
+    // emergencyPhone (value) {
+    //   this.formData.emergencyPhone = value
+    // },
     emergencyPhoneRelated (value) {
       this.formData.emergencyPhoneRelated = value
     },
@@ -284,7 +308,7 @@ export default {
       await this.$router.push('3')
     },
     previousStep () {
-      this.$router.go(-1)
+      this.$router.push('1')
     }
   },
   created () {
@@ -293,18 +317,12 @@ export default {
     let profileTwoData = profileTwo.data
     if (tokenExists) {
       if (isEmpty(profileTwoData)) {
-        console.log('Object is empty')
         this.$store.dispatch('completeProfileTwo', false)
       } else {
-        console.log('Object is NOT empty')
         this.$store.dispatch('completeProfileTwo', true)
       }
       this.formData = profileTwoData
-      console.log('token exists')
-      // request jwt backend get data
-      // redirect route
     } else {
-      console.log('token not exists')
       this.$router.push('/authen')
     }
   }
