@@ -1,6 +1,6 @@
 <template>
   <div>
-      <datepicker v-model="birthdate"></datepicker>
+      <datepicker v-model="birthdate" :placeholder="question"></datepicker>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   props: {
     question: String,
     errorMsg: String,
-    data: Date
+    data: Number
   },
   data () {
     return {

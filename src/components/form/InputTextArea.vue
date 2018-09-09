@@ -66,9 +66,6 @@ export default {
       }
       // validate if not pass also set isError to true
     },
-    saveState () {
-
-    },
     isEmptyString (text) {
       if (text === '') {
         return true

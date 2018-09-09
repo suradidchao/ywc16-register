@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group" :class="formGroupClass">
-    <select v-model="selectItem" class="form-control input-lg input-css" @change="onSelect">
+    <select v-model="selectItem" class="form-control input-lg input-css" @change="onSelect"  :required='required'   @blur='validateInputAndSaveState()'>
       <option value="" selected disabled>{{ question }}</option>
       <option v-for="option in dropdownData" v-bind:value="option" v-bind:key="option">
           {{ option }}
@@ -17,6 +17,7 @@ export default {
     question: String,
     errorMsg: String,
     dropdownData: Array,
+    required: Boolean,
     data: String
   },
   data () {
@@ -25,9 +26,44 @@ export default {
       selectItem: this.data
     }
   },
+  computed: {
+    formGroupClass () {
+      return {
+        'has-error': this.isError
+      }
+    },
+    errorMsgClass () {
+      return {
+        'hidden': this.showErrorMsg
+      }
+    },
+    showErrorMsg () {
+      return !this.isError
+    }
+  },
   methods: {
     onSelect () {
       this.$emit('value', this.selectItem)
+    },
+     validateInputAndSaveState () {
+      this.validateInput()
+    },
+    validateInput () {
+      if (this.required) {
+        if (this.isEmptyString(this.selectItem)) {
+          this.isError = true
+        } else {
+          this.isError = false
+        }
+      }
+      // validate if not pass also set isError to true
+    },
+    isEmptyString (text) {
+      if (text === '') {
+        return true
+      } else {
+        return false
+      }
     }
   }
 }
