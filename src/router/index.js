@@ -4,19 +4,24 @@ import Router from 'vue-router'
 import LoginPage from '../views/LoginPage'
 import CompleteRegistrationPage from '../views/CompleteRegistrationPage'
 import IndexPage from '../views/IndexPage'
-import MajorSelectionPage from '../views/MajorSelectionPage'
 import ProfilePage from '../views/ProfilePage'
 import ContactInfoPage from '../views/ContactInfoPage'
 import TalentPage from '../views/TalentPage'
 import GeneralQuestionPage from '../views/GeneralQuestionPage'
 import MajorQuestionPage from '../views/MajorQuestionPage'
 import SummaryPage from '../views/SummaryPage'
+import getMajorPage from '../views/getMajorPage'
 import AuthGuard from './auth-guard'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/major/:major',
+      name: 'authen',
+      component: getMajorPage
+    },
     {
       path: '/authen',
       name: 'authen',
@@ -37,11 +42,11 @@ export default new Router({
           name: 'authen',
           redirect: '/authen'
         },
-        {
-          path: 'selection',
-          named: 'majorSelection',
-          component: MajorSelectionPage
-        },
+        // {
+        //   path: 'selection',
+        //   named: 'majorSelection',
+        //   component: MajorSelectionPage
+        // },
         {
           path: 'profile',
           named: 'profile',

@@ -10,9 +10,6 @@ export default {
     setMajorQuestions (state, payload) {
       state.majorQuestions.data = payload
     },
-    setMajor (state, payload) {
-      state.majorQuestions.major = payload.major
-    },
     setCompleteMajorQuestions (state, payload) {
       state.majorQuestions.complete.complete = payload
     }
@@ -28,9 +25,6 @@ export default {
   getters: {
     majorQuestions (state) {
       return state.majorQuestions
-    },
-    major (state) {
-      return state.majorQuestions.major
     }
   }
 }

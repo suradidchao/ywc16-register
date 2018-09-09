@@ -15,11 +15,17 @@ export default {
   mutations: {
     setUser (state, payload) {
       state.user.data = payload
+    },
+    setMajor (state, payload) {
+      state.user.data.major = payload
     }
   },
   getters: {
     user (state) {
       return state.user.data
+    },
+    major (state) {
+      return state.user.data.major
     }
   }
 }
