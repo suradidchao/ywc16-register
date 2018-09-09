@@ -28,6 +28,7 @@
                     :data="formData.province"
                     :question="'จังหวัด'"
                     @value="province"
+                    :required="true"
                     :errorMsg="'Invalid province!!'"
                     :dropdownData="dropdownData['province']"
                     >
@@ -132,6 +133,7 @@
                       :data="formData.shirtSize"
                       :question="'ขนาดเสื้อ (รอบอก, ความยาว)'"
                       @value="shirtSize"
+                      :required="true"
                       :errorMsg="'shirt size missing!!'"
                       :dropdownData="dropdownData['shirtSize'].map((item) => item.value )"
                       >
@@ -162,6 +164,7 @@
                       @value="food"
                       :errorMsg="'Invalid food!!'"
                       :dropdownData="dropdownData['food']"
+                      :required="true"
                       >
                       </app-form-input-dropdown>
                 </div>

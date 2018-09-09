@@ -25,6 +25,7 @@
                 :question="'คำนำหน้าชื่อ'"
                 :data="formData.title"
                 @value="title"
+                :required="true"
                 :errorMsg="'There is test'"
                 :dropdownData="dropdownData['title']"
               ></app-input-dropdown>
@@ -99,6 +100,7 @@
                 :question="'เพศ'"
                 :data="formData.sex"
                 @value="sex"
+                :required="true"
                 :errorMsg="'There is test'"
                 :dropdownData="dropdownData['sex']"
               ></app-input-dropdown>
@@ -108,6 +110,7 @@
               :question="'กรุ๊ปเลือด'"
               :data="formData.blood"
               @value="blood"
+              :required="true"
               :errorMsg="'There is test'"
               :dropdownData="dropdownData['blood']">
             </app-input-dropdown>
@@ -117,9 +120,10 @@
                     :question="'ศาสนา'"
                     :data="formData.religion"
                     @value="religion"
+                    :required="true"
                     :errorMsg="'There is test'"
                     :dropdownData="dropdownData['religion']">
-                  </app-input-dropdown>
+              </app-input-dropdown>
 
             </div>
           </div>
@@ -158,6 +162,7 @@
                 :data="formData.academicYear"
                 @value="academicYear"
                 :errorMsg="'There is test'"
+                :required="true"
                 :dropdownData="dropdownData['academicYear']">
               </app-input-dropdown>
             </div>
