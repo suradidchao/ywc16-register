@@ -73,6 +73,12 @@ export default {
       stepEnd: 6
     }
   },
+  created () {
+    let majorUser = window.localStorage.getItem('ywc16_user_major')
+    if (majorUser) {
+      // this.$store.commit('setMajor', majorUser)
+    }
+  },
   mounted() {
       let id = window.location.pathname.split('/')
       console.log(id)

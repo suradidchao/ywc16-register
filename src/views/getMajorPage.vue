@@ -12,7 +12,7 @@ export default {
   created () {
     const filterMajor = ['design', 'marketing', 'content', 'programming']
     if (filterMajor.find(major => major.includes(this.major))) {
-        this.$store.commit('setMajor', this.major)
+        window.localStorage.setItem('ywc16_user_major', this.major)
         this.$router.push('/steps/1')
     } else {
       console.log('not major')
