@@ -1,7 +1,12 @@
 <template>
   <div>
       <center>
-      <img src="../../assets/no-pic.png" id="output" class="img-responsive img-rounded img-thumbnail" style="border:2px solid #E3E0F1;">
+        <div v-if="isFile">
+          <img :src="file" id="output" class="img-responsive img-rounded img-thumbnail" style="border:2px solid #E3E0F1;">
+        </div>
+        <div v-else>
+          <img src="../../assets/no-pic.png" id="output" class="img-responsive img-rounded img-thumbnail" style="border:2px solid #E3E0F1;">
+        </div>
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
        <div class='form-group' :class="formGroupClass">
           <br>
@@ -28,6 +33,13 @@ export default {
     }
   },
   computed: {
+    isFile () {
+      let isImage = false
+      if(this.file.includes('firebasestorage.googleapis.com')){
+        isImage = true
+      }
+      return isImage
+    },
     formGroupClass () {
       return {
         'has-error': this.isError
@@ -44,7 +56,7 @@ export default {
   },
   methods: {
     handleFileUpload () {
-       var output = document.getElementById('output');
+      let output = document.getElementById('output');
       output.src = URL.createObjectURL(event.target.files[0]);
       this.file = this.$refs.file.files[0]
       this.$emit('value', this.file)
