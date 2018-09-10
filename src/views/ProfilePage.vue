@@ -302,10 +302,12 @@ export default {
     appFormInputUploadFile
   },
   created() {
-    let tokenExists = window.localStorage.getItem("ywc16_user_fb");
+    let tokenExists = window.localStorage.getItem("ywc16_user_fb")
+    let majorUser = window.localStorage.getItem('ywc16_user_major')
     let profileOne = this.$store.getters.profileOne;
     let profileOneData = profileOne.data;
-    if (tokenExists) {
+    if (tokenExists && majorUser) {
+      this.$store.commit('setMajor', majorUser)
       if (isEmpty(profileOneData)) {
         console.log("Object is empty");
         this.$store.dispatch("completeProfileOne", false);
