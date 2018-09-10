@@ -19,7 +19,7 @@ export default new Router({
   routes: [
     {
       path: '/major/:major',
-      name: 'authen',
+      name: 'getmajor',
       component: getMajorPage
     },
     {
