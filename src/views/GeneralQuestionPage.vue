@@ -10,7 +10,7 @@
             <div class="col-md-12">
               <app-form-input-text-area
                       :question="questionsData['generalQuestions'][0]"
-                      :errorMsg = "'กรุณาใส่'"
+                      :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
                       :maxLength = "3000"
                       :textAreaRow = "10"
                       :required="true"
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <app-form-input-text-area
                   :question="questionsData['generalQuestions'][1]"
-                  :errorMsg = "'กรุณาใส่'"
+                  :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -34,7 +34,7 @@
             <div class="col-md-12">
                 <app-form-input-text-area
                     :question="questionsData['generalQuestions'][2]"
-                    :errorMsg = "'กรุณาใส่'"
+                    :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
                     :maxLength = "3000"
                     :textAreaRow = "10"
                     :required="true"

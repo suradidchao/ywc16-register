@@ -67,7 +67,7 @@ export default {
       // validate if not pass also set isError to true
     },
     isEmptyString (text) {
-      if (text === '') {
+      if (!text) {
         return true
       } else {
         return false

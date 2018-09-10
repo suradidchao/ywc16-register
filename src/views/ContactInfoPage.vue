@@ -97,7 +97,7 @@
                         :data="formData.emergencyName"
                         :question="'ชื่อผู้ปกครอง/ชื่อผู้ติดต่อฉุกเฉิน'"
                         @value="emergencyName"
-                        :errorMsg="'Invalid parent name'"
+                        :errorMsg="'กรุณากรอกชื่อผู้ปกครอง/ชื่อผู้ติดต่อฉุกเฉิน'"
                         :required="true"
                         >
                     </app-form-input-text>
@@ -125,7 +125,7 @@
                         :data="formData.emergencyPhoneRelated"
                         :question="'เกี่ยวข้องเป็น'"
                         @value="emergencyPhoneRelated"
-                        :errorMsg="'Invalid parent contact number'"
+                        :errorMsg="'กรุณากรอกความเกี่ยวข้อง'"
                         :required="true"
                         >
                         </app-form-input-text>
@@ -138,7 +138,7 @@
                       :data="formData.skype"
                       :question="'ID Skype'"
                       @value="skype"
-                      :errorMsg="'Invalid skype id'"
+                      :errorMsg="'กรุณากรอก Skype ID'"
                       :required="true"
                       >
                     </app-form-input-text>
