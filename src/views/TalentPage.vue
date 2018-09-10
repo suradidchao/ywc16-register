@@ -1,7 +1,7 @@
 <template>
   <div>
      <div class="container-fluid">
-    <h1>Talent</h1>
+    <h1>Step 3</h1>
     <hr>
       <div class="panel panel-default">
         <div class="panel-body">
@@ -11,7 +11,7 @@
                   :question="'รู้จักค่ายทางไหน'"
                   :checkboxData="dropdownData['channel']"
                   :checkboxAnswers="formData.knowCamp"
-                  :errorMsg="'Please select channel'"
+                  :errorMsg="'โปรดเลือกช่องทางที่รู้จักค่าย'"
                   :required="true"
                   @value="channel"
                   >
