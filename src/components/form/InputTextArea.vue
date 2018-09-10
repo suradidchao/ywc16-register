@@ -1,13 +1,14 @@
 <template>
   <div>
     <div class="form-group" :class="formGroupClass">
-      <label for="textArea">{{ question }}</label>
+      <label for="textArea" v-show="!isError">{{ question }}</label>
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
       <textarea class="form-control input-lg input-css"
         :rows="textAreaRow"
         :pattern="regularExpression"
         :maxLength="maxLength"
         :required='required'
+        :placeholder="question"
         v-model='answer'
         @blur='validateInputAndSaveState()'
         @change="onInput"

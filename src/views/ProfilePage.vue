@@ -191,6 +191,7 @@
 
 <script>
 import { HTTP } from "../core/http-common.js";
+import { firebaseStorage } from '../core/firebaseHelper.js'
 import { isEmpty } from "../utils/helper.js";
 import dropdownData from "./dropdown-data.json";
 import InputText from "@/components/form/InputText";
@@ -285,14 +286,32 @@ export default {
       this.formData.title = value;
     },
     async nextSteps () {
+      await this.uploadFile()
       await this.$store.commit('setProfileOne', this.formData)
       try {
         await HTTP.put('/registration/info', this.formData)
       } catch (error) {
         alert(error)
       }
-
       this.$router.push('2')
+    },
+    async uploadFile () {
+        let tokenUser = JSON.parse(window.localStorage.getItem('ywc16_user_fb'))
+        let getFile = this.formData.picture
+        let storageRef = firebaseStorage.ref('accounts/'+ tokenUser.userID + '.jpg')
+        const responseFile = await storageRef.put(getFile)
+        if (responseFile) {
+           console.log('upload success')
+           const urlImg = await storageRef.getDownloadURL()
+           if (urlImg) {
+              console.log('get getDownloadURL')
+              this.formData.picture = urlImg
+           } else {
+            console.log('get url error')
+           }
+        } else {
+          console.log('upload picture error')
+        }
     }
   },
   components: {
