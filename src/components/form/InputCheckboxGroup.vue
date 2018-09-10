@@ -1,16 +1,34 @@
 <template>
-  <div>
+  <div class='checkboxes-container'>
     <label> {{ question }} </label> <label style="color:#a94442" :class="errorMsgClass"> {{ errorMsg }} </label>
-    <div class="checkbox" v-for="checkbox in checkboxData" :key="checkbox">
-      <label v-if="checkbox === 'อื่นๆ'">
-        <input type="checkbox"  :value="checkbox" @click="addRemoveCheckboxValue">
-        <label>{{ checkbox }}</label>
-        <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
-      </label>
-      <label v-else>
-        <input type="checkbox" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
-        <label>{{ checkbox }}</label>
-      </label>
+    <div class="checkbox" v-for="(checkbox, index) in checkboxData" :key="checkbox">
+      <div class="col-md-6" v-if="index < 3">
+        <div class="checkbox-container">
+          <label class="label-container" v-if="checkbox === 'อื่นๆ'">
+            <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue">
+            <label class="checkbox-label">{{ checkbox }}</label>
+            <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
+          </label>
+          <label class="label-container" v-else>
+            <input type="checkbox" class="form-radio" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
+            <label class="checkbox-label">{{ checkbox }}</label>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-6" v-else>
+        <div class="checkbox-container">
+          <label class="label-container"  v-if="checkbox === 'อื่นๆ'">
+            <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue">
+            <label class="checkbox-label">{{ checkbox }}</label>
+              <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
+            </label>
+            <label class="label-container"  v-else>
+              <input type="checkbox" class="form-radio" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
+            <label class="checkbox-label">{{ checkbox }}</label>
+          </label>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -80,7 +98,8 @@ export default {
     },
     isChecked (checkboxValue) {
       let checked = this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
-      console.log('checked: ' + checked)
+      // console.log(this.checkboxAnswers)
+      console.log(checkboxValue)
       return this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
     }
   },
@@ -92,3 +111,54 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+.checkbox-label {
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+.checkbox-container {
+  margin-bottom: 4rem;
+}
+
+.checkboxes-container {
+  height: 300px;
+}
+
+.form-radio
+{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #ffffff;
+     color: #716AB1;
+     top: 10px;
+     height: 40px;
+     width: 40px;
+     border: 2px solid #E3E0F1;
+     border-radius: 50px;
+     cursor: pointer;
+     margin-right: 7px;
+     outline: none;
+}
+.form-radio:checked::before
+{
+     position: absolute;
+     font: 20px/1 'Open Sans', sans-serif;
+     left: 11px;
+     top: 7px;
+     content: '\02143';
+     transform: rotate(40deg);
+}
+.form-radio:hover
+{
+     background-color: #ffffff;
+}
+.form-radio:checked
+{
+     background-color: #ffffff;
+}
+</style>
