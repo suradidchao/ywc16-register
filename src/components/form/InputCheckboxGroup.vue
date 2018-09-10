@@ -7,7 +7,7 @@
           <label class="label-container" v-if="checkbox === 'อื่นๆ'">
             <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue">
             <label class="checkbox-label">{{ checkbox }}</label>
-            <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
+            <input type="text" class="checkbox-input" @blur="editCheckboxOther" v-model="checkboxOther">
           </label>
           <label class="label-container" v-else>
             <input type="checkbox" class="form-radio" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
@@ -20,7 +20,7 @@
           <label class="label-container"  v-if="checkbox === 'อื่นๆ'">
             <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue">
             <label class="checkbox-label">{{ checkbox }}</label>
-              <input type="text" @blur="editCheckboxOther" v-model="checkboxOther">
+              <input type="text" class="checkbox-input" @blur="editCheckboxOther" v-model="checkboxOther">
             </label>
             <label class="label-container"  v-else>
               <input type="checkbox" class="form-radio" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
@@ -116,6 +116,21 @@ export default {
 .checkbox-label {
   margin-top: 25px;
   margin-left: 10px;
+}
+
+.checkbox-input {
+  height: 40px;
+  background-color: #ffffff;
+  border: 2px solid #E3E0F1;
+  color: #716AB1;
+
+}
+
+.checkbox-input:focus{
+  border-color: #716AB1;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(160, 160, 232, 1), 0 0 8px rgba(113, 106, 177, 1);
+          box-shadow: inset 0 1px 1px rgba(160, 160, 232, 1), 0 0 8px rgba(113, 106, 177, 1);
 }
 
 .checkbox-container {
