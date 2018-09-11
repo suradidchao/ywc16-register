@@ -172,14 +172,14 @@
 
         </div>
         <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-4" style="margin-top:50px; margin-bottom:50px;">
-                <center>
-                    <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps">Save & Next  ></button>
-                    </center>
-              </div>
-              <div class="col-md-4"></div>
-            </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4" style="margin-top:50px; margin-bottom:50px;">
+            <center>
+                <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps" :disabled=isDisabled>Save & Next  ></button>
+            </center>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
     </div>
   </div>
 
@@ -203,6 +203,7 @@ export default {
   data() {
     return {
       dropdownData,
+      isDisabled: false,
       formData: {
         picture: {},
         title: "",
@@ -280,25 +281,22 @@ export default {
       this.formData.department = value;
     },
     picture(value) {
-      // console.log(value);
       this.formData.picture = value;
     },
     title(value) {
       this.formData.title = value;
     },
     async nextSteps () {
-      if () {
-
+      if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
+          this.isDisabled = true
+          await this.uploadFile()
       }
-      // if (typeof(this.formData.picture) != String && typeof(this.formData.picture) == Object) {
-      //   await this.uploadFile()
-      // }
-      // await this.$store.commit('setProfileOne', this.formData)
-      // try {
-      //   await HTTP.put('/registration/info', this.formData)
-      // } catch (error) {
-      //   alert(error)
-      // }
+      await this.$store.commit('setProfileOne', this.formData)
+      try {
+        await HTTP.put('/registration/info', this.formData)
+      } catch (error) {
+        alert(error)
+      }
       this.$router.push('2')
     },
     async uploadFile () {
