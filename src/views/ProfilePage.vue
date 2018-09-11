@@ -289,7 +289,7 @@ export default {
     async nextSteps () {
       try {
         this.$store.commit('setProfileOne', this.formData)
-        await HTTP.put('/registration/', this.formData)
+        await HTTP.put('/registration/info', this.formData)
         this.$router.push('2')
       } catch (error) {
         alert(error)
