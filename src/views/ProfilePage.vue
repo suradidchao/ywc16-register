@@ -172,14 +172,14 @@
 
         </div>
         <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-4" style="margin-top:50px; margin-bottom:50px;">
-                <center>
-                    <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps">Save & Next  ></button>
-                    </center>
-              </div>
-              <div class="col-md-4"></div>
-            </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4" style="margin-top:50px; margin-bottom:50px;">
+            <center>
+                <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps" :disabled=isDisabled>Save & Next  ></button>
+            </center>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
     </div>
   </div>
 
@@ -203,6 +203,7 @@ export default {
   data() {
     return {
       dropdownData,
+      isDisabled: false,
       formData: {
         picture: {},
         title: '',
@@ -279,21 +280,24 @@ export default {
     department (value) {
       this.formData.department = value
     },
-    picture (value) {
-      // console.log(value)
-      this.formData.picture = value
+    picture(value) {
+      this.formData.picture = value;
     },
     title (value) {
       this.formData.title = value
     },
     async nextSteps () {
+      if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
+          this.isDisabled = true
+          await this.uploadFile()
+      }
+      await this.$store.commit('setProfileOne', this.formData)
       try {
-        this.$store.commit('setProfileOne', this.formData)
         await HTTP.put('/registration/info', this.formData)
-        this.$router.push('2')
       } catch (error) {
         alert(error)
       }
+      this.$router.push('2')
     },
     async uploadFile () {
       let tokenUser = JSON.parse(window.localStorage.getItem('ywc16_user_fb'))
