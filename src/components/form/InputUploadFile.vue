@@ -32,10 +32,14 @@ export default {
       isError: false
     }
   },
+  created() {
+      this.file = this.data
+  },
   computed: {
     isFile () {
+      console.log('isFile');
       let isImage = false
-      if(this.file.includes('firebasestorage.googleapis.com')){
+      if(typeof(this.file) == String && this.file.includes('firebasestorage.googleapis.com')){
         isImage = true
       }
       return isImage

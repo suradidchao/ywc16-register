@@ -196,7 +196,7 @@
                   <center>
                     <br>
                     <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                    <button type="submit" class="btn btn-lg btn-default" @click="nextStep">Save & Next</button>
+                    <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep">Save & Next</button>
                   </center>
                   <br>
               </div>

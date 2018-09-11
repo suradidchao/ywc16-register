@@ -280,19 +280,25 @@ export default {
       this.formData.department = value;
     },
     picture(value) {
+      // console.log(value);
       this.formData.picture = value;
     },
     title(value) {
       this.formData.title = value;
     },
     async nextSteps () {
-      await this.uploadFile()
-      await this.$store.commit('setProfileOne', this.formData)
-      try {
-        await HTTP.put('/registration/info', this.formData)
-      } catch (error) {
-        alert(error)
+      if () {
+
       }
+      // if (typeof(this.formData.picture) != String && typeof(this.formData.picture) == Object) {
+      //   await this.uploadFile()
+      // }
+      // await this.$store.commit('setProfileOne', this.formData)
+      // try {
+      //   await HTTP.put('/registration/info', this.formData)
+      // } catch (error) {
+      //   alert(error)
+      // }
       this.$router.push('2')
     },
     async uploadFile () {
@@ -322,11 +328,9 @@ export default {
   },
   created() {
     let tokenExists = window.localStorage.getItem("ywc16_user_fb")
-    let majorUser = window.localStorage.getItem('ywc16_user_major')
     let profileOne = this.$store.getters.profileOne;
     let profileOneData = profileOne.data;
-    if (tokenExists && majorUser) {
-      this.$store.commit('setMajor', majorUser)
+    if (tokenExists) {
       if (isEmpty(profileOneData)) {
         console.log("Object is empty");
         this.$store.dispatch("completeProfileOne", false);
