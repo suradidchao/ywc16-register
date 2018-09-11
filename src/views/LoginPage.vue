@@ -28,8 +28,10 @@ export default {
     async init () {
       try {
         let {token} = await this.getYWC16AccessToken()
-        this.initialiseUserData(token)
-        if (!this.isUserCompleteRegistration()){
+        let userData = await this.initialiseUserData(token)
+        console.log('user datatata')
+        console.log(userData)
+        if (!this.isUserCompleteRegistration(userData.data.payload.status)){
           this.$router.push('/steps/1')
         } else {
           this.$router.push('complete')
@@ -139,8 +141,8 @@ export default {
         alert(error)
       }
     },
-    isUserCompleteRegistration () {
-      return this.$store.getters.user.status === 'completed' ? true : false
+    isUserCompleteRegistration (registrationStatus) {
+      return registrationStatus === 'completed' ? true : false
     }
 
   }
