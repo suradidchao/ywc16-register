@@ -65,7 +65,7 @@ export default {
     const tokenExists = window.localStorage.getItem('ywc16_user_fb')
     let summary = this.$store.getters.summary
     this.summary = summary
-    console.log(summary);
+    console.log(summary)
     if (tokenExists) {
       console.log('token exists')
       // request jwt backend get data
@@ -115,5 +115,3 @@ export default {
   }
 }
 </script>
-
-

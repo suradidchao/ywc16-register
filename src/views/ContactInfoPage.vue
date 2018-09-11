@@ -299,13 +299,14 @@ export default {
       this.formData.foodAllergy = value
     },
     async nextStep () {
-      await this.$store.commit('setProfileTwo', this.formData)
       try {
+        this.$store.commit('setProfileTwo', this.formData)
         await HTTP.put('/registration/contact', this.formData)
+        this.$router.push('3')
       } catch (error) {
         alert(error)
       }
-      await this.$router.push('3')
+
     },
     previousStep () {
       this.$router.push('1')

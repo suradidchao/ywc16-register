@@ -91,13 +91,13 @@ export default {
       this.formData.generalQuestions[2] = value
     },
     async nextSteps () {
-      await this.$store.dispatch('addGeneralQuestions', this.formData)
       try {
+        this.$store.dispatch('addGeneralQuestions', this.formData)
         await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
+        this.$router.push('5')
       } catch (error) {
         alert(error)
       }
-      await this.$router.push('5')
     },
     previousStep () {
       this.$router.go(-1)
