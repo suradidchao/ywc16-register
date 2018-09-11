@@ -190,14 +190,14 @@
 </template>
 
 <script>
-import { HTTP } from "../core/http-common.js";
+import { HTTP } from '../core/http-common.js'
 import { firebaseStorage } from '../core/firebaseHelper.js'
-import { isEmpty } from "../utils/helper.js";
-import dropdownData from "./dropdown-data.json";
-import InputText from "@/components/form/InputText";
-import InputDropdown from "@/components/form/InputDropdown";
-import InputDatepicker from "@/components/form/InputDatepicker";
-import appFormInputUploadFile from "@/components/form/InputUploadFile";
+import { isEmpty } from '../utils/helper.js'
+import dropdownData from './dropdown-data.json'
+import InputText from '@/components/form/InputText'
+import InputDropdown from '@/components/form/InputDropdown'
+import InputDatepicker from '@/components/form/InputDatepicker'
+import appFormInputUploadFile from '@/components/form/InputUploadFile'
 
 export default {
   data() {
@@ -206,85 +206,85 @@ export default {
       isDisabled: false,
       formData: {
         picture: {},
-        title: "",
-        firstName: "",
-        lastName: "",
-        firstNameEN: "",
-        lastNameEN: "",
-        nickname: "",
-        birthdate: "",
-        sex: "",
-        blood: "",
-        religion: "",
-        academicYear: "",
-        university: "",
-        faculty: "",
-        department: ""
+        title: '',
+        firstName: '',
+        lastName: '',
+        firstNameEN: '',
+        lastNameEN: '',
+        nickname: '',
+        birthdate: '',
+        sex: '',
+        blood: '',
+        religion: '',
+        academicYear: '',
+        university: '',
+        faculty: '',
+        department: ''
       }
-    };
+    }
   },
   computed: {
-    major() {
-      return this.$store.getters.major;
+    major () {
+      return this.$store.getters.major
     }
   },
   methods: {
-    firstName(value) {
-      this.formData.firstName = value;
+    firstName (value) {
+      this.formData.firstName = value
     },
-    lastName(value) {
-      this.formData.lastName = value;
+    lastName (value) {
+      this.formData.lastName = value
     },
-    firstNameEN(value) {
-      const regex = /^[a-zA-Z]*$/;
+    firstNameEN (value) {
+      const regex = /^[a-zA-Z]*$/
       if (regex.exec(value) !== null) {
-        this.formData.firstNameEN = value;
+        this.formData.firstNameEN = value
         // console.log(value)
       } else {
         // not en
       }
     },
-    lastNameEN(value) {
-      const regex = /^[a-zA-Z]*$/;
+    lastNameEN (value) {
+      const regex = /^[a-zA-Z]*$/
       if (regex.exec(value) !== null) {
-        this.formData.lastNameEN = value;
+        this.formData.lastNameEN = value
         // console.log(value)
       } else {
         // not en
       }
     },
-    nickname(value) {
-      this.formData.nickname = value;
+    nickname (value) {
+      this.formData.nickname = value
     },
-    birthdate(value) {
-      this.formData.birthdate = value;
+    birthdate (value) {
+      this.formData.birthdate = value
     },
-    sex(value) {
-      this.formData.sex = value;
+    sex (value) {
+      this.formData.sex = value
     },
-    blood(value) {
-      this.formData.blood = value;
+    blood (value) {
+      this.formData.blood = value
     },
-    religion(value) {
-      this.formData.religion = value;
+    religion (value) {
+      this.formData.religion = value
     },
-    academicYear(value) {
-      this.formData.academicYear = value;
+    academicYear (value) {
+      this.formData.academicYear = value
     },
-    university(value) {
-      this.formData.university = value;
+    university (value) {
+      this.formData.university = value
     },
-    faculty(value) {
-      this.formData.faculty = value;
+    faculty (value) {
+      this.formData.faculty = value
     },
-    department(value) {
-      this.formData.department = value;
+    department (value) {
+      this.formData.department = value
     },
     picture(value) {
       this.formData.picture = value;
     },
-    title(value) {
-      this.formData.title = value;
+    title (value) {
+      this.formData.title = value
     },
     async nextSteps () {
       if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
@@ -300,22 +300,22 @@ export default {
       this.$router.push('2')
     },
     async uploadFile () {
-        let tokenUser = JSON.parse(window.localStorage.getItem('ywc16_user_fb'))
-        let getFile = this.formData.picture
-        let storageRef = firebaseStorage.ref('accounts/'+ tokenUser.userID + '.jpg')
-        const responseFile = await storageRef.put(getFile)
-        if (responseFile) {
-           console.log('upload success')
-           const urlImg = await storageRef.getDownloadURL()
-           if (urlImg) {
-              console.log('get getDownloadURL')
-              this.formData.picture = urlImg
-           } else {
-            console.log('get url error')
-           }
+      let tokenUser = JSON.parse(window.localStorage.getItem('ywc16_user_fb'))
+      let getFile = this.formData.picture
+      let storageRef = firebaseStorage.ref('accounts/'+ tokenUser.userID + '.jpg')
+      const responseFile = await storageRef.put(getFile)
+      if (responseFile) {
+        console.log('upload success')
+        const urlImg = await storageRef.getDownloadURL()
+        if (urlImg) {
+          console.log('get getDownloadURL')
+          this.formData.picture = urlImg
         } else {
-          console.log('upload picture error')
+          console.log('get url error')
         }
+      } else {
+        console.log('upload picture error')
+      }
     }
   },
   components: {
@@ -324,28 +324,28 @@ export default {
     appInputDatepicker: InputDatepicker,
     appFormInputUploadFile
   },
-  created() {
-    let tokenExists = window.localStorage.getItem("ywc16_user_fb")
-    let profileOne = this.$store.getters.profileOne;
-    let profileOneData = profileOne.data;
+  created () {
+    let tokenExists = window.localStorage.getItem('ywc16_user_fb')
+    let profileOne = this.$store.getters.profileOne
+    let profileOneData = profileOne.data
     if (tokenExists) {
       if (isEmpty(profileOneData)) {
-        console.log("Object is empty");
-        this.$store.dispatch("completeProfileOne", false);
+        console.log('Object is empty')
+        this.$store.dispatch('completeProfileOne', false)
       } else {
-        console.log("Object is NOT empty");
-        this.$store.dispatch("completeProfileOne", true);
+        console.log('Object is NOT empty')
+        this.$store.dispatch('completeProfileOne', true)
       }
-      this.formData = profileOneData;
-      console.log("token exists");
+      this.formData = profileOneData
+      console.log('token exists')
       // request jwt backend get data
       // redirect route
     } else {
-      console.log("token not exists");
-      this.$router.push("/authen");
+      console.log('token not exists')
+      this.$router.push('/authen')
     }
   }
-};
+}
 </script>
 <style scoped>
 .row {
@@ -353,4 +353,3 @@ export default {
 }
 
 </style>
-

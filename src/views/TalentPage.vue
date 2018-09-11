@@ -66,13 +66,13 @@ export default {
   },
   methods: {
     async nextSteps () {
-      await this.$store.commit('setTalent', this.formData)
       try {
+        this.$store.commit('setTalent', this.formData)
         await HTTP.put('/registration/insight', this.formData)
+        this.$router.push('4')
       } catch (error) {
         alert(error)
       }
-      this.$router.push('4')
     },
     previousStep () {
       this.$router.go(-1)

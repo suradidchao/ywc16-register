@@ -74,8 +74,6 @@ export default {
       return new Promise(async (resolve, reject) => {
         try {
           let result = await HTTP.post('/auth/login', { accessToken: fbAccessToken })
-          console.log('ywc16 access token')
-          console.log(result)
           HTTP.defaults.headers.common['x-access-token'] = result.data.payload.token
           return resolve(result.data.payload.token)
         } catch (error) {
@@ -90,47 +88,56 @@ export default {
           HTTP.defaults.headers.common['x-access-token'] = ywc16AccessToken
           let userData = await HTTP.get('/users/me')
           let userDataPayload = userData.data.payload
-
-          this.mapPayloadToStore(userDataPayload)
+          const userMajor = userDataPayload.major
+          const isOldUser = userMajor ? true : false;
+          if (isOldUser) {
+            this.mapPayloadToStore(userDataPayload)
+          } else {
+            this.setUserMajor()
+          }
           return resolve(userData)
         } catch (error) {
           return reject({statusMessage: `${error} could not initialise user data`})
         }
       })
     },
-    mapPayloadToStore(payload) {
-          console.log('DATA BACKEND')
-          console.log(payload)
-          if (payload.major) {
-            const userSchema = this.$store.state.user.user.data
-            const profileSchema = this.$store.state.profile.profileOne.data
-            const contactInfoSchema = this.$store.state.profileTwo.profileTwo.data
-            const talentSchema = this.$store.state.talent.talent.data
-            const generalQuestionsSchema = this.$store.state.generalQuestions.generalQuestions.data
-            const majorQuestionsSchema = this.$store.state.majorQuestions.majorQuestions.data
+    async mapPayloadToStore(payload) {
+      console.log('DATA BACKEND')
+      console.log(payload)
+      const userSchema = this.$store.state.user.user.data
+      const profileSchema = this.$store.state.profile.profileOne.data
+      const contactInfoSchema = this.$store.state.profileTwo.profileTwo.data
+      const talentSchema = this.$store.state.talent.talent.data
+      const generalQuestionsSchema = this.$store.state.generalQuestions.generalQuestions.data
+      const majorQuestionsSchema = this.$store.state.majorQuestions.majorQuestions.data
 
-            const generalQuestionsPayload = {generalQuestions: payload.questions.generalQuestions.map(item => item.answer)}
-            const majorQuestionsPayload = {majorQuestions: payload.questions.majorQuestions.map(item => item.answer)}
-            const majorPayload = payload.major
+      const generalQuestionsPayload = {generalQuestions: payload.questions.generalQuestions.map(item => item.answer)}
+      const majorQuestionsPayload = {majorQuestions: payload.questions.majorQuestions.map(item => item.answer)}
+      const majorPayload = payload.major
 
-            const userState = getSubsetObject(payload, userSchema)
-            const profileState = getSubsetObject(payload, profileSchema)
-            const contactInfoState = getSubsetObject(payload, contactInfoSchema)
-            const talentState = getSubsetObject(payload, talentSchema)
-            const generalQuestionsState = getSubsetObject(generalQuestionsPayload, generalQuestionsSchema)
-            const majorQuestionsState = getSubsetObject(majorQuestionsPayload, majorQuestionsSchema)
+      const userState = getSubsetObject(payload, userSchema)
+      const profileState = getSubsetObject(payload, profileSchema)
+      const contactInfoState = getSubsetObject(payload, contactInfoSchema)
+      const talentState = getSubsetObject(payload, talentSchema)
+      const generalQuestionsState = getSubsetObject(generalQuestionsPayload, generalQuestionsSchema)
+      const majorQuestionsState = getSubsetObject(majorQuestionsPayload, majorQuestionsSchema)
 
-            this.$store.commit('setUser', userState)
-            this.$store.commit('setMajor', majorPayload)
-            this.$store.commit('setProfileOne', profileState)
-            this.$store.commit('setProfileTwo', contactInfoState)
-            this.$store.commit('setTalent', talentState)
-            this.$store.commit('setGeneralQuestions', generalQuestionsState)
-            this.$store.commit('setMajorQuestions', majorQuestionsState)
-          } else {
-            this.$store.commit('setMajor', window.localStorage.getItem('ywc16_user_major'))
-          }
-
+      this.$store.commit('setUser', userState)
+      this.$store.commit('setMajor', majorPayload)
+      this.$store.commit('setProfileOne', profileState)
+      this.$store.commit('setProfileTwo', contactInfoState)
+      this.$store.commit('setTalent', talentState)
+      this.$store.commit('setGeneralQuestions', generalQuestionsState)
+      this.$store.commit('setMajorQuestions', majorQuestionsState)
+    },
+    async setUserMajor () {
+      try {
+        let majorState = window.localStorage.getItem('ywc16_user_major')
+        await HTTP.put('/registration/major', { major: majorState })
+        this.$store.commit('setMajor', majorState)
+      } catch (error) {
+        alert(error)
+      }
     },
     isUserCompleteRegistration () {
       return this.$store.getters.user.status === 'completed' ? true : false

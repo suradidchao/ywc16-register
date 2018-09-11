@@ -242,16 +242,16 @@ export default {
       this.formData.majorQuestions[3] = value
     },
     async nextStep () {
-      await this.$store.commit('setMajorQuestions', this.formData)
       try {
+        this.$store.commit('setMajorQuestions', this.formData)
         await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
+        this.$router.push('/steps/6')
       } catch (error) {
         alert(error)
       }
-      await this.$router.push('/steps/6')
     },
     previousStep () {
-       this.$router.push('4')
+      this.$router.push('4')
     }
   },
   components: {

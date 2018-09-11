@@ -10,6 +10,7 @@ export default {
   name: 'App',
   created () {
     // this.$router.push({name: 'authen'})
+    localStorage.clear()
   }
 }
 </script>
