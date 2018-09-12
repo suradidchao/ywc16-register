@@ -26,7 +26,7 @@
                 :data="formData.title"
                 @value="title"
                 :required="true"
-                :errorMsg="'There is test'"
+                :errorMsg="'กรุณากรอกคำนำหน้าชื่อ'"
                 :dropdownData="dropdownData['title']"
               ></app-input-dropdown>
             </div>
@@ -35,7 +35,7 @@
                 :question="'ชื่อ'"
                 :data="formData.firstName"
                 @value="firstName"
-                :errorMsg="'There is error'"
+                :errorMsg="'กรุณากรอกชื่อ'"
                 :required="true">
               </app-input-text>
             </div>
@@ -44,7 +44,7 @@
                   :question="'นามสกุล'"
                   :data="formData.lastName"
                   @value="lastName"
-                  :errorMsg="'There is test'"
+                  :errorMsg="'กรุณากรอกนามสกุล'"
                   :required="true">
                 </app-input-text>
             </div>
@@ -57,7 +57,7 @@
                       :question="'ชื่อ (ภาษาอังกฤษ)'"
                       :data="formData.firstNameEN"
                       @value="firstNameEN"
-                      :errorMsg="'There is error'"
+                      :errorMsg="'กรุณากรอกชื่อ(ภาษาอังกฤษ)'"
                       :required="true">
                     </app-input-text>
                 </div>
@@ -66,7 +66,7 @@
                         :question="'นามสกุล (ภาษาอังกฤษ)'"
                         :data="formData.lastNameEN"
                         @value="lastNameEN"
-                        :errorMsg="'There is test'"
+                        :errorMsg="'กรุณากรอกนามสกุล(ภาษาอังกฤษ)'"
                         :required="true">
                       </app-input-text>
                 </div>
@@ -80,7 +80,7 @@
                   :question="'ชื่อเล่น'"
                   :data="formData.nickname"
                   @value="nickname"
-                  :errorMsg="'There is test'"
+                  :errorMsg="'กรุณากรอกชื่อเล่น'"
                   :required="true">
                 </app-input-text>
             </div>
@@ -89,7 +89,7 @@
                 :question="'วันเกิด'"
                 :data="formData.birthdate"
                 @value="birthdate"
-                :errorMsg="'There is test'"
+                :errorMsg="'กรุณาใส่วันเกิด'"
                 :required="true" >
               </app-input-datepicker>
             </div>
@@ -101,7 +101,7 @@
                 :data="formData.sex"
                 @value="sex"
                 :required="true"
-                :errorMsg="'There is test'"
+                :errorMsg="'กรุณาใส่เพศ'"
                 :dropdownData="dropdownData['sex']"
               ></app-input-dropdown>
             </div>
@@ -111,7 +111,7 @@
               :data="formData.blood"
               @value="blood"
               :required="true"
-              :errorMsg="'There is test'"
+              :errorMsg="'กรุณาใส่กรุ๊ปเลือด'"
               :dropdownData="dropdownData['blood']">
             </app-input-dropdown>
             </div>
@@ -121,7 +121,7 @@
                     :data="formData.religion"
                     @value="religion"
                     :required="true"
-                    :errorMsg="'There is test'"
+                    :errorMsg="'กรุณาใส่ศาสนา'"
                     :dropdownData="dropdownData['religion']">
               </app-input-dropdown>
 
@@ -134,7 +134,8 @@
                   :question="'สถานศึกษา'"
                   :data="formData.university"
                   @value="university"
-                  :errorMsg="'There is test'">
+                  :required="true"
+                  :errorMsg="'กรุณาใส่สถานศึกษา'">
                 </app-input-text>
             </div>
             <div class="col-md-6">
@@ -142,7 +143,8 @@
                 :question="'คณะ'"
                 :data="formData.faculty"
                 @value="faculty"
-                :errorMsg="'There is test'">
+                :required="true"
+                :errorMsg="'กรุณาใส่คณะ'">
               </app-input-text>
             </div>
           </div>
@@ -153,7 +155,8 @@
                 :question="'สาขา'"
                 :data="formData.department"
                 @value="department"
-                :errorMsg="'There is test'">
+                :required="true"
+                :errorMsg="'กรุณาใส่สาขา'">
               </app-input-text>
             </div>
             <div class="col-md-6">
@@ -161,7 +164,7 @@
                 :question="'ชั้นปี'"
                 :data="formData.academicYear"
                 @value="academicYear"
-                :errorMsg="'There is test'"
+                :errorMsg="'กรุณาใส่ชั้นปี'"
                 :required="true"
                 :dropdownData="dropdownData['academicYear']">
               </app-input-dropdown>

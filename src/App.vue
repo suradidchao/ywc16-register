@@ -18,6 +18,11 @@ export default {
 
 
 <style>
+@font-face {
+      font-family: "Raleway";
+      src: url("./assets/fonts/Raleway-Regular.ttf");
+    }
+
 body {
   background: url('./assets/Asset-1.svg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -27,6 +32,7 @@ body {
   min-height: 100vh;
   height: 100%;
   color: #716AB1;
+  font-family: 'Raleway', sans-serif;
 }
 
 .input-css {
