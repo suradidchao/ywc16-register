@@ -93,7 +93,7 @@ export default {
     async nextSteps () {
       try {
         this.$store.dispatch('addGeneralQuestions', this.formData)
-        await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
+        // await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
         this.$router.push('5')
       } catch (error) {
         alert(error)
@@ -108,7 +108,7 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let generalQuestions = this.$store.getters.generalQuestions
+    let generalQuestions = this.$store.getters.generalQuestions.generalQuestions
     let generalQuestionsData = generalQuestions.data
     if (tokenExists) {
       if (isEmpty(generalQuestionsData)) {

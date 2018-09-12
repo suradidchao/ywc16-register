@@ -68,7 +68,7 @@ export default {
     async nextSteps () {
       try {
         this.$store.commit('setTalent', this.formData)
-        await HTTP.put('/registration/insight', this.formData)
+        // await HTTP.put('/registration/insight', this.formData)
         this.$router.push('4')
       } catch (error) {
         alert(error)
@@ -86,7 +86,7 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let talent = this.$store.getters.talent
+    let talent = this.$store.getters.talent.talent
     if (tokenExists) {
       if (isEmpty(talent)) {
         console.log('Object is empty')

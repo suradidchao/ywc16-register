@@ -301,7 +301,7 @@ export default {
     async nextStep () {
       try {
         this.$store.commit('setProfileTwo', this.formData)
-        await HTTP.put('/registration/contact', this.formData)
+        // await HTTP.put('/registration/contact', this.formData)
         this.$router.push('3')
       } catch (error) {
         alert(error)
@@ -314,7 +314,7 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let profileTwo = this.$store.getters.profileTwo
+    let profileTwo = this.$store.getters.profileTwo.profileTwo
     let profileTwoData = profileTwo.data
     if (tokenExists) {
       if (isEmpty(profileTwoData)) {

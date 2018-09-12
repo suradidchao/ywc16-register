@@ -244,7 +244,7 @@ export default {
     async nextStep () {
       try {
         this.$store.commit('setMajorQuestions', this.formData)
-        await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
+        // await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
         this.$router.push('/steps/6')
       } catch (error) {
         alert(error)
@@ -260,7 +260,7 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let majorQuestions = this.$store.getters.majorQuestions
+    let majorQuestions = this.$store.getters.majorQuestions.majorQuestions
     let majorQuestionsData = majorQuestions.data
     if (tokenExists) {
       if (isEmpty(majorQuestionsData)) {
