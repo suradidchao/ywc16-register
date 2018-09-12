@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition name="fades" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -62,6 +64,19 @@ body {
   background: rgba(108, 88, 179, 0.75);
   border: 2px solid rgba(108, 89, 179, 0.75);
 }
+
+.fades-enter{
+  opacity: 0;
+}
+
+.fades-enter-active{
+  transition: opacity 1s;
+}
+
+.fades-leave-active{
+  transition: opacity 1s;
+  opacity: 0;
+  }
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import './assets/styles/main.css'
 </style>
