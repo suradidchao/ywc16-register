@@ -91,11 +91,14 @@ export default {
           let userData = await HTTP.get('/users/me')
           let userDataPayload = userData.data.payload
           const userMajor = userDataPayload.major
-          const isOldUser = userMajor ? true : false;
-          if (isOldUser) {
-            this.mapPayloadToStore(userDataPayload)
-          } else {
+          const isNewUser = userMajor ? false : true;
+          if (isNewUser) {
             this.setUserMajor()
+            this.$store.commit('setProfileOne', userDataPayload)
+            this.$store.commit('setProfileTwo', userDataPayload)
+
+          } else {
+            this.mapPayloadToStore(userDataPayload)
           }
           return resolve(userData)
         } catch (error) {

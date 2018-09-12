@@ -100,10 +100,7 @@ export default {
   methods: {
     async confirm () {
       try {
-        let res = await HTTP.post('/registration/confirm')
-        if (res.data.status === 'success') {
-          alert('You have completed your registration!!!(มันเปลี่ยน in progress เป็น completed ต้องไปแก้ใน db field status ให้เป็น in progress เหมือนเดิม)')
-        }
+        await HTTP.post('/registration/confirm')
         this.$router.push('/complete')
       } catch (error) {
         alert(error)
