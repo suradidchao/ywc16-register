@@ -225,7 +225,7 @@
 </template>
 <script>
 import {HTTP} from '../core/http-common.js'
-import {isEmpty} from '../utils/helper.js'
+import {hasEmptyField} from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appFormInputText from '@/components/form/InputText'
 import appFormInputTextArea from '@/components/form/InputTextArea'
@@ -298,15 +298,22 @@ export default {
     foodAllergy (value) {
       this.formData.foodAllergy = value
     },
+    checkPageCompleteAndDispatch () {
+      if (hasEmptyField(this.formData)) {
+        this.$store.dispatch('completeProfileTwo', false)
+      } else {
+        this.$store.dispatch('completeProfileTwo', true)
+      }
+    },
     async nextStep () {
       try {
+        this.checkPageCompleteAndDispatch()
         this.$store.commit('setProfileTwo', this.formData)
         // await HTTP.put('/registration/contact', this.formData)
         this.$router.push('3')
       } catch (error) {
         alert(error)
       }
-
     },
     previousStep () {
       this.$router.push('1')
@@ -314,14 +321,9 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let profileTwo = this.$store.getters.profileTwo.profileTwo
+    let profileTwo = this.$store.getters.profileTwo
     let profileTwoData = profileTwo.data
     if (tokenExists) {
-      if (isEmpty(profileTwoData)) {
-        this.$store.dispatch('completeProfileTwo', false)
-      } else {
-        this.$store.dispatch('completeProfileTwo', true)
-      }
       this.formData = profileTwoData
     } else {
       this.$router.push('/authen')

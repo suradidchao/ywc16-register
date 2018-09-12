@@ -9,7 +9,9 @@ export default {
   },
   mutations: {
     setMajorQuestions (state, payload) {
-      state.majorQuestions.data = payload
+      for (let key in state.majorQuestions.data) {
+        if (payload.hasOwnProperty(key)) { state.majorQuestions.data[key] = payload[key] }
+      }
     },
     setCompleteMajorQuestions (state, payload) {
       state.majorQuestions.complete = payload

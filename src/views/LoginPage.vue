@@ -124,6 +124,7 @@ export default {
       const generalQuestionsState = getSubsetObject(generalQuestionsPayload, generalQuestionsSchema)
       const majorQuestionsState = getSubsetObject(majorQuestionsPayload, majorQuestionsSchema)
 
+
       this.$store.commit('setUser', userState)
       this.$store.commit('setMajor', majorPayload)
       this.$store.commit('setProfileOne', profileState)

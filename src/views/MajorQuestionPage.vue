@@ -243,6 +243,7 @@ export default {
     },
     async nextStep () {
       try {
+        this.checkPageCompleteAndDispatch()
         this.$store.commit('setMajorQuestions', this.formData)
         // await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
         this.$router.push('/steps/6')
@@ -252,6 +253,27 @@ export default {
     },
     previousStep () {
       this.$router.push('4')
+    },
+    checkPageCompleteAndDispatch () {
+      if (this.formData.majorQuestions.length !== questionsData.specialQuestions[this.majorUser].length) {
+        console.log('Object is empty')
+        this.$store.dispatch('completeMajorQuestions', false)
+      } else {
+        if (this.isAllAnswersFilled()) {
+          console.log('Object is NOT empty')
+          this.$store.dispatch('completeMajorQuestions', true)
+        } else {
+          this.$store.dispatch('completeMajorQuestions', false)
+        }
+      }
+    },
+    isAllAnswersFilled () {
+      for (let i in this.formData.majorQuestions) {
+        if (this.formData.majorQuestions[i] === '') {
+          return false
+        }
+      }
+      return true
     }
   },
   components: {
@@ -260,16 +282,9 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let majorQuestions = this.$store.getters.majorQuestions.majorQuestions
+    let majorQuestions = this.$store.getters.majorQuestions
     let majorQuestionsData = majorQuestions.data
     if (tokenExists) {
-      if (isEmpty(majorQuestionsData)) {
-        console.log('Object is empty')
-        this.$store.dispatch('completeMajorQuestions', false )
-      } else {
-        console.log('Object is NOT empty')
-        this.$store.dispatch('completeMajorQuestions', true )
-      }
       this.formData = majorQuestionsData
     } else {
       console.log('token not exists')

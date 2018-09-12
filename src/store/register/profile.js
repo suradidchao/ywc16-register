@@ -23,7 +23,9 @@ export default {
   },
   mutations: {
     setProfileOne (state, payload) {
-      state.profileOne.data = payload
+      for (let key in state.profileOne.data) {
+        if (payload.hasOwnProperty(key)) { state.profileOne.data[key] = payload[key] }
+      }
     },
     clearProfileOne (state) {
       state.profileOne.data = null

@@ -23,4 +23,16 @@ export const getSubsetObject = (obj, schema) => {
     .reduce((res, o) => Object.assign(res, o), {});
 }
 
+export const hasEmptyField = (object) => {
+  for (let key in object) {
+    if (object[key] === "" || object[key] === undefined)
+      return true
+    if (Array.isArray(object[key])) {
+      if (object[key].length === 0)
+        return true
+    }
+  }
+  return false
+}
+
 

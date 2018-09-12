@@ -21,7 +21,9 @@ export default {
   },
   mutations: {
     setProfileTwo (state, payload) {
-      state.profileTwo.data = payload
+      for (let key in state.profileTwo.data) {
+        if (payload.hasOwnProperty(key)) { state.profileTwo.data[key] = payload[key] }
+      }
     },
     clearProfileTwo (state) {
       state.profileTwo.data = null

@@ -10,7 +10,9 @@ export default {
   },
   mutations: {
     setTalent (state, payload) {
-      state.talent.data = payload
+      for (let key in state.talent.data) {
+        if (payload.hasOwnProperty(key)) { state.talent.data[key] = payload[key] }
+      }
     },
     setKnowCamp (state, payload) {
       state.talent.data.knowCamp = payload
@@ -37,7 +39,7 @@ export default {
     talent (state) {
       // let talentState = { ...state }
       // delete talentState.talent['completed']
-      return state.talent.data
+      return state.talent
     },
     talentCompleted (state) {
       return state.talent.completed

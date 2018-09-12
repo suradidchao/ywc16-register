@@ -192,7 +192,7 @@
 <script>
 import { HTTP } from '../core/http-common.js'
 import { firebaseStorage } from '../core/firebaseHelper.js'
-import { isEmpty } from '../utils/helper.js'
+import { hasEmptyField } from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import InputText from '@/components/form/InputText'
 import InputDropdown from '@/components/form/InputDropdown'
@@ -286,14 +286,24 @@ export default {
     title (value) {
       this.formData.title = value
     },
+    checkPageCompleteAndDispatch () {
+      if (hasEmptyField(this.formData)) {
+        console.log('Object is empty')
+        this.$store.dispatch('completeProfileOne', false)
+      } else {
+        console.log('Object is NOT empty')
+        this.$store.dispatch('completeProfileOne', true)
+      }
+    },
     async nextSteps () {
       try {
+        this.checkPageCompleteAndDispatch()
         if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
           this.isDisabled = true
           await this.uploadFile()
         }
         await this.$store.commit('setProfileOne', this.formData)
-        await HTTP.put('/registration/info', this.formData)
+        // await HTTP.put('/registration/info', this.formData)
         this.$router.push('2')
       } catch (error) {
         alert(error)
@@ -329,13 +339,6 @@ export default {
     let profileOne = this.$store.getters.profileOne
     let profileOneData = profileOne.data
     if (tokenExists) {
-      if (isEmpty(profileOneData)) {
-        console.log('Object is empty')
-        this.$store.dispatch('completeProfileOne', false)
-      } else {
-        console.log('Object is NOT empty')
-        this.$store.dispatch('completeProfileOne', true)
-      }
       this.formData = profileOneData
       console.log('token exists')
       // request jwt backend get data

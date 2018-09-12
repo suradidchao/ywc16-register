@@ -49,7 +49,7 @@
 </template>
 <script>
 import {HTTP} from '../core/http-common.js'
-import {isEmpty} from '../utils/helper.js'
+import {hasEmptyField} from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appInputCheckboxGroup from '@/components/form/InputCheckboxGroup'
 import appInputTextArea from '@/components/form/InputTextArea'
@@ -57,7 +57,10 @@ export default {
   data () {
     return {
       dropdownData,
-      formData: this.$store.getters.talent
+      formData: {
+        knowCamp: [],
+        activities: ''
+      }
     }
   },
   components: {
@@ -65,8 +68,16 @@ export default {
     appInputTextArea
   },
   methods: {
+    checkPageCompleteAndDispatch () {
+      if (hasEmptyField(this.formData)) {
+        this.$store.dispatch('completeTalent', false)
+      } else {
+        this.$store.dispatch('completeTalent', true)
+      }
+    },
     async nextSteps () {
       try {
+        this.checkPageCompleteAndDispatch()
         this.$store.commit('setTalent', this.formData)
         // await HTTP.put('/registration/insight', this.formData)
         this.$router.push('4')
@@ -75,7 +86,7 @@ export default {
       }
     },
     previousStep () {
-      this.$router.go(-1)
+      this.$router.push('2')
     },
     channel (value) {
       this.$store.commit('setKnowCamp', value)
@@ -86,16 +97,11 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let talent = this.$store.getters.talent.talent
+    let talent = this.$store.getters.talent
+    let talentData = talent.data
     if (tokenExists) {
-      if (isEmpty(talent)) {
-        console.log('Object is empty')
-        this.$store.dispatch('completeTalent', false)
-      } else {
-        console.log('Object is NOT empty')
-        this.$store.dispatch('completeTalent', true)
-      }
       console.log('token exists')
+      this.formData = talentData
       // request jwt backend get data
       // redirect route
     } else {

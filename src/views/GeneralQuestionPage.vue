@@ -65,7 +65,7 @@
 
 <script>
 import {HTTP} from '../core/http-common.js'
-import {isEmpty} from '../utils/helper.js'
+import {hasEmptyField} from '../utils/helper.js'
 import questionsData from './questions.json'
 import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
@@ -92,6 +92,7 @@ export default {
     },
     async nextSteps () {
       try {
+        this.checkPageCompleteAndDispatch()
         this.$store.dispatch('addGeneralQuestions', this.formData)
         // await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
         this.$router.push('5')
@@ -100,7 +101,28 @@ export default {
       }
     },
     previousStep () {
-      this.$router.go(-1)
+      this.$router.push('3')
+    },
+    checkPageCompleteAndDispatch () {
+      if (this.formData.generalQuestions.length !== questionsData.generalQuestions.length) {
+        console.log('Object is empty')
+        this.$store.dispatch('completeGeneralQuestions', false)
+      } else {
+        if (this.isAllAnswersFilled()) {
+          console.log('Object is NOT empty')
+          this.$store.dispatch('completeGeneralQuestions', true)
+        } else {
+          this.$store.dispatch('completeGeneralQuestions', false)
+        }
+      }
+    },
+    isAllAnswersFilled () {
+      for (let i in this.formData.generalQuestions) {
+        if (this.formData.generalQuestions[i] === '') {
+          return false
+        }
+      }
+      return true
     }
   },
   components: {
@@ -108,20 +130,11 @@ export default {
   },
   created () {
     let tokenExists = window.localStorage.getItem('ywc16_user_fb')
-    let generalQuestions = this.$store.getters.generalQuestions.generalQuestions
+    let generalQuestions = this.$store.getters.generalQuestions
     let generalQuestionsData = generalQuestions.data
     if (tokenExists) {
-      if (isEmpty(generalQuestionsData)) {
-        console.log('Object is empty')
-        this.$store.dispatch('completeGeneralQuestions', false)
-      } else {
-        console.log('Object is NOT empty')
-        this.$store.dispatch('completeGeneralQuestions', true)
-      }
       this.formData = generalQuestionsData
       console.log('token exists')
-      // request jwt backend get data
-      // redirect route
     } else {
       console.log('token not exists')
       this.$router.push('/authen')
