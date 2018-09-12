@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class='form-group' :class="formGroupClass">
-      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
       <input :type="type"
       v-model="text"
       class="form-control input-lg input-css"
@@ -11,6 +10,7 @@
       :pattern="regularExpression"
       :required='required'
       >
+      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
       <br>
     </div>
   </div>

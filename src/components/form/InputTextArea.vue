@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="form-group" :class="formGroupClass">
-      <label for="textArea" v-show="!isError">{{ question }}</label>
-      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
+      <label for="textArea" :class="{ 'text-danger': isError }">{{ question }}</label>
       <textarea class="form-control input-lg input-css"
         :rows="textAreaRow"
         :pattern="regularExpression"
@@ -14,6 +13,7 @@
         @change="onInput"
       >
       </textarea>
+      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
       <br>
     </div>
   </div>
