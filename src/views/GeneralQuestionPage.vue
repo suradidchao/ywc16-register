@@ -94,8 +94,12 @@ export default {
       try {
         this.checkPageCompleteAndDispatch()
         this.$store.dispatch('addGeneralQuestions', this.formData)
-        // await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
-        this.$router.push('5')
+        if (this.$store.getters.generalQuestions.complete) {
+          await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
+          this.$router.push('5')
+        } else {
+          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+        }
       } catch (error) {
         alert(error)
       }

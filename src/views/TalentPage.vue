@@ -79,8 +79,12 @@ export default {
       try {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setTalent', this.formData)
-        // await HTTP.put('/registration/insight', this.formData)
-        this.$router.push('4')
+        if (this.$store.getters.talent.completed) {
+          await HTTP.put('/registration/insight', this.formData)
+          this.$router.push('4')
+        } else {
+          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+        }
       } catch (error) {
         alert(error)
       }

@@ -309,8 +309,12 @@ export default {
       try {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setProfileTwo', this.formData)
-        // await HTTP.put('/registration/contact', this.formData)
-        this.$router.push('3')
+        if (this.$store.getters.profileTwo.complete) {
+          await HTTP.put('/registration/contact', this.formData)
+          this.$router.push('3')
+        } else {
+          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+        }
       } catch (error) {
         alert(error)
       }

@@ -245,8 +245,12 @@ export default {
       try {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setMajorQuestions', this.formData)
-        // await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
-        this.$router.push('/steps/6')
+        if (this.$store.getters.majorQuestions.complete) {
+          await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
+          this.$router.push('/steps/6')
+        } else {
+          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+        }
       } catch (error) {
         alert(error)
       }

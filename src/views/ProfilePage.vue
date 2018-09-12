@@ -288,23 +288,25 @@ export default {
     },
     checkPageCompleteAndDispatch () {
       if (hasEmptyField(this.formData)) {
-        console.log('Object is empty')
         this.$store.dispatch('completeProfileOne', false)
       } else {
-        console.log('Object is NOT empty')
         this.$store.dispatch('completeProfileOne', true)
       }
     },
     async nextSteps () {
       try {
-        this.checkPageCompleteAndDispatch()
         if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
           this.isDisabled = true
           await this.uploadFile()
         }
-        await this.$store.commit('setProfileOne', this.formData)
-        // await HTTP.put('/registration/info', this.formData)
-        this.$router.push('2')
+        this.checkPageCompleteAndDispatch()
+        this.$store.commit('setProfileOne', this.formData)
+        if (this.$store.getters.profileOne.complete) {
+          await HTTP.put('/registration/info', this.formData)
+          this.$router.push('2')
+        } else {
+          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+        }
       } catch (error) {
         alert(error)
       }
@@ -341,8 +343,6 @@ export default {
     if (tokenExists) {
       this.formData = profileOneData
       console.log('token exists')
-      // request jwt backend get data
-      // redirect route
     } else {
       console.log('token not exists')
       this.$router.push('/authen')
