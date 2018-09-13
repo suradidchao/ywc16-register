@@ -11,7 +11,6 @@
 export default {
   name: 'App',
   created () {
-    // this.$router.push({name: 'authen'})
     this.$store.commit('resetAppState', '')
     localStorage.clear()
   }
@@ -23,6 +22,10 @@ export default {
       font-family: "Raleway";
       src: url("./assets/fonts/Raleway-Regular.ttf");
     }
+@font-face {
+      font-family: "supermarketregular";
+      src: url("./assets/fonts/supermarket-webfont.ttf");
+    }
 
 body {
   background: url('./assets/Asset-1.svg') no-repeat center center fixed;
@@ -33,7 +36,9 @@ body {
   min-height: 100vh;
   height: 100%;
   color: #716AB1;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'supermarketregular', sans-serif;
+
+  /* font-family: 'Raleway', sans-serif; */
 }
 
 .input-css {

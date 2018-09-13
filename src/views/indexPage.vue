@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="container-fluid">
       <div class="container">
       <stepBar></stepBar>
@@ -9,7 +8,7 @@
       </transition>
     </div>
     </div>
-      <footer></footer>
+    <footer></footer>
 </div>
 </template>
 <style>
@@ -73,15 +72,8 @@ export default {
       stepEnd: 6
     }
   },
-  created () {
-    let majorUser = window.localStorage.getItem('ywc16_user_major')
-    if (majorUser) {
-      // this.$store.commit('setMajor', majorUser)
-    }
-  },
   mounted () {
     let id = window.location.pathname.split('/')
-    console.log(id)
     let path = id[id.length - 1]
     const num = parseInt(path)
     this.removeClassStep(1, this.stepEnd)

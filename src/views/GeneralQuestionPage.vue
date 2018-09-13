@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="container-fluid">
-    <h1>General Question</h1>
+    <h1>Step 4</h1>
+    <b>คำถามส่วนกลาง</b>
     <hr>
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
-
             <div class="col-md-12">
               <app-form-input-text-area
                       :question="questionsData['generalQuestions'][0]"
@@ -127,11 +127,9 @@ export default {
     },
     checkPageCompleteAndDispatch () {
       if (this.formData.generalQuestions.length !== questionsData.generalQuestions.length) {
-        console.log('Object is empty')
         this.$store.dispatch('completeGeneralQuestions', false)
       } else {
         if (this.isAllAnswersFilled()) {
-          console.log('Object is NOT empty')
           this.$store.dispatch('completeGeneralQuestions', true)
         } else {
           this.$store.dispatch('completeGeneralQuestions', false)
@@ -156,9 +154,7 @@ export default {
     let generalQuestionsData = generalQuestions.data
     if (tokenExists) {
       this.formData = generalQuestionsData
-      console.log('token exists')
     } else {
-      console.log('token not exists')
       this.$router.push('/authen')
     }
   }

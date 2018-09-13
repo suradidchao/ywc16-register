@@ -2,7 +2,7 @@
   <div class="message-container">
     <div class='message'>
       <h1>ยินดีด้วย คุณ{{ this.$store.getters.user.firstName }} {{ this.$store.getters.user.lastName }} </h1>
-      <h3>คุณได้ทำการลงทะเบียนเสร็จเรียบร้อยแล้ว โปรดรอฟังผลประกาศในวันที่ 24 พฤศจิกายน 2018</h3>
+      <h3>คุณได้ทำการลงทะเบียนเสร็จเรียบร้อยแล้ว โปรดรอฟังผลประกาศในวันที่ 4 พฤศจิกายน 2561</h3>
     </div>
 
   </div>

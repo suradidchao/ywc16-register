@@ -27,16 +27,13 @@ export default {
   methods: {
     async init () {
       try {
-        let {token} = await this.getYWC16AccessToken()
-        let userData = await this.initialiseUserData(token)
-        console.log('user datatata')
-        console.log(userData)
-        if (!this.isUserCompleteRegistration(userData.data.payload.status)){
-          this.$router.push('/steps/1')
-        } else {
-          this.$router.push('complete')
-        }
-
+          let {token} = await this.getYWC16AccessToken()
+          let userData = await this.initialiseUserData(token)
+          if (!this.isUserCompleteRegistration(userData.data.payload.status)){
+            this.$router.push('/steps/1')
+          } else {
+            this.$router.push('complete')
+          }
       } catch (error) {
         alert(error.statusMessage)
       }
@@ -107,8 +104,6 @@ export default {
       })
     },
     async mapPayloadToStore(payload) {
-      console.log('DATA BACKEND')
-      console.log(payload)
       const userSchema = this.$store.state.user.user.data
       const profileSchema = this.$store.state.profile.profileOne.data
       const contactInfoSchema = this.$store.state.profileTwo.profileTwo.data

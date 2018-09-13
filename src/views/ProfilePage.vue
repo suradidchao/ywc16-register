@@ -1,7 +1,8 @@
 <template>
   <div>
 <div class="container-fluid">
-  <h1>Profile</h1>
+  <h1>Step 1</h1>
+  <b>ข้อมูลส่วนตัว</b>
   <hr>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -271,18 +272,16 @@ export default {
       const regex = /^[a-zA-Z]*$/
       if (regex.exec(value) !== null) {
         this.formData.firstNameEN = value
-        // console.log(value)
       } else {
-        // not en
+        this.formDataAlert.firstNameEN = true
       }
     },
     lastNameEN (value) {
       const regex = /^[a-zA-Z]*$/
       if (regex.exec(value) !== null) {
         this.formData.lastNameEN = value
-        // console.log(value)
       } else {
-        // not en
+        this.formDataAlert.lastNameEN = true
       }
     },
     nickname (value) {
@@ -356,10 +355,8 @@ export default {
       let storageRef = firebaseStorage.ref('accounts/' + tokenUser.userID + '.jpg')
       const responseFile = await storageRef.put(getFile)
       if (responseFile) {
-        console.log('upload success')
         const urlImg = await storageRef.getDownloadURL()
         if (urlImg) {
-          console.log('get getDownloadURL')
           this.formData.picture = urlImg
         } else {
           console.log('get url error')
@@ -381,9 +378,7 @@ export default {
     let profileOneData = profileOne.data
     if (tokenExists) {
       this.formData = profileOneData
-      console.log('token exists')
     } else {
-      console.log('token not exists')
       this.$router.push('/authen')
     }
   }

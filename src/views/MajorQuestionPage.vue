@@ -1,7 +1,8 @@
 <template>
   <div>
        <div class="container-fluid">
-             <h1>Major Questions</h1>
+    <h1>Step 5</h1>
+    <b>คำถามสาขา</b>
     <hr>
         <div class="panel panel-default">
           <div class="panel-body">
@@ -257,11 +258,9 @@ export default {
     },
     checkPageCompleteAndDispatch () {
       if (this.formData.majorQuestions.length !== questionsData.specialQuestions[this.majorUser].length) {
-        console.log('Object is empty')
         this.$store.dispatch('completeMajorQuestions', false)
       } else {
         if (this.isAllAnswersFilled()) {
-          console.log('Object is NOT empty')
           this.$store.dispatch('completeMajorQuestions', true)
         } else {
           this.$store.dispatch('completeMajorQuestions', false)
@@ -288,7 +287,6 @@ export default {
     if (tokenExists) {
       this.formData = majorQuestionsData
     } else {
-      console.log('token not exists')
       this.$router.push('/authen')
     }
   }

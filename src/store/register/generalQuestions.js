@@ -30,8 +30,6 @@ export default {
   },
   getters: {
     generalQuestions (state) {
-      console.log('generalQuestions state')
-      console.log(state.generalQuestions)
       return state.generalQuestions
     }
   }

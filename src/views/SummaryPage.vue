@@ -1,7 +1,8 @@
 <template>
   <div>
      <div class="container">
-        <h2>Summary</h2>
+        <h1>Confirm</h1>
+        <b>ตรวจสอบและยืนยัน</b>
         <hr>
         <div class="panel panel-default">
             <div class="panel-body">
@@ -105,13 +106,7 @@ export default {
     const tokenExists = window.localStorage.getItem('ywc16_user_fb')
     let summary = this.$store.getters.summary
     this.summary = summary
-    console.log(summary)
-    if (tokenExists) {
-      console.log('token exists')
-      // request jwt backend get data
-      // redirect route
-    } else {
-      console.log('token not exists')
+    if (!tokenExists) {
       this.$router.push('/authen')
     }
   },

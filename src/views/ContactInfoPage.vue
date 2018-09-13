@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="container-fluid">
-    <h1>Contact Information</h1>
+    <h1>Step 2</h1>
+    <b>ข้อมูลการติดต่อ</b>
     <hr>
       <div class="panel panel-default">
         <div class="panel-body">

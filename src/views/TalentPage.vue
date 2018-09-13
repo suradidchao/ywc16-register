@@ -2,6 +2,7 @@
   <div>
      <div class="container-fluid">
     <h1>Step 3</h1>
+    <b>ความสามารถพิเศษ</b>
     <hr>
       <div class="panel panel-default">
         <div class="panel-body">
@@ -119,12 +120,8 @@ export default {
     let talent = this.$store.getters.talent
     let talentData = talent.data
     if (tokenExists) {
-      console.log('token exists')
       this.formData = talentData
-      // request jwt backend get data
-      // redirect route
     } else {
-      console.log('token not exists')
       this.$router.push('/authen')
     }
   }
