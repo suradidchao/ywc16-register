@@ -18,6 +18,7 @@
                     :required="true"
                     @value="address"
                     :data="formData.address"
+                    :errorInput="formDataAlert.address"
                   >
                   </app-form-input-text-area>
                 </div>
@@ -31,65 +32,42 @@
                     @value="province"
                     :required="true"
                     :errorMsg="'Invalid province!!'"
+                    :errorInput="formDataAlert.province"
                     :dropdownData="dropdownData['province']"
                     >
                   </app-form-input-dropdown>
                 </div>
                 <div class="col-md-6">
                   <div :class="{'form-group': true, 'has-error': errors.has('postalCode') }">
+                    <label :class="{ 'text-danger': formDataAlert.postalCode }">รหัสไปรษณีย์</label>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('postalCode') }" minlength="5" maxlength="5" name="postalCode" v-model="formData.postalCode"  type="text" placeholder="รหัสไปรษณีย์">
                     <label class="text-danger" v-show="errors.has('postalCode')">กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง</label>
                     <br>
                 </div>
-                  <!-- <app-form-input-text
-                    :data="formData.postalCode"
-                    :question="'รหัสไปรษณีย์'"
-                    @value="postalCode"
-                    :errorMsg="'Invalid post number'"
-                    :required="true"
-                    >
-                  </app-form-input-text> -->
                 </div>
               </div>
 
                <div class="row">
                 <div class="col-md-12">
                 <div :class="{'form-group': true, 'has-error': errors.has('email') }">
-                  <input v-validate="'required|email'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('email') }" name="email" v-model="formData.email"  type="text" placeholder="Email">
+                  <label :class="{ 'text-danger': formDataAlert.email }">อีเมล์</label>
+                  <input v-validate="'required|email'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('email') }" name="email" v-model="formData.email"  type="text" placeholder="อีเมล์">
                   <label class="text-danger" v-show="errors.has('email')">กรุณากรอกอีเมล์ให้ถูกต้อง</label>
                   <br>
                 </div>
-                  <!-- <app-form-input-text
-                      :data="formData.email"
-                      :question="'Email'"
-                      @value="email"
-                      :errorMsg="'Invalid email'"
-                      :required="true"
-                      :typeIuput="'email'"
-                      >
-                  </app-form-input-text> -->
                 </div>
               </div>
 
                <div class="row">
                 <div class="col-md-12">
                 <div :class="{'form-group': true, 'has-error': errors.has('phone') }">
+                    <label :class="{ 'text-danger': formDataAlert.phone }">เบอร์ติดต่อ</label>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('phone') }" minlength="10" maxlength="10" name="phone" v-model="formData.phone"  type="text" placeholder="เบอร์ติดต่อ">
                     <label class="text-danger" v-show="errors.has('phone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
                     <br>
                 </div>
-                    <!-- <app-form-input-text
-                        :data="formData.phone"
-                        :question="'เบอร์ติดต่อ'"
-                        @value="phone"
-                        :errorMsg="'Invalid contact number'"
-                        :typeIuput="'tel'"
-                        :required="true"
-                        >
-                    </app-form-input-text> -->
                 </div>
               </div>
-
 
                <div class="row">
                 <div class="col-md-12">
@@ -99,6 +77,7 @@
                         @value="emergencyName"
                         :errorMsg="'กรุณากรอกชื่อผู้ปกครอง/ชื่อผู้ติดต่อฉุกเฉิน'"
                         :required="true"
+                        :errorInput="formDataAlert.emergencyName"
                         >
                     </app-form-input-text>
                 </div>
@@ -107,18 +86,11 @@
               <div class="row">
                 <div class="col-md-6">
                   <div :class="{'form-group': true, 'has-error': errors.has('emergencyPhone') }">
+                    <label :class="{ 'text-danger': formDataAlert.emergencyPhone }">เบอร์ติดต่อฉุกเฉิน</label>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('emergencyPhone') }" minlength="10" maxlength="10" name="emergencyPhone" v-model="formData.emergencyPhone"  type="text" placeholder="เบอร์ติดต่อฉุกเฉิน">
                     <label class="text-danger" v-show="errors.has('emergencyPhone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
                     <br>
                 </div>
-                    <!-- <app-form-input-text
-                        :data="formData.emergencyPhone"
-                        :question="'เบอร์ติดต่อฉุกเฉิน'"
-                        @value="emergencyPhone"
-                        :errorMsg="'Invalid parent contact number'"
-                        :required="true"
-                        >
-                        </app-form-input-text> -->
                 </div>
                 <div class="col-md-6">
                     <app-form-input-text
@@ -127,6 +99,7 @@
                         @value="emergencyPhoneRelated"
                         :errorMsg="'กรุณากรอกความเกี่ยวข้อง'"
                         :required="true"
+                        :errorInput="formDataAlert.emergencyPhoneRelated"
                         >
                         </app-form-input-text>
                 </div>
@@ -140,11 +113,11 @@
                       @value="skype"
                       :errorMsg="'กรุณากรอก Skype ID'"
                       :required="true"
+                      :errorInput="formDataAlert.skype"
                       >
                     </app-form-input-text>
                 </div>
               </div>
-
 
             </div>
             <div class="col-md-6">
@@ -158,13 +131,12 @@
                       @value="shirtSize"
                       :required="true"
                       :errorMsg="'shirt size missing!!'"
+                      :errorInput="formDataAlert.shirtSize"
                       :dropdownData="dropdownData['shirtSize'].map((item) => item.value )"
                       >
                       </app-form-input-dropdown>
                 </div>
               </div>
-
-
 
               <div class="row">
                 <div class="col-md-12">
@@ -173,7 +145,8 @@
                         :question="'โรคประจำตัว'"
                         @value="disease"
                         :radioData="dropdownData['disease']"
-                        :required="false"
+                        :errorInput="formDataAlert.disease"
+                        :required="true"
                         >
                         </app-form-input-radio-group>
                 </div>
@@ -186,6 +159,7 @@
                       :question="'อาหารที่รับประทาน'"
                       @value="food"
                       :errorMsg="'Invalid food!!'"
+                      :errorInput="formDataAlert.food"
                       :dropdownData="dropdownData['food']"
                       :required="true"
                       >
@@ -197,7 +171,8 @@
                           :data="formData.foodAllergy"
                           :question="'อาหารที่แพ้'"
                           @value="foodAllergy"
-                          :errorMsg="'Invalid allergic food'"
+                          :errorInput="formDataAlert.foodAllergy"
+                          :errorMsg="'กรุณาใส่อาหารที่แพ้'"
                           :required="false"
                           >
                           </app-form-input-text>
@@ -224,8 +199,8 @@
   </div>
 </template>
 <script>
-import {HTTP} from '../core/http-common.js'
-import {hasEmptyField} from '../utils/helper.js'
+import { HTTP } from '../core/http-common.js'
+import { hasEmptyField } from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appFormInputText from '@/components/form/InputText'
 import appFormInputTextArea from '@/components/form/InputTextArea'
@@ -235,6 +210,21 @@ export default {
   data () {
     return {
       dropdownData: dropdownData,
+      formDataAlert: {
+        address: false,
+        province: false,
+        postalCode: false,
+        email: false,
+        phone: false,
+        emergencyName: false,
+        emergencyPhone: false,
+        emergencyPhoneRelated: false,
+        skype: false,
+        shirtSize: false,
+        disease: false,
+        food: false,
+        foodAllergy: false
+      },
       formData: {
         address: '',
         province: '',
@@ -265,21 +255,9 @@ export default {
     province (value) {
       this.formData.province = value
     },
-    // postalCode (value) {
-    //   this.formData.postalCode = value
-    // },
-    // email (value) {
-    //   this.formData.email = value
-    // },
-    // phone (value) {
-    //   this.formData.phone = value
-    // },
     emergencyName (value) {
       this.formData.emergencyName = value
     },
-    // emergencyPhone (value) {
-    //   this.formData.emergencyPhone = value
-    // },
     emergencyPhoneRelated (value) {
       this.formData.emergencyPhoneRelated = value
     },
@@ -313,6 +291,13 @@ export default {
           await HTTP.put('/registration/contact', this.formData)
           this.$router.push('3')
         } else {
+          let isAlert = this.formDataAlert
+          for (let key in this.formData) {
+            if (this.formData[key] === '' || this.formData[key] === undefined) { this.formDataAlert[key] = true }
+            if (Array.isArray(this.formData[key])) {
+              if (this.formData[key].length === 0) { this.formDataAlert[key] = true }
+            }
+          }
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
         }
       } catch (error) {
