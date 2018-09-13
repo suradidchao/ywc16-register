@@ -15,6 +15,7 @@
                       :textAreaRow = "10"
                       :required="true"
                       :data="formData.generalQuestions[0]"
+                      :errorInput="formDataAlert.generalQuestions[0]"
                       @value="generalQuestion"
                     >
                     </app-form-input-text-area>
@@ -27,6 +28,7 @@
                   :textAreaRow = "10"
                   :required="true"
                   :data="formData.generalQuestions[1]"
+                  :errorInput="formDataAlert.generalQuestions[1]"
                   @value="generalQuestionTwo"
                 >
                 </app-form-input-text-area>
@@ -39,6 +41,7 @@
                     :textAreaRow = "10"
                     :required="true"
                     :data="formData.generalQuestions[2]"
+                    :errorInput="formDataAlert.generalQuestions[2]"
                     @value="generalQuestionThree"
                   >
                   </app-form-input-text-area>
@@ -65,13 +68,19 @@
 
 <script>
 import {HTTP} from '../core/http-common.js'
-import {hasEmptyField} from '../utils/helper.js'
 import questionsData from './questions.json'
 import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
     return {
       questionsData,
+      formDataAlert: {
+        generalQuestions: [
+          false,
+          false,
+          false
+        ]
+      },
       formData: {
         generalQuestions: []
       }
@@ -98,6 +107,15 @@ export default {
           await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
           this.$router.push('5')
         } else {
+          let isAlert = this.formDataAlert
+           for (let key in this.formData) {
+              if (this.formData[key] === "" || this.formData[key] === undefined)
+                 this.formDataAlert[key] = true
+              if (Array.isArray(this.formData[key])) {
+                if (this.formData[key].length === 0)
+                 this.formDataAlert[key] = true
+              }
+          }
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
         }
       } catch (error) {
