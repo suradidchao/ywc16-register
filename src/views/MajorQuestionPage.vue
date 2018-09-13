@@ -193,7 +193,7 @@
                   <center>
                     <br>
                     <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                    <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep">Save & Next</button>
+                    <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep" :disabled=isDisabled>Save & Next</button>
                   </center>
                   <br>
               </div>
@@ -215,6 +215,7 @@ export default {
   data () {
     return {
       majorUser: this.$store.getters.major,
+      isDisabled: false,
       questionsData,
       formData: {
         majorQuestions: []
