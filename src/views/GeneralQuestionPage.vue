@@ -86,9 +86,6 @@ export default {
       }
     }
   },
-  computed: {
-
-  },
   methods: {
     generalQuestion (value) {
       this.formData.generalQuestions[0] = value

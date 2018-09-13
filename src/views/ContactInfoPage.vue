@@ -41,7 +41,7 @@
                 <div class="col-md-6">
                   <div :class="{'form-group': true, 'has-error': errors.has('postalCode') }">
                     <label :class="{ 'text-danger': formDataAlert.postalCode }">รหัสไปรษณีย์</label>
-                    <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('postalCode') }" minlength="5" maxlength="5" name="postalCode" v-model="formData.postalCode"  type="text" placeholder="รหัสไปรษณีย์">
+                    <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('postalCode') }" minlength="5" maxlength="5" name="postalCode" v-model="formData.postalCode" type="text" placeholder="รหัสไปรษณีย์">
                     <label class="text-danger" v-show="errors.has('postalCode')">กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง</label>
                     <br>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="col-md-12">
                 <div :class="{'form-group': true, 'has-error': errors.has('email') }">
                   <label :class="{ 'text-danger': formDataAlert.email }">อีเมล์</label>
-                  <input v-validate="'required|email'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('email') }" name="email" v-model="formData.email"  type="text" placeholder="อีเมล์">
+                  <input v-validate="'required|email'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('email') }" name="email" v-model="formData.email" type="text" placeholder="อีเมล์">
                   <label class="text-danger" v-show="errors.has('email')">กรุณากรอกอีเมล์ให้ถูกต้อง</label>
                   <br>
                 </div>
@@ -159,7 +159,7 @@
                       :data="formData.food"
                       :question="'อาหารที่รับประทาน'"
                       @value="food"
-                      :errorMsg="'Invalid food!!'"
+                      :errorMsg="'กรุณาใส่อาหารที่รับประทาน'"
                       :errorInput="formDataAlert.food"
                       :dropdownData="dropdownData['food']"
                       :required="true"
@@ -176,7 +176,7 @@
                           :errorMsg="'กรุณาใส่อาหารที่แพ้'"
                           :required="false"
                           >
-                          </app-form-input-text>
+                      </app-form-input-text>
                 </div>
 
               </div>
@@ -249,6 +249,36 @@ export default {
     appFormInputDropdown,
     appFormInputRadioGroup
   },
+  watch: {
+    'formData.postalCode' (value) {
+      if (value === '') {
+        this.formDataAlert.postalCode = true
+      } else {
+        this.formDataAlert.postalCode = false
+      }
+    },
+    'formData.email' (value) {
+      if (value === '') {
+        this.formDataAlert.email = true
+      } else {
+        this.formDataAlert.email = false
+      }
+    },
+    'formData.phone' (value) {
+      if (value === '') {
+        this.formDataAlert.phone = true
+      } else {
+        this.formDataAlert.phone = false
+      }
+    },
+    'formData.emergencyPhone' (value) {
+      if (value === '') {
+        this.formDataAlert.emergencyPhone = true
+      } else {
+        this.formDataAlert.emergencyPhone = false
+      }
+    }
+  },
   methods: {
     address (value) {
       this.formData.address = value
@@ -289,7 +319,7 @@ export default {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setProfileTwo', this.formData)
         if (this.$store.getters.profileTwo.complete) {
-          await HTTP.put('/registration/contact', this.formData)
+          // await HTTP.put('/registration/contact', this.formData)
           this.$router.push('3')
         } else {
           let isAlert = this.formDataAlert
