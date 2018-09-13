@@ -102,8 +102,8 @@ export default {
 .bs-wizard > .bs-wizard-step.active > .bs-wizard-dot:after {content: ' '; width: 28px; height: 28px; background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423); border-radius: 50px; position: absolute; top: 3px; left: 3px; }
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {position: absolute; width: 34px; height: 34px; display: block; background: #ffffff; top: 50px; left: 50%; margin-top: -18px; margin-left: -15px; border-radius: 50%;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {content: ' '; width: 28px; height: 28px; background: #E6E6F4; border-radius: 50px; position: absolute; top: 3px; left: 3px; }
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {position: absolute; width: 34px; height: 34px; display: block; background: #E6E6F4; top: 50px; left: 50%; margin-top: -18px; margin-left: -15px; border-radius: 50%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {content: ' '; width: 28px; height: 28px; background: #ffffff; border-radius: 50px; position: absolute; top: 3px; left: 3px; }
 .bs-wizard > .bs-wizard-step.disabled > .progress > .progress-bar {width:0px; box-shadow: none; background: #E6E6F4;}
 .bs-wizard > .bs-wizard-step.disabled > .progress > .progress-bar {width: 1000px;}
 .bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}

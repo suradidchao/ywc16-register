@@ -1,8 +1,8 @@
 <template>
   <div>
      <div class="container">
-        <h1>Confirm</h1>
-        <b>ตรวจสอบและยืนยัน</b>
+        <h1 class="text-Step">Confirm</h1>
+        <b class="text-head-page">ตรวจสอบและยืนยัน</b>
         <hr>
         <div class="panel panel-default">
             <div class="panel-body">

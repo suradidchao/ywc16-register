@@ -9,6 +9,9 @@
             Upload Profile
             <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" style="display: none;"/>
           </label>
+          <br>
+          <p style="margin-top: 10px;font-size: 18px;color:#8E8E8E">หน้าตรงแต่งกายตามสบาย</p>
+          <p style="margin-top: -8px; color:#8E8E8E">(ขนาดไฟล์ไม่เกิน 2 MB)</p>
        </div>
       </center>
   </div>
