@@ -15,6 +15,7 @@
           :required="true"
           :data="formData.picture"
           @value="picture"
+          :errorInput="formDataAlert.picture"
           >
           </app-form-input-upload-file>
         </div>
@@ -28,6 +29,7 @@
                 :required="true"
                 :errorMsg="'กรุณากรอกคำนำหน้าชื่อ'"
                 :dropdownData="dropdownData['title']"
+                :errorInput="formDataAlert.title"
               ></app-input-dropdown>
             </div>
             <div class="col-md-4">
@@ -36,6 +38,7 @@
                 :data="formData.firstName"
                 @value="firstName"
                 :errorMsg="'กรุณากรอกชื่อ'"
+                :errorInput="formDataAlert.firstName"
                 :required="true">
               </app-input-text>
             </div>
@@ -45,6 +48,7 @@
                   :data="formData.lastName"
                   @value="lastName"
                   :errorMsg="'กรุณากรอกนามสกุล'"
+                  :errorInput="formDataAlert.lastName"
                   :required="true">
                 </app-input-text>
             </div>
@@ -58,6 +62,7 @@
                       :data="formData.firstNameEN"
                       @value="firstNameEN"
                       :errorMsg="'กรุณากรอกชื่อ(ภาษาอังกฤษ)'"
+                      :errorInput="formDataAlert.firstNameEN"
                       :required="true">
                     </app-input-text>
                 </div>
@@ -67,6 +72,7 @@
                         :data="formData.lastNameEN"
                         @value="lastNameEN"
                         :errorMsg="'กรุณากรอกนามสกุล(ภาษาอังกฤษ)'"
+                        :errorInput="formDataAlert.lastNameEN"
                         :required="true">
                       </app-input-text>
                 </div>
@@ -81,16 +87,17 @@
                   :data="formData.nickname"
                   @value="nickname"
                   :errorMsg="'กรุณากรอกชื่อเล่น'"
+                  :errorInput="formDataAlert.nickname"
                   :required="true">
                 </app-input-text>
             </div>
             <div class="col-md-4">
               <app-input-datepicker
                 :question="'วันเกิด'"
-                :data="formData.birthdate"
+                :date="formData.birthdate"
                 @value="birthdate"
-                :errorMsg="'กรุณาใส่วันเกิด'"
-                :required="true" >
+                :errorInput="formDataAlert.birthdate"
+                :errorMsg="'กรุณาใส่วันเกิด'">
               </app-input-datepicker>
             </div>
           </div>
@@ -102,6 +109,7 @@
                 @value="sex"
                 :required="true"
                 :errorMsg="'กรุณาใส่เพศ'"
+                :errorInput="formDataAlert.sex"
                 :dropdownData="dropdownData['sex']"
               ></app-input-dropdown>
             </div>
@@ -112,6 +120,7 @@
               @value="blood"
               :required="true"
               :errorMsg="'กรุณาใส่กรุ๊ปเลือด'"
+              :errorInput="formDataAlert.blood"
               :dropdownData="dropdownData['blood']">
             </app-input-dropdown>
             </div>
@@ -122,6 +131,7 @@
                     @value="religion"
                     :required="true"
                     :errorMsg="'กรุณาใส่ศาสนา'"
+                    :errorInput="formDataAlert.religion"
                     :dropdownData="dropdownData['religion']">
               </app-input-dropdown>
 
@@ -135,6 +145,7 @@
                   :data="formData.university"
                   @value="university"
                   :required="true"
+                  :errorInput="formDataAlert.university"
                   :errorMsg="'กรุณาใส่สถานศึกษา'">
                 </app-input-text>
             </div>
@@ -144,6 +155,7 @@
                 :data="formData.faculty"
                 @value="faculty"
                 :required="true"
+                :errorInput="formDataAlert.faculty"
                 :errorMsg="'กรุณาใส่คณะ'">
               </app-input-text>
             </div>
@@ -156,6 +168,7 @@
                 :data="formData.department"
                 @value="department"
                 :required="true"
+                :errorInput="formDataAlert.department"
                 :errorMsg="'กรุณาใส่สาขา'">
               </app-input-text>
             </div>
@@ -166,12 +179,11 @@
                 @value="academicYear"
                 :errorMsg="'กรุณาใส่ชั้นปี'"
                 :required="true"
+                :errorInput="formDataAlert.academicYear"
                 :dropdownData="dropdownData['academicYear']">
               </app-input-dropdown>
             </div>
           </div>
-
-
 
         </div>
         <div class="row">
@@ -203,10 +215,27 @@ import InputDatepicker from '@/components/form/InputDatepicker'
 import appFormInputUploadFile from '@/components/form/InputUploadFile'
 
 export default {
-  data() {
+  data () {
     return {
       dropdownData,
       isDisabled: false,
+      formDataAlert: {
+        picture: false,
+        title: false,
+        firstName: false,
+        lastName: false,
+        firstNameEN: false,
+        lastNameEN: false,
+        nickname: false,
+        birthdate: false,
+        sex: false,
+        blood: false,
+        religion: false,
+        academicYear: false,
+        university: false,
+        faculty: false,
+        department: false
+      },
       formData: {
         picture: {},
         title: '',
@@ -283,8 +312,8 @@ export default {
     department (value) {
       this.formData.department = value
     },
-    picture(value) {
-      this.formData.picture = value;
+    picture (value) {
+      this.formData.picture = value
     },
     title (value) {
       this.formData.title = value
@@ -308,6 +337,13 @@ export default {
           await HTTP.put('/registration/info', this.formData)
           this.$router.push('2')
         } else {
+          let isAlert = this.formDataAlert
+          for (let key in this.formData) {
+            if (this.formData[key] === '' || this.formData[key] === undefined) { this.formDataAlert[key] = true }
+            if (Array.isArray(this.formData[key])) {
+              if (this.formData[key].length === 0) { this.formDataAlert[key] = true }
+            }
+          }
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
         }
       } catch (error) {
@@ -317,7 +353,7 @@ export default {
     async uploadFile () {
       let tokenUser = JSON.parse(window.localStorage.getItem('ywc16_user_fb'))
       let getFile = this.formData.picture
-      let storageRef = firebaseStorage.ref('accounts/'+ tokenUser.userID + '.jpg')
+      let storageRef = firebaseStorage.ref('accounts/' + tokenUser.userID + '.jpg')
       const responseFile = await storageRef.put(getFile)
       if (responseFile) {
         console.log('upload success')
