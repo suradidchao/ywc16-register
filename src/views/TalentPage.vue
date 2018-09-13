@@ -13,6 +13,7 @@
                   :checkboxAnswers="formData.knowCamp"
                   :errorMsg="'โปรดเลือกช่องทางที่รู้จักค่าย'"
                   :required="true"
+                  :errorInput="formDataAlert.knowCamp"
                   @value="channel"
                   >
                   </app-input-checkbox-group>
@@ -25,9 +26,10 @@
                     :textAreaRow = "15"
                     :required="true"
                     :data="formData.activities"
+                    :errorInput="formDataAlert.activities"
                     @value="talent"
                   >
-                  </app-input-text-area>
+                </app-input-text-area>
             </div>
 
             <div class="col-md-4"></div>
@@ -48,8 +50,8 @@
   </div>
 </template>
 <script>
-import {HTTP} from '../core/http-common.js'
-import {hasEmptyField} from '../utils/helper.js'
+import { HTTP } from '../core/http-common.js'
+import { hasEmptyField } from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appInputCheckboxGroup from '@/components/form/InputCheckboxGroup'
 import appInputTextArea from '@/components/form/InputTextArea'
@@ -57,6 +59,10 @@ export default {
   data () {
     return {
       dropdownData,
+      formDataAlert: {
+        knowCamp: false,
+        activities: false
+      },
       formData: {
         knowCamp: [],
         activities: ''
@@ -83,6 +89,15 @@ export default {
           await HTTP.put('/registration/insight', this.formData)
           this.$router.push('4')
         } else {
+          let isAlert = this.formDataAlert
+           for (let key in this.formData) {
+              if (this.formData[key] === "" || this.formData[key] === undefined)
+                 this.formDataAlert[key] = true
+              if (Array.isArray(this.formData[key])) {
+                if (this.formData[key].length === 0)
+                 this.formDataAlert[key] = true
+              }
+          }
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
         }
       } catch (error) {
