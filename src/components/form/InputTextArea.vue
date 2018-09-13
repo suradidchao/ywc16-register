@@ -27,12 +27,22 @@ export default {
     maxLength: Number,
     textAreaRow: Number,
     required: Boolean,
+    errorInput: Boolean,
     data: String
   },
   data () {
     return {
       isError: false,
       answer: this.data
+    }
+  },
+  watch: {
+    errorInput (value) {
+      if (value) {
+        this.isError = true
+      } else {
+        this.isError = false
+      }
     }
   },
   computed: {

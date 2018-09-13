@@ -28,12 +28,22 @@ export default {
     },
     regularExpression: String,
     required: Boolean,
+    errorInput: Boolean,
     data: String
   },
   data () {
     return {
       isError: false,
       text: this.data
+    }
+  },
+  watch: {
+    errorInput (value) {
+      if (value) {
+        this.isError = true
+      } else {
+        this.isError = false
+      }
     }
   },
   computed: {

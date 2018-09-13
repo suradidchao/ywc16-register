@@ -79,45 +79,44 @@ export default {
       // this.$store.commit('setMajor', majorUser)
     }
   },
-  mounted() {
-      let id = window.location.pathname.split('/')
-      console.log(id)
-      let path = id[id.length - 1]
-      const num = parseInt(path)
-      this.removeClassStep(1, this.stepEnd)
-      this.isStepActive(num)
-    },
-    methods: {
-      isStepActive(id) {
-        document.getElementById("step-" + id).classList.add('active')
-        if(id != 1){
-          this.isStepComplete(id)
-        }
-        if(id != this.stepEnd){
-          this.isStepDisabled(id)
-        }
-      },
-      isStepComplete(id) {
-        let end = id - 1
-        for (let i = 1; i <= end; i++) {
-          document.getElementById("step-" + i).classList.add('complete')
-        }
-      },
-      isStepDisabled(id) {
-        let start = id + 1
-        for (let i = start; i <= this.stepEnd; i++) {
-          document.getElementById("step-" + i).classList.add('disabled')
-        }
-      },
-      removeClassStep(start, end) {
-        for (let i = start; i <= end; i++) {
-          document.getElementById("step-" + i).classList.remove('disabled', 'active', 'complete')
-        }
+  mounted () {
+    let id = window.location.pathname.split('/')
+    console.log(id)
+    let path = id[id.length - 1]
+    const num = parseInt(path)
+    this.removeClassStep(1, this.stepEnd)
+    this.isStepActive(num)
+  },
+  methods: {
+    isStepActive (id) {
+      document.getElementById('step-' + id).classList.add('active')
+      if (id !== 1) {
+        this.isStepComplete(id)
+      }
+      if (id !== this.stepEnd) {
+        this.isStepDisabled(id)
       }
     },
-  components:{
-      stepBar
+    isStepComplete (id) {
+      let end = id - 1
+      for (let i = 1; i <= end; i++) {
+        document.getElementById('step-' + i).classList.add('complete')
+      }
+    },
+    isStepDisabled (id) {
+      let start = id + 1
+      for (let i = start; i <= this.stepEnd; i++) {
+        document.getElementById('step-' + i).classList.add('disabled')
+      }
+    },
+    removeClassStep (start, end) {
+      for (let i = start; i <= end; i++) {
+        document.getElementById('step-' + i).classList.remove('disabled', 'active', 'complete')
+      }
+    }
+  },
+  components: {
+    stepBar
   }
 }
 </script>
-

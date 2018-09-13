@@ -33,7 +33,6 @@
               </div>
               <div class="col-md-12">
 
-
                   <app-form-input-text-area
                   :question="questionsData['specialQuestions']['design'][2]"
                   :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
@@ -190,7 +189,6 @@
               </div>
           </div>
 
-
               <div class="col-md-4"></div>
               <div class="col-md-4">
                   <center>
@@ -210,8 +208,7 @@
 </template>
 
 <script>
-import {HTTP} from '../core/http-common.js'
-import {isEmpty} from '../utils/helper.js'
+import { HTTP } from '../core/http-common.js'
 import questionsData from './questions.json'
 import appFormInputUploadFile from '@/components/form/InputUploadFile'
 import appFormInputTextArea from '@/components/form/InputTextArea'

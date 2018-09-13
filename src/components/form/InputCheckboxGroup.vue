@@ -1,6 +1,6 @@
 <template>
   <div class='checkboxes-container'>
-    <label> {{ question }} </label> <label style="color:#a94442" :class="errorMsgClass"> {{ errorMsg }} </label>
+    <label :class="{ 'text-danger': isError }">{{ question }}</label> <label style="color:#a94442" :class="errorMsgClass"> {{ errorMsg }} </label>
     <div class="checkbox" v-for="(checkbox, index) in checkboxData" :key="checkbox">
       <div class="col-md-6" v-if="index < 3">
         <div class="checkbox-container">
@@ -39,6 +39,7 @@ export default {
     checkboxData: Array,
     checkboxAnswers: Array,
     errorMsg: String,
+    errorInput: Boolean,
     required: Boolean
   },
   data () {
@@ -48,6 +49,15 @@ export default {
       checkboxOtherPrevious: '',
       isOtherCheckboxSelected: false,
       isError: false
+    }
+  },
+   watch: {
+    errorInput (value) {
+      if (value) {
+        this.isError = true
+      } else {
+        this.isError = false
+      }
     }
   },
   computed: {
@@ -97,9 +107,6 @@ export default {
       // validate if not pass also set isError to true
     },
     isChecked (checkboxValue) {
-      let checked = this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
-      // console.log(this.checkboxAnswers)
-      console.log(checkboxValue)
       return this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
     }
   },
