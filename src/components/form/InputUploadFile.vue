@@ -10,7 +10,7 @@
             <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" style="display: none;"/>
           </label>
        </div>
-         </center>
+      </center>
   </div>
 </template>
 
@@ -27,9 +27,9 @@ export default {
       isError: false
     }
   },
-  created() {
+  created () {
     if (this.data) {
-       this.file = this.data
+      this.file = this.data
     }
   },
   computed: {

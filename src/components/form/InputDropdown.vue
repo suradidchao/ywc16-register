@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="form-group" :class="formGroupClass">
+    <label for="selectInput" :class="{ 'text-danger': isError }">{{ question }}</label>
     <select v-model="selectItem" class="form-control input-lg input-css" @change="onSelect"  :required='required'   @blur='validateInputAndSaveState()'>
       <option value="" selected disabled>{{ question }}</option>
       <option v-for="option in dropdownData" v-bind:value="option" v-bind:key="option">
@@ -18,12 +19,22 @@ export default {
     errorMsg: String,
     dropdownData: Array,
     required: Boolean,
+    errorInput: Boolean,
     data: String
   },
   data () {
     return {
-      hasError: false,
+      isError: false,
       selectItem: this.data
+    }
+  },
+  watch: {
+    errorInput (value) {
+      if (value) {
+        this.isError = true
+      } else {
+        this.isError = false
+      }
     }
   },
   computed: {
@@ -45,7 +56,7 @@ export default {
     onSelect () {
       this.$emit('value', this.selectItem)
     },
-     validateInputAndSaveState () {
+    validateInputAndSaveState () {
       this.validateInput()
     },
     validateInput () {

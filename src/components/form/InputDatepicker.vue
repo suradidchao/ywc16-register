@@ -1,5 +1,6 @@
 <template>
   <div>
+      <label for="selectInput" :class="{ 'text-danger': isError }">{{ question }}</label>
       <datepicker v-model="birthdate" :placeholder="question"></datepicker>
   </div>
 </template>
@@ -8,14 +9,16 @@
 import Datepicker from 'vuejs-datepicker'
 export default {
   props: {
+    hasError: Boolean,
     question: String,
     errorMsg: String,
-    data: Number
+    errorInput: Boolean,
+    date: String
   },
   data () {
     return {
-      hasError: false,
-      birthdate: this.data
+      isError: this.hasError,
+      birthdate: this.date
     }
   },
   mounted () {
@@ -28,6 +31,13 @@ export default {
   watch: {
     birthdate (value) {
       this.$emit('value', value)
+    },
+    errorInput (value) {
+      if (value) {
+        this.isError = true
+      } else {
+        this.isError = false
+      }
     }
   }
 }
