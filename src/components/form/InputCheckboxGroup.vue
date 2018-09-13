@@ -1,8 +1,8 @@
 <template>
   <div class='checkboxes-container'>
     <label :class="{ 'text-danger': isError }">{{ question }}</label> <label style="color:#a94442" :class="errorMsgClass"> {{ errorMsg }} </label>
-    <div class="checkbox" v-for="(checkbox, index) in checkboxData" :key="checkbox">
-      <div class="col-md-6" v-if="index < 3">
+    <div class="checkbox" v-for="(checkbox, index) in checkboxData" :key="index">
+      <div class="col-md-6">
         <div class="checkbox-container">
           <label class="label-container" v-if="checkbox === 'อื่นๆ'">
             <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue">
@@ -15,20 +15,6 @@
           </label>
         </div>
       </div>
-      <div class="col-md-6" v-else>
-        <div class="checkbox-container">
-          <label class="label-container"  v-if="checkbox === 'อื่นๆ'">
-            <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue">
-            <label class="checkbox-label">{{ checkbox }}</label>
-              <input type="text" class="checkbox-input" @blur="editCheckboxOther" v-model="checkboxOther">
-            </label>
-            <label class="label-container"  v-else>
-              <input type="checkbox" class="form-radio" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
-            <label class="checkbox-label">{{ checkbox }}</label>
-          </label>
-        </div>
-      </div>
-
     </div>
   </div>
 </template>
