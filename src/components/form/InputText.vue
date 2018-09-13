@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class='form-group' :class="formGroupClass">
+      <label for="textInput" :class="{ 'text-danger': isError }">{{ question }}</label>
       <input :type="type"
       v-model="text"
       class="form-control input-lg input-css"

@@ -298,13 +298,13 @@ export default {
     },
     async nextSteps () {
       try {
-        if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
-          this.isDisabled = true
-          await this.uploadFile()
-        }
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setProfileOne', this.formData)
         if (this.$store.getters.profileOne.complete) {
+          if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
+            this.isDisabled = true
+            await this.uploadFile()
+          }
           await HTTP.put('/registration/info', this.formData)
           this.$router.push('2')
         } else {
