@@ -21,7 +21,7 @@ export const store = new Vuex.Store({
     majorQuestions: majorQuestions
   },
   mutations: {
-    resetAppState (state, payload) {
+    resetAppState(state, payload) {
       const userState = {
         data: {
           firstName: '',
@@ -49,7 +49,11 @@ export const store = new Vuex.Store({
           academicYear: '',
           university: '',
           faculty: '',
-          department: ''
+          department: '',
+          educationStatus: 'อยู่ระหว่างการศึกษา',
+          equivalentEducationDegree: '-',
+          currentWorkingStatus: '-',
+          workingStatusDescription: '-'
         },
         complete: false
       }
@@ -102,7 +106,7 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
-    summary (state) {
+    summary(state) {
       return {
         profile: { ...state.profile.profileOne.data, ...state.profileTwo.profileTwo.data, ...state.talent.talent.data },
         generalQuestions: { ...state.generalQuestions.generalQuestions.data },

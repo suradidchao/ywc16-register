@@ -16,7 +16,11 @@ export default {
         academicYear: '',
         university: '',
         faculty: '',
-        department: ''
+        department: '',
+        educationStatus: 'อยู่ระหว่างการศึกษา',
+        equivalentEducationDegree: '-',
+        currentWorkingStatus: '-',
+        workingStatusDescription: '-'
       },
       complete: false
     }
@@ -25,6 +29,7 @@ export default {
     setProfileOne (state, payload) {
       for (let key in state.profileOne.data) {
         if (payload.hasOwnProperty(key)) { state.profileOne.data[key] = payload[key] }
+        state.profileOne.data[key] = state.profileOne.data[key]
       }
     },
     clearProfileOne (state) {
