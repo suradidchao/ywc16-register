@@ -37,8 +37,17 @@ body {
   height: 100%;
   color: #716AB1;
   font-family: 'supermarketregular', sans-serif;
+}
 
-  /* font-family: 'Raleway', sans-serif; */
+.text-Step {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.text-head-page {
+  font-size: 30px;
+  color: #000;
 }
 
 .input-css {

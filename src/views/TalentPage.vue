@@ -1,8 +1,8 @@
 <template>
   <div>
      <div class="container-fluid">
-    <h1>Step 3</h1>
-    <b>ความสามารถพิเศษ</b>
+    <h1 class="text-Step">Step 3</h1>
+    <b class="text-head-page">ความสามารถพิเศษ</b>
     <hr>
       <div class="panel panel-default">
         <div class="panel-body">

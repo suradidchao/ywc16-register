@@ -1,19 +1,14 @@
 <template>
   <div>
-      <center>
-      <img :src="file" id="output" class="img-responsive img-rounded img-thumbnail" style="border:2px solid #E3E0F1;">
+      <p>{{ file }}</p>
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
        <div class='form-group' :class="formGroupClass">
           <br>
           <label class="control-label btn btn-default btn-file">
-            Upload Profile
-            <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" style="display: none;"/>
+            Upload file
+            <input type="file" id="file" ref="file" accept="application/pdf" v-on:change="handleFileUpload()" style="display: none;"/>
           </label>
-          <br>
-          <p style="margin-top: 10px;font-size: 18px;color:#8E8E8E">หน้าตรงแต่งกายตามสบาย</p>
-          <p style="margin-top: -8px; color:#8E8E8E">(ขนาดไฟล์ไม่เกิน 2 MB)</p>
        </div>
-      </center>
   </div>
 </template>
 
@@ -26,7 +21,7 @@ export default {
   },
   data () {
     return {
-      file: 'https://firebasestorage.googleapis.com/v0/b/ywc16-register.appspot.com/o/no-pic.png?alt=media&token=1ad54c49-6326-48c3-865c-a0dbd5ac551a',
+      file: '',
       isError: false
     }
   },
@@ -52,7 +47,7 @@ export default {
   },
   methods: {
     handleFileUpload () {
-      this.file = URL.createObjectURL(event.target.files[0])
+      this.file = event.target.files[0].name
       this.$emit('value', this.$refs.file.files[0])
     }
   }

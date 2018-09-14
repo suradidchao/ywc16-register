@@ -1,8 +1,8 @@
 <template>
   <div>
        <div class="container-fluid">
-    <h1>Step 5</h1>
-    <b>คำถามสาขา</b>
+    <h1 class="text-Step">Step 5</h1>
+    <b class="text-head-page">คำถามสาขา</b>
     <hr>
         <div class="panel panel-default">
           <div class="panel-body">
@@ -49,8 +49,6 @@
                   <app-form-input-upload-file
                       :question="questionsData['specialQuestions']['design'][3]"
                       :errorMsg = "'กรุณาใส่ไฟล์'"
-                      :maxLength = "3000"
-                      :textAreaRow = "10"
                       :required="true"
                       :data="formData.majorQuestions[3]"
                       @value="majorQuestionFour"
@@ -195,7 +193,7 @@
                   <center>
                     <br>
                     <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                    <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep">Save & Next</button>
+                    <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep" :disabled=isDisabled>Save & Next</button>
                   </center>
                   <br>
               </div>
@@ -211,12 +209,13 @@
 <script>
 import { HTTP } from '../core/http-common.js'
 import questionsData from './questions.json'
-import appFormInputUploadFile from '@/components/form/InputUploadFile'
+import appFormInputUploadFile from '@/components/form/InputFile'
 import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
     return {
       majorUser: this.$store.getters.major,
+      isDisabled: false,
       questionsData,
       formData: {
         majorQuestions: []
@@ -244,6 +243,10 @@ export default {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setMajorQuestions', this.formData)
         if (this.$store.getters.majorQuestions.complete) {
+          if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
+            this.isDisabled = true
+            await this.uploadFile()
+          }
           await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
           this.$router.push('/steps/6')
         } else {
@@ -251,6 +254,22 @@ export default {
         }
       } catch (error) {
         alert(error)
+      }
+    },
+     async uploadFile () {
+      let tokenUser = JSON.parse(window.localStorage.getItem('ywc16_user_fb'))
+      let getFile = this.formData.majorQuestions[3]
+      let storageRef = firebaseStorage.ref('design/' + tokenUser.userID + '.pdf')
+      const responseFile = await storageRef.put(getFile)
+      if (responseFile) {
+        const urlFile = await storageRef.getDownloadURL()
+        if (urlFile) {
+          this.formData.picture = urlFile
+        } else {
+          console.log('get url error')
+        }
+      } else {
+        console.log('upload file error')
       }
     },
     previousStep () {
