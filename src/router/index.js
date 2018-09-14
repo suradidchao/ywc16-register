@@ -12,6 +12,7 @@ import MajorQuestionPage from '../views/MajorQuestionPage'
 import SummaryPage from '../views/SummaryPage'
 import getMajorPage from '../views/getMajorPage'
 import AuthGuard from './auth-guard'
+import AuthComplete from './auth-complete'
 
 Vue.use(Router)
 
@@ -30,7 +31,8 @@ export default new Router({
     {
       path: '/complete',
       name: 'complete',
-      component: CompleteRegistrationPage
+      component: CompleteRegistrationPage,
+      beforeEnter: AuthComplete
     },
     {
       path: '/steps',
