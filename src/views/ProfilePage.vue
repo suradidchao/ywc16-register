@@ -355,7 +355,10 @@ export default {
       this.formData.nickname = value
     },
     birthdate (value) {
-      this.formData.birthdate = value
+      if (value !== '') {
+        this.formDataAlert.birthdate = false
+        this.formData.birthdate = value
+      }
     },
     sex (value) {
       this.formData.sex = value

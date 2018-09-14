@@ -39,7 +39,7 @@
                   </app-form-input-dropdown>
                 </div>
                 <div class="col-md-6">
-                  <div :class="{'form-group': true, 'has-error': errors.has('postalCode') }">
+                  <div :class="{'form-group': true, 'has-error': (errors.has('postalCode') || formDataAlert.postalCode) }">
                     <label :class="{ 'text-danger': formDataAlert.postalCode }">รหัสไปรษณีย์</label>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('postalCode') }" minlength="5" maxlength="5" name="postalCode" v-model="formData.postalCode" type="text" placeholder="รหัสไปรษณีย์">
                     <label class="text-danger" v-show="errors.has('postalCode')">กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง</label>
@@ -50,7 +50,7 @@
 
                <div class="row">
                 <div class="col-md-12">
-                <div :class="{'form-group': true, 'has-error': errors.has('email') }">
+                <div :class="{'form-group': true, 'has-error': (errors.has('email') || formDataAlert.email) }">
                   <label :class="{ 'text-danger': formDataAlert.email }">อีเมล์</label>
                   <input v-validate="'required|email'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('email') }" name="email" v-model="formData.email" type="text" placeholder="อีเมล์">
                   <label class="text-danger" v-show="errors.has('email')">กรุณากรอกอีเมล์ให้ถูกต้อง</label>
@@ -61,7 +61,7 @@
 
                <div class="row">
                 <div class="col-md-12">
-                <div :class="{'form-group': true, 'has-error': errors.has('phone') }">
+                <div :class="{'form-group': true, 'has-error': (errors.has('phone') || formDataAlert.phone) }">
                     <label :class="{ 'text-danger': formDataAlert.phone }">เบอร์ติดต่อ</label>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('phone') }" minlength="10" maxlength="10" name="phone" v-model="formData.phone"  type="text" placeholder="เบอร์ติดต่อ">
                     <label class="text-danger" v-show="errors.has('phone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
@@ -86,7 +86,7 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <div :class="{'form-group': true, 'has-error': errors.has('emergencyPhone') }">
+                  <div :class="{'form-group': true, 'has-error': (errors.has('emergencyPhone') || formDataAlert.emergencyPhone) }">
                     <label :class="{ 'text-danger': formDataAlert.emergencyPhone }">เบอร์ติดต่อฉุกเฉิน</label>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('emergencyPhone') }" minlength="10" maxlength="10" name="emergencyPhone" v-model="formData.emergencyPhone"  type="text" placeholder="เบอร์ติดต่อฉุกเฉิน">
                     <label class="text-danger" v-show="errors.has('emergencyPhone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>

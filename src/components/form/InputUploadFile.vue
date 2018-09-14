@@ -1,18 +1,17 @@
 <template>
   <div>
       <center>
-      <label :class="{ 'text-danger': isError }">{{ question }}</label>
       <img :src="file" id="output" class="img-responsive img-rounded img-thumbnail" style="border:2px solid #E3E0F1;">
-      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
-       <div class='form-group' :class="formGroupClass">
+       <div class='form-group'>
           <br>
           <label class="control-label btn btn-default btn-file">
             Upload Profile
             <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" style="display: none;"/>
           </label>
           <br>
-          <p style="margin-top: 10px;font-size: 18px;color:#8E8E8E">หน้าตรงแต่งกายตามสบาย</p>
-          <p style="margin-top: -8px; color:#8E8E8E">(ขนาดไฟล์ไม่เกิน 2 MB)</p>
+          <p :class="{ 'text-danger': isError }" style="margin-top: 10px;font-size: 18px;color:#8E8E8E">หน้าตรงแต่งกายตามสบาย</p>
+          <p :class="{ 'text-danger': isError }" style="margin-top: -8px; color:#8E8E8E">(ขนาดไฟล์ไม่เกิน 2 MB)</p>
+          <label v-if="isError" class="text-danger">กรุณาใส่รูปส่วนตัว</label>
        </div>
       </center>
   </div>
@@ -24,7 +23,7 @@ export default {
     question: String,
     errorMsg: String,
     errorInput: Boolean,
-    data: Object
+    data: File
   },
   data () {
     return {
