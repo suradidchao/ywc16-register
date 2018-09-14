@@ -37,15 +37,6 @@ export default {
       isError: false
     }
   },
-   watch: {
-    errorInput (value) {
-      if (value) {
-        this.isError = true
-      } else {
-        this.isError = false
-      }
-    }
-  },
   computed: {
     errorMsgClass () {
       return {
@@ -100,6 +91,13 @@ export default {
     checkboxValues () {
       this.validateInput()
       this.$emit('value', this.checkboxValues)
+    },
+    errorInput (value) {
+      if (value) {
+        this.isError = true
+      } else {
+        this.isError = false
+      }
     }
   }
 }

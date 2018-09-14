@@ -336,7 +336,6 @@ export default {
           await HTTP.put('/registration/info', this.formData)
           this.$router.push('2')
         } else {
-          let isAlert = this.formDataAlert
           for (let key in this.formData) {
             if (this.formData[key] === '' || this.formData[key] === undefined) { this.formDataAlert[key] = true }
             if (Array.isArray(this.formData[key])) {

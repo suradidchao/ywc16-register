@@ -15,9 +15,8 @@ export default {
       window.localStorage.setItem('ywc16_user_major', this.major)
       this.$router.push('/authen')
     } else {
-      window.location.href = "https://www.ywc.in.th/";
+      window.location.href = 'https://www.ywc.in.th/'
     }
   }
 }
-
 </script>

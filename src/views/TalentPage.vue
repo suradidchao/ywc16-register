@@ -90,14 +90,15 @@ export default {
           await HTTP.put('/registration/insight', this.formData)
           this.$router.push('4')
         } else {
-          let isAlert = this.formDataAlert
-           for (let key in this.formData) {
-              if (this.formData[key] === "" || this.formData[key] === undefined)
-                 this.formDataAlert[key] = true
-              if (Array.isArray(this.formData[key])) {
-                if (this.formData[key].length === 0)
-                 this.formDataAlert[key] = true
+          for (let key in this.formData) {
+            if (this.formData[key] === '' || this.formData[key] === undefined) {
+              this.formDataAlert[key] = true
+            }
+            if (Array.isArray(this.formData[key])) {
+              if (this.formData[key].length === 0) {
+                this.formDataAlert[key] = true
               }
+            }
           }
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
         }

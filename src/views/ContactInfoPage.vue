@@ -319,10 +319,9 @@ export default {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setProfileTwo', this.formData)
         if (this.$store.getters.profileTwo.complete) {
-          // await HTTP.put('/registration/contact', this.formData)
+          await HTTP.put('/registration/contact', this.formData)
           this.$router.push('3')
         } else {
-          let isAlert = this.formDataAlert
           for (let key in this.formData) {
             if (this.formData[key] === '' || this.formData[key] === undefined) { this.formDataAlert[key] = true }
             if (Array.isArray(this.formData[key])) {

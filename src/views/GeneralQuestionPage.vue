@@ -59,15 +59,11 @@
         </div>
       </div>
     </div>
-
-
-
-
   </div>
 </template>
 
 <script>
-import {HTTP} from '../core/http-common.js'
+import { HTTP } from '../core/http-common.js'
 import questionsData from './questions.json'
 import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
@@ -104,14 +100,15 @@ export default {
           await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
           this.$router.push('5')
         } else {
-          let isAlert = this.formDataAlert
-           for (let key in this.formData) {
-              if (this.formData[key] === "" || this.formData[key] === undefined)
-                 this.formDataAlert[key] = true
-              if (Array.isArray(this.formData[key])) {
-                if (this.formData[key].length === 0)
-                 this.formDataAlert[key] = true
+          for (let key in this.formData) {
+            if (this.formData[key] === '' || this.formData[key] === undefined) {
+              this.formDataAlert[key] = true
+            }
+            if (Array.isArray(this.formData[key])) {
+              if (this.formData[key].length === 0) {
+                this.formDataAlert[key] = true
               }
+            }
           }
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
         }

@@ -244,7 +244,7 @@ export default {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setMajorQuestions', this.formData)
         if (this.$store.getters.majorQuestions.complete) {
-          if (majorUser === 'design') {
+          if (this.majorUser === 'design') {
             if (this.formData.majorQuestions[3] !== null && typeof this.formData.majorQuestions[3] === 'object') {
               this.isDisabled = true
               await this.uploadFile()
@@ -259,7 +259,7 @@ export default {
         alert(error)
       }
     },
-     async uploadFile () {
+    async uploadFile () {
       let tokenUser = JSON.parse(window.localStorage.getItem('ywc16_user_fb'))
       let getFile = this.formData.majorQuestions[3]
       let storageRef = firebaseStorage.ref('design/' + tokenUser.userID + '.pdf')
