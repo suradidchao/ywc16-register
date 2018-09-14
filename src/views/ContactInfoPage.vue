@@ -173,7 +173,7 @@
                           :question="'อาหารที่แพ้'"
                           @value="foodAllergy"
                           :errorInput="formDataAlert.foodAllergy"
-                          :errorMsg="'กรุณาใส่อาหารที่แพ้'"
+                          :errorMsg="'กรุณาใส่อาหารที่แพ้ (ถ้าไม่มีใส่ `-`)'"
                           :required="true"
                           >
                       </app-form-input-text>
@@ -200,7 +200,7 @@
                           :question="'ยาที่แพ้'"
                           @value="medAllergy"
                           :errorInput="formDataAlert.medAllergy"
-                          :errorMsg="'กรุณาใส่ยาที่แพ้'"
+                          :errorMsg="'กรุณาใส่ยาที่แพ้ (ถ้าไม่มีใส่ `-`)'"
                           :required="true"
                           >
                       </app-form-input-text>

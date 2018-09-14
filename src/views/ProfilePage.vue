@@ -236,7 +236,7 @@
                 @value="workingStatusDescription"
                 :required="true"
                 :errorInput="formDataAlert.department"
-                :errorMsg="'กรุณาใส่สาขา'">
+                :errorMsg="`กรุณาระบุ ${workingStatusDescriptionQuestion}`">
               </app-input-text>
             </div>
           </div>
@@ -325,7 +325,7 @@ export default {
       return this.$store.getters.major
     },
     workingStatusDescriptionQuestion () {
-      return this.formData.currentWorkingStatus === 'ทำงานแล้ว' ? 'ระบุชื่อที่ทำงาน' : 'ระบุ'
+      return this.formData.currentWorkingStatus === 'ทำงานแล้ว' ? 'ชื่อที่ทำงาน' : 'อื่นๆ'
     }
   },
   methods: {
@@ -367,7 +367,6 @@ export default {
       this.formData.religion = value
     },
     educationStatus (value) {
-
       this.formData.educationStatus = value
       if (value === 'อยู่ระหว่างการศึกษา') {
         this.formData.academicYear = ''

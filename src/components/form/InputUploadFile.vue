@@ -23,6 +23,7 @@ export default {
   props: {
     question: String,
     errorMsg: String,
+    errorInput: Boolean,
     data: Object
   },
   data () {
@@ -49,6 +50,15 @@ export default {
     },
     showErrorMsg () {
       return !this.isError
+    }
+  },
+  watch: {
+    errorInput (value) {
+      if (value) {
+        this.isError = true
+      } else {
+        this.isError = false
+      }
     }
   },
   methods: {

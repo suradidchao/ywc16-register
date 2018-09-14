@@ -71,11 +71,7 @@ export default {
     return {
       questionsData,
       formDataAlert: {
-        generalQuestions: [
-          false,
-          false,
-          false
-        ]
+        generalQuestions: []
       },
       formData: {
         generalQuestions: []
@@ -100,13 +96,17 @@ export default {
           await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
           this.$router.push('5')
         } else {
-          for (let key in this.formData) {
-            if (this.formData[key] === '' || this.formData[key] === undefined) {
-              this.formDataAlert[key] = true
+          for (let key in this.formData.generalQuestions) {
+            if (this.formData.generalQuestions[key] === '' || this.formData.generalQuestions[key] === undefined) {
+              this.formDataAlert.generalQuestions[key] = true
+              console.log(key)
+              console.log(this.formDataAlert.generalQuestions[key])
             }
-            if (Array.isArray(this.formData[key])) {
-              if (this.formData[key].length === 0) {
-                this.formDataAlert[key] = true
+            if (Array.isArray(this.formData.generalQuestions[key])) {
+              if (this.formData.generalQuestions[key].length === 0) {
+                this.formDataAlert.generalQuestions[key] = true
+                console.log(key)
+                console.log(this.formDataAlert.generalQuestions[key])
               }
             }
           }

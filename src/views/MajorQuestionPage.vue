@@ -16,6 +16,7 @@
                     :textAreaRow = "10"
                     :required="true"
                     :data="formData.majorQuestions[0]"
+                    :errorInput="formDataAlert.majorQuestions[0]"
                     @value="majorQuestion"
                     >
                 </app-form-input-text-area>
@@ -28,6 +29,7 @@
                   :textAreaRow = "10"
                   :required="true"
                   :data="formData.majorQuestions[1]"
+                  :errorInput="formDataAlert.majorQuestions[1]"
                   @value="majorQuestionTwo"
                 >
                 </app-form-input-text-area>
@@ -41,6 +43,7 @@
                   :textAreaRow = "10"
                   :required="true"
                   :data="formData.majorQuestions[2]"
+                  :errorInput="formDataAlert.majorQuestions[2]"
                   @value="majorQuestionThree"
                 >
                 </app-form-input-text-area>
@@ -51,6 +54,7 @@
                       :errorMsg = "'กรุณาใส่ไฟล์'"
                       :required="true"
                       :data="formData.majorQuestions[3]"
+                      :errorInput="formDataAlert.majorQuestions[3]"
                       @value="majorQuestionFour"
                     >
                     </app-form-input-upload-file>
@@ -66,6 +70,7 @@
                           :textAreaRow = "10"
                           :required="true"
                           :data="formData.majorQuestions[0]"
+                          :errorInput="formDataAlert.majorQuestions[0]"
                           @value="majorQuestion"
                         >
                         </app-form-input-text-area>
@@ -78,6 +83,7 @@
                         :textAreaRow = "10"
                         :required="true"
                         :data="formData.majorQuestions[1]"
+                        :errorInput="formDataAlert.majorQuestions[1]"
                         @value="majorQuestionTwo"
                       >
                       </app-form-input-text-area>
@@ -90,6 +96,7 @@
                           :textAreaRow = "10"
                           :required="true"
                           :data="formData.majorQuestions[2]"
+                          :errorInput="formDataAlert.majorQuestions[2]"
                           @value="majorQuestionThree"
                         >
                         </app-form-input-text-area>
@@ -106,6 +113,7 @@
                       :textAreaRow = "10"
                       :required="true"
                       :data="formData.majorQuestions[0]"
+                      :errorInput="formDataAlert.majorQuestions[0]"
                       @value="majorQuestion"
                     >
                     </app-form-input-text-area>
@@ -118,6 +126,7 @@
                           :textAreaRow = "10"
                           :required="true"
                           :data="formData.majorQuestions[1]"
+                          :errorInput="formDataAlert.majorQuestions[1]"
                           @value="majorQuestionTwo"
                         >
                         </app-form-input-text-area>
@@ -130,6 +139,7 @@
                         :textAreaRow = "10"
                         :required="true"
                         :data="formData.majorQuestions[2]"
+                        :errorInput="formDataAlert.majorQuestions[2]"
                         @value="majorQuestionThree"
                       >
                       </app-form-input-text-area>
@@ -145,6 +155,7 @@
                           :textAreaRow = "10"
                           :required="true"
                           :data="formData.majorQuestions[0]"
+                          :errorInput="formDataAlert.majorQuestions[0]"
                           @value="majorQuestion"
                         >
                 </app-form-input-text-area>
@@ -158,21 +169,23 @@
                           :textAreaRow = "10"
                           :required="true"
                           :data="formData.majorQuestions[1]"
+                          :errorInput="formDataAlert.majorQuestions[1]"
                           @value="majorQuestionTwo"
                         >
                 </app-form-input-text-area>
               </div>
               <div class="col-md-12">
                 <app-form-input-text-area
-                          :question="questionsData['specialQuestions']['programming'][2]"
-                          :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                          :maxLength = "3000"
-                          :textAreaRow = "10"
-                          :required="true"
-                          :data="formData.majorQuestions[2]"
-                          @value="majorQuestionThree"
-                        >
-                        </app-form-input-text-area>
+                    :question="questionsData['specialQuestions']['programming'][2]"
+                    :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                    :maxLength = "3000"
+                    :textAreaRow = "10"
+                    :required="true"
+                    :data="formData.majorQuestions[2]"
+                    :errorInput="formDataAlert.majorQuestions[2]"
+                    @value="majorQuestionThree"
+                  >
+                  </app-form-input-text-area>
               </div>
               <div class="col-md-12">
                 <app-form-input-text-area
@@ -182,6 +195,7 @@
                           :textAreaRow = "10"
                           :required="true"
                           :data="formData.majorQuestions[3]"
+                          :errorInput="formDataAlert.majorQuestions[3]"
                           @value="majorQuestionFour"
                         >
                         </app-form-input-text-area>
@@ -192,7 +206,7 @@
               <div class="col-md-4">
                   <center>
                     <br>
-                    <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
+                    <button type="submit" class="btn btn-lg btn-default" @click="previousStep" :disabled=isDisabled>Back</button>
                     <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep" :disabled=isDisabled>Save & Next</button>
                   </center>
                   <br>
@@ -218,6 +232,14 @@ export default {
       majorUser: this.$store.getters.major,
       isDisabled: false,
       questionsData,
+      formDataAlert: {
+        majorQuestions: [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
       formData: {
         majorQuestions: []
       }
