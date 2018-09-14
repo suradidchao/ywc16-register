@@ -21,7 +21,7 @@ export const store = new Vuex.Store({
     majorQuestions: majorQuestions
   },
   mutations: {
-    resetAppState(state, payload) {
+    resetAppState (state, payload) {
       const userState = {
         data: {
           firstName: '',
@@ -106,7 +106,7 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
-    summary(state) {
+    summary (state) {
       return {
         profile: { ...state.profile.profileOne.data, ...state.profileTwo.profileTwo.data, ...state.talent.talent.data },
         generalQuestions: { ...state.generalQuestions.generalQuestions.data },
