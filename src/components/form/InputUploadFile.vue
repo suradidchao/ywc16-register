@@ -1,6 +1,7 @@
 <template>
   <div>
       <center>
+      <label :class="{ 'text-danger': isError }">{{ question }}</label>
       <img :src="file" id="output" class="img-responsive img-rounded img-thumbnail" style="border:2px solid #E3E0F1;">
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
        <div class='form-group' :class="formGroupClass">

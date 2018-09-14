@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group" :class="formGroupClass">
-    <label for="selectInput" :class="{ 'text-danger': isError }">{{ question }}</label>
+    <label :class="{ 'text-danger': isError }">{{ question }}</label>
     <select v-model="selectItem" class="form-control input-lg input-css" @change="onSelect"  :required='required'   @blur='validateInputAndSaveState()'>
       <option value="" selected disabled>{{ question }}</option>
       <option v-for="option in dropdownData" v-bind:value="option" v-bind:key="option">
