@@ -244,9 +244,11 @@ export default {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setMajorQuestions', this.formData)
         if (this.$store.getters.majorQuestions.complete) {
-          if (this.formData.majorQuestions[3] !== null && typeof this.formData.majorQuestions[3] === 'object') {
-            this.isDisabled = true
-            await this.uploadFile()
+          if (majorUser === 'design') {
+            if (this.formData.majorQuestions[3] !== null && typeof this.formData.majorQuestions[3] === 'object') {
+              this.isDisabled = true
+              await this.uploadFile()
+            }
           }
           await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
           this.$router.push('/steps/6')
