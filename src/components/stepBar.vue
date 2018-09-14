@@ -90,7 +90,7 @@ export default {
 .bs-wizard {margin-top: 30px;}
 .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #6C64AC; font-family: 'Raleway', sans-serif; font-size: 18px; margin-bottom: 5px;}
 .bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 34px; height: 34px; display: block; background: #ffffff; top: 50px; left: 50%; margin-top: -18px; margin-left: -15px; border-radius: 50%;}
 .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 28px; height: 28px; background: #6C64AC; border-radius: 50px; position: absolute; top: 3px; left: 3px; }
 .bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 14px; box-shadow: none; margin: 20px 0;}
