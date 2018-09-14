@@ -174,11 +174,37 @@
                           @value="foodAllergy"
                           :errorInput="formDataAlert.foodAllergy"
                           :errorMsg="'กรุณาใส่อาหารที่แพ้'"
-                          :required="false"
+                          :required="true"
                           >
                       </app-form-input-text>
                 </div>
+              </div>
 
+              <div class="row">
+                <div class="col-md-6">
+                    <app-form-input-dropdown
+                      :data="formData.med"
+                      :question="'แพ้ยา'"
+                      @value="med"
+                      :errorMsg="'กรุณาเลือกคำตอบ'"
+                      :errorInput="formDataAlert.med"
+                      :dropdownData="dropdownData['med']"
+                      :required="true"
+                      >
+                      </app-form-input-dropdown>
+                </div>
+
+                 <div class="col-md-6">
+                      <app-form-input-text
+                          :data="formData.medAllergy"
+                          :question="'ยาที่แพ้'"
+                          @value="medAllergy"
+                          :errorInput="formDataAlert.medAllergy"
+                          :errorMsg="'กรุณาใส่ยาที่แพ้'"
+                          :required="true"
+                          >
+                      </app-form-input-text>
+                </div>
               </div>
 
             </div>
@@ -224,7 +250,9 @@ export default {
         shirtSize: false,
         disease: false,
         food: false,
-        foodAllergy: false
+        foodAllergy: false,
+        med: false,
+        medAllergy: false
       },
       formData: {
         address: '',
@@ -239,7 +267,9 @@ export default {
         shirtSize: '',
         disease: '',
         food: '',
-        foodAllergy: ''
+        foodAllergy: '',
+        med: '',
+        medAllergy: ''
       }
     }
   },
@@ -306,6 +336,12 @@ export default {
     },
     foodAllergy (value) {
       this.formData.foodAllergy = value
+    },
+    med (value) {
+      this.formData.med = value
+    },
+    medAllergy (value) {
+      this.formData.medAllergy = value
     },
     checkPageCompleteAndDispatch () {
       if (hasEmptyField(this.formData)) {

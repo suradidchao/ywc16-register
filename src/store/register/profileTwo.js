@@ -14,7 +14,9 @@ export default {
         shirtSize: '',
         disease: '',
         food: '',
-        foodAllergy: ''
+        foodAllergy: '',
+        med: '',
+        medAllergy: ''
       },
       complete: false
     }
