@@ -74,7 +74,14 @@
                           <div class="panel-body">
                               <div v-for="(item, index) in summary.majorQuestions.majorQuestions" :key="index">
                                 <b>{{ questionsData['specialQuestions'][major][index] }}</b>
-                                <p>{{ item }}</p>
+                                <div v-if="item.includes('firebasestorage')">
+                                    <a :href="item" download>
+                                      Download
+                                    </a>
+                                </div>
+                                <div v-else>
+                                    <p>{{ item }}</p>
+                                </div>
                               </div>
                           </div>
                       </div>

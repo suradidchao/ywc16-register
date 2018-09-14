@@ -1,11 +1,19 @@
 <template>
   <div>
-      <p>{{ file }}</p>
+      <label for="textInput" :class="{ 'text-danger': isError }">{{ question }}</label>
+        <div v-if="file.includes('firebasestorage')">
+          <a :href="file" download>
+            Download
+          </a>
+        </div>
+        <div v-else>
+          <p>{{ file }}</p>
+        </div>
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
        <div class='form-group' :class="formGroupClass">
           <br>
           <label class="control-label btn btn-default btn-file">
-            Upload file
+            Upload file PDF
             <input type="file" id="file" ref="file" accept="application/pdf" v-on:change="handleFileUpload()" style="display: none;"/>
           </label>
        </div>

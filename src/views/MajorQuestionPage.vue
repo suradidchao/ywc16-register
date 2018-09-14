@@ -248,9 +248,11 @@ export default {
             if (this.formData.majorQuestions[3] !== null && typeof this.formData.majorQuestions[3] === 'object') {
               this.isDisabled = true
               await this.uploadFile()
+              await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
+            } else {
+              await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
             }
           }
-          await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
           this.$router.push('/steps/6')
         } else {
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
@@ -267,7 +269,8 @@ export default {
       if (responseFile) {
         const urlFile = await storageRef.getDownloadURL()
         if (urlFile) {
-          this.formData.picture = urlFile
+          this.formData.majorQuestions[3] = urlFile
+          this.$store.commit('setMajorQuestions', this.formData)
         } else {
           console.log('get url error')
         }
