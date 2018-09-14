@@ -11,7 +11,7 @@
 export default {
   name: 'App',
   created () {
-    this.$router.push('/authen')
+    // this.$router.push('/authen')
     this.$store.commit('resetAppState', '')
     localStorage.clear()
   }
