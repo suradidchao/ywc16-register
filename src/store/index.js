@@ -67,7 +67,9 @@ export const store = new Vuex.Store({
           shirtSize: '',
           disease: '',
           food: '',
-          foodAllergy: ''
+          foodAllergy: '',
+          med: '',
+          medAllergy: ''
         },
         complete: false
       }
