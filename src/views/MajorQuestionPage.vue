@@ -209,6 +209,7 @@
 <script>
 import { HTTP } from '../core/http-common.js'
 import questionsData from './questions.json'
+import { firebaseStorage } from '../core/firebaseHelper.js'
 import appFormInputUploadFile from '@/components/form/InputFile'
 import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
@@ -243,7 +244,7 @@ export default {
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setMajorQuestions', this.formData)
         if (this.$store.getters.majorQuestions.complete) {
-          if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
+          if (this.formData.majorQuestions[3] !== null && typeof this.formData.majorQuestions[3] === 'object') {
             this.isDisabled = true
             await this.uploadFile()
           }
