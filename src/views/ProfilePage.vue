@@ -1,7 +1,7 @@
 <template>
   <div>
 <div class="container-fluid">
-  <h1 class="text-Step">Step 1</h1>
+  <h1 class="text-Step">STEP 1</h1>
   <b class="text-head-page">ข้อมูลส่วนตัว</b>
   <hr>
   <div class="panel panel-default">
