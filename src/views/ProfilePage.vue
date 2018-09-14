@@ -332,8 +332,10 @@ export default {
           if (this.formData.picture !== null && typeof this.formData.picture === 'object') {
             this.isDisabled = true
             await this.uploadFile()
+            await HTTP.put('/registration/info', this.formData)
+          } else {
+            await HTTP.put('/registration/info', this.formData)
           }
-          await HTTP.put('/registration/info', this.formData)
           this.$router.push('2')
         } else {
           for (let key in this.formData) {
@@ -357,6 +359,7 @@ export default {
         const urlImg = await storageRef.getDownloadURL()
         if (urlImg) {
           this.formData.picture = urlImg
+          this.$store.commit('setProfileOne', this.formData)
         } else {
           console.log('get url error')
         }
