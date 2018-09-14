@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import LoginPage from '../views/LoginPage'
 import CompleteRegistrationPage from '../views/CompleteRegistrationPage'
-import IndexPage from '../views/IndexPage'
+import IndexPage from '../views/indexPage'
 import ProfilePage from '../views/ProfilePage'
 import ContactInfoPage from '../views/ContactInfoPage'
 import TalentPage from '../views/TalentPage'
