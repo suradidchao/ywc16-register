@@ -28,7 +28,7 @@ export default {
     async init () {
       try {
           let {token} = await this.getYWC16AccessToken()
-          let userData = await this.initialiseUserData(token)
+          var userData = await this.initialiseUserData(token)
           if (!this.isUserCompleteRegistration(userData.data.payload.status)){
             this.$router.push('/steps/1')
           } else {
@@ -91,6 +91,7 @@ export default {
           const isNewUser = userMajor ? false : true;
           if (isNewUser) {
             this.setUserMajor()
+            this.$store.commit('setUser', userDataPayload)
             this.$store.commit('setProfileOne', userDataPayload)
             this.$store.commit('setProfileTwo', userDataPayload)
 
