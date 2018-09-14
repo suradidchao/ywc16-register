@@ -138,28 +138,41 @@
 
             </div>
           </div>
-
           <div class="row">
             <div class="col-md-6">
-                <app-input-text
-                  :question="'สถานศึกษา'"
-                  :data="formData.university"
-                  @value="university"
+              <app-input-dropdown
+                  :question="'ระดับการศึกษา'"
+                  :data="formData.educationStatus"
+                  @value="educationStatus"
                   :required="true"
-                  :errorInput="formDataAlert.university"
-                  :errorMsg="'กรุณาใส่สถานศึกษา'">
+                  :errorMsg="'กรุณาใส่ระดับการศึกษา'"
+                  :errorInput="formDataAlert.educationStatus"
+                  :dropdownData="dropdownData['educationStatus']">
+              </app-input-dropdown>
+            </div>
+          </div>
+          <div class="education-group" v-if="formData.educationStatus === 'อยู่ระหว่างการศึกษา'">
+            <div class="row">
+              <div class="col-md-6">
+                  <app-input-text
+                    :question="'สถานศึกษา'"
+                    :data="formData.university"
+                    @value="university"
+                    :required="true"
+                    :errorInput="formDataAlert.university"
+                    :errorMsg="'กรุณาใส่สถานศึกษา'">
+                  </app-input-text>
+              </div>
+              <div class="col-md-6">
+                <app-input-text
+                  :question="'คณะ'"
+                  :data="formData.faculty"
+                  @value="faculty"
+                  :required="true"
+                  :errorInput="formDataAlert.faculty"
+                  :errorMsg="'กรุณาใส่คณะ'">
                 </app-input-text>
-            </div>
-            <div class="col-md-6">
-              <app-input-text
-                :question="'คณะ'"
-                :data="formData.faculty"
-                @value="faculty"
-                :required="true"
-                :errorInput="formDataAlert.faculty"
-                :errorMsg="'กรุณาใส่คณะ'">
-              </app-input-text>
-            </div>
+              </div>
           </div>
 
            <div class="row">
@@ -185,7 +198,50 @@
               </app-input-dropdown>
             </div>
           </div>
+        </div>
 
+        <div class="education-group" v-else>
+          <div class="row">
+            <div class="col-md-6">
+                <app-input-text
+                  :question="'วุฒิการศึกษาล่าสุด (ระบุชื่อสถานศึกษา)'"
+                  :data="formData.equivalentEducationDegree"
+                  @value="equivalentEducationDegree"
+                  :required="true"
+                  :errorInput="formDataAlert.equivalentEducationDegree"
+                  :errorMsg="'กรุณาใส่วุฒิการศึกษาล่าสุด (ระบุชื่อสถานศึกษา)'">
+                </app-input-text>
+            </div>
+            <div class="col-md-6">
+              <app-input-dropdown
+                :question="'สถานะปัจจุบัน'"
+                :data="formData.currentWorkingStatus"
+                @value="currentWorkingStatus"
+                :errorMsg="'กรุณาใส่สถานะปัจจุบัน'"
+                :required="true"
+                :errorInput="formDataAlert.currentWorkingStatus"
+                :dropdownData="dropdownData['currentWorkingStatus']">
+              </app-input-dropdown>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6" v-if="formData.currentWorkingStatus === 'ทำงานแล้ว' || formData.currentWorkingStatus === 'อื่นๆ'">
+              <app-input-text
+                :question="workingStatusDescriptionQuestion"
+                :data="formData.workingStatusDescription"
+                @value="workingStatusDescription"
+                :required="true"
+                :errorInput="formDataAlert.department"
+                :errorMsg="'กรุณาใส่สาขา'">
+              </app-input-text>
+            </div>
+          </div>
+
+        </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
@@ -235,7 +291,11 @@ export default {
         academicYear: false,
         university: false,
         faculty: false,
-        department: false
+        department: false,
+        educationStatus: false,
+        equivalentEducationDegree: false,
+        currentWorkingStatus: false,
+        workingStatusDescription: false
       },
       formData: {
         picture: {},
@@ -252,13 +312,20 @@ export default {
         academicYear: '',
         university: '',
         faculty: '',
-        department: ''
+        department: '',
+        educationStatus: 'อยู่ระหว่างการศึกษา',
+        equivalentEducationDegree: '-',
+        currentWorkingStatus: '-',
+        workingStatusDescription: '-'
       }
     }
   },
   computed: {
     major () {
       return this.$store.getters.major
+    },
+    workingStatusDescriptionQuestion () {
+      return this.formData.currentWorkingStatus === 'ทำงานแล้ว' ? 'ระบุชื่อที่ทำงาน' : 'ระบุ'
     }
   },
   methods: {
@@ -298,6 +365,41 @@ export default {
     },
     religion (value) {
       this.formData.religion = value
+    },
+    educationStatus (value) {
+
+      this.formData.educationStatus = value
+      if (value === 'อยู่ระหว่างการศึกษา') {
+        this.formData.academicYear = ''
+        this.formData.university = ''
+        this.formData.faculty = ''
+        this.formData.department = ''
+
+        this.formData.equivalentEducationDegree = '-'
+        this.formData.currentWorkingStatus = '-'
+        this.formData.workingStatusDescription = '-'
+      } else {
+        this.formData.equivalentEducationDegree = ''
+        this.formData.currentWorkingStatus = ''
+        this.formData.workingStatusDescription = ''
+
+        this.formData.academicYear = '-'
+        this.formData.university = '-'
+        this.formData.faculty = '-'
+        this.formData.department = '-'
+      }
+    },
+    equivalentEducationDegree (value) {
+      this.formData.equivalentEducationDegree = value
+    },
+    currentWorkingStatus (value) {
+      if (value === 'ว่างงาน') {
+        this.formData.workingStatusDescription = '-'
+      }
+      this.formData.currentWorkingStatus = value
+    },
+    workingStatusDescription (value) {
+      this.formData.workingStatusDescription = value
     },
     academicYear (value) {
       this.formData.academicYear = value

@@ -49,7 +49,11 @@ export const store = new Vuex.Store({
           academicYear: '',
           university: '',
           faculty: '',
-          department: ''
+          department: '',
+          educationStatus: 'อยู่ระหว่างการศึกษา',
+          equivalentEducationDegree: '-',
+          currentWorkingStatus: '-',
+          workingStatusDescription: '-'
         },
         complete: false
       }
