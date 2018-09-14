@@ -7,7 +7,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="row">
-            <div v-if="majorUser == 'design'">
+            <div v-if="majorUser === 'design'">
               <div class="col-md-12">
                 <app-form-input-text-area
                     :question="questionsData['specialQuestions']['design'][0]"
@@ -61,7 +61,7 @@
               </div>
             </div>
 
-          <div v-if="majorUser == 'marketing'">
+          <div v-if="majorUser === 'marketing'">
             <div class="col-md-12">
               <app-form-input-text-area
                           :question="questionsData['specialQuestions']['marketing'][0]"
@@ -103,7 +103,7 @@
             </div>
           </div>
 
-          <div v-if="majorUser == 'content'">
+          <div v-if="majorUser === 'content'">
                 <div class="col-md-12">
 
                     <app-form-input-text-area
@@ -116,62 +116,62 @@
                       :errorInput="formDataAlert.majorQuestions[0]"
                       @value="majorQuestion"
                     >
-                    </app-form-input-text-area>
+                </app-form-input-text-area>
                 </div>
                 <div class="col-md-12">
                   <app-form-input-text-area
-                          :question="questionsData['specialQuestions']['content'][1]"
-                          :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                          :maxLength = "3000"
-                          :textAreaRow = "10"
-                          :required="true"
-                          :data="formData.majorQuestions[1]"
-                          :errorInput="formDataAlert.majorQuestions[1]"
-                          @value="majorQuestionTwo"
-                        >
-                        </app-form-input-text-area>
-                </div>
-                <div class="col-md-12">
-                  <app-form-input-text-area
-                        :question="questionsData['specialQuestions']['content'][2]"
+                        :question="questionsData['specialQuestions']['content'][1]"
                         :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
                         :maxLength = "3000"
                         :textAreaRow = "10"
                         :required="true"
-                        :data="formData.majorQuestions[2]"
-                        :errorInput="formDataAlert.majorQuestions[2]"
-                        @value="majorQuestionThree"
+                        :data="formData.majorQuestions[1]"
+                        :errorInput="formDataAlert.majorQuestions[1]"
+                        @value="majorQuestionTwo"
                       >
+                    </app-form-input-text-area>
+                </div>
+                <div class="col-md-12">
+                  <app-form-input-text-area
+                      :question="questionsData['specialQuestions']['content'][2]"
+                      :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                      :maxLength = "3000"
+                      :textAreaRow = "10"
+                      :required="true"
+                      :data="formData.majorQuestions[2]"
+                      :errorInput="formDataAlert.majorQuestions[2]"
+                      @value="majorQuestionThree"
+                    >
                       </app-form-input-text-area>
                 </div>
           </div>
 
-           <div v-if="majorUser == 'programming'">
+           <div v-if="majorUser === 'programming'">
               <div class="col-md-12">
                 <app-form-input-text-area
-                          :question="questionsData['specialQuestions']['programming'][0]"
-                          :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                          :maxLength = "3000"
-                          :textAreaRow = "10"
-                          :required="true"
-                          :data="formData.majorQuestions[0]"
-                          :errorInput="formDataAlert.majorQuestions[0]"
-                          @value="majorQuestion"
-                        >
+                    :question="questionsData['specialQuestions']['programming'][0]"
+                    :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                    :maxLength = "3000"
+                    :textAreaRow = "10"
+                    :required="true"
+                    :data="formData.majorQuestions[0]"
+                    :errorInput="formDataAlert.majorQuestions[0]"
+                    @value="majorQuestion"
+                  >
                 </app-form-input-text-area>
               </div>
               <div class="col-md-12">
 
               <app-form-input-text-area
-                          :question="questionsData['specialQuestions']['programming'][1]"
-                          :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                          :maxLength = "3000"
-                          :textAreaRow = "10"
-                          :required="true"
-                          :data="formData.majorQuestions[1]"
-                          :errorInput="formDataAlert.majorQuestions[1]"
-                          @value="majorQuestionTwo"
-                        >
+                  :question="questionsData['specialQuestions']['programming'][1]"
+                  :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                  :maxLength = "3000"
+                  :textAreaRow = "10"
+                  :required="true"
+                  :data="formData.majorQuestions[1]"
+                  :errorInput="formDataAlert.majorQuestions[1]"
+                  @value="majorQuestionTwo"
+                >
                 </app-form-input-text-area>
               </div>
               <div class="col-md-12">
@@ -189,16 +189,16 @@
               </div>
               <div class="col-md-12">
                 <app-form-input-text-area
-                          :question="questionsData['specialQuestions']['programming'][3]"
-                          :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                          :maxLength = "3000"
-                          :textAreaRow = "10"
-                          :required="true"
-                          :data="formData.majorQuestions[3]"
-                          :errorInput="formDataAlert.majorQuestions[3]"
-                          @value="majorQuestionFour"
-                        >
-                        </app-form-input-text-area>
+                      :question="questionsData['specialQuestions']['programming'][3]"
+                      :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                      :maxLength = "3000"
+                      :textAreaRow = "10"
+                      :required="true"
+                      :data="formData.majorQuestions[3]"
+                      :errorInput="formDataAlert.majorQuestions[3]"
+                      @value="majorQuestionFour"
+                    >
+                  </app-form-input-text-area>
               </div>
           </div>
 
@@ -229,7 +229,7 @@ import appFormInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
     return {
-      majorUser: this.$store.getters.major,
+      majorUser: this.$store.getters.user.major,
       isDisabled: false,
       questionsData,
       formDataAlert: {
@@ -271,10 +271,9 @@ export default {
               this.isDisabled = true
               await this.uploadFile()
               await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
-            } else {
-              await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
             }
           }
+          await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
           this.$router.push('/steps/6')
         } else {
           alert('กรุณากรอกข้อมูลให้ครบถ้วน')
@@ -294,10 +293,10 @@ export default {
           this.formData.majorQuestions[3] = urlFile
           this.$store.commit('setMajorQuestions', this.formData)
         } else {
-          console.log('get url error')
+          // console.log('get url error')
         }
       } else {
-        console.log('upload file error')
+        // console.log('upload file error')
       }
     },
     previousStep () {
