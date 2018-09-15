@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div class="row bs-wizard" style="border-bottom:0;">
+  <div class="row bs-wizard" style="border-bottom:0; margin-left:17px;">
     <div class="col-sm-1"></div>
     <div id="step-1" class="col-xs-2 bs-wizard-step">
       <div class="text-left bs-wizard-stepnum">Step 1</div>
