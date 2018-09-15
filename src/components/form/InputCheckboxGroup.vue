@@ -5,9 +5,9 @@
       <div class="col-md-6">
         <div class="checkbox-container">
           <label class="label-container" v-if="checkbox === 'อื่นๆ'">
-            <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue">
+            <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue" :checked='isOtherCheckboxSelected'>
             <label class="checkbox-label">{{ checkbox }}</label>
-            <input type="text" class="checkbox-input" @blur="editCheckboxOther" v-model="checkboxOther">
+            <input type="text" class="checkbox-input" @blur="editCheckboxOther" :value="etcCheckboxInput" @input="editEtcTextInput">
           </label>
           <label class="label-container" v-else>
             <input type="checkbox" class="form-radio" :value="checkbox" @input="selectCheckbox(checkbox)" :checked="isChecked(checkbox)">
@@ -46,6 +46,10 @@ export default {
     },
     showErrorMsg () {
       return !this.isError
+    },
+    etcCheckboxInput () {
+      let etcCheckboxInputValue = this.checkboxAnswers.find((element) => this.checkboxData.indexOf(element) === -1 ? true : false)
+      return etcCheckboxInputValue
     }
   },
   methods: {
@@ -69,9 +73,11 @@ export default {
       }
     },
     editCheckboxOther () {
-      let checkboxOtherIndex = this.checkboxValues.indexOf(this.checkboxOtherPrevious)
-      this.checkboxValues.splice(checkboxOtherIndex, 1, this.checkboxOther)
-      this.checkboxOtherPrevious = this.checkboxOther
+      if (this.isOtherCheckboxSelected) {
+        let checkboxOtherIndex = this.checkboxValues.indexOf(this.checkboxOtherPrevious)
+        this.checkboxValues.splice(checkboxOtherIndex, 1, this.checkboxOther)
+        this.checkboxOtherPrevious = this.checkboxOther
+      }
     },
     validateInput () {
       if (this.required) {
@@ -84,7 +90,16 @@ export default {
       // validate if not pass also set isError to true
     },
     isChecked (checkboxValue) {
-      return this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
+      if (checkboxValue !== 'อื่นๆ') {
+        return this.checkboxAnswers.indexOf(checkboxValue) !== -1 ? true : false
+      }
+    },
+    editEtcTextInput (value) {
+      if (value.data && value.inputType === 'insertText') {
+        this.checkboxOther += value.data
+      } else if (value.inputType === 'deleteContentBackward') {
+        this.checkboxOther = this.checkboxOther.slice(0, -1)
+      }
     }
   },
   watch: {
@@ -98,6 +113,14 @@ export default {
       } else {
         this.isError = false
       }
+    }
+  },
+  created () {
+    let etcCheckboxInputValue = this.checkboxAnswers.find((element) => this.checkboxData.indexOf(element) === -1 ? true : false)
+    if (etcCheckboxInputValue !== '' && etcCheckboxInputValue !== undefined) {
+      console.log(etcCheckboxInputValue)
+      this.checkboxOther = etcCheckboxInputValue
+      this.isOtherCheckboxSelected = true
     }
   }
 }
