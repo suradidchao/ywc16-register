@@ -6,7 +6,7 @@
           <br>
           <label class="control-label btn btn-default btn-file">
             Upload Profile
-            <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" style="display: none;"/>
+            <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" accept=".png, .jpg, .jpeg" style="display: none;"/>
           </label>
           <br>
           <p :class="{ 'text-danger': isError }" class="text-field" style="margin-top: 10px;font-size: 18px;">หน้าตรงแต่งกายตามสบาย</p>
