@@ -1,10 +1,8 @@
 <template>
   <div class="message-container">
     <div class='message'>
-      <h1>คุณ{{ this.$store.getters.user.firstName }} {{ this.$store.getters.user.lastName }} </h1>
-      <h3>ยังไม่ได้ทำการเลือกสาขาโปรดกลับไปเลือกสาขาที่ <a href='https://ywc.in.th'>ywc.in.th</a> </h3>
+      <h1>คุณยังไม่ได้ทำการเลือกสาขาโปรดกลับไปเลือกสาขาที่ <a href='https://ywc.in.th'>ywc.in.th</a></h1>
     </div>
-
   </div>
 </template>
 

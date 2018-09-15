@@ -14,25 +14,28 @@ import SummaryPage from '../views/SummaryPage'
 import getMajorPage from '../views/getMajorPage'
 import AuthGuard from './auth-guard'
 import AuthComplete from './auth-complete'
+import AuthMajor from './auth-major'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/major/:major',
-      name: 'getmajor',
-      component: getMajorPage
-    },
-    {
       path: '/noMajor',
       name: 'noMajor',
       component: MajorNotChosenPage
     },
     {
+      path: '/major/:major',
+      name: 'getmajor',
+      component: getMajorPage
+    },
+    {
       path: '/authen',
       name: 'authen',
-      component: LoginPage
+      component: LoginPage,
+      beforeEnter: AuthMajor
+
     },
     {
       path: '/complete',

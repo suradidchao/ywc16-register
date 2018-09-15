@@ -90,8 +90,8 @@ export default {
           const userMajor = userDataPayload.major
           const isNewUser = userMajor ? false : true;
           if (isNewUser) {
-            this.setUserMajor()
             this.$store.commit('setUser', userDataPayload)
+            this.setUserMajor()
             this.$store.commit('setProfileOne', userDataPayload)
             this.$store.commit('setProfileTwo', userDataPayload)
 
@@ -135,12 +135,10 @@ export default {
     async setUserMajor () {
       try {
         let majorState = window.localStorage.getItem('ywc16_user_major')
-        if (majorState) {
-          await HTTP.put('/registration/major', { major: majorState })
-          this.$store.commit('setMajor', majorState)
-        } else {
-          this.$router.push('/noMajor')
-        }
+
+        await HTTP.put('/registration/major', { major: majorState })
+        this.$store.commit('setMajor', majorState)
+
       } catch (error) {
         alert(error)
       }

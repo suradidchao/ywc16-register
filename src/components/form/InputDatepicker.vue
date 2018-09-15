@@ -34,10 +34,8 @@ export default {
     },
     errorInput (value) {
       if (value) {
-        console.log('errorInput true')
         this.isError = true
       } else {
-        console.log('errorInput false')
         this.isError = false
       }
     }

@@ -3,7 +3,6 @@
 <div class="container-fluid">
   <h1 class="text-Step">STEP 1</h1>
   <b class="text-head-page">ข้อมูลส่วนตัว</b>
-  <hr>
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -465,10 +464,10 @@ export default {
           this.formData.picture = urlImg
           this.$store.commit('setProfileOne', this.formData)
         } else {
-          console.log('get url error')
+          // console.log('get url error')
         }
       } else {
-        console.log('upload picture error')
+        // console.log('upload picture error')
       }
     }
   },

@@ -3,7 +3,6 @@
     <div class="container-fluid">
     <h1 class="text-Step">STEP 4</h1>
     <b class="text-head-page">คำถามส่วนกลาง</b>
-    <hr>
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
@@ -99,14 +98,10 @@ export default {
           for (let key in this.formData.generalQuestions) {
             if (this.formData.generalQuestions[key] === '' || this.formData.generalQuestions[key] === undefined) {
               this.formDataAlert.generalQuestions[key] = true
-              console.log(key)
-              console.log(this.formDataAlert.generalQuestions[key])
             }
             if (Array.isArray(this.formData.generalQuestions[key])) {
               if (this.formData.generalQuestions[key].length === 0) {
                 this.formDataAlert.generalQuestions[key] = true
-                console.log(key)
-                console.log(this.formDataAlert.generalQuestions[key])
               }
             }
           }
