@@ -42,7 +42,7 @@
                                     <p><b class="text-size-anwer">เบอร์ติดต่อฉุกเฉิน: </b> {{ summary.profile.emergencyPhone }}</p>
                                     <p><b class="text-size-anwer">เกี่ยวข้องเป็น: </b> {{ summary.profile.emergencyPhoneRelated }}</p>
                                     <p><b class="text-size-anwer">ID Skype: </b> {{ summary.profile.skype }}</p>
-                                    <p><b class="text-size-anwer">ขนาดเสื้อ: </b> {{ summary.profile.shirtSize }}</p>
+                                    <!-- <p><b class="text-size-anwer">ขนาดเสื้อ: </b> {{ summary.profile.shirtSize }}</p> -->
                                     <p><b class="text-size-anwer">โรคประจำตัว: </b> {{ summary.profile.disease }}</p>
                                     <p><b class="text-size-anwer">อาหารที่รับประทาน: </b> {{ summary.profile.food }}</p>
                                     <p><b class="text-size-anwer">อาหารที่แพ้: </b> {{ summary.profile.foodAllergy }}</p>
