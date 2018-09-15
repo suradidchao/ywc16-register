@@ -1,10 +1,10 @@
 <template>
   <div>
-     <div class="container-fluid">
+    <div class="container-fluid">
     <h1 class="text-Step">STEP 3</h1>
-    <b class="text-head-page">ความสามารถพิเศษ</b>
+    <p class="text-head-page">ความสามารถพิเศษ</p>
       <div class="panel panel-default">
-        <div class="panel-body">
+        <div class="panel-body space-body">
           <div class="row">
             <div class="col-md-12">
               <app-input-checkbox-group
@@ -18,29 +18,29 @@
                   >
                   </app-input-checkbox-group>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-9">
+              <br>
               <app-input-text-area
-                    :question = "'ความสามารถหรือกิจกรรมที่เคยทำ '"
-                    :errorMsg = "'กรุณาใส่ความสามารถหรือกิจกรรม'"
-                    :maxLength = "3000"
-                    :textAreaRow = "15"
-                    :required="true"
-                    :data="formData.activities"
-                    :errorInput="formDataAlert.activities"
-                    @value="talent"
-                  >
-                </app-input-text-area>
+                  :question="'ความสามารถหรือกิจกรรมที่เคยทำ'"
+                  :placeholder="'กรุณาระบุความสามารถหรือกิจกรรมที่เคยทำ'"
+                  :maxLength = "3000"
+                  :textAreaRow = "12"
+                  :required="true"
+                  :data="formData.activities"
+                  :errorInput="formDataAlert.activities"
+                  @value="talent"
+                >
+              </app-input-text-area>
             </div>
-
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
+            <div class="col-md-5"></div>
+            <div class="col-md-12">
               <center>
                 <br>
-                <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                <button type="submit" class="btn btn-lg btn-default" @click="nextSteps">Save & Next</button>
+                 <button type="button" class="btn btn-lg btn-default" @click="previousStep"><i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-left"  aria-hidden="true"></i> Back</button>
+                      &nbsp;
+                 <button type="submit" class="btn btn-lg btn-default button-font"  @click.stop.prevent="nextStep" :disabled=isDisabled>Save & Next &nbsp;<i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-right"  aria-hidden="true"></i></button>
               </center>
             </div>
-            <div class="col-md-4"></div>
           </div>
           <modal v-model="alert" title="STEP 3" :footer="false">
             <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>
@@ -84,7 +84,7 @@ export default {
         this.$store.dispatch('completeTalent', true)
       }
     },
-    async nextSteps () {
+    async nextStep () {
       try {
         this.alert = false
         this.checkPageCompleteAndDispatch()
@@ -131,3 +131,27 @@ export default {
   }
 }
 </script>
+
+<style>
+
+::-webkit-input-placeholder {
+   padding-top: 8px;
+   padding-left: 8px;
+}
+
+::-moz-input-placeholder {
+   padding-top: 8px;
+   padding-left: 8px;
+}
+
+:-moz-input-placeholder {
+   padding-top: 8px;
+   padding-left: 8px;
+}
+
+:-ms-input-placeholder {
+   padding-top: 8px;
+   padding-left: 8px;
+}
+
+</style>

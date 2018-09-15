@@ -2,9 +2,9 @@
   <div>
        <div class="container-fluid">
     <h1 class="text-Step">STEP 5</h1>
-    <b class="text-head-page">คำถามสาขา</b>
+    <p class="text-head-page">คำถามสาขา</p>
         <div class="panel panel-default">
-          <div class="panel-body">
+          <div class="panel-body space-body">
             <div class="row">
             <div v-if="majorUser === 'design'">
               <div class="col-md-12">
@@ -12,6 +12,7 @@
                     :question="questionsData['specialQuestions']['design'][0]"
                     :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
                     :maxLength = "3000"
+                    :placeholder="'กรุณาตอบคำถามข้อนี้'"
                     :textAreaRow = "10"
                     :required="true"
                     :data="formData.majorQuestions[0]"
@@ -24,6 +25,7 @@
                 <app-form-input-text-area
                   :question="questionsData['specialQuestions']['design'][1]"
                   :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                  :placeholder="'กรุณาตอบคำถามข้อนี้'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -38,6 +40,7 @@
                   <app-form-input-text-area
                   :question="questionsData['specialQuestions']['design'][2]"
                   :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                  :placeholder="'กรุณาตอบคำถามข้อนี้'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -65,6 +68,7 @@
               <app-form-input-text-area
                           :question="questionsData['specialQuestions']['marketing'][0]"
                           :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                          :placeholder="'กรุณาตอบคำถามข้อนี้'"
                           :maxLength = "3000"
                           :textAreaRow = "10"
                           :required="true"
@@ -78,6 +82,7 @@
                 <app-form-input-text-area
                         :question="questionsData['specialQuestions']['marketing'][1]"
                         :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                        :placeholder="'กรุณาตอบคำถามข้อนี้'"
                         :maxLength = "3000"
                         :textAreaRow = "10"
                         :required="true"
@@ -91,6 +96,7 @@
                 <app-form-input-text-area
                           :question="questionsData['specialQuestions']['marketing'][2]"
                           :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                          :placeholder="'กรุณาตอบคำถามข้อนี้'"
                           :maxLength = "3000"
                           :textAreaRow = "10"
                           :required="true"
@@ -108,6 +114,7 @@
                     <app-form-input-text-area
                       :question="questionsData['specialQuestions']['content'][0]"
                       :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                      :placeholder="'กรุณาตอบคำถามข้อนี้'"
                       :maxLength = "3000"
                       :textAreaRow = "10"
                       :required="true"
@@ -121,6 +128,7 @@
                   <app-form-input-text-area
                         :question="questionsData['specialQuestions']['content'][1]"
                         :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                        :placeholder="'กรุณาตอบคำถามข้อนี้'"
                         :maxLength = "3000"
                         :textAreaRow = "10"
                         :required="true"
@@ -134,6 +142,7 @@
                   <app-form-input-text-area
                       :question="questionsData['specialQuestions']['content'][2]"
                       :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                      :placeholder="'กรุณาตอบคำถามข้อนี้'"
                       :maxLength = "3000"
                       :textAreaRow = "10"
                       :required="true"
@@ -150,6 +159,7 @@
                 <app-form-input-text-area
                     :question="questionsData['specialQuestions']['programming'][0]"
                     :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                    :placeholder="'กรุณาตอบคำถามข้อนี้'"
                     :maxLength = "3000"
                     :textAreaRow = "10"
                     :required="true"
@@ -164,6 +174,7 @@
               <app-form-input-text-area
                   :question="questionsData['specialQuestions']['programming'][1]"
                   :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                  :placeholder="'กรุณาตอบคำถามข้อนี้'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -177,6 +188,7 @@
                 <app-form-input-text-area
                     :question="questionsData['specialQuestions']['programming'][2]"
                     :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                    :placeholder="'กรุณาตอบคำถามข้อนี้'"
                     :maxLength = "3000"
                     :textAreaRow = "10"
                     :required="true"
@@ -190,6 +202,7 @@
                 <app-form-input-text-area
                       :question="questionsData['specialQuestions']['programming'][3]"
                       :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                      :placeholder="'กรุณาตอบคำถามข้อนี้'"
                       :maxLength = "3000"
                       :textAreaRow = "10"
                       :required="true"
@@ -200,17 +213,15 @@
                   </app-form-input-text-area>
               </div>
           </div>
-
-              <div class="col-md-4"></div>
-              <div class="col-md-4">
+              <div class="col-md-12">
                   <center>
                     <br>
-                    <button type="submit" class="btn btn-lg btn-default" @click="previousStep" :disabled=isDisabled>Back</button>
-                    <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep" :disabled=isDisabled>Save & Next</button>
+                    <button type="button" class="btn btn-lg btn-default" @click="previousStep" :disabled=isDisabled><i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-left"  aria-hidden="true"></i> Back</button>
+                        &nbsp;
+                    <button type="submit" class="btn btn-lg btn-default button-font"  @click.stop.prevent="nextStep" :disabled=isDisabled>Save & Next &nbsp;<i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-right"  aria-hidden="true"></i></button>
                   </center>
                   <br>
               </div>
-              <div class="col-md-4"></div>
             </div>
           <modal v-model="alert" title="STEP 5" :footer="false">
             <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>

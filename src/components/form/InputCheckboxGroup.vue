@@ -1,8 +1,8 @@
 <template>
   <div class='checkboxes-container'>
-    <label :class="{ 'text-danger': isError }">{{ question }}</label> <label style="color:#a94442" :class="errorMsgClass"> {{ errorMsg }} </label>
+    <p class="text-field" style="font-size:22px" :class="{ 'text-danger': isError }">{{ question }}</p>
     <div class="checkbox" v-for="(checkbox, index) in checkboxData" :key="index">
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <div class="checkbox-container">
           <label class="label-container" v-if="checkbox === 'อื่นๆ'">
             <input type="checkbox" class="form-radio" :value="checkbox" @click="addRemoveCheckboxValue" :checked='isOtherCheckboxSelected'>
@@ -128,12 +128,13 @@ export default {
 <style scoped>
 
 .checkbox-label {
-  margin-top: 25px;
-  margin-left: 10px;
+  padding-right: 10px;
+  margin-top: 5px;
+  margin-left: 6px;
 }
 
 .checkbox-input {
-  height: 40px;
+  height: 60px;
   background-color: #ffffff;
   border: 2px solid #E3E0F1;
   color: #716AB1;
@@ -149,38 +150,47 @@ export default {
 
 .checkbox-container {
   margin-bottom: 4rem;
+
 }
 
 .checkboxes-container {
-  height: 300px;
+  height: auto;
+  font-size: 20px;
+  color: #716AB1;
 }
+
+.checkbox-input::-webkit-input-placeholder { color: #e3e0f1 }  /* WebKit, Blink, Edge */
+.checkbox-input:-moz-placeholder { color: #e3e0f1; }  /* Mozilla Firefox 4 to 18 */
+.checkbox-input::-moz-placeholder { color: #e3e0f1; }  /* Mozilla Firefox 19+ */
+.checkbox-input:-ms-input-placeholder { color: #e3e0f1; }  /* Internet Explorer 10-11 */
+.checkbox-input::-ms-input-placeholder { color: #e3e0f1; }  /* Microsoft Edge */
 
 .form-radio
 {
-     -webkit-appearance: none;
-     -moz-appearance: none;
-     appearance: none;
-     display: inline-block;
-     position: relative;
-     background-color: #ffffff;
-     color: #716AB1;
-     top: 10px;
-     height: 40px;
-     width: 40px;
-     border: 2px solid #E3E0F1;
-     border-radius: 50px;
-     cursor: pointer;
-     margin-right: 7px;
-     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    background-color: #ffffff;
+    color: #716AB1;
+    top: 18px;
+    height: 35px;
+    width: 35px;
+    border: 2px solid #E3E0F1;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-right: 6px;
+    outline: none;
 }
 .form-radio:checked::before
 {
-     position: absolute;
-     font: 20px/1 'Open Sans', sans-serif;
-     left: 11px;
-     top: 7px;
-     content: '\02143';
-     transform: rotate(40deg);
+    position: absolute;
+    font: 20px/1 'Open Sans', sans-serif;
+    left: 6px;
+    top: -2px;
+    content: '\02143';
+    transform: rotate(40deg);
 }
 .form-radio:hover
 {
@@ -189,5 +199,42 @@ export default {
 .form-radio:checked
 {
      background-color: #ffffff;
+}
+
+@media only screen and (min-width: 300px) {
+  .checkbox-container {
+      margin-bottom: 2rem;
+  }
+
+  .checkboxes-container {
+    height: auto;
+    font-size: 16px;
+  }
+
+  .checkbox-label {
+    padding-right: 8px;
+    margin-top: 14px;
+    margin-left: 0px;
+  }
+
+  .checkbox-label span {
+    padding-bottom: 10px;
+  }
+
+  .checkbox-input {
+    /* margin-top: 18px; */
+    height: 35px;
+    width: 140px;
+  }
+  .form-radio
+  {
+     top: 8px;
+     height: 28px;
+     width: 28px;
+     border-radius: 50px;
+     cursor: pointer;
+     margin-right: 4px;
+     outline: none;
+  }
 }
 </style>

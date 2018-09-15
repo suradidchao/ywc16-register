@@ -2,9 +2,9 @@
   <div>
     <div class="container-fluid">
     <h1 class="text-Step">STEP 2</h1>
-    <b class="text-head-page">ข้อมูลการติดต่อ</b>
+    <p class="text-head-page">ข้อมูลการติดต่อ</p>
       <div class="panel panel-default">
-        <div class="panel-body">
+        <div class="panel-body space-body">
           <form>
           <div class="row">
             <div class="col-md-6">
@@ -38,10 +38,10 @@
                   </app-form-input-dropdown>
                 </div>
                 <div class="col-md-6">
-                  <div :class="{'form-group': true, 'has-error': (errors.has('postalCode') || formDataAlert.postalCode) }">
-                    <label :class="{ 'text-danger': formDataAlert.postalCode }">รหัสไปรษณีย์</label>
+                  <div :class="{'form-group text-field-font': true, 'has-error': (errors.has('postalCode') || formDataAlert.postalCode) }">
+                    <p class="text-field" :class="{ 'text-danger': formDataAlert.postalCode }">รหัสไปรษณีย์</p>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('postalCode') }" minlength="5" maxlength="5" name="postalCode" v-model="formData.postalCode" type="text" placeholder="รหัสไปรษณีย์">
-                    <label class="text-danger" v-show="errors.has('postalCode')">กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง</label>
+                    <p class="text-danger" v-show="errors.has('postalCode')">กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง</p>
                     <br>
                 </div>
                 </div>
@@ -49,10 +49,10 @@
 
                <div class="row">
                 <div class="col-md-12">
-                <div :class="{'form-group': true, 'has-error': (errors.has('email') || formDataAlert.email) }">
-                  <label :class="{ 'text-danger': formDataAlert.email }">อีเมล์</label>
+                <div :class="{'form-group text-field-font': true, 'has-error': (errors.has('email') || formDataAlert.email) }">
+                  <p class="text-field" :class="{ 'text-danger': formDataAlert.email }">อีเมล</p>
                   <input v-validate="'required|email'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('email') }" name="email" v-model="formData.email" type="text" placeholder="อีเมล์">
-                  <label class="text-danger" v-show="errors.has('email')">กรุณากรอกอีเมล์ให้ถูกต้อง</label>
+                  <p class="text-danger" v-show="errors.has('email')">กรุณากรอกอีเมล์ให้ถูกต้อง</p>
                   <br>
                 </div>
                 </div>
@@ -60,10 +60,10 @@
 
                <div class="row">
                 <div class="col-md-12">
-                <div :class="{'form-group': true, 'has-error': (errors.has('phone') || formDataAlert.phone) }">
-                    <label :class="{ 'text-danger': formDataAlert.phone }">เบอร์ติดต่อ</label>
+                <div :class="{'form-group text-field-font': true, 'has-error': (errors.has('phone') || formDataAlert.phone) }">
+                    <p class="text-field" :class="{ 'text-danger': formDataAlert.phone }">เบอร์ติดต่อ</p>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('phone') }" minlength="10" maxlength="10" name="phone" v-model="formData.phone"  type="text" placeholder="เบอร์ติดต่อ">
-                    <label class="text-danger" v-show="errors.has('phone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
+                    <p class="text-danger" v-show="errors.has('phone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</p>
                     <br>
                 </div>
                 </div>
@@ -85,23 +85,23 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <div :class="{'form-group': true, 'has-error': (errors.has('emergencyPhone') || formDataAlert.emergencyPhone) }">
-                    <label :class="{ 'text-danger': formDataAlert.emergencyPhone }">เบอร์ติดต่อฉุกเฉิน</label>
+                  <div :class="{'form-group text-field-font': true, 'has-error': (errors.has('emergencyPhone') || formDataAlert.emergencyPhone) }">
+                    <p class="text-field" :class="{ 'text-danger': formDataAlert.emergencyPhone }">เบอร์ติดต่อฉุกเฉิน</p>
                     <input v-validate="'required|numeric'" :class="{'form-control input-lg input-css': true, 'is-danger': errors.has('emergencyPhone') }" minlength="10" maxlength="10" name="emergencyPhone" v-model="formData.emergencyPhone"  type="text" placeholder="เบอร์ติดต่อฉุกเฉิน">
-                    <label class="text-danger" v-show="errors.has('emergencyPhone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</label>
+                    <p class="text-danger" v-show="errors.has('emergencyPhone')">กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</p>
                     <br>
                 </div>
                 </div>
                 <div class="col-md-6">
                     <app-form-input-text
-                        :data="formData.emergencyPhoneRelated"
-                        :question="'เกี่ยวข้องเป็น'"
-                        @value="emergencyPhoneRelated"
-                        :errorMsg="'กรุณากรอกความเกี่ยวข้อง'"
-                        :required="true"
-                        :errorInput="formDataAlert.emergencyPhoneRelated"
-                        >
-                        </app-form-input-text>
+                      :data="formData.emergencyPhoneRelated"
+                      :question="'เกี่ยวข้องเป็น'"
+                      @value="emergencyPhoneRelated"
+                      :errorMsg="'กรุณากรอกความเกี่ยวข้อง'"
+                      :required="true"
+                      :errorInput="formDataAlert.emergencyPhoneRelated"
+                      >
+                    </app-form-input-text>
                 </div>
               </div>
 
@@ -109,9 +109,9 @@
                 <div class="col-md-12">
                     <app-form-input-text
                       :data="formData.skype"
-                      :question="'ID Skype'"
+                      :question="'ID Skype (กรณีสัมภาษณ์ออนไลน์ ถ้าไม่มีใส่ “-”)'"
                       @value="skype"
-                      :errorMsg="'กรุณากรอก Skype ID'"
+                      :placeholder="'-'"
                       :required="true"
                       :errorInput="formDataAlert.skype"
                       >
@@ -123,14 +123,13 @@
             <div class="col-md-6">
 
               <div class="row">
-                <br>
                 <div class="col-md-12">
                   <app-form-input-dropdown
                       :data="formData.shirtSize"
                       :question="'ขนาดเสื้อ (รอบอก, ความยาว)'"
                       @value="shirtSize"
                       :required="true"
-                      :errorMsg="'shirt size missing!!'"
+                      :errorMsg="'กรุณาเลือกขนาดเสื้อ'"
                       :errorInput="formDataAlert.shirtSize"
                       :dropdownData="dropdownData['shirtSize'].map((item) => item.value )"
                       >
@@ -140,15 +139,16 @@
 
               <div class="row">
                 <div class="col-md-12">
-                    <app-form-input-radio-group
-                        :data="formData.disease"
-                        :question="'โรคประจำตัว'"
+                  <br>
+                   <app-form-input-text
+                        :data="formData.foodAllergy"
+                        :question="'โรคประจำตัว (กรณีถ้าไม่มีใส่ “-”)'"
                         @value="disease"
-                        :radioData="dropdownData['disease']"
+                        :placeholder="'-'"
                         :errorInput="formDataAlert.disease"
                         :required="true"
                         >
-                        </app-form-input-radio-group>
+                    </app-form-input-text>
                 </div>
               </div>
 
@@ -169,10 +169,10 @@
                  <div class="col-md-6">
                       <app-form-input-text
                           :data="formData.foodAllergy"
-                          :question="'อาหารที่แพ้'"
+                          :question="'อาหารที่แพ้ (กรณีถ้าไม่มีใส่ “-”)'"
                           @value="foodAllergy"
+                          :placeholder="'-'"
                           :errorInput="formDataAlert.foodAllergy"
-                          :errorMsg="'กรุณาใส่อาหารที่แพ้ (ถ้าไม่มีใส่ `-`)'"
                           :required="true"
                           >
                       </app-form-input-text>
@@ -196,10 +196,10 @@
                  <div class="col-md-6">
                       <app-form-input-text
                           :data="formData.medAllergy"
-                          :question="'ยาที่แพ้'"
+                          :question="'ยาที่แพ้ (กรณีถ้าไม่มีใส่ “-”)'"
                           @value="medAllergy"
+                          :placeholder="'-'"
                           :errorInput="formDataAlert.medAllergy"
-                          :errorMsg="'กรุณาใส่ยาที่แพ้ (ถ้าไม่มีใส่ `-`)'"
                           :required="true"
                           >
                       </app-form-input-text>
@@ -213,8 +213,9 @@
             <br>
                 <div class="col-md-12">
                   <center>
-                    <button type="button" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                    <button type="submit" class="btn btn-lg btn-default" @click.stop.prevent="nextStep">Save & Next</button>
+                    <button type="button" class="btn btn-lg btn-default" @click="previousStep"><i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-left"  aria-hidden="true"></i> Back</button>
+                      &nbsp;
+                    <button type="submit" class="btn btn-lg btn-default button-font"  @click.stop.prevent="nextStep">Save & Next &nbsp;<i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-right"  aria-hidden="true"></i></button>
                   </center>
                 </div>
           </div>

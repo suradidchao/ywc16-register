@@ -2,9 +2,9 @@
   <div>
 <div class="container-fluid">
   <h1 class="text-Step">STEP 1</h1>
-  <b class="text-head-page">ข้อมูลส่วนตัว</b>
+  <p class="text-head-page">ข้อมูลส่วนตัว</p>
   <div class="panel panel-default">
-    <div class="panel-body">
+    <div class="panel-body space-body">
       <div class="row">
         <div class="col-md-3">
           <app-form-input-upload-file
@@ -27,6 +27,7 @@
                 :data="formData.title"
                 @value="title"
                 :required="true"
+                :placeholde="'กรุณาระบุคำนำหน้าชื่อ'"
                 :errorMsg="'กรุณากรอกคำนำหน้าชื่อ'"
                 :dropdownData="dropdownData['title']"
                 :errorInput="formDataAlert.title"
@@ -37,6 +38,7 @@
                 :question="'ชื่อ'"
                 :data="formData.firstName"
                 @value="firstName"
+                :placeholde="'กรุณาระบุชื่อ'"
                 :errorMsg="'กรุณากรอกชื่อ'"
                 :errorInput="formDataAlert.firstName"
                 :required="true">
@@ -47,6 +49,7 @@
                   :question="'นามสกุล'"
                   :data="formData.lastName"
                   @value="lastName"
+                  :placeholde="'กรุณาระบุนามสกุล'"
                   :errorMsg="'กรุณากรอกนามสกุล'"
                   :errorInput="formDataAlert.lastName"
                   :required="true">
@@ -61,6 +64,7 @@
                       :question="'ชื่อ (ภาษาอังกฤษ)'"
                       :data="formData.firstNameEN"
                       @value="firstNameEN"
+                      :placeholde="'กรุณาระบุชื่อ (ภาษาอังกฤษ)'"
                       :errorMsg="'กรุณากรอกชื่อ(ภาษาอังกฤษ)'"
                       :errorInput="formDataAlert.firstNameEN"
                       :required="true">
@@ -71,6 +75,7 @@
                         :question="'นามสกุล (ภาษาอังกฤษ)'"
                         :data="formData.lastNameEN"
                         @value="lastNameEN"
+                        :placeholde="'กรุณาระบุนามสกุล (ภาษาอังกฤษ)'"
                         :errorMsg="'กรุณากรอกนามสกุล(ภาษาอังกฤษ)'"
                         :errorInput="formDataAlert.lastNameEN"
                         :required="true">
@@ -81,12 +86,12 @@
           <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-
                 <app-input-text
                   :question="'ชื่อเล่น'"
                   :data="formData.nickname"
                   @value="nickname"
                   :errorMsg="'กรุณากรอกชื่อเล่น'"
+                  :placeholde="'กรุณาระบุชื่อเล่น'"
                   :errorInput="formDataAlert.nickname"
                   :required="true">
                 </app-input-text>
@@ -134,7 +139,7 @@
                     :errorInput="formDataAlert.religion"
                     :dropdownData="dropdownData['religion']">
               </app-input-dropdown>
-
+          <br>
             </div>
           </div>
           <div class="row">
@@ -145,11 +150,14 @@
                   @value="educationStatus"
                   :required="true"
                   :errorMsg="'กรุณาใส่ระดับการศึกษา'"
+                  :placeholde="'กรุณาระบุระดับการศึกษา'"
                   :errorInput="formDataAlert.educationStatus"
                   :dropdownData="dropdownData['educationStatus']">
               </app-input-dropdown>
             </div>
+
           </div>
+            <br>
           <div class="education-group" v-if="formData.educationStatus === 'อยู่ระหว่างการศึกษา'">
             <div class="row">
               <div class="col-md-6">
@@ -159,6 +167,7 @@
                     @value="university"
                     :required="true"
                     :errorInput="formDataAlert.university"
+                    :placeholde="'กรุณาระบุสถานศึกษา'"
                     :errorMsg="'กรุณาใส่สถานศึกษา'">
                   </app-input-text>
               </div>
@@ -169,6 +178,7 @@
                   @value="faculty"
                   :required="true"
                   :errorInput="formDataAlert.faculty"
+                  :placeholde="'กรุณาระบุคณะ'"
                   :errorMsg="'กรุณาใส่คณะ'">
                 </app-input-text>
               </div>
@@ -182,6 +192,7 @@
                 @value="department"
                 :required="true"
                 :errorInput="formDataAlert.department"
+                :placeholde="'กรุณาระบุสาขา'"
                 :errorMsg="'กรุณาใส่สาขา'">
               </app-input-text>
             </div>
@@ -191,6 +202,7 @@
                 :data="formData.academicYear"
                 @value="academicYear"
                 :errorMsg="'กรุณาใส่ชั้นปี'"
+                :placeholde="'กรุณาระบุชั้นปี'"
                 :required="true"
                 :errorInput="formDataAlert.academicYear"
                 :dropdownData="dropdownData['academicYear']">
@@ -208,6 +220,7 @@
                   @value="equivalentEducationDegree"
                   :required="true"
                   :errorInput="formDataAlert.equivalentEducationDegree"
+                  :placeholde="'กรุณาระบุวุฒิการศึกษาล่าสุด'"
                   :errorMsg="'กรุณาใส่วุฒิการศึกษาล่าสุด (ระบุชื่อสถานศึกษา)'">
                 </app-input-text>
             </div>
@@ -216,6 +229,7 @@
                 :question="'สถานะปัจจุบัน'"
                 :data="formData.currentWorkingStatus"
                 @value="currentWorkingStatus"
+                :placeholde="'กรุณาระบุสถานะปัจจุบัน'"
                 :errorMsg="'กรุณาใส่สถานะปัจจุบัน'"
                 :required="true"
                 :errorInput="formDataAlert.currentWorkingStatus"
@@ -235,6 +249,7 @@
                 @value="workingStatusDescription"
                 :required="true"
                 :errorInput="formDataAlert.department"
+                :placeholde="`กรุณาระบุ ${workingStatusDescriptionQuestion}`"
                 :errorMsg="`กรุณาระบุ ${workingStatusDescriptionQuestion}`">
               </app-input-text>
             </div>
@@ -246,7 +261,7 @@
           <div class="col-md-4"></div>
           <div class="col-md-4" style="margin-top:50px; margin-bottom:50px;">
             <center>
-                <button type="submit" class="btn btn-lg btn-default"  @click.stop.prevent="nextSteps" :disabled=isDisabled>Save & Next  ></button>
+                <button type="submit" class="btn btn-lg btn-default button-font"  @click.stop.prevent="nextSteps" :disabled=isDisabled>Save & Next &nbsp;<i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-right"  aria-hidden="true"></i></button>
             </center>
           </div>
           <div class="col-md-4"></div>
@@ -494,7 +509,10 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
+.form-group {
+    margin-bottom: 0;
+}
 .row {
   margin-top: 20px
 }

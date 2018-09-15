@@ -50,7 +50,7 @@ export default new Router({
       children: [
         {
           path: '',
-          name: 'authen',
+          name: 'authen1',
           redirect: '/authen'
         },
         // {

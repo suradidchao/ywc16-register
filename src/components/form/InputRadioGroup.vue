@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <label :class="{ 'text-danger': isError }">{{ question }}</label>
+  <div class="form-group text-field-font"  style="margin-bottom:32px">
+     <br>
+    <p class="text-field" :class="{ 'text-danger text-field-red': isError }">{{ question }}</p>
     <div class="radio" v-for="radioValue in radioData" :key='radioValue'>
-      <label>
+      <label style="color: #716AB1">
         <input type="radio" class="btn btn-default" v-model="radioGroup" @blur='validateInputAndSaveState()' v-bind:value="radioValue" :required="required">
         <label>{{ radioValue }}</label>
       </label>

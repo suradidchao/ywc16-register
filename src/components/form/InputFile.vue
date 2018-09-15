@@ -1,6 +1,6 @@
 <template>
   <div>
-      <label for="textInput" :class="{ 'text-danger': isError }">{{ question }}</label>
+      <label class="text-field" :class="{ 'text-danger text-field-red': isError }">{{ question }}</label>
         <div v-if="file.includes('firebasestorage')">
           <a :href="file" download>
             Download
@@ -9,8 +9,9 @@
         <div v-else>
           <p>{{ file }}</p>
         </div>
+      <!-- <p class="text-field" :class="{ 'text-danger text-field-red': isError }">{{ question }}</p> -->
       <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
-       <div class='form-group' :class="formGroupClass">
+       <div class='form-group text-field-font' :class="formGroupClass">
           <br>
           <label class="control-label btn btn-default btn-file">
             Upload file PDF
