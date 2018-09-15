@@ -32,7 +32,7 @@
     </div>
 
       <div id="step-6" class="col-xs-2 bs-wizard-step">
-        <div class="text-center bs-wizard-stepnum">Step End</div>
+        <div class="text-center bs-wizard-stepnum">End</div>
         <div class="progress"><div class="progress-bar"></div></div>
       <router-link to="/steps/6" class="bs-wizard-dot"></router-link>
     </div>
@@ -99,7 +99,7 @@ export default {
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:0px; box-shadow: none; background: #6C64AC;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .bs-wizard-dot {position: absolute; width: 34px; height: 34px; display: block; background: #6C64AC; top: 50px; left: 50%; margin-top: -18px; margin-left: -15px; border-radius: 50%;}
-.bs-wizard > .bs-wizard-step.active > .bs-wizard-dot:after {content: ' '; width: 28px; height: 28px; background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423); border-radius: 50px; position: absolute; top: 3px; left: 3px; }
+.bs-wizard > .bs-wizard-step.active > .bs-wizard-dot:after {content: ' '; width: 28px; height: 28px; background-image: linear-gradient(to left, #fe9c94, #ffaa8a, #ffba81, #ffcd7c, #fbe07d); border-radius: 50px; position: absolute; top: 3px; left: 3px; }
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
 .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {position: absolute; width: 34px; height: 34px; display: block; background: #E6E6F4; top: 50px; left: 50%; margin-top: -18px; margin-left: -15px; border-radius: 50%;}

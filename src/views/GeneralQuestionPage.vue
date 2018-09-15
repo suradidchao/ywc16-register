@@ -2,27 +2,27 @@
   <div>
     <div class="container-fluid">
     <h1 class="text-Step">STEP 4</h1>
-    <b class="text-head-page">คำถามส่วนกลาง</b>
+    <p class="text-head-page">คำถามส่วนกลาง</p>
       <div class="panel panel-default">
-        <div class="panel-body">
+        <div class="panel-body space-body">
           <div class="row">
             <div class="col-md-12">
               <app-form-input-text-area
-                      :question="questionsData['generalQuestions'][0]"
-                      :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                      :maxLength = "3000"
-                      :textAreaRow = "10"
-                      :required="true"
-                      :data="formData.generalQuestions[0]"
-                      :errorInput="formDataAlert.generalQuestions[0]"
-                      @value="generalQuestion"
-                    >
-                    </app-form-input-text-area>
+                    :question="questionsData['generalQuestions'][0]"
+                    :placeholder = "'กรุณาตอบคำถาม'"
+                    :maxLength = "3000"
+                    :textAreaRow = "10"
+                    :required="true"
+                    :data="formData.generalQuestions[0]"
+                    :errorInput="formDataAlert.generalQuestions[0]"
+                    @value="generalQuestion"
+                  >
+                  </app-form-input-text-area>
             </div>
             <div class="col-md-12">
                 <app-form-input-text-area
                   :question="questionsData['generalQuestions'][1]"
-                  :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                  :placeholder = "'กรุณาตอบคำถาม'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -35,7 +35,7 @@
             <div class="col-md-12">
                 <app-form-input-text-area
                     :question="questionsData['generalQuestions'][2]"
-                    :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                    ::placeholder = "'กรุณาตอบคำถาม'"
                     :maxLength = "3000"
                     :textAreaRow = "10"
                     :required="true"
@@ -46,14 +46,13 @@
                   </app-form-input-text-area>
             </div>
 
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
+            <div class="col-md-12">
                <center>
-                <button type="submit" class="btn btn-lg btn-default" @click="previousStep">Back</button>
-                <button type="submit" class="btn btn-lg btn-default" @click="nextSteps">Save & Next</button>
+                  <button type="button" class="btn btn-lg btn-default" @click="previousStep"><i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-left"  aria-hidden="true"></i> Back</button>
+                      &nbsp;
+                 <button type="submit" class="btn btn-lg btn-default button-font"  @click.stop.prevent="nextSteps" :disabled=isDisabled>Save & Next &nbsp;<i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-right"  aria-hidden="true"></i></button>
               </center>
             </div>
-            <div class="col-md-4"></div>
           </div>
           <modal v-model="alert" title="STEP 4" :footer="false">
             <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>

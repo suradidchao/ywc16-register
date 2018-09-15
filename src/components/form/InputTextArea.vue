@@ -1,19 +1,20 @@
 <template>
   <div>
-    <div class="form-group" :class="formGroupClass">
-      <label for="textArea" :class="{ 'text-danger': isError }">{{ question }}</label>
+    <div class="form-group text-field-font" :class="formGroupClass">
+      <label class="text-field" for="textArea" :class="{ 'text-danger text-field-red': isError }">{{ question }}</label>
       <textarea class="form-control input-lg input-css"
         :rows="textAreaRow"
         :pattern="regularExpression"
         :maxLength="maxLength"
         :required='required'
-        :placeholder="question"
+        :placeholder="placeholder || question"
         v-model='answer'
         @blur='validateInputAndSaveState()'
         @change="onInput"
+        style="resize: none;"
       >
       </textarea>
-      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
+      <!-- <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label> -->
       <br>
     </div>
   </div>
@@ -22,6 +23,7 @@
 export default {
   props: {
     question: String,
+    placeholder: String,
     errorMsg: String,
     regularExpression: String,
     maxLength: Number,
