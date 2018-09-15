@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import LoginPage from '../views/LoginPage'
+import HomePage from '../views/HomePage'
 import MajorNotChosenPage from '../views/MajorNotChosenPage'
 import CompleteRegistrationPage from '../views/CompleteRegistrationPage'
 import IndexPage from '../views/indexPage'
@@ -20,6 +21,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomePage
+    },
     {
       path: '/noMajor',
       name: 'noMajor',
