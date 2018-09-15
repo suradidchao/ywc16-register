@@ -215,7 +215,7 @@
                   <center>
                     <button type="button" class="btn btn-lg btn-default" @click="previousStep"><i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-left"  aria-hidden="true"></i> Back</button>
                       &nbsp;
-                    <button type="submit" class="btn btn-lg btn-default button-font"  @click.stop.prevent="nextStep" :disabled=isDisabled>Save & Next &nbsp;<i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-right"  aria-hidden="true"></i></button>
+                    <button type="submit" class="btn btn-lg btn-default button-font"  @click.stop.prevent="nextStep">Save & Next &nbsp;<i style=" font-size: 1.5em;" class="fa fa-lg fa-angle-right"  aria-hidden="true"></i></button>
                   </center>
                 </div>
           </div>
