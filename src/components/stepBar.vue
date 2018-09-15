@@ -33,7 +33,7 @@
     </div>
 
       <div id="step-6" class="col-xs-1 bs-wizard-step">
-        <div class="text-left bs-wizard-stepnum">End</div>
+        <div class="text-left bs-wizard-stepnum end">End</div>
       <router-link to="/steps/6" class="bs-wizard-dot"></router-link>
     </div>
 </div>
@@ -109,4 +109,25 @@ export default {
 .bs-wizard > .bs-wizard-step:first-child  > .progress {left: 0%; width: 100%;}
 .bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
 .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+.bs-wizard > .bs-wizard-step > .end {margin-left: -14px;}
+
+@media only screen and (min-width: 0px) {
+    .bs-wizard > .bs-wizard-step .bs-wizard-stepnum  {
+      font-size: 14px
+    }
+    .bs-wizard > .bs-wizard-step > .progress {
+      height: 10px;
+      margin: 24px 0;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    .bs-wizard > .bs-wizard-step .bs-wizard-stepnum  {
+      font-size: 18px
+    }
+    .bs-wizard > .bs-wizard-step > .progress {
+      height: 14px;
+      margin: 17px 0;
+    }
+}
 </style>
