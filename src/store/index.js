@@ -68,7 +68,7 @@ export const store = new Vuex.Store({
           emergencyPhone: '',
           emergencyPhoneRelated: '',
           skype: '',
-          shirtSize: '',
+          shirtSize: '-',
           disease: '',
           food: '',
           foodAllergy: '',

@@ -122,7 +122,7 @@
             </div>
             <div class="col-md-6">
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <app-form-input-dropdown
                       :data="formData.shirtSize"
@@ -135,7 +135,7 @@
                       >
                       </app-form-input-dropdown>
                 </div>
-              </div>
+              </div> -->
 
               <div class="row">
                 <div class="col-md-12">
@@ -268,7 +268,7 @@ export default {
         emergencyPhone: '',
         emergencyPhoneRelated: '',
         skype: '',
-        shirtSize: '',
+        shirtSize: '-',
         disease: '',
         food: '',
         foodAllergy: '',

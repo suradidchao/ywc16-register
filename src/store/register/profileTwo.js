@@ -11,7 +11,7 @@ export default {
         emergencyPhone: '',
         emergencyPhoneRelated: '',
         skype: '',
-        shirtSize: '',
+        shirtSize: '-',
         disease: '',
         food: '',
         foodAllergy: '',
