@@ -1,7 +1,7 @@
 <template>
   <div :class="{'form-group text-field-font': true, 'has-error': isError }">
       <p for="selectInput" class="text-field" :class="{ 'text-danger text-field-red': isError }">{{ question }}</p>
-      <datepicker v-model="birthdate" :disabledDates="disabledDates" :placeholder="question"></datepicker
+      <datepicker v-model="birthdate" :disabledDates="disabledDates" :placeholder="question"></datepicker>
   </div>
 </template>
 
