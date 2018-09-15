@@ -21,7 +21,7 @@
             <div class="col-md-12">
               <app-input-text-area
                     :question = "'ความสามารถหรือกิจกรรมที่เคยทำ '"
-                    :errorMsg = "'ความสามารถหรือกิจกรรม'"
+                    :errorMsg = "'กรุณาใส่ความสามารถหรือกิจกรรม'"
                     :maxLength = "3000"
                     :textAreaRow = "15"
                     :required="true"
@@ -41,8 +41,10 @@
               </center>
             </div>
             <div class="col-md-4"></div>
-
           </div>
+          <modal v-model="alert" title="STEP 3" :footer="false">
+            <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>
+          </modal>
         </div>
       </div>
      </div>
@@ -59,6 +61,7 @@ export default {
   data () {
     return {
       dropdownData,
+      alert: false,
       formDataAlert: {
         knowCamp: false,
         activities: false
@@ -83,6 +86,7 @@ export default {
     },
     async nextSteps () {
       try {
+        this.alert = false
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setTalent', this.formData)
         if (this.$store.getters.talent.completed) {
@@ -99,7 +103,7 @@ export default {
               }
             }
           }
-          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+          this.alert = true
         }
       } catch (error) {
         alert(error)

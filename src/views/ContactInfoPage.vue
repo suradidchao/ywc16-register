@@ -219,6 +219,9 @@
                 </div>
           </div>
           </form>
+      <modal v-model="alert" title="STEP 2" :footer="false">
+        <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>
+      </modal>
         </div>
       </div>
     </div>
@@ -236,6 +239,7 @@ export default {
   data () {
     return {
       dropdownData: dropdownData,
+      alert: false,
       formDataAlert: {
         address: false,
         province: false,
@@ -351,6 +355,7 @@ export default {
     },
     async nextStep () {
       try {
+        this.alert = false
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setProfileTwo', this.formData)
         if (this.$store.getters.profileTwo.complete) {
@@ -363,7 +368,7 @@ export default {
               if (this.formData[key].length === 0) { this.formDataAlert[key] = true }
             }
           }
-          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+          this.alert = true
         }
       } catch (error) {
         alert(error)

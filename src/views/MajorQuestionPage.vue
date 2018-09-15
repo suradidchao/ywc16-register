@@ -212,6 +212,9 @@
               </div>
               <div class="col-md-4"></div>
             </div>
+          <modal v-model="alert" title="STEP 5" :footer="false">
+            <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>
+          </modal>
           </div>
         </div>
        </div>
@@ -229,6 +232,7 @@ export default {
   data () {
     return {
       majorUser: this.$store.getters.user.major,
+      alert: false,
       isDisabled: false,
       questionsData,
       formDataAlert: {
@@ -262,6 +266,7 @@ export default {
     },
     async nextStep () {
       try {
+        this.alert = false
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setMajorQuestions', this.formData)
         if (this.$store.getters.majorQuestions.complete) {
@@ -275,7 +280,7 @@ export default {
           await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
           this.$router.push('/steps/6')
         } else {
-          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+          this.alert = true
         }
       } catch (error) {
         alert(error)

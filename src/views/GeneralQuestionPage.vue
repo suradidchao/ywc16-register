@@ -55,6 +55,9 @@
             </div>
             <div class="col-md-4"></div>
           </div>
+          <modal v-model="alert" title="STEP 4" :footer="false">
+            <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>
+          </modal>
         </div>
       </div>
     </div>
@@ -69,6 +72,7 @@ export default {
   data () {
     return {
       questionsData,
+      alert: false,
       formDataAlert: {
         generalQuestions: []
       },
@@ -89,6 +93,7 @@ export default {
     },
     async nextSteps () {
       try {
+        this.alert = false
         this.checkPageCompleteAndDispatch()
         this.$store.dispatch('addGeneralQuestions', this.formData)
         if (this.$store.getters.generalQuestions.complete) {
@@ -105,7 +110,7 @@ export default {
               }
             }
           }
-          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+          this.alert = true
         }
       } catch (error) {
         alert(error)
