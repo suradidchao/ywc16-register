@@ -43,6 +43,6 @@ export default {
         this.isError = false
       }
     }
-  },
+  }
 }
 </script>
