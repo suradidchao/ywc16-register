@@ -121,7 +121,7 @@ export default {
     }
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 450px) {
     .bs-wizard > .bs-wizard-step .bs-wizard-stepnum  {
       font-size: 18px
     }
