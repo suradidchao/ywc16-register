@@ -272,8 +272,6 @@ import InputText from '@/components/form/InputText'
 import InputDropdown from '@/components/form/InputDropdown'
 import InputDatepicker from '@/components/form/InputDatepicker'
 import appFormInputUploadFile from '@/components/form/InputUploadFile'
-
-
 export default {
   data () {
     return {
