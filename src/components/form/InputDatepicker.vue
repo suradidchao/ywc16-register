@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{'form-group': true, 'has-error': isError }">
       <label for="selectInput" :class="{ 'text-danger': isError }">{{ question }}</label>
       <datepicker v-model="birthdate" :placeholder="question"></datepicker>
   </div>
@@ -17,7 +17,7 @@ export default {
   },
   data () {
     return {
-      isError: this.hasError,
+      isError: false,
       birthdate: this.date
     }
   },
@@ -34,8 +34,10 @@ export default {
     },
     errorInput (value) {
       if (value) {
+        console.log('errorInput true')
         this.isError = true
       } else {
+        console.log('errorInput false')
         this.isError = false
       }
     }

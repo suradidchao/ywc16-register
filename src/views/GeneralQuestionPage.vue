@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container-fluid">
-    <h1 class="text-Step">Step 4</h1>
+    <h1 class="text-Step">STEP 4</h1>
     <b class="text-head-page">คำถามส่วนกลาง</b>
     <hr>
       <div class="panel panel-default">
