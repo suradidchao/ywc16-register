@@ -252,12 +252,15 @@
           <div class="col-md-4"></div>
         </div>
     </div>
+     <modal v-model="alert" title="STEP 1" :footer="false">
+      <p>กรุณากรอกข้อมูลให้ครบถ้วน</p>
+    </modal>
   </div>
 
 </div>
 </div>
 
-  </div>
+</div>
 </template>
 
 <script>
@@ -270,10 +273,12 @@ import InputDropdown from '@/components/form/InputDropdown'
 import InputDatepicker from '@/components/form/InputDatepicker'
 import appFormInputUploadFile from '@/components/form/InputUploadFile'
 
+
 export default {
   data () {
     return {
       dropdownData,
+      alert: false,
       isDisabled: false,
       formDataAlert: {
         picture: false,
@@ -429,6 +434,7 @@ export default {
     },
     async nextSteps () {
       try {
+        this.alert = false
         this.checkPageCompleteAndDispatch()
         this.$store.commit('setProfileOne', this.formData)
         if (this.$store.getters.profileOne.complete) {
@@ -448,7 +454,7 @@ export default {
               if (this.formData[key].length === 0) { this.formDataAlert[key] = true }
             }
           }
-          alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+          this.alert = true
         }
       } catch (error) {
         alert(error)
