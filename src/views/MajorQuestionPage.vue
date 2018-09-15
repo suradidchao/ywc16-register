@@ -110,6 +110,10 @@
 
           <div v-if="majorUser === 'content'">
                 <div class="col-md-12">
+                  <label class='text-field'>ให้น้องตอบคำถามต่อไปนี้โดยกำหนดสถานการณ์ในฐานะ Content Creator มาให้ โดยอธิบายว่าจะทำคอนเทนต์รูปแบบไหน (ภาพ, บทความ, วิดีโอ หรืออื่น ๆ) เนื้อหาเป็นอย่างไร มีวิธีการสื่อสารแบบไหน เขียนตัวอย่างเนื้อหาที่จะใช้จริงมาพอเข้าใจ
+จินตนาการว่าน้องเป็นหัวหน้าพรรคการเมืองหน้าใหม่ และต้องการทำ Online Content</label>
+                </div>
+                <div class="col-md-12">
 
                     <app-form-input-text-area
                       :question="questionsData['specialQuestions']['content'][0]"
