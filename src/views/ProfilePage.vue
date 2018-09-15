@@ -102,7 +102,7 @@
                 :date="formData.birthdate"
                 @value="birthdate"
                 :errorInput="formDataAlert.birthdate"
-                :errorMsg="'กรุณาใส่วันเกิด'">
+                :errorMsg="'กรุณาใส่วันเกิด (นับตั้งแต่ปีค.ศ. 1994 - 2000)'">
               </app-input-datepicker>
             </div>
           </div>
@@ -287,8 +287,6 @@ import InputText from '@/components/form/InputText'
 import InputDropdown from '@/components/form/InputDropdown'
 import InputDatepicker from '@/components/form/InputDatepicker'
 import appFormInputUploadFile from '@/components/form/InputUploadFile'
-
-
 export default {
   data () {
     return {
