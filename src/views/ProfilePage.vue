@@ -97,7 +97,7 @@
                 :date="formData.birthdate"
                 @value="birthdate"
                 :errorInput="formDataAlert.birthdate"
-                :errorMsg="'กรุณาใส่วันเกิด'">
+                :errorMsg="'กรุณาใส่วันเกิด (นับตั้งแต่ปีค.ศ. 1994 - 2000)'">
               </app-input-datepicker>
             </div>
           </div>
