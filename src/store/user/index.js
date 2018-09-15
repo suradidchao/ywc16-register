@@ -14,7 +14,9 @@ export default {
   },
   mutations: {
     setUser (state, payload) {
-      state.user.data = payload
+      for (let key in state.user.data) {
+        if (payload.hasOwnProperty(key)) { state.user.data[key] = payload[key] }
+      }
     },
     setMajor (state, payload) {
       state.user.data.major = payload
