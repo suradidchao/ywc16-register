@@ -66,7 +66,6 @@ body {
 .form-control:-ms-input-placeholder { color: #e3e0f1; }  /* Internet Explorer 10-11 */
 .form-control::-ms-input-placeholder { color: #e3e0f1; }  /* Microsoft Edge */
 
-
 .text-field {
   font-family: 'cs_prajad', sans-serif;
   color: #9b8db9

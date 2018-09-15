@@ -142,7 +142,6 @@ export default {
 .checkbox-input:-ms-input-placeholder { color: #e3e0f1; }  /* Internet Explorer 10-11 */
 .checkbox-input::-ms-input-placeholder { color: #e3e0f1; }  /* Microsoft Edge */
 
-
 .form-radio
 {
     -webkit-appearance: none;

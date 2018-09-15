@@ -170,10 +170,6 @@ export default {
 .panel-border {
   border-color: #716AB1;
 }
-/* p {
-   font-size: 18px
-} */
-
 
 .text-size {
   color:rgba(108, 88, 179, 0.75);
@@ -183,11 +179,10 @@ export default {
 .text-size-ask {
   font-size: 18px;
   color: #000;
-  /* font-size: 22px */
 }
+
 .text-size-anwer {
   color: #6d65ac
-  /* font-size: 18px */
-  /* font-size: 22px */
 }
+
 </style>
