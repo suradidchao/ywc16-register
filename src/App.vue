@@ -57,7 +57,7 @@ body {
 
 .text-field-font {
   font-family: 'cs_prajad', sans-serif;
-  font-size: 20px;
+  font-size: 19px;
 }
 
 .form-control::-webkit-input-placeholder { color: #e3e0f1 }  /* WebKit, Blink, Edge */
