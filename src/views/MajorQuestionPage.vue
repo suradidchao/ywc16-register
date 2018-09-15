@@ -360,5 +360,6 @@ export default {
 <style scoped>
 .content-intro {
   margin-bottom: 3 rem;
+  color: #9b8db9;
 }
 </style>
