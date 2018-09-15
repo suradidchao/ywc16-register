@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div class='form-group' :class="formGroupClass">
-      <label for="textInput" :class="{ 'text-danger': isError }">{{ question }}</label>
+    <div class='form-group text-field-font' :class="formGroupClass">
+      <p class="text-field" :class="{ 'text-danger text-field-red': isError }">{{ question }}</p>
       <input :type="type"
       v-model="text"
       class="form-control input-lg input-css"
       @change="onInput"
-      :placeholder="question"
+      :placeholder="placeholder || question"
       @blur='validateInputAndSaveState()'
       :pattern="regularExpression"
       :required='required'
       >
-      <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label>
+      <!-- <label class="control-label" :class="errorMsgClass">{{ errorMsg }}</label> -->
       <br>
     </div>
   </div>
@@ -21,6 +21,7 @@
 export default {
   props: {
     question: String,
+    placeholder: String,
     errorMsg: String,
     type: {
       default: 'text',
