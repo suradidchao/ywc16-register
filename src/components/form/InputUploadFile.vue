@@ -9,8 +9,8 @@
             <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" style="display: none;"/>
           </label>
           <br>
-          <p :class="{ 'text-danger': isError }" style="margin-top: 10px;font-size: 18px;color:#8E8E8E">หน้าตรงแต่งกายตามสบาย</p>
-          <p :class="{ 'text-danger': isError }" style="margin-top: -8px; color:#8E8E8E">(ขนาดไฟล์ไม่เกิน 2 MB)</p>
+          <p :class="{ 'text-danger': isError }" class="text-field" style="margin-top: 10px;font-size: 18px;">หน้าตรงแต่งกายตามสบาย</p>
+          <p :class="{ 'text-danger': isError }" class="text-field" style="margin-top: -8px; ">(ขนาดไฟล์ไม่เกิน 2 MB)</p>
           <label v-if="isError" class="text-danger">กรุณาใส่รูปส่วนตัว</label>
        </div>
       </center>
