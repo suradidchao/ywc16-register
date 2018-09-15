@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import LoginPage from '../views/LoginPage'
+import MajorNotChosenPage from '../views/MajorNotChosenPage'
 import CompleteRegistrationPage from '../views/CompleteRegistrationPage'
 import IndexPage from '../views/indexPage'
 import ProfilePage from '../views/ProfilePage'
@@ -22,6 +23,11 @@ export default new Router({
       path: '/major/:major',
       name: 'getmajor',
       component: getMajorPage
+    },
+    {
+      path: '/noMajor',
+      name: 'noMajor',
+      component: MajorNotChosenPage
     },
     {
       path: '/authen',

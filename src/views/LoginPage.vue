@@ -135,8 +135,12 @@ export default {
     async setUserMajor () {
       try {
         let majorState = window.localStorage.getItem('ywc16_user_major')
-        await HTTP.put('/registration/major', { major: majorState })
-        this.$store.commit('setMajor', majorState)
+        if (majorState) {
+          await HTTP.put('/registration/major', { major: majorState })
+          this.$store.commit('setMajor', majorState)
+        } else {
+          this.$router.push('/noMajor')
+        }
       } catch (error) {
         alert(error)
       }
