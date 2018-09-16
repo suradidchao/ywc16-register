@@ -31,7 +31,7 @@ export default {
   data () {
     return {
       checkboxValues: [],
-      checkboxOther: '',
+      checkboxOther: '-',
       checkboxOtherPrevious: '',
       isOtherCheckboxSelected: false,
       isError: false
