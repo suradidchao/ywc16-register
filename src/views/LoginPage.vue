@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- <modal v-model="alert" title="Login" :footer="false"> -->
+    <modal v-model="alert" title="Login" :footer="false">
       <center>
-        <button style="display: none" type="button" id="fbClick" class="btn btn-default button-font" @click="fbLogin"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login Facebook</button>
+        <button type="button" id="fbClick" class="btn btn-default button-font" @click="fbLogin"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login Facebook</button>
       </center>
-    <!-- </modal> -->
+    </modal>
   </div>
 
 </template>
@@ -22,7 +22,7 @@ import { HTTP } from '../core/http-common.js'
 export default {
   data () {
     return {
-      // alert: false,
+      alert: false,
       authorized_token: '',
       platform_mac: false,
       loginStatus: 'Not login'
@@ -31,7 +31,7 @@ export default {
   created () {
     if (navigator.platform === "MacIntel") {
         this.platform_mac = true
-        // this.alert = true
+        this.alert = true
         this.fbInit()
         document.getElementById('fbClick').onclick()
     } else {
