@@ -1,6 +1,10 @@
 <template>
   <div>
-    <!-- <h1>{{ loginStatus }}</h1> -->
+    <!-- <modal v-model="alert" title="Login" :footer="false"> -->
+      <center>
+        <button style="display: none" type="button" id="fbClick" class="btn btn-default button-font" @click="fbLogin"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login Facebook</button>
+      </center>
+    <!-- </modal> -->
   </div>
 
 </template>
@@ -18,13 +22,46 @@ import { HTTP } from '../core/http-common.js'
 export default {
   data () {
     return {
+      // alert: false,
+      authorized_token: '',
+      platform_mac: false,
       loginStatus: 'Not login'
     }
   },
   created () {
-    this.init()
+    if (navigator.platform === "MacIntel") {
+        this.platform_mac = true
+        // this.alert = true
+        this.fbInit()
+        document.getElementById('fbClick').onclick()
+    } else {
+      this.init()
+    }
   },
   methods: {
+    async fbInit () {
+       await loadFbSdk()
+        FB.getLoginStatus(response => {
+          this.statusChangeCallback(response)
+        })
+    },
+    fbLogin () {
+      FB.login((response) => {
+        this.statusChangeCallback(response)
+      }, {
+        scope: 'email',
+        return_scopes: true
+      })
+    },
+    statusChangeCallback (response) {
+      if (response.status === 'connected') {
+        this.loginStatus = response.status
+        let userFbData = response.authResponse
+        window.localStorage.setItem('ywc16_user_fb', JSON.stringify(userFbData))
+        this.authorized_token = userFbData.accessToken
+        this.init()
+      }
+    },
     async init () {
       try {
           let {token} = await this.getYWC16AccessToken()
@@ -43,7 +80,12 @@ export default {
       // get FB access token
       return new Promise(async (resolve, reject) => {
         try {
-          let fbAccessToken = await this.getFBAccessToken()
+          let fbAccessToken = ''
+          if (this.platform_mac) {
+            fbAccessToken = this.authorized_token
+          } else {
+            fbAccessToken = await this.getFBAccessToken()
+          }
           try {
             let ywc16AccessToken = await this.fetchYWC16AccessToken(fbAccessToken)
             return resolve({token: ywc16AccessToken, status: "success", statusMessage: 'Successfully retrieved ywc16 access token'})
@@ -146,7 +188,6 @@ export default {
     isUserCompleteRegistration (registrationStatus) {
       return registrationStatus === 'completed' ? true : false
     }
-
   }
 }
 </script>
