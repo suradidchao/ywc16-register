@@ -34,7 +34,7 @@ export default {
         this.platform_mac = true
         this.alert = true
         this.fbInit()
-        // document.getElementById('fbClick').onclick()
+        document.getElementById('fbClick').onclick()
     } else {
       this.init()
     }
