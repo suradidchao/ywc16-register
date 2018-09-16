@@ -29,7 +29,8 @@ export default {
     }
   },
   created () {
-    if (navigator.platform === "MacIntel") {
+    const platform = navigator.platform
+    if (platform === "MacIntel" || platform === "iPhone" || platform === "iPad") {
         this.platform_mac = true
         this.alert = true
         this.fbInit()
