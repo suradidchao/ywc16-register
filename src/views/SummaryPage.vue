@@ -89,7 +89,7 @@
                       <div class="col-sm-12">
                         <center>
                           <br>
-                            <button type="submit" class="btn btn-lg btn-default" @click="edit">Edit</button>
+                            <button type="submit" class="btn btn-lg btn-default button-size" @click="edit">Edit</button>
                               &nbsp;
                             <button type="submit" class="btn btn-lg btn-default" @click="confirm">confirm</button>
                         </center>
