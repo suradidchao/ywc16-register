@@ -10,9 +10,9 @@
               <div class="col-md-12">
                 <app-form-input-text-area
                     :question="questionsData['specialQuestions']['design'][0]"
-                    :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
+                    :errorMsg = "'กรุณาตอบคำถาม'"
                     :maxLength = "3000"
-                    :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                    :placeholder="'กรุณาตอบคำถาม'"
                     :textAreaRow = "10"
                     :required="true"
                     :data="formData.majorQuestions[0]"
@@ -24,8 +24,8 @@
               <div class="col-md-12">
                 <app-form-input-text-area
                   :question="questionsData['specialQuestions']['design'][1]"
-                  :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                  :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                  :errorMsg = "'กรุณาตอบคำถาม'"
+                  :placeholder="'กรุณาตอบคำถาม'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -39,8 +39,8 @@
 
                   <app-form-input-text-area
                   :question="questionsData['specialQuestions']['design'][2]"
-                  :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                  :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                  :errorMsg = "'กรุณาตอบคำถาม'"
+                  :placeholder="'กรุณาตอบคำถาม'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -67,8 +67,8 @@
             <div class="col-md-12">
               <app-form-input-text-area
                           :question="questionsData['specialQuestions']['marketing'][0]"
-                          :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                          :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                          :errorMsg = "'กรุณาตอบคำถาม'"
+                          :placeholder="'กรุณาตอบคำถาม'"
                           :maxLength = "3000"
                           :textAreaRow = "10"
                           :required="true"
@@ -81,8 +81,8 @@
             <div class="col-md-12">
                 <app-form-input-text-area
                         :question="questionsData['specialQuestions']['marketing'][1]"
-                        :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                        :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                        :errorMsg = "'กรุณาตอบคำถาม'"
+                        :placeholder="'กรุณาตอบคำถาม'"
                         :maxLength = "3000"
                         :textAreaRow = "10"
                         :required="true"
@@ -95,8 +95,8 @@
             <div class="col-md-12">
                 <app-form-input-text-area
                           :question="questionsData['specialQuestions']['marketing'][2]"
-                          :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                          :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                          :errorMsg = "'กรุณาตอบคำถาม'"
+                          :placeholder="'กรุณาตอบคำถาม'"
                           :maxLength = "3000"
                           :textAreaRow = "10"
                           :required="true"
@@ -117,8 +117,8 @@
 
                     <app-form-input-text-area
                       :question="questionsData['specialQuestions']['content'][0]"
-                      :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                      :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                      :errorMsg = "'กรุณาตอบคำถาม'"
+                      :placeholder="'กรุณาตอบคำถาม'"
                       :maxLength = "3000"
                       :textAreaRow = "10"
                       :required="true"
@@ -131,8 +131,8 @@
                 <div class="col-md-12">
                   <app-form-input-text-area
                         :question="questionsData['specialQuestions']['content'][1]"
-                        :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                        :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                        :errorMsg = "'กรุณาตอบคำถาม'"
+                        :placeholder="'กรุณาตอบคำถาม'"
                         :maxLength = "3000"
                         :textAreaRow = "10"
                         :required="true"
@@ -145,8 +145,8 @@
                 <div class="col-md-12">
                   <app-form-input-text-area
                       :question="questionsData['specialQuestions']['content'][2]"
-                      :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                      :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                      :errorMsg = "'กรุณาตอบคำถาม'"
+                      :placeholder="'กรุณาตอบคำถาม'"
                       :maxLength = "3000"
                       :textAreaRow = "10"
                       :required="true"
@@ -162,8 +162,8 @@
               <div class="col-md-12">
                 <app-form-input-text-area
                     :question="questionsData['specialQuestions']['programming'][0]"
-                    :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                    :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                    :errorMsg = "'กรุณาตอบคำถาม'"
+                    :placeholder="'กรุณาตอบคำถาม'"
                     :maxLength = "3000"
                     :textAreaRow = "10"
                     :required="true"
@@ -177,8 +177,8 @@
 
               <app-form-input-text-area
                   :question="questionsData['specialQuestions']['programming'][1]"
-                  :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                  :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                  :errorMsg = "'กรุณาตอบคำถาม'"
+                  :placeholder="'กรุณาตอบคำถาม'"
                   :maxLength = "3000"
                   :textAreaRow = "10"
                   :required="true"
@@ -191,8 +191,8 @@
               <div class="col-md-12">
                 <app-form-input-text-area
                     :question="questionsData['specialQuestions']['programming'][2]"
-                    :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                    :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                    :errorMsg = "'กรุณาตอบคำถาม'"
+                    :placeholder="'กรุณาตอบคำถาม'"
                     :maxLength = "3000"
                     :textAreaRow = "10"
                     :required="true"
@@ -205,8 +205,8 @@
               <div class="col-md-12">
                 <app-form-input-text-area
                       :question="questionsData['specialQuestions']['programming'][3]"
-                      :errorMsg = "'กรุณาตอบคำถามข้อนี้'"
-                      :placeholder="'กรุณาตอบคำถามข้อนี้'"
+                      :errorMsg = "'กรุณาตอบคำถาม'"
+                      :placeholder="'กรุณาตอบคำถาม'"
                       :maxLength = "3000"
                       :textAreaRow = "10"
                       :required="true"

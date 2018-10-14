@@ -28,9 +28,6 @@
     min-height: 270px;
     max-height: 270px;
   }
-  .button-size {
-    margin-bottom: 0;
-  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
