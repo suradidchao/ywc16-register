@@ -17,6 +17,9 @@
     min-height: 170px;
     max-height: 170px;
   }
+  .button-size {
+    margin-bottom: 10px;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -24,6 +27,9 @@
   footer {
     min-height: 270px;
     max-height: 270px;
+  }
+  .button-size {
+    margin-bottom: 0;
   }
 }
 
