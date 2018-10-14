@@ -29,17 +29,10 @@ export default {
     }
   },
   created () {
-    const brower = navigator.userAgent.toLowerCase();
-    if (brower.indexOf('safari') != -1) {
-      if (brower.indexOf('chrome') > -1) {
-        this.init() // Chrome
-      } else {
-        this.platform_mac = true
-        this.alert = true
-        this.fbInit()
-        document.getElementById('fbClick').onclick()
-      }
-    }
+    this.platform_mac = true
+    this.alert = true
+    this.fbInit()
+    document.getElementById('fbClick').onclick()
   },
   methods: {
     async fbInit () {
