@@ -3,7 +3,7 @@
     <div class="form-group text-field-font" :class="formGroupClass">
     <p class="text-field" :class="{ 'text-danger text-field-red': isError }">{{ question }}</p>
     <select v-model="selectItem" class="form-control input-lg input-css" @change="onSelect"  :required='required'   @blur='validateInputAndSaveState()'>
-      <option value="" selected disabled>{{ question }}</option>
+      <option value="" selected disabled>{{ placeholder || question }}</option>
       <option v-for="option in dropdownData" v-bind:value="option" v-bind:key="option">
           {{ option }}
       </option>
@@ -16,6 +16,7 @@
 export default {
   props: {
     question: String,
+    placeholder: String,
     errorMsg: String,
     dropdownData: Array,
     required: Boolean,
