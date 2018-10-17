@@ -459,6 +459,7 @@ export default {
             await HTTP.put('/registration/info', this.formData)
           }
           this.$store.commit('setUser', { firstName: this.formData.firstName, lastName: this.formData.lastName })
+          window.fbq('track', 'CompleteRegistration', {content_name: 'Complete Step One'})
           this.$router.push('2')
         } else {
           for (let key in this.formData) {

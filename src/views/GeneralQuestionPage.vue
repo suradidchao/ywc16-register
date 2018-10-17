@@ -97,6 +97,7 @@ export default {
         this.$store.dispatch('addGeneralQuestions', this.formData)
         if (this.$store.getters.generalQuestions.complete) {
           await HTTP.put('/registration/general', {answers: this.formData.generalQuestions})
+          window.fbq('track', 'CompleteRegistration', {content_name: 'Complete Step Four'})
           this.$router.push('5')
         } else {
           for (let key in this.formData.generalQuestions) {

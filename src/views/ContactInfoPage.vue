@@ -363,6 +363,7 @@ export default {
         this.$store.commit('setProfileTwo', this.formData)
         if (this.$store.getters.profileTwo.complete) {
           await HTTP.put('/registration/contact', this.formData)
+          window.fbq('track', 'CompleteRegistration', {content_name: 'Complete Step Two'})
           this.$router.push('3')
         } else {
           for (let key in this.formData) {

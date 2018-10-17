@@ -293,6 +293,7 @@ export default {
             }
           }
           await HTTP.put('/registration/special', {answers: this.formData.majorQuestions})
+          window.fbq('track', 'CompleteRegistration', {content_name: 'Complete Step Five'})
           this.$router.push('/steps/6')
         } else {
           this.alert = true

@@ -91,6 +91,7 @@ export default {
         this.$store.commit('setTalent', this.formData)
         if (this.$store.getters.talent.completed) {
           await HTTP.put('/registration/insight', this.formData)
+          window.fbq('track', 'CompleteRegistration', {content_name: 'Complete Step Three'})
           this.$router.push('4')
         } else {
           for (let key in this.formData) {

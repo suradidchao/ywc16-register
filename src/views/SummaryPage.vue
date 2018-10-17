@@ -151,6 +151,7 @@ export default {
     async confirm () {
       try {
         await HTTP.post('/registration/confirm')
+        window.fbq('track', 'CompleteRegistration', {content_name: 'Complete Step Six'})
         this.$router.push('/complete')
       } catch (error) {
         alert(error)
