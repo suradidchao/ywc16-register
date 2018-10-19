@@ -3,8 +3,7 @@ export async function loadFbSdk() {
   return new Promise(resolve => {
     window.fbAsyncInit = function () {
       FB.init({
-        appId: '134784707110171',
-        // appId            : '715340261988670',
+        appId: '715340261988670',
         autoLogAppEvents: true,
         xfbml: true,
         version: 'v3.0'
