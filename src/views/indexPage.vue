@@ -18,7 +18,7 @@
     max-height: 170px;
   }
   .button-size {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 }
 
@@ -28,6 +28,9 @@
     min-height: 270px;
     max-height: 270px;
   }
+  .button-size {
+    margin-bottom: 0px;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -36,6 +39,9 @@
     min-height: 270px;
     max-height: 270px;
   }
+  .button-size {
+    margin-bottom: 0px;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -43,6 +49,9 @@
   footer {
     min-height: 370px;
     max-height: 370px;
+  }
+  .button-size {
+    margin-bottom: 0px;
   }
 }
 footer {
