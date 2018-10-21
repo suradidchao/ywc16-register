@@ -6,7 +6,7 @@
       <div class="checkbox-container col-sm-6">
         <label>
         <input type="checkbox" class="form-radio" :checked="isChecked(questionCheckboxValue)" @click="checkOrUncheckCheckbox(questionCheckboxValue)"> <label class="checkbox-label">{{ questionCheckboxValue }}</label>
-        <input type="text" class="checkbox-input" v-model="etcInputBox" v-if="questionCheckboxValue === 'อื่นๆ'">
+        <input type="text" class="checkbox-input" :class="{'input-field-red': isChecked('อื่นๆ') && etcInputBox.length===0}" v-model="etcInputBox" v-if="questionCheckboxValue === 'อื่นๆ'">
       </label>
       </div>
     </div>
@@ -71,9 +71,6 @@ export default {
         if (questionCheckboxValue !== 'อื่นๆ') {
           this.comUserCheckboxList.push(questionCheckboxValue)
         } else {
-          if (this.etcInputBox.length === 0) {
-            this.etcInputBox = '-'
-          }
           this.comUserCheckboxList.push(this.etcInputBox)
         }
       }
@@ -224,6 +221,10 @@ export default {
      cursor: pointer;
      margin-right: 4px;
      outline: none;
+  }
+
+  .input-field-red {
+    border: 1px solid #ff9895;
   }
 }
 </style>
