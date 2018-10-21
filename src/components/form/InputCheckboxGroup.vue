@@ -118,7 +118,6 @@ export default {
   created () {
     let etcCheckboxInputValue = this.checkboxAnswers.find((element) => this.checkboxData.indexOf(element) === -1 ? true : false)
     if (etcCheckboxInputValue !== '' && etcCheckboxInputValue !== undefined) {
-      console.log(etcCheckboxInputValue)
       this.checkboxOther = etcCheckboxInputValue
       this.isOtherCheckboxSelected = true
     }

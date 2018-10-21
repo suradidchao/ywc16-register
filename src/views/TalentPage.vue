@@ -7,7 +7,7 @@
         <div class="panel-body space-body">
           <div class="row">
             <div class="col-md-12">
-              <app-input-checkbox-group
+              <!-- <app-input-checkbox-group
                   :question="'รู้จักค่ายทางไหน'"
                   :checkboxData="dropdownData['channel']"
                   :checkboxAnswers="formData.knowCamp"
@@ -16,7 +16,17 @@
                   :errorInput="formDataAlert.knowCamp"
                   @value="channel"
                   >
-                  </app-input-checkbox-group>
+              </app-input-checkbox-group> -->
+              <app-new-input-checkbox-group
+                  :question="'รู้จักค่ายทางไหน'"
+                  :questionCheckboxList="dropdownData['channel']"
+                  :userCheckboxList="formData.knowCamp"
+                  :required="true"
+                  :errorMsg="'โปรดเลือกช่องทางที่รู้จักค่าย'"
+                  :errorInput="formDataAlert.knowCamp"
+                  @value="channel"
+              >
+              </app-new-input-checkbox-group>
             </div>
             <div class="col-md-9">
               <br>
@@ -56,6 +66,7 @@ import { HTTP } from '../core/http-common.js'
 import { hasEmptyField } from '../utils/helper.js'
 import dropdownData from './dropdown-data.json'
 import appInputCheckboxGroup from '@/components/form/InputCheckboxGroup'
+import appNewInputCheckboxGroup from '@/components/form/NewInputCheckboxGroup'
 import appInputTextArea from '@/components/form/InputTextArea'
 export default {
   data () {
@@ -74,7 +85,8 @@ export default {
   },
   components: {
     appInputCheckboxGroup,
-    appInputTextArea
+    appInputTextArea,
+    appNewInputCheckboxGroup
   },
   methods: {
     checkPageCompleteAndDispatch () {
