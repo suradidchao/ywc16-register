@@ -30,7 +30,7 @@
                                   <p><b class="text-size-anwer">สถานศึกษา: </b> {{ summary.profile.university }}</p>
                                   <p><b class="text-size-anwer">คณะ: </b> {{ summary.profile.faculty }}</p>
                                   <p><b class="text-size-anwer">สาขา: </b> {{ summary.profile.department }}</p>
-                                  <p><b class="text-size-anwer">ชั้นปี: </b> {{ summary.profile.department }}</p>
+                                  <p><b class="text-size-anwer">ชั้นปี: </b> {{ summary.profile.academicYear }}</p>
                               </div>
                               <div class="col-md-6">
                                     <p><b class="text-size-anwer">ที่อยู่: </b> {{ summary.profile.address }}</p>
