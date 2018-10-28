@@ -10,7 +10,7 @@
               <app-form-input-text-area
                     :question="questionsData['generalQuestions'][0]"
                     :placeholder = "'กรุณาตอบคำถาม'"
-                    :maxLength = "3000"
+                    :maxLength = "5000"
                     :textAreaRow = "10"
                     :required="true"
                     :data="formData.generalQuestions[0]"
@@ -23,7 +23,7 @@
                 <app-form-input-text-area
                   :question="questionsData['generalQuestions'][1]"
                   :placeholder = "'กรุณาตอบคำถาม'"
-                  :maxLength = "3000"
+                  :maxLength = "5000"
                   :textAreaRow = "10"
                   :required="true"
                   :data="formData.generalQuestions[1]"
@@ -36,7 +36,7 @@
                 <app-form-input-text-area
                     :question="questionsData['generalQuestions'][2]"
                     ::placeholder = "'กรุณาตอบคำถาม'"
-                    :maxLength = "3000"
+                    :maxLength = "5000"
                     :textAreaRow = "10"
                     :required="true"
                     :data="formData.generalQuestions[2]"

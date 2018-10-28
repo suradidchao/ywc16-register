@@ -33,7 +33,7 @@
               <app-input-text-area
                   :question="'ความสามารถหรือกิจกรรมที่เคยทำ'"
                   :placeholder="'กรุณาระบุความสามารถหรือกิจกรรมที่เคยทำ'"
-                  :maxLength = "3000"
+                  :maxLength = "6000"
                   :textAreaRow = "12"
                   :required="true"
                   :data="formData.activities"
