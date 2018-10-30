@@ -1,8 +1,11 @@
 <template>
   <div>
     <modal v-model="alert" title="Login" :footer="false">
-      <center>
+      <!-- <center>
         <button type="button" id="fbClick" class="btn btn-default button-font" @click="fbLogin"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login Facebook</button>
+      </center> -->
+      <center>
+        <p>ตอนนี้ระบบกำลังขัดช้อง ทางทีมงานกำลังแก้ไขอย่างเร่งด่วยที่สุด โปรดกลับมาในภายหลัง</p>
       </center>
     </modal>
   </div>
