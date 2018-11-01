@@ -5,7 +5,7 @@
         <button type="button" id="fbClick" class="btn btn-default button-font" @click="fbLogin"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login Facebook</button>
       </center> -->
       <center>
-        <h5>ระบบได้ทำการปิดรับสมัครแล้ว โปรดกลับมาเช็ครายชื่อประกาศสสัมภาษณ์ในภายหลังที่ <a href="https://ywc.in.th">www.ywc.in.th</a></h5>
+        <h5>ระบบได้ทำการปิดรับสมัครแล้ว โปรดกลับมาเช็ครายชื่อประกาศสสัมภาษณ์ในภายหลังได้ที่ <a href="https://ywc.in.th">www.ywc.in.th</a></h5>
       </center>
     </modal>
   </div>
