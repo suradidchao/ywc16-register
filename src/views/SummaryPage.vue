@@ -180,6 +180,7 @@ export default {
 .text-size-ask {
   font-size: 18px;
   color: #000;
+  white-space: pre-wrap;
 }
 
 .text-size-anwer {
