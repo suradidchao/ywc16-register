@@ -4,6 +4,9 @@
       <center>
         <button type="button" id="fbClick" class="btn btn-default button-font" @click="fbLogin"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login Facebook</button>
       </center>
+      <!-- <center>
+        <h5>ตอนนี้ระบบกำลังขัดข้อง ทางทีมงานกำลังแก้ไขอย่างเร่งด่วนที่สุด โปรดกลับมาในภายหลัง</h5>
+      </center> -->
     </modal>
   </div>
 
